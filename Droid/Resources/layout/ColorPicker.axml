@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/rapk/es-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+    <RelativeLayout
+        android:id="@+id/TopSection"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:clipToPadding="true">
+        <View
+            android:id="@+id/CurrentColorButton"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+        <View
+            android:id="@+id/NewColorButton"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/Labels"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/TopSection">
+        <TextView
+            android:id="@+id/CurrentColorLabel"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:textSize="18sp"
+            android:layout_alignLeft="@id/CurrentColorButton"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_below="@id/TopSection"
+            android:text="Current" />
+        <TextView
+            android:id="@+id/NewColorLabel"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_toRightOf="@id/CurrentColorLabel"
+            android:layout_below="@id/TopSection"
+            android:text="New" />
+    </RelativeLayout>
+    <HorizontalScrollView
+        android:id="@+id/GridViewParentView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="horizontal"
+        android:scrollbarSize="4dp"
+        android:fadeScrollbars="false"
+        android:scrollbarFadeDuration="0"
+        android:layout_below="@id/Labels">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <GridView
+                android:id="@+id/GridView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="0dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:paddingTop="0dp"
+                android:horizontalSpacing="10dp"
+                android:verticalSpacing="10dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

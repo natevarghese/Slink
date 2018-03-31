@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cZE-iV-UFb" customClass="NewOutletCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="114" height="107"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="114" height="107"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BL-2q-qrU" customClass="WebImageButton">
+                        <rect key="frame" x="10" y="0.0" width="94" height="87"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5p-m2-gdy">
+                        <rect key="frame" x="0.0" y="87" width="114" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="B0e-M8-xqI"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="l5p-m2-gdy" secondAttribute="trailing" id="0UJ-4f-EB2"/>
+                <constraint firstItem="l5p-m2-gdy" firstAttribute="top" secondItem="0BL-2q-qrU" secondAttribute="bottom" id="Tpr-iH-Kxh"/>
+                <constraint firstItem="l5p-m2-gdy" firstAttribute="leading" secondItem="cZE-iV-UFb" secondAttribute="leading" id="d1N-NZ-5Wt"/>
+                <constraint firstAttribute="bottom" secondItem="l5p-m2-gdy" secondAttribute="bottom" id="ipi-pw-LS9"/>
+                <constraint firstAttribute="trailing" secondItem="0BL-2q-qrU" secondAttribute="trailing" constant="10" id="k43-1i-72L"/>
+                <constraint firstItem="0BL-2q-qrU" firstAttribute="leading" secondItem="cZE-iV-UFb" secondAttribute="leading" constant="10" id="sew-iB-dSK"/>
+                <constraint firstItem="0BL-2q-qrU" firstAttribute="top" secondItem="cZE-iV-UFb" secondAttribute="top" id="u7v-jk-r2h"/>
+            </constraints>
+            <size key="customSize" width="114" height="107"/>
+            <connections>
+                <outlet property="Button" destination="0BL-2q-qrU" id="Roq-oX-82U"/>
+                <outlet property="Label" destination="l5p-m2-gdy" id="Aee-iK-0t9"/>
+            </connections>
+            <point key="canvasLocation" x="66" y="82.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

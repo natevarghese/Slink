@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="100dp" android:paddingLeft="10dp" android:paddingRight="10dp" android:paddingBottom="10dp" android:paddingTop="30dp" android:theme="@style/ThemeOverlay.AppCompat.Dark" android:orientation="vertical" android:gravity="bottom">
+	<TextView android:id="@+id/InnititalsTextView" android:layout_width="40dp" android:layout_height="40dp" android:textColor="@android:color/darker_gray" android:textStyle="bold" android:text="" android:background="@drawable/InnititalsCircle" android:layout_marginRight="10dp" android:gravity="center" android:layout_centerVertical="true" />
+	<TextView android:id="@+id/NameTextView" android:layout_toRightOf="@id/InnititalsTextView" android:layout_alignTop="@id/InnititalsTextView" android:textColor="@android:color/white" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" />
+	<TextView android:id="@+id/HandelTextView" android:layout_toRightOf="@id/InnititalsTextView" android:layout_alignBottom="@id/InnititalsTextView" android:textColor="@android:color/white" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" />
+</RelativeLayout>

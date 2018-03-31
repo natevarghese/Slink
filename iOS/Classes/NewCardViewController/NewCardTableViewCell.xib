@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCardTableViewCell" rowHeight="44" id="cxk-wN-pdQ" customClass="NewCardTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Sb-gP-r0Y">
+                        <rect key="frame" x="16" y="10" width="258" height="24"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ex2-rB-kXa">
+                        <rect key="frame" x="282" y="7" width="30" height="30"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TzT-bZ-cfd">
+                                <rect key="frame" x="2" y="2" width="26" height="26"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="AbR-y5-y5i"/>
+                            <constraint firstAttribute="trailing" secondItem="TzT-bZ-cfd" secondAttribute="trailing" constant="2" id="T3h-4C-jbc"/>
+                            <constraint firstAttribute="height" constant="30" id="oyp-KE-ubx"/>
+                            <constraint firstAttribute="bottom" secondItem="TzT-bZ-cfd" secondAttribute="bottom" constant="2" id="rnQ-Cq-697"/>
+                            <constraint firstItem="TzT-bZ-cfd" firstAttribute="leading" secondItem="ex2-rB-kXa" secondAttribute="leading" constant="2" id="ruG-vs-3fV"/>
+                            <constraint firstItem="TzT-bZ-cfd" firstAttribute="top" secondItem="ex2-rB-kXa" secondAttribute="top" constant="2" id="zrU-bO-jj7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="6Sb-gP-r0Y" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leadingMargin" id="90I-QN-Rz0"/>
+                    <constraint firstItem="6Sb-gP-r0Y" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" id="TKA-nd-QSj"/>
+                    <constraint firstAttribute="trailing" secondItem="ex2-rB-kXa" secondAttribute="trailing" constant="8" id="cTE-Hr-A3v"/>
+                    <constraint firstItem="ex2-rB-kXa" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" id="ceG-Tm-psg"/>
+                    <constraint firstItem="ex2-rB-kXa" firstAttribute="leading" secondItem="6Sb-gP-r0Y" secondAttribute="trailing" constant="8" id="oZT-Js-Zf7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="Label" destination="6Sb-gP-r0Y" id="aQs-3O-bzx"/>
+                <outlet property="RightView" destination="TzT-bZ-cfd" id="mUd-jx-CF1"/>
+                <outlet property="RightViewSuperview" destination="ex2-rB-kXa" id="8cs-5y-926"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleName</key>
+	<string>Slink</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.nvcomputers.SlinkApp</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.1.9</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>MinimumOSVersion</key>
+	<string>10.0</string>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile~ipad</key>
+	<string>Landing</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>gplus</string>
+		<string>pinterest</string>
+		<string>instagram</string>
+		<string>twitter</string>
+		<string>fb</string>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+		<string>linkedin</string>
+		<string>linkedin-sdk2</string>
+		<string>linkedin-sdk</string>
+	</array>
+	<key>FacebookAppID</key>
+	<string>263027770780904</string>
+	<key>LIAppId</key>
+	<string>282730945236494 </string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>None</string>
+			<key>CFBundleURLName</key>
+			<string>com.nvcomputers.SlinkApp</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb282730945236494</string>
+				<string>li5218376</string>
+				<string>com.googleusercontent.apps.172866788674-grrhf3m9avagoj9bft4o6f53jb0ue1ue</string>
+				<string>com.nvcomputers.SlinkApp</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookDisplayName</key>
+	<string>Slink</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera Usage</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Contact fetch</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>PhotoLibrary Usage</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your location is used to figure out if you are nearby another person else sharing a card</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Your location is used to figure out if you are nearby another person else sharing a card</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is used to figure out if you are nearby another person else sharing a card</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+		<string>remote-notification</string>
+	</array>
+	<key>NSCalendarsUsageDescription</key>
+	<string>We don&apos;t use the calendar?</string>
+	<key>CFBundleVersion</key>
+	<string>0.0.14</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Landing</string>
+	<key>XSLaunchImageAssets</key>
+	<string>Resources/Assets.xcassets/LaunchImage.launchimage</string>
+	<key>XSAppIconAssets</key>
+	<string>Resources/Assets.xcassets/AppIcon.appiconset</string>
+</dict>
+</plist>

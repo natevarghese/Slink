@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+    <TextView
+        android:id="@+id/RightTextViewSuperView"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:visibility="visible"
+        android:text=""
+        android:background="@android:color/white"
+        android:textColor="@android:color/white"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp" />
+    <TextView
+        android:id="@+id/RightTextView"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:visibility="visible"
+        android:text=""
+        android:textColor="@android:color/white"
+        android:background="@android:color/darker_gray"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="11dp" />
+    <EditText
+        android:id="@+id/LeftEditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="asd"
+        android:background="@null"
+        android:layout_centerVertical="true"
+        android:textColorHint="#FFFFFF"
+        android:layout_alignParentLeft="true"
+        android:inputType="textCapSentences"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:layout_toLeftOf="@id/RightTextViewSuperView"
+        android:layout_marginRight="10dp" />
+</RelativeLayout>

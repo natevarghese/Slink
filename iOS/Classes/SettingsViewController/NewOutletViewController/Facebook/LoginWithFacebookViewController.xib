@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginWithFacebookViewController">
+            <connections>
+                <outlet property="FacebookButtonSuperview" destination="PrA-y6-FQt" id="13X-Ql-yDs"/>
+                <outlet property="FacebookNameLabel" destination="wDS-qh-upP" id="hi8-0U-6FE"/>
+                <outlet property="FacebookProfilePictureSuperview" destination="iN9-yv-3Ns" id="eig-Bp-8G5"/>
+                <outlet property="ScrollView" destination="Kii-Wz-EQf" id="sxl-6j-Dfg"/>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kii-Wz-EQf" customClass="TPKeyboardAvoidingScrollView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Facebook Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0O-Rw-x8h">
+                            <rect key="frame" x="55.5" y="129" width="263" height="34.5"/>
+                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="25"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PrA-y6-FQt">
+                            <rect key="frame" x="87" y="435.5" width="200" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="JcO-V4-Ycl"/>
+                                <constraint firstAttribute="width" constant="200" id="UAT-FK-x3Y"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN9-yv-3Ns">
+                            <rect key="frame" x="87" y="183.5" width="200" height="200"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="fkJ-HD-I1f"/>
+                                <constraint firstAttribute="width" constant="200" id="gZN-SH-C4D"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDS-qh-upP">
+                            <rect key="frame" x="87" y="385.5" width="200" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="LQL-mo-kak"/>
+                                <constraint firstAttribute="height" constant="30" id="hp9-ia-H7c"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="iN9-yv-3Ns" firstAttribute="centerX" secondItem="Kii-Wz-EQf" secondAttribute="centerX" id="5tA-ve-8UR"/>
+                        <constraint firstItem="iN9-yv-3Ns" firstAttribute="centerY" secondItem="Kii-Wz-EQf" secondAttribute="centerY" constant="-50" id="Iug-9a-95E"/>
+                        <constraint firstItem="q0O-Rw-x8h" firstAttribute="centerX" secondItem="Kii-Wz-EQf" secondAttribute="centerX" id="JBP-Yx-YMM"/>
+                        <constraint firstItem="PrA-y6-FQt" firstAttribute="centerX" secondItem="Kii-Wz-EQf" secondAttribute="centerX" id="N0k-Wh-bWJ"/>
+                        <constraint firstItem="iN9-yv-3Ns" firstAttribute="top" secondItem="q0O-Rw-x8h" secondAttribute="bottom" constant="20" id="m7h-gr-o5q"/>
+                        <constraint firstItem="wDS-qh-upP" firstAttribute="centerX" secondItem="Kii-Wz-EQf" secondAttribute="centerX" id="sB8-lu-edN"/>
+                        <constraint firstItem="PrA-y6-FQt" firstAttribute="top" secondItem="wDS-qh-upP" secondAttribute="bottom" constant="20" id="wWH-mx-NE9"/>
+                        <constraint firstItem="wDS-qh-upP" firstAttribute="top" secondItem="iN9-yv-3Ns" secondAttribute="bottom" constant="2" id="xWj-nT-MBB"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Kii-Wz-EQf" secondAttribute="trailing" id="Iga-lY-5B3"/>
+                <constraint firstItem="Kii-Wz-EQf" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="MnV-nl-hSM"/>
+                <constraint firstItem="Kii-Wz-EQf" firstAttribute="top" secondItem="2" secondAttribute="top" id="b5Z-ld-afv"/>
+                <constraint firstAttribute="bottom" secondItem="Kii-Wz-EQf" secondAttribute="bottom" id="zHk-ei-WSk"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

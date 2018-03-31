@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1" customClass="CardBack">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TextField" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BFa-yM-MjE">
+                    <rect key="frame" x="8" y="130" width="359" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="bXn-dZ-EBS"/>
+                    </constraints>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrV-iQ-NUx" customClass="WebImageButton">
+                    <rect key="frame" x="138.5" y="25" width="97" height="97"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="hrV-iQ-NUx" secondAttribute="height" id="uZI-Sh-E87"/>
+                    </constraints>
+                    <state key="normal" title=""/>
+                    <connections>
+                        <action selector="LogoImageButtonClicked:" destination="1" eventType="touchUpInside" id="E4w-H5-FKQ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="hrV-iQ-NUx" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="NBy-Rv-Uvh"/>
+                <constraint firstItem="BFa-yM-MjE" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="8" id="VYH-8r-ks8"/>
+                <constraint firstItem="hrV-iQ-NUx" firstAttribute="top" secondItem="1" secondAttribute="top" constant="25" id="e7t-LD-SYv"/>
+                <constraint firstAttribute="bottom" secondItem="BFa-yM-MjE" secondAttribute="bottom" constant="30" id="gLO-ok-Qm1"/>
+                <constraint firstItem="BFa-yM-MjE" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="mID-63-3OM"/>
+                <constraint firstItem="BFa-yM-MjE" firstAttribute="top" secondItem="hrV-iQ-NUx" secondAttribute="bottom" constant="8" id="uXm-mm-4st"/>
+                <constraint firstAttribute="trailing" secondItem="BFa-yM-MjE" secondAttribute="trailing" constant="8" id="xhv-kj-ywv"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="CompanyNameTextField" destination="BFa-yM-MjE" id="wd3-g8-Te3"/>
+                <outlet property="LogoImageButton" destination="hrV-iQ-NUx" id="aCa-8e-GjV"/>
+            </connections>
+            <point key="canvasLocation" x="71.5" y="54"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1" customClass="CardFront">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="irx-PD-ejA">
+                    <rect key="frame" x="8" y="8" width="359" height="174"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TextField" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Th1-B4-OmZ">
+                            <rect key="frame" x="85.5" y="8" width="265.5" height="24"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TextField" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="daa-c2-CGg">
+                            <rect key="frame" x="85.5" y="32" width="265.5" height="18"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3D3-qD-vz2" customClass="WebImageButton">
+                            <rect key="frame" x="8" y="8" width="69.5" height="69.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="3D3-qD-vz2" secondAttribute="height" multiplier="1:1" id="N0L-je-uJR"/>
+                            </constraints>
+                            <connections>
+                                <action selector="HeaderImageButtonClicked:" destination="1" eventType="touchUpInside" id="iLW-PL-qhu"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dqO-kq-7fe">
+                            <rect key="frame" x="0.0" y="85.5" width="359" height="80.5"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="19V-qo-LDt">
+                                    <rect key="frame" x="0.0" y="0.0" width="359" height="80.5"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="U4G-mZ-0ik">
+                                        <size key="itemSize" width="50" height="50"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNb-Vz-U65">
+                                    <rect key="frame" x="139" y="20.5" width="81" height="40"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="qjo-3I-iPW"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                    <state key="normal" title="No outlets">
+                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="NoOutletsButtonClicked:" destination="1" eventType="touchUpInside" id="wdB-75-mCy"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="19V-qo-LDt" firstAttribute="leading" secondItem="dqO-kq-7fe" secondAttribute="leading" id="49q-Qs-vky"/>
+                                <constraint firstItem="SNb-Vz-U65" firstAttribute="centerY" secondItem="dqO-kq-7fe" secondAttribute="centerY" id="Qin-H7-x1Q"/>
+                                <constraint firstItem="19V-qo-LDt" firstAttribute="top" secondItem="dqO-kq-7fe" secondAttribute="top" id="a7V-Vz-s4C"/>
+                                <constraint firstAttribute="bottom" secondItem="19V-qo-LDt" secondAttribute="bottom" id="hI7-Qu-oiu"/>
+                                <constraint firstAttribute="trailing" secondItem="19V-qo-LDt" secondAttribute="trailing" id="ow7-tM-Uux"/>
+                                <constraint firstItem="SNb-Vz-U65" firstAttribute="centerX" secondItem="dqO-kq-7fe" secondAttribute="centerX" id="pa5-jg-W9b"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="dqO-kq-7fe" firstAttribute="top" secondItem="3D3-qD-vz2" secondAttribute="bottom" constant="8" id="14d-BF-xdW"/>
+                        <constraint firstItem="daa-c2-CGg" firstAttribute="leading" secondItem="3D3-qD-vz2" secondAttribute="trailing" constant="8" id="4rr-PM-mBH"/>
+                        <constraint firstItem="Th1-B4-OmZ" firstAttribute="leading" secondItem="3D3-qD-vz2" secondAttribute="trailing" constant="8" id="60A-n7-tMz"/>
+                        <constraint firstAttribute="trailing" secondItem="daa-c2-CGg" secondAttribute="trailing" constant="8" id="96A-fn-xtK"/>
+                        <constraint firstItem="Th1-B4-OmZ" firstAttribute="top" secondItem="irx-PD-ejA" secondAttribute="top" constant="8" id="LsZ-T1-bd7"/>
+                        <constraint firstAttribute="trailing" secondItem="dqO-kq-7fe" secondAttribute="trailing" id="ak4-gM-dsY"/>
+                        <constraint firstItem="3D3-qD-vz2" firstAttribute="height" secondItem="irx-PD-ejA" secondAttribute="height" multiplier="0.4" id="dRc-li-UHt"/>
+                        <constraint firstItem="daa-c2-CGg" firstAttribute="top" secondItem="Th1-B4-OmZ" secondAttribute="bottom" id="eyO-VM-p8A"/>
+                        <constraint firstItem="3D3-qD-vz2" firstAttribute="leading" secondItem="irx-PD-ejA" secondAttribute="leading" constant="8" id="j6H-uH-Elc"/>
+                        <constraint firstAttribute="bottom" secondItem="dqO-kq-7fe" secondAttribute="bottom" constant="8" id="s09-Vb-B6J"/>
+                        <constraint firstAttribute="trailing" secondItem="Th1-B4-OmZ" secondAttribute="trailing" constant="8" id="tcW-Hp-XJh"/>
+                        <constraint firstItem="3D3-qD-vz2" firstAttribute="top" secondItem="irx-PD-ejA" secondAttribute="top" constant="8" id="wIY-v3-aLZ"/>
+                        <constraint firstItem="dqO-kq-7fe" firstAttribute="leading" secondItem="irx-PD-ejA" secondAttribute="leading" id="xKl-jo-hSG"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="irx-PD-ejA" secondAttribute="trailing" constant="8" id="1Tc-KU-ZEJ"/>
+                <constraint firstItem="irx-PD-ejA" firstAttribute="top" secondItem="1" secondAttribute="top" constant="8" id="3Bl-qF-Boc"/>
+                <constraint firstAttribute="bottom" secondItem="irx-PD-ejA" secondAttribute="bottom" constant="8" id="3Jz-8F-1Kh"/>
+                <constraint firstItem="irx-PD-ejA" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="8" id="KLG-ZZ-Gnv"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="CollectionView" destination="19V-qo-LDt" id="cNE-K9-ozg"/>
+                <outlet property="HeaderImageButton" destination="3D3-qD-vz2" id="AlB-vD-sGg"/>
+                <outlet property="NoOutletsButton" destination="SNb-Vz-U65" id="Q4d-46-j1a"/>
+                <outlet property="TitleTextField" destination="daa-c2-CGg" id="Oix-qT-i12"/>
+                <outlet property="UserDisplayNameTextField" destination="Th1-B4-OmZ" id="c5A-jt-eUx"/>
+            </connections>
+            <point key="canvasLocation" x="35.5" y="54"/>
+        </view>
+    </objects>
+</document>

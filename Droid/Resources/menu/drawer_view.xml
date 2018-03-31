@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<group android:checkableBehavior="single">
+		<item android:id="@+id/my_cards" android:icon="@drawable/Home" android:title="My Cards" />
+	</group>
+	<group android:checkableBehavior="single">
+		<item android:id="@+id/discover" android:icon="@drawable/Discover" android:title="Discover" />
+	</group>
+	<group android:checkableBehavior="single">
+		<item android:id="@+id/connections" android:icon="@drawable/Connections" android:title="Connections" />
+	</group>
+	<group android:checkableBehavior="single">
+		<item android:id="@+id/settings" android:icon="@drawable/Settings" android:title="Settings" />
+	</group>
+</menu>

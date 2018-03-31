@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DrawerTableViewCell" rowHeight="44" id="cxk-wN-pdQ" customClass="DrawerTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yxh-tC-8rj" customClass="WebImage">
+                        <rect key="frame" x="8" y="8" width="27.5" height="27.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Yxh-tC-8rj" secondAttribute="height" multiplier="1:1" id="GeX-gF-E9P"/>
+                            <constraint firstAttribute="width" constant="27.5" id="IYe-VM-34x"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zt-KN-Osf">
+                        <rect key="frame" x="43" y="10" width="230" height="24"/>
+                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dj8-Jp-hVu">
+                        <rect key="frame" x="281" y="15" width="15" height="15"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="Cq9-07-PzO"/>
+                            <constraint firstAttribute="width" constant="15" id="pu8-ME-Wwx"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="Dj8-Jp-hVu" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" id="BQw-He-h0B"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Dj8-Jp-hVu" secondAttribute="trailing" constant="8" id="Ogp-Gi-hcu"/>
+                    <constraint firstItem="9zt-KN-Osf" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" id="UEK-eJ-AfU"/>
+                    <constraint firstItem="Dj8-Jp-hVu" firstAttribute="leading" secondItem="9zt-KN-Osf" secondAttribute="trailing" constant="8" id="VOf-T1-zj9"/>
+                    <constraint firstItem="Yxh-tC-8rj" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="8" id="WEH-Z4-M8v"/>
+                    <constraint firstItem="9zt-KN-Osf" firstAttribute="leading" secondItem="Yxh-tC-8rj" secondAttribute="trailing" constant="8" id="oHr-8g-pff"/>
+                    <constraint firstItem="Yxh-tC-8rj" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="8" id="oYt-Ca-6ps"/>
+                    <constraint firstItem="Yxh-tC-8rj" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" id="swz-JA-Z4S"/>
+                    <constraint firstAttribute="bottom" secondItem="Yxh-tC-8rj" secondAttribute="bottom" constant="8" id="wjg-44-KRV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="LeftImageView" destination="Yxh-tC-8rj" id="7PD-ur-REJ"/>
+                <outlet property="LeftImageViewWidthConstraint" destination="IYe-VM-34x" id="VTI-bf-4rY"/>
+                <outlet property="LeftLabel" destination="9zt-KN-Osf" id="pa6-T7-JVH"/>
+                <outlet property="NotificaionView" destination="Dj8-Jp-hVu" id="gT2-0v-5E7"/>
+            </connections>
+            <point key="canvasLocation" x="179" y="44"/>
+        </tableViewCell>
+    </objects>
+</document>
