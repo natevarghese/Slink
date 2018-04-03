@@ -68,7 +68,7 @@ namespace Slink.iOS {     public partial class CardSharingStatusViewControll
                 SessionUUID = await RealmServices.BoardcastCard(SelectedCard, SessionUUID);                 Sharing = !String.IsNullOrEmpty(SessionUUID);             }
             catch (Exception e)
             {
-                Sharing = false;                 AppCenterManager.Report(e.Message);
+                Sharing = false;                 AppCenterManager.Report(e);
             }              if (Sharing)
             {                 Timer.Start();
                 ApplyAnimation();             }

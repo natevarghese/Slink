@@ -97,9 +97,7 @@ namespace Slink.iOS
         public static UIImage ReduceSizeIfNeededByWidth(UIImage img, float maxWidth = 1000)
         {
             if (img.Size.Width < maxWidth)
-            {
                 return img;
-            }
 
             return ScaleImageToWidth(img, maxWidth);
         }

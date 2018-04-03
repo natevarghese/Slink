@@ -14,9 +14,14 @@ namespace Slink
             if (Running) return;
             Running = true;
 
-            Analytics.SetEnabledAsync(true);
 
-            Crashes.SetEnabledAsync(true);
+#if DEBUG
+            Enabled = false;
+#endif
+
+            Analytics.SetEnabledAsync(Enabled);
+
+            Crashes.SetEnabledAsync(Enabled);
             Crashes.ShouldAwaitUserConfirmation = () => { return false; };
             Crashes.ShouldProcessErrorReport = (ErrorReport report) => { return true; };
 

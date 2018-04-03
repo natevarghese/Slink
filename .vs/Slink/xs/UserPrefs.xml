@@ -1,6 +1,17 @@
 ﻿<Properties StartupConfiguration="{D2EDA0E8-FCDA-4B75-9857-BC2166C6B81B}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
   <MonoDevelop.Ide.ItemProperties.Slink.Droid AndroidDesignerPreferredDevice="Nexus One" PreferredExecutionTarget="Android.Pixel_XL_API_26" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Slink/Views/LoginShared.cs">
+    <Files>
+      <File FileName="iOS/Classes/SettingsViewController/EditProfileViewController/EditProfileViewController.cs" Line="136" Column="75" />
+      <File FileName="Slink/Amazon/S3Utiles.cs" Line="170" Column="42" />
+      <File FileName="iOS/Classes/SharingViewController/CardViewController.cs" Line="240" Column="79" />
+      <File FileName="iOS/Classes/LandingViewController/LoginViewController.cs" Line="76" Column="51" />
+      <File FileName="Slink/Views/LoginShared.cs" Line="35" Column="30" NotebookId="1" />
+      <File FileName="Slink/AppCenterManager.cs" Line="38" Column="28" NotebookId="1" />
+      <File FileName="iOS/UIViewController/CardSharingStatusViewController.cs" Line="192" Column="34" NotebookId="1" />
+      <File FileName="iOS/Extensions/ApplicationExtensions.cs" Line="178" Column="34" NotebookId="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
@@ -18,7 +29,6 @@
       <Breakpoint file="/Users/nathanvarghese/Desktop/Xamarin/Slink/Slink/SOA/Card.cs" relfile="Slink/SOA/Card.cs" line="24" column="1" />
       <Breakpoint file="/Users/nathanvarghese/Desktop/Xamarin/Slink/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="195" column="1" />
       <Breakpoint file="/Users/nathanvarghese/Desktop/Xamarin/Slink/iOS/UIViewController/WebViewViewController.cs" relfile="iOS/UIViewController/WebViewViewController.cs" line="61" column="1" />
-      <Breakpoint file="/Users/nathanvarghese/Desktop/Xamarin/Slink/iOS/Classes/SettingsViewController/NewOutletViewController/Email/EnterEmailAddressVerificationCodeViewController.cs" relfile="iOS/Classes/SettingsViewController/NewOutletViewController/Email/EnterEmailAddressVerificationCodeViewController.cs" line="62" column="12" />
       <Breakpoint file="/Users/nathanvarghese/Desktop/Xamarin/Slink/iOS/Classes/SettingsViewController/NewOutletViewController/Email/EnterEmailAddressVerificationCodeViewController.cs" relfile="iOS/Classes/SettingsViewController/NewOutletViewController/Email/EnterEmailAddressVerificationCodeViewController.cs" line="86" column="1" />
       <Breakpoint file="/Users/nathanvarghese/Desktop/Xamarin/Slink/Slink/Realm/RealmServices.cs" relfile="Slink/Realm/RealmServices.cs" line="49" column="1" />
     </BreakpointStore>

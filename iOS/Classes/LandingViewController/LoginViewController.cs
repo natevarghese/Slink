@@ -51,7 +51,7 @@ namespace Slink.iOS
 
                 if (e.Error != null)
                 {
-                    AppCenterManager.Report(e.Error.Description);
+                    AppCenterManager.Report(e.Error.LocalizedDescription);
                     AppCenterManager.Report("2");
                     ShowAlert("Oops!", e.Error.LocalizedDescription);
                     return;

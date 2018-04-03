@@ -167,7 +167,7 @@ namespace Slink
             catch (System.Net.WebException) { }
             catch (Exception e)
             {
-                AppCenterManager.Report(e.Message);
+                AppCenterManager.Report(e);
 
             }
             return url;

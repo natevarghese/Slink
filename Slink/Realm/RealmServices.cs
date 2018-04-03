@@ -72,10 +72,10 @@ namespace Slink
             website.AvailbleForAddition = true;
             returnList.Add(website);
 
-            //var email = new Outlet();
-            //email.Type = Outlet.outlet_type_email;
-            //email.AvailbleForAddition = true;
-            //returnList.Add(email);
+            var email = new Outlet();
+            email.Type = Outlet.outlet_type_email;
+            email.AvailbleForAddition = true;
+            returnList.Add(email);
 
             var github = new Outlet();
             github.Type = Outlet.outlet_type_github;

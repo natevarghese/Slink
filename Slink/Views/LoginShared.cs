@@ -28,7 +28,15 @@ namespace Slink
             try
             {
                 await RealmUserServices.LoginToServerAsync(facebookToken);
+            }
+            catch (Exception er)
+            {
+                AppCenterManager.Report(er);
+                return false;
+            }
 
+            try
+            {
                 var result = await WebServices.UserController.CreateUser();
                 if (result.StatusCode == System.Net.HttpStatusCode.OK) return true;
 
@@ -37,9 +45,7 @@ namespace Slink
             }
             catch (Exception er)
             {
-                AppCenterManager.Report(er.Message);
-                AppCenterManager.Report(er.StackTrace);
-
+                AppCenterManager.Report(er);
             }
 
             return false;

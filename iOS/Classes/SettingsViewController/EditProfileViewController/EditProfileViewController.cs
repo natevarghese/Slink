@@ -1,4 +1,5 @@
 ﻿using System;
+using CoreGraphics;
 using Foundation;
 using Plugin.DeviceInfo;
 using Plugin.DeviceInfo.Abstractions;
@@ -145,7 +146,8 @@ namespace Slink.iOS
                         ProfileImageButton.ShowLoadingIndicators();
 
                         UIImage originalImage = e.Info[UIImagePickerController.OriginalImage] as UIImage;
-                        var bytes = ImageUtils.ByteArrayFromImage(originalImage, 100);
+                        var smallerImage = ImageUtils.ScaledToSize(originalImage, new CGSize(200, 200));
+                        var bytes = ImageUtils.ByteArrayFromImage(smallerImage, 100);
                         S3Utils.UploadPhoto(bytes, localUrl, remoteUrl, fileName, () =>
                         {
                             SDWebImageManager.SharedManager.ImageCache.RemoveImage(me.RemoteProfileImageURL, true);
@@ -183,7 +185,7 @@ namespace Slink.iOS
         {
             if (!ValidateAllFields()) return;
 
-            DismissViewController(false, null);
+            NavigationController.PopViewController(true);
         }
     }
 }

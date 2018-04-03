@@ -200,7 +200,7 @@ namespace Slink
                 endpoint.Controller = Mapping;
 
                 Dictionary<string, object> requestDictionary = new Dictionary<string, object>();
-                requestDictionary.Add("email", "complaint@simulator.amazonses.com");//todo
+                requestDictionary.Add("email", email);
 
                 return await NVCRestHelper.Async(endpoint, requestDictionary, null);
             }
@@ -213,7 +213,7 @@ namespace Slink
                 endpoint.Controller = Mapping;
 
                 Dictionary<string, object> requestDictionary = new Dictionary<string, object>();
-                requestDictionary.Add("email", "complaint@simulator.amazonses.com");//todo
+                requestDictionary.Add("email", email);
                 requestDictionary.Add("code", code);
 
                 return await NVCRestHelper.Async(endpoint, requestDictionary, null);
