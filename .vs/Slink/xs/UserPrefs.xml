@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{D2EDA0E8-FCDA-4B75-9857-BC2166C6B81B}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
   <MonoDevelop.Ide.ItemProperties.Slink.Droid AndroidDesignerPreferredDevice="Nexus One" PreferredExecutionTarget="Android.Pixel_XL_API_26" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Slink/Views/LoginShared.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/Classes/SettingsViewController/EditProfileViewController/EditProfileViewController.cs">
     <Files>
       <File FileName="iOS/Classes/SettingsViewController/EditProfileViewController/EditProfileViewController.cs" Line="136" Column="75" />
       <File FileName="Slink/Amazon/S3Utiles.cs" Line="170" Column="42" />
       <File FileName="iOS/Classes/SharingViewController/CardViewController.cs" Line="240" Column="79" />
       <File FileName="iOS/Classes/LandingViewController/LoginViewController.cs" Line="76" Column="51" />
-      <File FileName="Slink/Views/LoginShared.cs" Line="35" Column="30" NotebookId="1" />
+      <File FileName="Slink/LoginShared.cs" Line="58" Column="52" NotebookId="1" />
       <File FileName="Slink/AppCenterManager.cs" Line="38" Column="28" NotebookId="1" />
       <File FileName="iOS/UIViewController/CardSharingStatusViewController.cs" Line="192" Column="34" NotebookId="1" />
       <File FileName="iOS/Extensions/ApplicationExtensions.cs" Line="178" Column="34" NotebookId="1" />
@@ -39,5 +39,5 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <AuthorInfo Name="nathanvarghese" Email="nate08nike@aol.com" Copyright="" Company="" Trademark="" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Slink.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.529a92a183509b6c61901c4a7712be556d49411a" automaticSigning="False" />
+  <MonoDevelop.Ide.ItemProperties.Slink.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.a35a394a5ed1e85dbf33e65b8ade8419080c2a26" automaticSigning="False" />
 </Properties>

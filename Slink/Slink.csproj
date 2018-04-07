@@ -39,7 +39,6 @@
     <Compile Include="Globe.cs" />
     <Compile Include="Strings.cs" />
     <Compile Include="Views\HelloShared.cs" />
-    <Compile Include="Views\LoginShared.cs" />
     <Compile Include="Views\SettingsShared.cs" />
     <Compile Include="Views\DrawerShared.cs" />
     <Compile Include="Views\MyCardsShared.cs" />
@@ -81,6 +80,7 @@
     <Compile Include="CrossEvent.cs" />
     <Compile Include="Views\ColorPickerShared.cs" />
     <Compile Include="Outlets\Twitter\TwitterAuthenticator.cs" />
+    <Compile Include="LoginShared.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
