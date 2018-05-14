@@ -76,7 +76,7 @@ namespace Slink.Droid
                 var convertedActivity = Activity as BaseActivity;
                 if (convertedActivity == null) return;
 
-                //convertedActivity.AddFragmentOver();
+                ((MainActivity)Activity).AddFragmentOver(new MyOutletsRecyclerViewFragment());
                 return;
             }
 

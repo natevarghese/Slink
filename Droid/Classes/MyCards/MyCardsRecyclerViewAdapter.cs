@@ -50,6 +50,7 @@ namespace Slink.Droid
     public class MyCardsFooter : RecyclerView.ViewHolder
     {
         public TextView TextView { get; set; }
+        public int MyPosition { get; set; }
 
         public MyCardsFooter(View v) : base(v)
         {
@@ -58,6 +59,8 @@ namespace Slink.Droid
 
         public void BindDataToView(Context context, int position, string text)
         {
+            MyPosition = position;
+
             TextView.Text = text;
             TextView.SetTypeface(Typeface.Default, TypefaceStyle.Bold);
             TextView.TextSize = 30;
@@ -68,7 +71,7 @@ namespace Slink.Droid
             ItemView.Click += (sender, e) =>
             {
                 var intent = new Intent(SettingsShared.ItemClickedBroadcastReceiverKey);
-                intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
+                intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, MyPosition);
                 context.SendBroadcast(intent);
             };
         }
@@ -102,4 +105,5 @@ namespace Slink.Droid
             };
         }
     }
+
 }

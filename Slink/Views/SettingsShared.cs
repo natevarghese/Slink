@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Linq;
+using Plugin.DeviceInfo;
+using Plugin.DeviceInfo.Abstractions;
 
 namespace Slink
 {
@@ -42,7 +44,10 @@ namespace Slink
             var design = new SettingsModel();
             design.Title = navigation_item_design;
             design.Value = val;
-            design.Values = new List<string>() { Strings.DesignTypes.design_type_flying_colors, Strings.DesignTypes.design_type_flying_lights, Strings.DesignTypes.design_type_none };
+            if (CrossDeviceInfo.Current.Platform == Platform.iOS)
+                design.Values = new List<string>() { Strings.DesignTypes.design_type_flying_colors, Strings.DesignTypes.design_type_flying_lights, Strings.DesignTypes.design_type_none };
+            else
+                design.Values = new List<string>() { Strings.DesignTypes.design_type_none };
             TableData.Add(design);
 
             var logout = new SettingsModel();

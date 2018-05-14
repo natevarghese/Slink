@@ -32,20 +32,20 @@ namespace Slink.Droid
 
             if (obj.Title.Equals(SettingsShared.navigation_item_my_outlets, StringComparison.InvariantCulture))
             {
+                ((MainActivity)Activity).AddFragmentOver(new MyOutletsRecyclerViewFragment());
                 return;
             }
 
             if (obj.Title.Equals(SettingsShared.navigation_item_edit_profile, StringComparison.InvariantCulture))
             {
-
-
+                ((MainActivity)Activity).AddFragmentOver(new EditProfileFragment());
                 return;
             }
 
             if (obj.Title.Equals(SettingsShared.navigation_item_design, StringComparison.InvariantCulture))
             {
-                Shared.DesignChanged();
-                RecyclerView.GetAdapter().NotifyDataSetChanged();
+                //Shared.DesignChanged();
+                //RecyclerView.GetAdapter().NotifyDataSetChanged();
                 return;
             }
 

@@ -1,4 +1,5 @@
 ﻿
+using System;
 using Newtonsoft.Json.Linq;
 using PCLStorage;
 using Realms;
@@ -48,8 +49,6 @@ namespace Slink
             }
             set { }
         }
-
-
         public JObject ToJObject()
         {
             var returnObj = new JObject();

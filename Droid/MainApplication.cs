@@ -5,7 +5,6 @@ using Android.Content;
 using Android.Gms.Ads;
 using Android.OS;
 using Android.Runtime;
-using Com.Nostra13.Universalimageloader.Core;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
@@ -14,7 +13,7 @@ using Plugin.CurrentActivity;
 namespace Slink.Droid
 {
     //You can specify additional application information in this attribute
-    [Application(HardwareAccelerated = true)]
+    [Application(HardwareAccelerated = true, LargeHeap = true)]
     public class MainApplication : Application, Application.IActivityLifecycleCallbacks
     {
         public MainApplication(IntPtr handle, JniHandleOwnership transer) : base(handle, transer) { }
@@ -29,8 +28,6 @@ namespace Slink.Droid
             ServiceLocator.Instance.Add<IPersistantStorage, PersistantStorage>();
             ServiceLocator.Instance.Add<IBroadcastNotificaion, BroadCastNotificaion>();
 
-            var config = ImageLoaderConfiguration.CreateDefault(ApplicationContext);
-            ImageLoader.Instance.Init(config);
             PredownloadImages();
 
             AppCenter.Start("c475bcf9-7882-44a9-af80-1d234aa6d669", typeof(Analytics), typeof(Crashes));
@@ -39,6 +36,13 @@ namespace Slink.Droid
             MobileAds.Initialize(ApplicationContext, "ca-app-pub-4252799872870196~8404684386");
         }
 
+        public override void OnTrimMemory([GeneratedEnum] TrimMemory level)
+        {
+            FFImageLoading.ImageService.Instance.InvalidateMemoryCache();
+            GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
+
+            base.OnTrimMemory(level);
+        }
         public override void OnTerminate()
         {
             base.OnTerminate();

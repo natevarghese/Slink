@@ -45,7 +45,8 @@ namespace Slink.iOS
             var offsetY = NavigationController.NavigationBar.Bounds.Height;
             WebView = new UIWebView(new CGRect(0, offsetY, View.Bounds.Width, View.Bounds.Height - offsetY));
             WebView.Delegate = webViewDelegate;
-            WebView.LoadRequest(request);
+            WebView.LoadRequest(string AuthorizeUrl = "https://github.com/login/oauth/authorize?scope=user:email&client_id=" + Strings.SlinkKeys.github_client_id;
+            Console.WriteLine(AuthorizeUrl););
             View.AddSubview(WebView);
             View.AddConstraint(NSLayoutConstraint.Create(WebView, NSLayoutAttribute.Top, NSLayoutRelation.Equal, View, NSLayoutAttribute.Top, 1, offsetY));
             View.AddConstraint(NSLayoutConstraint.Create(WebView, NSLayoutAttribute.Right, NSLayoutRelation.Equal, View, NSLayoutAttribute.Right, 1, 0));
@@ -93,7 +94,6 @@ namespace Slink.iOS
                         }
                     }
                 }
-
             }
             return true;
         }

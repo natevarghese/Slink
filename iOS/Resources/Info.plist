@@ -97,7 +97,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>We don&apos;t use the calendar?</string>
 	<key>CFBundleVersion</key>
-	<string>0.0.14</string>
+	<string>0.0.16</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Landing</string>
 	<key>XSLaunchImageAssets</key>

@@ -5,7 +5,6 @@ using Android.Graphics;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
-using Com.Nostra13.Universalimageloader.Core;
 
 namespace Slink.Droid
 {
@@ -136,29 +135,56 @@ namespace Slink.Droid
                 editText.Context.SendBroadcast(intent);
             }
         }
-        public class ImageAndTextViewCell : RecyclerView.ViewHolder
+    }
+
+    public class ImageAndTextViewCell : RecyclerView.ViewHolder, View.IOnCreateContextMenuListener
+    {
+        public WebImageView LeftImageView { get; set; }
+        public TextView RightTextView { get; set; }
+        public int MyPosition { get; set; }
+
+        public ImageAndTextViewCell(View v) : base(v)
         {
-            public ImageView LeftImageView { get; set; }
-            public TextView RightTextView { get; set; }
+            LeftImageView = v.FindViewById<WebImageView>(Resource.Id.LeftImageView);
+            RightTextView = v.FindViewById<TextView>(Resource.Id.RightTextView);
+            //v.SetOnCreateContextMenuListener(this);
+        }
 
-            public ImageAndTextViewCell(View v) : base(v)
+        public void BindDataToView(Context context, int position, NewCardModel model)
+        {
+            if (model == null) return;
+            if (model.Outlet == null) return;
+
+            LeftImageView.SetImage(model.Outlet.RemoteURL, -1, -1, null, WebImageView.DefaultCircleTransformation);
+
+            RightTextView.Text = model.Outlet.Handle;
+
+
+            ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, 200);
+
+            if (ItemView.HasOnClickListeners) return;
+            ItemView.Click += (sender, e) =>
             {
-                LeftImageView = v.FindViewById<ImageView>(Resource.Id.LeftImageView);
-                RightTextView = v.FindViewById<TextView>(Resource.Id.RightTextView);
-            }
+                var intent = new Intent(SettingsShared.ItemClickedBroadcastReceiverKey);
+                intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
+                context.SendBroadcast(intent);
+            };
+        }
 
-            public void BindDataToView(Context context, int position, NewCardModel model)
+
+        public void BindDataToView(Context context, int position, Outlet model)
+        {
+            if (model == null) return;
+
+            MyPosition = position;
+
+            LeftImageView.SetImage(model.RemoteURL, -1, -1, null, WebImageView.DefaultCircleTransformation);
+
+            RightTextView.Text = model.Type;
+
+            ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, 300);
+            if (!ItemView.HasOnClickListeners)
             {
-                if (model == null) return;
-                if (model.Outlet == null) return;
-
-                ImageLoader.Instance.LoadImage(model.Outlet.RemoteURL, new ImageLoadingListener());
-
-                RightTextView.Text = model.Outlet.Handle;
-
-                ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, 200);
-
-                if (ItemView.HasOnClickListeners) return;
                 ItemView.Click += (sender, e) =>
                 {
                     var intent = new Intent(SettingsShared.ItemClickedBroadcastReceiverKey);
@@ -166,6 +192,25 @@ namespace Slink.Droid
                     context.SendBroadcast(intent);
                 };
             }
+
+            ItemView.SetOnCreateContextMenuListener(null);
+            if (!model.Type.Equals(Outlet.outlet_type_facebook, StringComparison.InvariantCultureIgnoreCase))
+                ItemView.SetOnCreateContextMenuListener(this);
+        }
+
+        public void OnCreateContextMenu(IContextMenu menu, View v, IContextMenuContextMenuInfo menuInfo)
+        {
+            menu.Add(0, v.Id, MyPosition, "Delete");
         }
     }
+
+    //public class ViewOnLongClickListener : Java.Lang.Object, View.IOnLongClickListener
+    //{
+    //    public int Position { get; set; }
+
+    //    public ViewOnLongClickListener(int position)
+    //    {
+    //        Position = position;
+    //    }
+    //}
 }

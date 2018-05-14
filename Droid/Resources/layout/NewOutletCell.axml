@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.nvcomputers.slink.SquareRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/rapk/es-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:gravity="center_horizontal">
+    <com.nvcomputers.slink.WebImageView
+        android:id="@+id/WebImageView"
+        android:layout_width="match_parent"
+        android:layout_height="90dp" />
+    <TextView
+        android:id="@+id/TextView"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="ASD"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/WebImageView" />
+</com.nvcomputers.slink.SquareRelativeLayout>

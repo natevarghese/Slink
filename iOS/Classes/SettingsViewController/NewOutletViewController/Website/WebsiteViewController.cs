@@ -50,6 +50,8 @@ namespace Slink.iOS
                 ActivityIndicatorView.StartAnimating();
             };
 
+            SetProgressButton(SaveButton);
+
             WebViewSuperViewWidthConstraint.Constant = UIScreen.MainScreen.Bounds.Width - 40;
 
             WebView.Hidden = true;

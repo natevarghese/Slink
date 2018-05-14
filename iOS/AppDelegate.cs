@@ -13,7 +13,9 @@ using System.Collections.Generic;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+
 using Google.MobileAds;
+using Acr.UserDialogs;
 
 namespace Slink.iOS
 {
@@ -52,15 +54,11 @@ namespace Slink.iOS
             Settings.AppID = Strings.SlinkKeys.facebook_app_id;
             Settings.DisplayName = Strings.SlinkKeys.facebook_display_name;
 
-
-            if (!RealmUserServices.DidUserPersist())
-            {
-                ApplicationExtensions.LoadStoryboardRoot("Landing", false);
-            }
-            else
-            {
+            if (RealmUserServices.DidUserPersist())
                 ApplicationExtensions.EnterApplication(false, true);
-            }
+            else
+                ApplicationExtensions.LoadStoryboardRoot("Landing", false);
+
 
             PredownloadImages();
 

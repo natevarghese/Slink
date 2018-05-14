@@ -34,7 +34,7 @@ namespace Slink
             public static string instagram_redirect_url = "https://www.instagram.com";
             public static string pinterest_redirect_url = "https://www.pinterest.com";
             public static string github_redirect_url = "https://github.com";
-            public static string privacy_policy = "http://nvcomputers.com/tempsites/slink/html/privacyPolicy.html";
+            public static string privacy_policy = "http://nvcomputers.com/privacyPolicy/";
         }
         public class Basic
         {
@@ -164,6 +164,20 @@ namespace Slink
             public static string design_type_none = "None";
             public static string design_type_flying_colors = "FlyingColors";
             public static string design_type_flying_lights = "FlyingLights";
+        }
+
+        public class PageTitles
+        {
+            public static string page_title_select_type = "Select Type";
+            public static string page_title_select_an_outlet = "Select an Outlet";
+            public static string page_title_github = "Github";
+            public static string page_title_linkedin = "LinkedIn";
+            public static string page_title_pinterest = "Pinterest";
+            public static string page_title_instagram = "Instagram";
+        }
+        public class TableViewFooters
+        {
+            public static string table_view_footer_create_new_outlet = "Create New Outlet +";
         }
     }
 }

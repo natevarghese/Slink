@@ -41,6 +41,8 @@ namespace Slink.iOS
                     var popToViewController = NavigationController.ViewControllers.Where(c => c.GetType() == typeof(MyOutletsViewController)).First();
                     NavigationController.PopToViewController(popToViewController, true);
                 }
+
+                HideHud();
             };
 
 

@@ -6,6 +6,8 @@ using Plugin.Geolocator;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Plugin.Geolocator.Abstractions;
+using Plugin.DeviceInfo;
+using Plugin.DeviceInfo.Abstractions;
 
 namespace Slink
 {
@@ -54,12 +56,14 @@ namespace Slink
 
         public static List<Outlet> GetAllAvailableOutlets()
         {
-            var realm = RealmManager.SharedInstance.GetRealm(null);
+            var me = RealmUserServices.GetMe(false);
+            if (me == null) return null;
+
             var returnList = new List<Outlet>();
 
             var facebook = new Outlet();
             facebook.Type = Outlet.outlet_type_facebook;
-            facebook.AvailbleForAddition = realm.All<Outlet>().Where(o => o.Type.Equals(Outlet.outlet_type_facebook, StringComparison.OrdinalIgnoreCase)).Count() == 0;
+            facebook.AvailbleForAddition = me.Outlets.Where(o => o.Type.Equals(Outlet.outlet_type_facebook, StringComparison.OrdinalIgnoreCase)).Count() == 0;
             returnList.Add(facebook);
 
             var instagram = new Outlet();
@@ -109,11 +113,7 @@ namespace Slink
 
             return returnList.OrderBy(c => c.Type).ToList();
         }
-        //public static AvailableOutlet GetAvailableOutlet(string type)
-        //{
-        //    var realm = RealmManager.SharedInstance.GetRealm(null);
-        //    return realm.All<AvailableOutlet>().Where(c => c.Type.Equals(type, StringComparison.OrdinalIgnoreCase)).First();
-        //}
+
         public static List<Card> GetMyCards(bool ForceToFront)
         {
             var realm = RealmManager.SharedInstance.GetRealm(null);
@@ -137,10 +137,23 @@ namespace Slink
 
         public static IList<Outlet> GetMyOutlets()
         {
+            var realm = RealmManager.SharedInstance.GetRealm(null);
+
             var me = RealmUserServices.GetMe(false);
             if (me == null) return null;
 
-            return me.Outlets.Where(c => c.Deleted == false).ToList();
+            //make sure facebook outlet exists
+            realm.Write(() =>
+            {
+                foreach (var facebookOutlet in me.Outlets.Where(o => o.Type.Equals(Outlet.outlet_type_facebook, StringComparison.OrdinalIgnoreCase)))
+                    facebookOutlet.Deleted = false;
+            });
+
+            var list = me.Outlets.Where(c => c.Deleted == false).ToList();
+            if (CrossDeviceInfo.Current.Platform == Platform.Android)
+                list.Add(null);
+
+            return list;
         }
         public static List<SlinkUser> GetMyConnections()
         {
@@ -153,7 +166,6 @@ namespace Slink
             var users = new List<SlinkUser>();
             foreach (var owner in owners)
             {
-                //var targets = cards.Where(c => c.Owner == owner);
                 foreach (Card c in owner.Cards)
                     c.ShowFront();
 
@@ -178,30 +190,27 @@ namespace Slink
             var realm = RealmManager.SharedInstance.GetRealm(null);
             if (realm == null) return false;
 
-            bool duplicateFound = false;
-            var allOutletsOfGivenHandle = realm.All<Outlet>().Where(o => o.Handle != null && o.Handle.Equals(outlet.Handle, StringComparison.OrdinalIgnoreCase)).ToList();
+            var me = RealmUserServices.GetMe(false);
+            if (me == null) return false;
 
-            if (allOutletsOfGivenHandle != null && allOutletsOfGivenHandle.Count() > 0)
+            var existingOutlet = me.Outlets.Where(
+                c => c.Type != null && c.Type.Equals(outlet.Type, StringComparison.OrdinalIgnoreCase) &&
+                c.Handle != null && c.Handle.Equals(outlet.Handle, StringComparison.OrdinalIgnoreCase)
+            ).FirstOrDefault();
+
+            if (existingOutlet != null)
             {
-                foreach (Outlet o in allOutletsOfGivenHandle)
+                realm.Write(() =>
                 {
-                    if (o.Type.Equals(outlet.Type, StringComparison.OrdinalIgnoreCase))
-                    {
-                        duplicateFound = true;
-                        break;
-                    }
-                }
+                    existingOutlet.Deleted = false;
+                });
             }
-
-
-
-            if (!duplicateFound)
+            else
             {
                 realm.Write(() =>
                 {
                     realm.Add(outlet);
 
-                    var me = RealmUserServices.GetMe(false);
                     me.Outlets.Add(outlet);
                 });
 
@@ -214,9 +223,11 @@ namespace Slink
         public static void DeleteOutlet(Outlet outlet)
         {
             if (outlet == null) return;
-            var realm = RealmManager.SharedInstance.GetRealm(null);
+            if (outlet.Type.Equals(Outlet.outlet_type_facebook, StringComparison.OrdinalIgnoreCase)) return;
 
+            var realm = RealmManager.SharedInstance.GetRealm(null);
             var cards = RealmServices.GetMyCards(false);
+
             realm.Write(() =>
             {
                 outlet.Deleted = true;

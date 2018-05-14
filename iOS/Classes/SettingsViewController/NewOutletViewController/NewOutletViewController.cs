@@ -15,7 +15,7 @@ namespace Slink.iOS
         {
             get
             {
-                return "Select a type";
+                return Strings.PageTitles.page_title_select_an_outlet;
             }
             set { base.Title = value; }
         }
@@ -27,10 +27,7 @@ namespace Slink.iOS
             RemoveBackBarButtonTitle();
 
             CollectionView.RegisterNibForCell(UINib.FromName("NewOutletCollectionViewCell", NSBundle.MainBundle), NewOutletCollectionViewCell.Key);
-
-            var dataSource = new NewOutletCollectionViewDataSource();
-            dataSource.CollectionItems = RealmServices.GetAllAvailableOutlets();
-            CollectionView.WeakDataSource = dataSource;
+            CollectionView.WeakDataSource = new NewOutletCollectionViewDataSource();
 
             var delegateFlowLayout = new NewOutletCollectionViewDelegateFlowLayout();
             delegateFlowLayout.ItemClicked += (UICollectionView arg1, NSIndexPath arg2) =>
@@ -113,7 +110,12 @@ namespace Slink.iOS
         {
             base.ViewWillAppear(animated);
 
-            Title = "Select an Outlet";
+            Title = Strings.PageTitles.page_title_select_an_outlet;
+
+            var convertedDataSource = CollectionView.WeakDataSource as NewOutletCollectionViewDataSource;
+            if (convertedDataSource != null)
+                convertedDataSource.CollectionItems = RealmServices.GetAllAvailableOutlets();
+            CollectionView.ReloadData();
         }
         void ShowDuplcateAccountAlert(string message)
         {

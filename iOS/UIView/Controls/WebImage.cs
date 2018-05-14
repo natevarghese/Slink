@@ -39,6 +39,7 @@ namespace Slink.iOS
 
             ShowLoadingIndicators();
             var placeholder = String.IsNullOrEmpty(placeholderBundleFileName) ? null : UIImage.FromBundle(placeholderBundleFileName);
+
             this.SetImage(NSUrl.FromString(url), placeholder, delegate (UIImage image, NSError error, SDImageCacheType cache, NSUrl returnedUrl)
             {
                 HideLoadingIndicators();

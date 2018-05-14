@@ -1,7 +1,9 @@
 ﻿using System;
 using Android.Content;
+using Android.InputMethodServices;
 using Android.OS;
 using Android.Support.V7.App;
+using Android.Views.InputMethods;
 
 namespace Slink.Droid
 {
@@ -81,16 +83,38 @@ namespace Slink.Droid
             var existingFragment = SupportFragmentManager.FindFragmentById(Resource.Id.over_fragment);
             if (existingFragment.GetType() == fragment.GetType()) return;
 
+            var tag = fragment.GetType().Name;
             var transaction = SupportFragmentManager.BeginTransaction();
             transaction.Replace(Resource.Id.over_fragment, fragment);
-            transaction.AddToBackStack(null);
+            transaction.AddToBackStack(tag);
             transaction.Commit();
             SupportFragmentManager.ExecutePendingTransactions();
 
             UpdateToolbar();
 
         }
+        public void PopFragmentOver()
+        {
+            SupportFragmentManager.PopBackStack();
+        }
+        public void PopFragmentOverUntil(Type targetType)
+        {
+            var existingFragment = SupportFragmentManager.FindFragmentById(Resource.Id.over_fragment);
+            if (existingFragment == null) return;
+            if (existingFragment.GetType() == targetType) return;
 
+            SupportFragmentManager.PopBackStackImmediate();
+            PopFragmentOverUntil(targetType);
+        }
+
+        public void HideKeyboard()
+        {
+            if (CurrentFocus == null) return;
+            if (CurrentFocus.WindowToken == null) return;
+
+            var service = GetSystemService(Context.InputMethodService) as InputMethodManager;
+            service?.HideSoftInputFromWindow(CurrentFocus.WindowToken, 0);
+        }
         public abstract void UpdateToolbar();
 
         public virtual void Toolbar_NavigationClick(object sender, Android.Support.V7.Widget.Toolbar.NavigationClickEventArgs e)

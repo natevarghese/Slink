@@ -1,12 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 using Android.Content;
-using Android.Database;
 using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.Media;
-using Android.Provider;
 using PCLStorage;
 
 namespace Slink.Droid
@@ -195,53 +193,7 @@ namespace Slink.Droid
 
             return output;
         }
-        public static string GetPath(Context context, Android.Net.Uri directoryUri, Android.Net.Uri fileUri)
-        {
-            string[] projection = { MediaStore.Images.Media.InterfaceConsts.Data };
-            string myPath = string.Empty;
 
-            try
-            {
-                string myId = DocumentsContract.GetDocumentId(fileUri).Split(':')[1];
-                string mySelector = MediaStore.Images.Media.InterfaceConsts.Id + "=?";
-                ICursor cursor = context.ContentResolver.Query(directoryUri, projection, mySelector, new string[] { myId }, null);
-
-                if (cursor != null)
-                {
-                    cursor.MoveToFirst();
-                    int dataColumn = cursor.GetColumnIndexOrThrow(MediaStore.Images.Media.InterfaceConsts.Data);
-
-                    myPath = cursor.GetString(dataColumn);
-
-                    cursor.Close();
-                }
-            }
-            catch (Exception)
-            {
-                try
-                {
-                    ICursor cursor = context.ContentResolver.Query(fileUri, projection, null, null, null);
-
-                    if (cursor != null)
-                    {
-                        cursor.MoveToFirst();
-                        int dataColumn = cursor.GetColumnIndexOrThrow(MediaStore.Images.Media.InterfaceConsts.Data);
-                        myPath = cursor.GetString(dataColumn);
-
-                        cursor.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    myPath = fileUri.Path;
-                }
-            }
-
-            if (string.IsNullOrEmpty(myPath))
-                myPath = fileUri.Path;
-
-            return myPath;
-        }
 
         public static Bitmap CreateThumbnail(Bitmap source, int width, int height)
         {
@@ -282,203 +234,20 @@ namespace Slink.Droid
 
             return null;
         }
-        //public static Bitmap GetBitmapFromFile(Java.IO.File Image, int MaxDimension, bool DeletePhoto = true, bool AlwaysRotate = true)
-        //{
-        //    Bitmap myReturn = null;
+        async public static Task<Bitmap> GetImageAtPath(string path)
+        {
+            if (String.IsNullOrEmpty(path)) return null;
 
-        //    if ((Image != null) && (Image.Exists()))
-        //    {
-        //        ExifInterface myExifInterface = new ExifInterface(Image.Path);
-        //        Matrix myMatrix = new Matrix();
+            var file = await FileSystem.Current.GetFileFromPathAsync(path);
+            if (file == null) return null;
 
-        //        int myRotation = myExifInterface.GetAttributeInt(ExifInterface.TagOrientation, (int)Android.Media.Orientation.Undefined);
-        //        int finalRotation = 0;
+            using (var stream = await file.OpenAsync(PCLStorage.FileAccess.ReadAndWrite))
+            {
+                if (stream == null) return null;
 
-        //        if (myRotation != 0)
-        //        {
-        //            finalRotation = Atlas.exifToDegrees(myRotation, AlwaysRotate);
-        //            myMatrix.PostRotate(finalRotation);
-        //        }
-
-        //        using (BitmapFactory.Options myOptions = new BitmapFactory.Options())
-        //        {
-        //            using (Bitmap myBitmap = BitmapFactory.DecodeFile(Image.Path, myOptions))
-        //            {
-        //                using (var rotatedBitmap = RotateBitmap(myBitmap, finalRotation))
-        //                {
-        //                    //already within allowed size
-        //                    if (rotatedBitmap.Height <= MaxDimension && rotatedBitmap.Width <= MaxDimension)
-        //                    {
-        //                        myReturn = rotatedBitmap;
-        //                    }
-        //                    else
-        //                    {
-        //                        //height > width and exceeds max dimesnion
-        //                        if (rotatedBitmap.Height >= rotatedBitmap.Width && rotatedBitmap.Height > MaxDimension)
-        //                        {
-        //                            //resize based on height
-        //                            var myRatio = ((double)rotatedBitmap.Height / (double)MaxDimension);
-        //                            var finalWidth = (int)(rotatedBitmap.Width / myRatio);
-        //                            myReturn = ResizeBitmap(rotatedBitmap, finalWidth, MaxDimension);
-        //                        }
-
-        //                        //width > height and exceeds max dimesnion
-        //                        else if (rotatedBitmap.Width >= rotatedBitmap.Height && rotatedBitmap.Width > MaxDimension)
-        //                        {
-        //                            //resie based on width
-        //                            var myRatio = ((double)rotatedBitmap.Width / (double)MaxDimension);
-        //                            var finalHeight = (int)(rotatedBitmap.Height / myRatio);
-        //                            myReturn = ResizeBitmap(rotatedBitmap, MaxDimension, finalHeight);
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    if (DeletePhoto)
-        //        Image.Delete();
-
-        //    return myReturn;
-        //}
-
-        //public static Bitmap GetBitmapFromMediaStore(Context Context, Android.Net.Uri ContentUri, Android.Net.Uri ImageUri, int MaxDimension, bool AlwaysRotate = true)
-        //{
-        //    Bitmap myReturn = null;
-        //    ExifInterface myExifInterface = new ExifInterface(GetPath(Context, ContentUri, ImageUri));
-        //    Matrix myMatrix = new Matrix();
-
-        //    int myRotation = myExifInterface.GetAttributeInt(ExifInterface.TagOrientation, 1);
-        //    int myInSampleSize = 1;
-        //    int myWidth;
-        //    int myHeight;
-
-        //    if (myRotation != 0f)
-        //        myMatrix.PreRotate(Atlas.exifToDegrees(myRotation, AlwaysRotate));
-
-        //    using (BitmapFactory.Options myOptions = new BitmapFactory.Options())
-        //    {
-        //        int myImageWidth = int.MinValue;
-        //        int myImageHeight = int.MinValue;
-        //        double myRatio;
-
-        //        myOptions.InJustDecodeBounds = true;
-
-        //        using (AssetFileDescriptor myFileDescriptor = Context.ContentResolver.OpenAssetFileDescriptor(ImageUri, "r"))
-        //        {
-        //            using (Bitmap myBitmap = BitmapFactory.DecodeFileDescriptor(myFileDescriptor.FileDescriptor, null, myOptions))
-        //            {
-        //                myImageWidth = myOptions.OutWidth;
-        //                myImageHeight = myOptions.OutHeight;
-        //            }
-        //        }
-
-        //        if ((myImageWidth != int.MinValue) && (myImageHeight != int.MinValue))
-        //        {
-        //            // Resize based on image dimensions
-        //            if (myImageWidth == myImageHeight)
-        //            {
-        //                if ((myImageWidth < MaxDimension) && (myImageHeight < MaxDimension))
-        //                {
-        //                    myWidth = myImageWidth;
-        //                    myHeight = myImageHeight;
-        //                }
-        //                else
-        //                {
-        //                    myWidth = MaxDimension;
-        //                    myHeight = MaxDimension;
-        //                }
-        //            }
-        //            else if (myImageHeight > myImageWidth)
-        //            {
-        //                // Prevent image expansion
-        //                if (myImageHeight < MaxDimension)
-        //                    MaxDimension = myImageHeight;
-
-        //                myRatio = ((double)myImageHeight / (double)MaxDimension);
-
-        //                myWidth = (int)(myImageWidth / myRatio);
-        //                myHeight = MaxDimension;
-        //            }
-        //            else
-        //            {
-        //                if ((myImageWidth < MaxDimension) && (myImageHeight < MaxDimension))
-        //                {
-        //                    myWidth = myImageWidth;
-        //                    myHeight = myImageHeight;
-        //                }
-        //                else
-        //                {
-        //                    // Prevent image expansion
-        //                    if (myImageWidth < MaxDimension)
-        //                        MaxDimension = myImageWidth;
-
-        //                    myRatio = ((double)myImageWidth / (double)MaxDimension);
-
-        //                    myWidth = MaxDimension;
-        //                    myHeight = (int)(myImageHeight / myRatio);
-        //                }
-        //            }
-
-        //            if ((myRotation == 1) || (myRotation == 3) || (myRotation == 6))
-        //            {
-        //                bool mySwapSizes = true;
-
-        //                if ((!AlwaysRotate) && (myRotation == 1))
-        //                    mySwapSizes = false;
-
-        //                if (mySwapSizes)
-        //                {
-        //                    int myTempSize = myImageWidth;
-
-        //                    myImageWidth = myImageHeight;
-        //                    myImageHeight = myTempSize;
-
-        //                    myTempSize = myWidth;
-        //                    myWidth = myHeight;
-        //                    myHeight = myTempSize;
-        //                }
-        //            }
-
-        //            if ((myImageHeight > myHeight) || (myImageWidth > myWidth))
-        //            {
-        //                int myImageHalfHeight = myImageHeight / 2;
-        //                int myImageHalfWidth = myImageWidth / 2;
-
-        //                while (((myImageHalfHeight / myInSampleSize) > myHeight) && ((myImageHalfWidth / myInSampleSize) > myWidth))
-        //                    myInSampleSize *= 2;
-
-        //                myOptions.InJustDecodeBounds = false;
-        //                myOptions.InSampleSize = myInSampleSize;
-
-        //                using (AssetFileDescriptor myFileDescriptor = Context.ContentResolver.OpenAssetFileDescriptor(ImageUri, "r"))
-        //                {
-        //                    Bitmap myBitmap = BitmapFactory.DecodeFileDescriptor(myFileDescriptor.FileDescriptor, null, myOptions);
-
-        //                    myBitmap = Bitmap.CreateBitmap(myBitmap, 0, 0, myBitmap.Width, myBitmap.Height, myMatrix, true);
-        //                    myReturn = Bitmap.CreateScaledBitmap(myBitmap, myWidth, myHeight, false);
-
-        //                    //myBitmap.Recycle();
-        //                    //myBitmap.Dispose();
-        //                }
-        //            }
-        //            else
-        //            {
-        //                using (AssetFileDescriptor myFileDescriptor = Context.ContentResolver.OpenAssetFileDescriptor(ImageUri, "r"))
-        //                {
-        //                    Bitmap myBitmap = BitmapFactory.DecodeFileDescriptor(myFileDescriptor.FileDescriptor, null, null);
-
-        //                    myReturn = Bitmap.CreateBitmap(myBitmap, 0, 0, myBitmap.Width, myBitmap.Height, myMatrix, true);
-
-        //                    //myBitmap.Recycle();
-        //                    //myBitmap.Dispose();
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    return myReturn;
-        //}
+                return BitmapFactory.DecodeStream(stream);
+            }
+        }
         public static Bitmap RotateBitmap(Bitmap source, float angle)
         {
             Matrix matrix = new Matrix();

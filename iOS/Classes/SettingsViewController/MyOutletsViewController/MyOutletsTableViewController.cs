@@ -37,7 +37,7 @@ namespace Slink.iOS
 
 
             AddRowViewController FooterView = new AddRowViewController();
-            FooterView.LabelAddText = "Create New Outlet +";
+            FooterView.LabelAddText = Strings.TableViewFooters.table_view_footer_create_new_outlet;
             FooterView.Clicked += (editing) =>
             {
                 CATransition transition = CATransition.CreateAnimation();

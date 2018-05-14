@@ -37,10 +37,10 @@ namespace Slink.iOS
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
+
             if (!CrossConnectivity.Current.IsConnected)
-            {
                 ShowBanner();
-            }
+
         }
 
         private void ShowBanner()
@@ -78,41 +78,33 @@ namespace Slink.iOS
                 {
                     Banner.Frame = new CoreGraphics.CGRect(0, 0, UIScreen.MainScreen.Bounds.Size.Width, 30);
                 }
-            }, async delegate
-            {
-                await Task.Delay(TimeSpan.FromSeconds(4));
-                HideBanner();
-            });
+            }, null);
         }
 
         private void HideBanner()
         {
-            if (Banner != null)
+            if (Banner == null) return;
+
+            UIView.Animate(.5, delegate
             {
-                UIView.Animate(.5, delegate
+                Banner.Frame = new CoreGraphics.CGRect(0, -30, UIScreen.MainScreen.Bounds.Size.Width, 30);
+            }, delegate
+            {
+                if (Banner != null)
                 {
-                    Banner.Frame = new CoreGraphics.CGRect(0, -30, UIScreen.MainScreen.Bounds.Size.Width, 30);
-                }, delegate
-                {
-                    if (Banner != null)
-                    {
-                        Banner.RemoveFromSuperview();
-                        Banner.Dispose();
-                        Banner = null;
-                    }
-                });
-            }
+                    Banner.RemoveFromSuperview();
+                    Banner.Dispose();
+                    Banner = null;
+                }
+            });
         }
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
             if (disposing)
             {
-                if (Banner != null)
-                {
-                    Banner.Dispose();
-                    Banner = null;
-                }
+                Banner?.Dispose();
+                Banner = null;
             }
         }
     }
