@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="50dp">
+        <TextView
+            android:id="@+id/TitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:text="Add Website"
+            android:textColor="@android:color/white" />
+        <RelativeLayout
+            android:id="@+id/TopSection"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@id/TitleTextView">
+            <WebView
+                android:id="@+id/WebView"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"
+                android:padding="5dp"
+                android:visibility="visible"
+                android:layout_gravity="center_horizontal" />
+            <ProgressBar
+                android:id="@+id/ProgressBar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:visibility="visible"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal" />
+        </RelativeLayout>
+        <EditText
+            android:id="@+id/WebsiteTextField"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:padding="5dp"
+            android:background="@drawable/roundedcornerswiththinborder"
+            android:layout_below="@id/TopSection" />
+        <Button
+            android:id="@+id/ProgressButton"
+            android:background="@android:color/holo_green_dark"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/white"
+            android:text="Validate"
+            android:layout_below="@id/WebsiteTextField" />
+    </RelativeLayout>
+</RelativeLayout>

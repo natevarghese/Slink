@@ -1,7 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <color name="colorPrimary">#2878ff</color>
-    <color name="colorPrimaryDark">#c1c1c1</color>
-    <color name="colorAccent">#434343</color>
-    <color name="progressGray">#cccccc</color>
+    <color
+        name="colorPrimary">#2878ff</color>
+    <color
+        name="colorPrimaryDark">#c1c1c1</color>
+    <color
+        name="colorAccent">#434343</color>
+    <color
+        name="progressGray">#cccccc</color>
+    <color
+        name="hintGray">#bababa</color>
+    <color
+        name="red">#ff0000</color>
 </resources>

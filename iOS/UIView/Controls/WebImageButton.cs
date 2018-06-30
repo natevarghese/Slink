@@ -64,7 +64,7 @@ namespace Slink.iOS
                 if (image == null || error != null)
                     this.SetImage(fallback, new UIControlState());
                 else
-                    SDImageCache.SharedImageCache.StoreImage(image, cacheKey, true);
+                    SDImageCache.SharedImageCache.StoreImage(image, cacheKey, true, null);
             });
         }
         public void SetImage(string url, string placeholderBundleFileName, string fallbackBundleFileName)

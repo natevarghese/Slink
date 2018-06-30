@@ -1,9 +1,28 @@
-﻿<Properties StartupConfiguration="{C3C5D2AA-EF8D-4848-ABB8-E43682F836B5}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
-  <MonoDevelop.Ide.ItemProperties.Slink.Droid AndroidDesignerPreferredDevice="Nexus One" PreferredExecutionTarget="Android.Pixel_XL_API_26" />
-  <MonoDevelop.Ide.Workbench />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+﻿<Properties StartupConfiguration="{D2EDA0E8-FCDA-4B75-9857-BC2166C6B81B}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
+  <MonoDevelop.Ide.ItemProperties.Slink.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.SelectDevice" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="iOS/UIViewController/ActivatorViewController.cs">
+    <Files>
+      <File FileName="iOS/UIViewController/ColorPickerViewController/ColorPIckerCollectionViewFlowDelegate.cs" Line="41" Column="63" />
+      <File FileName="iOS/UIViewController/FlyingObjectsContainterViewController.cs" Line="173" Column="14" />
+      <File FileName="iOS/AppDelegate.cs" Line="135" Column="59" />
+      <File FileName="Slink/REST/WebServices.cs" Line="43" Column="1" />
+      <File FileName="Slink/Realm/RealmServices.cs" Line="45" Column="50" />
+      <File FileName="Slink/Services/GeolocatorService.cs" Line="94" Column="13" />
+      <File FileName="iOS/UIViewController/ActivatorViewController.cs" Line="21" Column="32" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" ActiveRuntime="Mono 5.14.0.84 (ef73a4955df)" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/nathanvarghese/Desktop/Xamarin/Slink/Droid/Classes/Settings/NewOutlet/Google/GoogleFragment.cs" relfile="Droid/Classes/Settings/NewOutlet/Google/GoogleFragment.cs" line="131" column="1" />
+      <Breakpoint file="/Users/nathanvarghese/Desktop/Xamarin/Slink/Droid/Classes/Settings/NewOutlet/Google/GoogleFragment.cs" relfile="Droid/Classes/Settings/NewOutlet/Google/GoogleFragment.cs" line="28" column="1" />
+      <Breakpoint file="/Users/nathanvarghese/Desktop/Xamarin/Slink/Droid/Classes/Settings/NewOutlet/Google/GoogleFragment.cs" relfile="Droid/Classes/Settings/NewOutlet/Google/GoogleFragment.cs" line="46" column="1" />
+      <Breakpoint file="/Users/nathanvarghese/Desktop/Xamarin/Slink/Droid/Activities/ColorPickerActivity/ColorPickerAppCompatActivity.cs" relfile="Droid/Activities/ColorPickerActivity/ColorPickerAppCompatActivity.cs" line="92" column="1" />
+      <Breakpoint file="/Users/nathanvarghese/Desktop/Xamarin/Slink/iOS/AppDelegate.cs" relfile="iOS/AppDelegate.cs" line="143" column="1" />
+      <Breakpoint file="/Users/nathanvarghese/Desktop/Xamarin/Slink/Slink/REST/WebServices.cs" relfile="Slink/REST/WebServices.cs" line="33" column="1" />
+      <Breakpoint file="/Users/nathanvarghese/Desktop/Xamarin/Slink/Slink/REST/WebServices.cs" relfile="Slink/REST/WebServices.cs" line="43" column="1" />
+      <Breakpoint file="/Users/nathanvarghese/Desktop/Xamarin/Slink/Slink/Services/GeolocatorService.cs" relfile="Slink/Services/GeolocatorService.cs" line="99" column="50" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <Debugger.DebugSourceFolders>
     <String>/Users/nathanvarghese/Desktop/Xamarin/Slink/Slink/Outlets/Instagram</String>
@@ -11,4 +30,5 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <AuthorInfo Name="nathanvarghese" Email="nvarghese@tradeareasystems.com" Copyright="" Company="" Trademark="" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Slink.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.57f0e0468eb79c39db2bc18ed212e3a71e837bbb" />
 </Properties>

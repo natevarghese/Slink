@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="..\packages\Xamarin.Build.Download.0.4.9\build\Xamarin.Build.Download.props" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.9\build\Xamarin.Build.Download.props')" />
+    <Import Project="..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.props" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.props')" />
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -30,7 +30,8 @@
         <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
         <PlatformTarget>x86</PlatformTarget>
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-        <CodesignProvision>VS: com.nvcomputers.SlinkApp Development</CodesignProvision>
+        <CodesignProvision>3 Phones</CodesignProvision>
+        <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
         <DebugType>pdbonly</DebugType>
@@ -61,6 +62,7 @@
         <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
         <PlatformTarget>x86</PlatformTarget>
         <CodesignProvision>Dist2</CodesignProvision>
+        <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
         <DebugSymbols>true</DebugSymbols>
@@ -91,19 +93,6 @@
         <Reference Include="Xamarin.iOS" />
         <Reference Include="System.IO.Compression" />
         <Reference Include="System.Net.Http" />
-        <Reference Include="SDWebImage">
-            <HintPath>..\packages\Xamarin.SDWebImage.3.7.5\lib\Xamarin.iOS\SDWebImage.dll</HintPath>
-        </Reference>
-        <Reference Include="TPKeyboardAvoiding">
-            <HintPath>..\packages\TPKeyboardAvoiding.Binding.1.3.0.2\lib\Xamarin.iOS\TPKeyboardAvoiding.dll</HintPath>
-        </Reference>
-        <Reference Include="MBProgressHUD">
-            <HintPath>..\packages\mbprogresshud.0.9.2.0\lib\Xamarin.iOS\MBProgressHUD.dll</HintPath>
-            <Private>False</Private>
-        </Reference>
-        <Reference Include="Facebook">
-            <HintPath>..\packages\Xamarin.Facebook.iOS.4.19.0\lib\Xamarin.iOS10\Facebook.dll</HintPath>
-        </Reference>
         <Reference Include="PCLStorage.Abstractions">
             <HintPath>..\packages\PCLStorage.1.0.2\lib\portable-Xamarin.iOS+Xamarin.Mac\PCLStorage.Abstractions.dll</HintPath>
         </Reference>
@@ -116,73 +105,19 @@
         <Reference Include="System.Net.Http.Primitives">
             <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Primitives.dll</HintPath>
         </Reference>
-        <Reference Include="AdvancedColorPicker">
-            <HintPath>..\packages\AdvancedColorPicker.2.0.1\lib\Xamarin.iOS\AdvancedColorPicker.dll</HintPath>
-        </Reference>
         <Reference Include="Microsoft.CSharp" />
         <Reference Include="PCLCrypto">
             <HintPath>..\packages\PCLCrypto.2.0.147\lib\xamarinios10\PCLCrypto.dll</HintPath>
         </Reference>
         <Reference Include="System.Json" />
-        <Reference Include="Com.OneSignal.Abstractions">
-            <HintPath>..\packages\Com.OneSignal.3.0.1\lib\Xamarin.iOS10\Com.OneSignal.Abstractions.dll</HintPath>
-        </Reference>
-        <Reference Include="Com.OneSignal">
-            <HintPath>..\packages\Com.OneSignal.3.0.1\lib\Xamarin.iOS10\Com.OneSignal.dll</HintPath>
-        </Reference>
-        <Reference Include="OneSignal.iOS.Binding">
-            <HintPath>..\packages\Com.OneSignal.3.0.1\lib\Xamarin.iOS10\OneSignal.iOS.Binding.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Runtime.CompilerServices.Unsafe">
-            <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.4.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-        </Reference>
-        <Reference Include="Realm.DataBinding">
-            <HintPath>..\packages\Realm.DataBinding.1.2.0\lib\Xamarin.iOS10\Realm.DataBinding.dll</HintPath>
-        </Reference>
         <Reference Include="Validation">
             <HintPath>..\packages\Validation.2.4.18\lib\netstandard1.3\Validation.dll</HintPath>
-        </Reference>
-        <Reference Include="SQLitePCLRaw.core">
-            <HintPath>..\packages\SQLitePCLRaw.core.1.1.9\lib\Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
-        </Reference>
-        <Reference Include="SQLitePCLRaw.provider.sqlite3">
-            <HintPath>..\packages\SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.9\lib\Xamarin.iOS10\SQLitePCLRaw.provider.sqlite3.dll</HintPath>
-        </Reference>
-        <Reference Include="SQLitePCLRaw.batteries_green">
-            <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.9\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_green.dll</HintPath>
-        </Reference>
-        <Reference Include="SQLitePCLRaw.batteries_v2">
-            <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.9\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
         </Reference>
         <Reference Include="Calabash">
             <HintPath>..\packages\Xamarin.TestCloud.Agent.0.21.4\lib\Xamarin.iOS\Calabash.dll</HintPath>
         </Reference>
-        <Reference Include="Plugin.Permissions.Abstractions">
-            <HintPath>..\packages\Plugin.Permissions.2.2.1\lib\Xamarin.iOS10\Plugin.Permissions.Abstractions.dll</HintPath>
-        </Reference>
-        <Reference Include="Plugin.Permissions">
-            <HintPath>..\packages\Plugin.Permissions.2.2.1\lib\Xamarin.iOS10\Plugin.Permissions.dll</HintPath>
-        </Reference>
-        <Reference Include="Plugin.Geolocator.Abstractions">
-            <HintPath>..\packages\Xam.Plugin.Geolocator.4.2.0\lib\Xamarin.iOS10\Plugin.Geolocator.Abstractions.dll</HintPath>
-        </Reference>
-        <Reference Include="Plugin.Geolocator">
-            <HintPath>..\packages\Xam.Plugin.Geolocator.4.2.0\lib\Xamarin.iOS10\Plugin.Geolocator.dll</HintPath>
-        </Reference>
-        <Reference Include="Plugin.DeviceInfo.Abstractions">
-            <HintPath>..\packages\Xam.Plugin.DeviceInfo.3.1.0\lib\Xamarin.iOS10\Plugin.DeviceInfo.Abstractions.dll</HintPath>
-        </Reference>
-        <Reference Include="Plugin.DeviceInfo">
-            <HintPath>..\packages\Xam.Plugin.DeviceInfo.3.1.0\lib\Xamarin.iOS10\Plugin.DeviceInfo.dll</HintPath>
-        </Reference>
-        <Reference Include="Firebase.Core">
-            <HintPath>..\packages\Xamarin.Firebase.iOS.Core.4.0.13\lib\Xamarin.iOS10\Firebase.Core.dll</HintPath>
-        </Reference>
         <Reference Include="Firebase.InstanceID">
             <HintPath>..\packages\Xamarin.Firebase.iOS.InstanceID.2.0.8\lib\Xamarin.iOS10\Firebase.InstanceID.dll</HintPath>
-        </Reference>
-        <Reference Include="Firebase.Analytics">
-            <HintPath>..\packages\Xamarin.Firebase.iOS.Analytics.4.0.5\lib\Xamarin.iOS10\Firebase.Analytics.dll</HintPath>
         </Reference>
         <Reference Include="Google.Core">
             <HintPath>..\packages\Xamarin.Google.iOS.Core.3.1.0.1\lib\Xamarin.iOS10\Google.Core.dll</HintPath>
@@ -196,80 +131,148 @@
         <Reference Include="Remotion.Linq">
             <HintPath>..\packages\Remotion.Linq.2.2.0\lib\portable-net45+win+wpa81+wp80\Remotion.Linq.dll</HintPath>
         </Reference>
-        <Reference Include="Microsoft.IdentityModel.Logging">
-            <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.2.1\lib\netstandard1.4\Microsoft.IdentityModel.Logging.dll</HintPath>
-        </Reference>
-        <Reference Include="Microsoft.IdentityModel.Tokens">
-            <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.2.1\lib\netstandard1.4\Microsoft.IdentityModel.Tokens.dll</HintPath>
-        </Reference>
-        <Reference Include="System.IdentityModel.Tokens.Jwt">
-            <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.1\lib\netstandard1.4\System.IdentityModel.Tokens.Jwt.dll</HintPath>
-        </Reference>
-        <Reference Include="Newtonsoft.Json">
-            <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
-        </Reference>
         <Reference Include="Microsoft.AppCenter">
-            <HintPath>..\packages\Microsoft.AppCenter.1.5.0\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
+            <HintPath>..\packages\Microsoft.AppCenter.1.6.1\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
         </Reference>
         <Reference Include="Microsoft.AppCenter.iOS.Bindings">
-            <HintPath>..\packages\Microsoft.AppCenter.1.5.0\lib\Xamarin.iOS10\Microsoft.AppCenter.iOS.Bindings.dll</HintPath>
+            <HintPath>..\packages\Microsoft.AppCenter.1.6.1\lib\Xamarin.iOS10\Microsoft.AppCenter.iOS.Bindings.dll</HintPath>
         </Reference>
         <Reference Include="Microsoft.AppCenter.Analytics">
-            <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.5.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.dll</HintPath>
+            <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.6.1\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.dll</HintPath>
         </Reference>
         <Reference Include="Microsoft.AppCenter.Analytics.iOS.Bindings">
-            <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.5.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.iOS.Bindings.dll</HintPath>
+            <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.6.1\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.iOS.Bindings.dll</HintPath>
         </Reference>
         <Reference Include="Microsoft.AppCenter.Crashes">
-            <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.5.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.dll</HintPath>
+            <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.6.1\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.dll</HintPath>
         </Reference>
         <Reference Include="Microsoft.AppCenter.Crashes.iOS.Bindings">
-            <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.5.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.iOS.Bindings.dll</HintPath>
-        </Reference>
-        <Reference Include="Google.MobileAds">
-            <HintPath>..\packages\Xamarin.Google.iOS.MobileAds.7.27.0.1\lib\Xamarin.iOS10\Google.MobileAds.dll</HintPath>
-        </Reference>
-        <Reference Include="Google.SignIn">
-            <HintPath>..\packages\Xamarin.Google.iOS.SignIn.4.1.1\lib\Xamarin.iOS10\Google.SignIn.dll</HintPath>
-        </Reference>
-        <Reference Include="XCardView">
-            <HintPath>..\packages\XCardView-1.1\lib\ios-unified\XCardView.dll</HintPath>
+            <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.6.1\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.iOS.Bindings.dll</HintPath>
         </Reference>
         <Reference Include="PInvoke.Windows.Core">
-          <HintPath>..\packages\PInvoke.Windows.Core.0.5.134\lib\portable-net45+win8+wpa81\PInvoke.Windows.Core.dll</HintPath>
+            <HintPath>..\packages\PInvoke.Windows.Core.0.5.152\lib\portable-net45+win8+wpa81\PInvoke.Windows.Core.dll</HintPath>
         </Reference>
         <Reference Include="PInvoke.Kernel32">
-          <HintPath>..\packages\PInvoke.Kernel32.0.5.134\lib\portable-net45+win8+wpa81\PInvoke.Kernel32.dll</HintPath>
+            <HintPath>..\packages\PInvoke.Kernel32.0.5.152\lib\portable-net45+win8+wpa81\PInvoke.Kernel32.dll</HintPath>
         </Reference>
         <Reference Include="PInvoke.BCrypt">
-          <HintPath>..\packages\PInvoke.BCrypt.0.5.134\lib\portable-net45+win8+wpa81\PInvoke.BCrypt.dll</HintPath>
+            <HintPath>..\packages\PInvoke.BCrypt.0.5.152\lib\portable-net45+win8+wpa81\PInvoke.BCrypt.dll</HintPath>
         </Reference>
         <Reference Include="PInvoke.NCrypt">
-          <HintPath>..\packages\PInvoke.NCrypt.0.5.134\lib\portable-net45+win8+wpa81\PInvoke.NCrypt.dll</HintPath>
+            <HintPath>..\packages\PInvoke.NCrypt.0.5.152\lib\portable-net45+win8+wpa81\PInvoke.NCrypt.dll</HintPath>
         </Reference>
-        <Reference Include="AWSSDK.S3">
-          <HintPath>..\packages\AWSSDK.S3.3.3.17.2\lib\Xamarin.iOS10\AWSSDK.S3.dll</HintPath>
+        <Reference Include="System.Runtime.Serialization" />
+        <Reference Include="SQLitePCLRaw.core">
+            <HintPath>..\packages\SQLitePCLRaw.core.1.1.11\lib\Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
+            <Private>False</Private>
         </Reference>
-        <Reference Include="AWSSDK.SecurityToken">
-          <HintPath>..\packages\AWSSDK.SecurityToken.3.3.3.6\lib\Xamarin.iOS10\AWSSDK.SecurityToken.dll</HintPath>
+        <Reference Include="SQLitePCLRaw.provider.sqlite3">
+            <HintPath>..\packages\SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.11\lib\Xamarin.iOS10\SQLitePCLRaw.provider.sqlite3.dll</HintPath>
+            <Private>False</Private>
         </Reference>
-        <Reference Include="AWSSDK.CognitoIdentity">
-          <HintPath>..\packages\AWSSDK.CognitoIdentity.3.3.2.19\lib\Xamarin.iOS10\AWSSDK.CognitoIdentity.dll</HintPath>
+        <Reference Include="SQLitePCLRaw.batteries_green">
+            <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.11\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_green.dll</HintPath>
+            <Private>False</Private>
         </Reference>
-        <Reference Include="AWSSDK.CognitoSync">
-          <HintPath>..\packages\AWSSDK.CognitoSync.3.3.1.28\lib\Xamarin.iOS10\AWSSDK.CognitoSync.dll</HintPath>
+        <Reference Include="SQLitePCLRaw.batteries_v2">
+            <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.11\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
+            <Private>False</Private>
         </Reference>
-        <Reference Include="Realm">
-          <HintPath>..\packages\Realm.Database.2.2.0\lib\netstandard1.4\Realm.dll</HintPath>
+        <Reference Include="Microsoft.IdentityModel.Logging">
+            <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.2.2\lib\netstandard1.4\Microsoft.IdentityModel.Logging.dll</HintPath>
         </Reference>
-        <Reference Include="Realm.Sync">
-          <HintPath>..\packages\Realm.2.2.0\lib\netstandard1.4\Realm.Sync.dll</HintPath>
+        <Reference Include="Microsoft.IdentityModel.Tokens">
+            <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.2.2\lib\netstandard1.4\Microsoft.IdentityModel.Tokens.dll</HintPath>
         </Reference>
-        <Reference Include="AWSSDK.Core">
-          <HintPath>..\packages\AWSSDK.Core.3.3.21.17\lib\Xamarin.iOS10\AWSSDK.Core.dll</HintPath>
+        <Reference Include="System.IdentityModel.Tokens.Jwt">
+            <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.2\lib\netstandard1.4\System.IdentityModel.Tokens.Jwt.dll</HintPath>
         </Reference>
         <Reference Include="Xamarin.Auth">
-          <HintPath>..\packages\Xamarin.Auth.1.6.0.1\lib\Xamarin.iOS10\Xamarin.Auth.dll</HintPath>
+            <HintPath>..\packages\Xamarin.Auth.1.6.0.2\lib\Xamarin.iOS10\Xamarin.Auth.dll</HintPath>
+        </Reference>
+        <Reference Include="Firebase.Core">
+            <HintPath>..\packages\Xamarin.Firebase.iOS.Core.4.0.13.1\lib\Xamarin.iOS10\Firebase.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="Firebase.Analytics">
+            <HintPath>..\packages\Xamarin.Firebase.iOS.Analytics.4.0.5.1\lib\Xamarin.iOS10\Firebase.Analytics.dll</HintPath>
+        </Reference>
+        <Reference Include="Google.MobileAds">
+            <HintPath>..\packages\Xamarin.Google.iOS.MobileAds.7.27.0.3\lib\Xamarin.iOS10\Google.MobileAds.dll</HintPath>
+        </Reference>
+        <Reference Include="Google.SignIn">
+            <HintPath>..\packages\Xamarin.Google.iOS.SignIn.4.1.1.1\lib\Xamarin.iOS10\Google.SignIn.dll</HintPath>
+        </Reference>
+        <Reference Include="Facebook">
+            <HintPath>..\packages\Xamarin.Facebook.iOS.4.33.0\lib\Xamarin.iOS10\Facebook.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="TPKeyboardAvoiding">
+            <HintPath>..\packages\TPKeyboardAvoiding.Binding.1.3.2\lib\Xamarin.iOS\TPKeyboardAvoiding.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="MBProgressHUD">
+            <HintPath>..\packages\mbprogresshud.0.9.2.0\lib\Xamarin.iOS\MBProgressHUD.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="SDWebImage">
+            <HintPath>..\packages\Xamarin.SDWebImage.4.0.0-beta1\lib\Xamarin.iOS\SDWebImage.dll</HintPath>
+        </Reference>
+        <Reference Include="Realm.DataBinding">
+            <HintPath>..\packages\Realm.DataBinding.1.2.0\lib\Xamarin.iOS10\Realm.DataBinding.dll</HintPath>
+        </Reference>
+        <Reference Include="Com.OneSignal.Abstractions">
+          <HintPath>..\packages\Com.OneSignal.3.2.0\lib\Xamarin.iOS10\Com.OneSignal.Abstractions.dll</HintPath>
+        </Reference>
+        <Reference Include="Com.OneSignal">
+          <HintPath>..\packages\Com.OneSignal.3.2.0\lib\Xamarin.iOS10\Com.OneSignal.dll</HintPath>
+        </Reference>
+        <Reference Include="OneSignal.iOS.Binding">
+          <HintPath>..\packages\Com.OneSignal.3.2.0\lib\Xamarin.iOS10\OneSignal.iOS.Binding.dll</HintPath>
+        </Reference>
+        <Reference Include="Plugin.Permissions">
+          <HintPath>..\packages\Plugin.Permissions.3.0.0.12\lib\xamarinios10\Plugin.Permissions.dll</HintPath>
+        </Reference>
+        <Reference Include="Splat">
+          <HintPath>..\packages\Splat.4.0.0\lib\xamarinios10\Splat.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Runtime.CompilerServices.Unsafe">
+          <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+        </Reference>
+        <Reference Include="Realm">
+          <HintPath>..\packages\Realm.Database.3.0.0\lib\netstandard1.4\Realm.dll</HintPath>
+        </Reference>
+        <Reference Include="Realm.Sync">
+          <HintPath>..\packages\Realm.3.0.0\lib\netstandard1.4\Realm.Sync.dll</HintPath>
+        </Reference>
+        <Reference Include="Plugin.DeviceInfo">
+          <HintPath>..\packages\Xam.Plugin.DeviceInfo.4.0.0.13\lib\xamarinios10\Plugin.DeviceInfo.dll</HintPath>
+        </Reference>
+        <Reference Include="Plugin.Geolocator">
+          <HintPath>..\packages\Xam.Plugin.Geolocator.4.5.0.6\lib\xamarinios10\Plugin.Geolocator.dll</HintPath>
+        </Reference>
+        <Reference Include="Newtonsoft.Json">
+          <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="AWSSDK.Core">
+          <HintPath>..\packages\AWSSDK.Core.3.3.24.1\lib\Xamarin.iOS10\AWSSDK.Core.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="AWSSDK.SecurityToken">
+          <HintPath>..\packages\AWSSDK.SecurityToken.3.3.4.5\lib\Xamarin.iOS10\AWSSDK.SecurityToken.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="AWSSDK.CognitoIdentity">
+          <HintPath>..\packages\AWSSDK.CognitoIdentity.3.3.2.24\lib\Xamarin.iOS10\AWSSDK.CognitoIdentity.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="AWSSDK.CognitoSync">
+          <HintPath>..\packages\AWSSDK.CognitoSync.3.3.1.33\lib\Xamarin.iOS10\AWSSDK.CognitoSync.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="AWSSDK.S3">
+          <HintPath>..\packages\AWSSDK.S3.3.3.18.4\lib\Xamarin.iOS10\AWSSDK.S3.dll</HintPath>
+          <Private>False</Private>
         </Reference>
     </ItemGroup>
     <ItemGroup>
@@ -647,15 +650,16 @@
         </Compile>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-    <Import Project="..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
-    <Import Project="..\packages\Xamarin.Firebase.iOS.Core.4.0.13\build\Xamarin.Firebase.iOS.Core.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Core.4.0.13\build\Xamarin.Firebase.iOS.Core.targets')" />
     <Import Project="..\packages\Xamarin.Firebase.iOS.InstanceID.2.0.8\build\Xamarin.Firebase.iOS.InstanceID.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.InstanceID.2.0.8\build\Xamarin.Firebase.iOS.InstanceID.targets')" />
-    <Import Project="..\packages\Xamarin.Firebase.iOS.Analytics.4.0.5\build\Xamarin.Firebase.iOS.Analytics.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Analytics.4.0.5\build\Xamarin.Firebase.iOS.Analytics.targets')" />
     <Import Project="..\packages\Xamarin.Google.iOS.Core.3.1.0.1\build\Xamarin.Google.iOS.Core.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.Core.3.1.0.1\build\Xamarin.Google.iOS.Core.targets')" />
-    <Import Project="..\packages\Xamarin.Google.iOS.MobileAds.7.27.0.1\build\Xamarin.Google.iOS.MobileAds.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.MobileAds.7.27.0.1\build\Xamarin.Google.iOS.MobileAds.targets')" />
-    <Import Project="..\packages\Xamarin.Google.iOS.SignIn.4.1.1\build\Xamarin.Google.iOS.SignIn.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.SignIn.4.1.1\build\Xamarin.Google.iOS.SignIn.targets')" />
     <Import Project="..\packages\Fody.2.4.6\build\Fody.targets" Condition="Exists('..\packages\Fody.2.4.6\build\Fody.targets')" />
-    <Import Project="..\packages\Xamarin.Build.Download.0.4.9\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.9\build\Xamarin.Build.Download.targets')" />
-    <Import Project="..\packages\Realm.Database.2.2.0\build\Realm.Database.targets" Condition="Exists('..\packages\Realm.Database.2.2.0\build\Realm.Database.targets')" />
-    <Import Project="..\packages\Realm.2.2.0\build\Realm.targets" Condition="Exists('..\packages\Realm.2.2.0\build\Realm.targets')" />
+    <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
+    <Import Project="..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets')" />
+    <Import Project="..\packages\Xamarin.Firebase.iOS.Core.4.0.13.1\build\Xamarin.Firebase.iOS.Core.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Core.4.0.13.1\build\Xamarin.Firebase.iOS.Core.targets')" />
+    <Import Project="..\packages\Xamarin.Firebase.iOS.Analytics.4.0.5.1\build\Xamarin.Firebase.iOS.Analytics.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Analytics.4.0.5.1\build\Xamarin.Firebase.iOS.Analytics.targets')" />
+    <Import Project="..\packages\Xamarin.Google.iOS.MobileAds.7.27.0.3\build\Xamarin.Google.iOS.MobileAds.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.MobileAds.7.27.0.3\build\Xamarin.Google.iOS.MobileAds.targets')" />
+    <Import Project="..\packages\Xamarin.Google.iOS.SignIn.4.1.1.1\build\Xamarin.Google.iOS.SignIn.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.SignIn.4.1.1.1\build\Xamarin.Google.iOS.SignIn.targets')" />
+    <Import Project="..\packages\Realm.Database.3.0.0\build\Realm.Database.targets" Condition="Exists('..\packages\Realm.Database.3.0.0\build\Realm.Database.targets')" />
+    <Import Project="..\packages\Realm.3.0.0\build\Realm.targets" Condition="Exists('..\packages\Realm.3.0.0\build\Realm.targets')" />
+    <Import Project="..\packages\Fody.2.5.0\build\Fody.targets" Condition="Exists('..\packages\Fody.2.5.0\build\Fody.targets')" />
 </Project>

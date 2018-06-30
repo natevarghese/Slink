@@ -5,12 +5,15 @@ using Android.Graphics;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using static Android.Views.GestureDetector;
+using static Android.Views.View;
 
 namespace Slink.Droid
 {
     public class NewCardRecyclerViewAdapter : BaseRecyclerViewAdapter<NewCardModel>
     {
         public NewCardRecyclerViewAdapter(Activity context) : base(context) { }
+
 
         public override int GetItemViewType(int position)
         {
@@ -30,7 +33,7 @@ namespace Slink.Droid
                 case 4:
                     return new MyCardsFooter(Context.LayoutInflater.Inflate(Resource.Layout.TextViewCell, null));
                 case 1:
-                    return new CardCell(Context.LayoutInflater.Inflate(Resource.Layout.TitleAndTextCell, null));
+                    return new CardCell(Context.LayoutInflater.Inflate(Resource.Layout.CardCell, null));
                 case 2:
                     return new TitleAndAccessoryCell(Context.LayoutInflater.Inflate(Resource.Layout.TitleAndAccessoryCell, null));
                 case 3:
@@ -51,7 +54,7 @@ namespace Slink.Droid
                     ((MyCardsFooter)holder).BindDataToView(Context, position, NewCardShared.AddNewOutlet);
                     break;
                 case 1:
-                    ((CardCell)holder).BindDataToView(Context, position, ((NewCardModel)item).SelectedCard);
+                    ((CardCell)holder).BindDataToView(Context, position, ((NewCardModel)item).SelectedCard, true);
                     break;
                 case 2:
                     ((TitleAndAccessoryCell)holder).BindDataToView(Context, position, item);
@@ -82,18 +85,18 @@ namespace Slink.Droid
             {
                 if (model == null) return;
 
+                LeftEditText.TextChanged -= LeftEditText_TextChanged;
+                LeftEditText.Click -= LeftEditText_Click;
+
                 LeftEditText.Text = model.Title;
                 LeftEditText.Hint = model.Placeholder;
                 LeftEditText.Clickable = model.Editable;
                 LeftEditText.Focusable = model.Editable;
                 LeftEditText.Tag = position;
 
-                LeftEditText.Click -= LeftEditText_Click;
                 if (!model.Editable)
                     LeftEditText.Click += LeftEditText_Click;
 
-                LeftEditText.TextChanged -= LeftEditText_TextChanged;
-                LeftEditText.TextChanged += LeftEditText_TextChanged;
 
                 RightTextView.SetBackgroundColor(ColorUtils.FromHexString(model.ColorHexString, Color.Transparent));
                 RightTextView.Visibility = String.IsNullOrEmpty(model.ColorHexString) ? ViewStates.Gone : ViewStates.Visible;
@@ -101,13 +104,17 @@ namespace Slink.Droid
 
                 ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, 200);
 
-                if (ItemView.HasOnClickListeners) return;
-                ItemView.Click += (sender, e) =>
+                if (!ItemView.HasOnClickListeners)
                 {
-                    var intent = new Intent(SettingsShared.ItemClickedBroadcastReceiverKey);
-                    intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
-                    context.SendBroadcast(intent);
-                };
+                    ItemView.Click += (sender, e) =>
+                    {
+                        var intent = new Intent(SettingsShared.ItemClickedBroadcastReceiverKey);
+                        intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
+                        context.SendBroadcast(intent);
+                    };
+                }
+
+                LeftEditText.TextChanged += LeftEditText_TextChanged;
             }
 
             void LeftEditText_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
@@ -155,9 +162,11 @@ namespace Slink.Droid
             if (model == null) return;
             if (model.Outlet == null) return;
 
+            MyPosition = position;
+
             LeftImageView.SetImage(model.Outlet.RemoteURL, -1, -1, null, WebImageView.DefaultCircleTransformation);
 
-            RightTextView.Text = model.Outlet.Handle;
+            RightTextView.Text = model.Outlet.Name;
 
 
             ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, 200);
@@ -169,6 +178,8 @@ namespace Slink.Droid
                 intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
                 context.SendBroadcast(intent);
             };
+
+            ItemView.SetOnCreateContextMenuListener(this);
         }
 
 
@@ -180,9 +191,9 @@ namespace Slink.Droid
 
             LeftImageView.SetImage(model.RemoteURL, -1, -1, null, WebImageView.DefaultCircleTransformation);
 
-            RightTextView.Text = model.Type;
+            RightTextView.Text = model.Name;
 
-            ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, 300);
+            ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, 200);
             if (!ItemView.HasOnClickListeners)
             {
                 ItemView.Click += (sender, e) =>
@@ -192,7 +203,6 @@ namespace Slink.Droid
                     context.SendBroadcast(intent);
                 };
             }
-
             ItemView.SetOnCreateContextMenuListener(null);
             if (!model.Type.Equals(Outlet.outlet_type_facebook, StringComparison.InvariantCultureIgnoreCase))
                 ItemView.SetOnCreateContextMenuListener(this);
@@ -213,4 +223,195 @@ namespace Slink.Droid
     //        Position = position;
     //    }
     //}
+
+
+
+    public class CardCell : RecyclerView.ViewHolder
+    {
+        public static int GetCalculatedHeight(int width)
+        {
+            float ratio = 200f / 320f;
+            float result = width * ratio;
+            return (int)result;
+        }
+
+        public CardFront FrontView;
+        public CardBack RearView;
+        public EditText NameTextView;
+        public TextView FlipTextView;
+
+        Card Card;
+
+
+        public CardCell(View v) : base(v)
+        {
+            NameTextView = v.FindViewById<EditText>(Resource.Id.NameTextView);
+            FlipTextView = v.FindViewById<TextView>(Resource.Id.FlipTextView);
+
+            FrontView = v.FindViewById<CardFront>(Resource.Id.FrontView);
+            RearView = v.FindViewById<CardBack>(Resource.Id.RearView);
+        }
+
+        public void BindDataToView(Context context, int position, Card item, bool editable)
+        {
+            Card = item;
+
+            //set height
+            var width = context.Resources.DisplayMetrics.WidthPixels - 20;
+            var height = (int)GetCalculatedHeight(width);
+            ItemView.LayoutParameters = new RelativeLayout.LayoutParams(width, height);
+
+            if (item == null) return;
+
+            NameTextView.TextChanged -= NameTextView_TextChanged;
+            NameTextView.Text = item.Name.Equals(Strings.Basic.new_card, StringComparison.InvariantCultureIgnoreCase) ? null : item.Name;
+            NameTextView.Hint = Strings.Basic.new_card;
+            NameTextView.TextChanged += NameTextView_TextChanged;
+            NameTextView.Enabled = editable;
+
+            FlipTextView.Click -= FlipTextView_Click;
+            FlipTextView.Click += FlipTextView_Click;
+
+
+            //wire up swipe gestures
+            var touchListner = new OnSwipeTouchListener(context, ToggleViews, ToggleViews);
+            ItemView.SetOnTouchListener(touchListner);
+
+            FrontView.BindDataToView(item, editable);
+            RearView.BindDataToView(item, editable);
+
+            //LeftTextView.Text = item.Title;
+            ////RightTextView.Text = item.Value;
+
+
+
+            //if (ItemView.HasOnClickListeners) return; 
+            //ItemView.Click += (sender, e) =>
+            //{
+            //    var intent = new Intent(SettingsShared.ItemClickedBroadcastReceiverKey);
+            //    intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
+            //    context.SendBroadcast(intent);
+            //};
+
+
+            ApplyFlippedStateToView();
+        }
+
+        void FlipTextView_Click(object sender, EventArgs e)
+        {
+            ToggleViews();
+        }
+
+
+        public WebImageView GetUserImageView()
+        {
+            return FrontView?.GetUserImageView();
+        }
+        public WebImageView GetCompanyLogoImageView()
+        {
+            return RearView?.GetCompanyLogoImageView();
+        }
+        public void FocusOnName()
+        {
+            if (NameTextView == null) return;
+            if (NameTextView.Context == null) return;
+
+            NameTextView.RequestFocus();
+
+            var activity = NameTextView.Context as BaseActivity;
+            activity?.ShowKeyboard(NameTextView);
+        }
+        void NameTextView_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
+        {
+            Card.UpdateStringProperty(() => Card.Name, e.Text.ToString().Trim());
+        }
+
+
+        void ToggleViews()
+        {
+            Card.Flip();
+
+            ApplyFlippedStateToView();
+        }
+        void ApplyFlippedStateToView()
+        {
+            FrontView.Visibility = Card.IsFlipped ? ViewStates.Invisible : ViewStates.Visible;
+            RearView.Visibility = Card.IsFlipped ? ViewStates.Visible : ViewStates.Invisible;
+        }
+    }
+
+
+    public class OnSwipeTouchListener : Java.Lang.Object, IOnTouchListener
+    {
+        GestureDetector GestureDetector;
+
+        public OnSwipeTouchListener(Context context, Action onSwipeLeft, Action onSwipeRight)
+        {
+            var listener = new GestureListener();
+            listener.OnSwipeLeft = onSwipeLeft;
+            listener.OnSwipeRight = onSwipeRight;
+            GestureDetector = new GestureDetector(context, listener);
+        }
+        public bool OnTouch(View v, MotionEvent e)
+        {
+            return GestureDetector.OnTouchEvent(e);
+        }
+
+
+
+        class GestureListener : SimpleOnGestureListener
+        {
+            const int SWIPE_THRESHOLD = 100;
+            const int SWIPE_VELOCITY_THRESHOLD = 100;
+
+            public Action OnSwipeLeft, OnSwipeRight, OnSwipeTop, OnSwipeBottom;
+
+            public override bool OnDown(MotionEvent e)
+            {
+                return true;
+            }
+
+            public override bool OnFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY)
+            {
+                bool result = false;
+                try
+                {
+                    float diffY = e2.GetY() - e1.GetY();
+                    float diffX = e2.GetX() - e1.GetX();
+                    if (Math.Abs(diffX) > Math.Abs(diffY))
+                    {
+                        if (Math.Abs(diffX) > SWIPE_THRESHOLD && Math.Abs(velocityX) > SWIPE_VELOCITY_THRESHOLD)
+                        {
+                            if (diffX > 0)
+                            {
+                                OnSwipeRight?.Invoke();
+                            }
+                            else
+                            {
+                                OnSwipeLeft?.Invoke();
+                            }
+                            result = true;
+                        }
+                    }
+                    else if (Math.Abs(diffY) > SWIPE_THRESHOLD && Math.Abs(velocityY) > SWIPE_VELOCITY_THRESHOLD)
+                    {
+                        if (diffY > 0)
+                        {
+                            OnSwipeBottom?.Invoke();
+                        }
+                        else
+                        {
+                            OnSwipeTop?.Invoke();
+                        }
+                        result = true;
+                    }
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception.Message);
+                }
+                return result;
+            }
+        }
+    }
 }

@@ -13,7 +13,6 @@ namespace Slink.Droid
         LoginShared Shared = new LoginShared();
         public ICallbackManager CallbackManager = CallbackManagerFactory.Create();
 
-
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = inflater.Inflate(Resource.Layout.Login, container, false);
@@ -80,8 +79,14 @@ namespace Slink.Droid
             NextPage();
         }
 
-        public void OnError(FacebookException error) { }
-        public void OnCancel() { }
+        public void OnError(FacebookException error)
+        {
+            Console.WriteLine(error.Message);
+        }
+        public void OnCancel()
+        {
+
+        }
 
         void ShowAlert(string title, string desc)
         {

@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace Slink.Droid
 {
-    [Activity(Label = " ", Theme = "@style/NoActionBarTheme")]
+    [Activity(Label = " ", Theme = "@style/NoActionBarTheme", WindowSoftInputMode = SoftInput.StateHidden | SoftInput.AdjustPan)]
     public class MainActivity : BaseActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

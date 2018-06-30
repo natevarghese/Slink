@@ -2,7 +2,9 @@
 using Android.Content;
 using Android.InputMethodServices;
 using Android.OS;
+using Android.Runtime;
 using Android.Support.V7.App;
+using Android.Views;
 using Android.Views.InputMethods;
 
 namespace Slink.Droid
@@ -80,7 +82,7 @@ namespace Slink.Droid
             if (fragment == null) return;
 
             //dotn replace an the existing fragment with one of the same type. 
-            var existingFragment = SupportFragmentManager.FindFragmentById(Resource.Id.over_fragment);
+            var existingFragment = GetOverFragment();
             if (existingFragment.GetType() == fragment.GetType()) return;
 
             var tag = fragment.GetType().Name;
@@ -99,14 +101,25 @@ namespace Slink.Droid
         }
         public void PopFragmentOverUntil(Type targetType)
         {
-            var existingFragment = SupportFragmentManager.FindFragmentById(Resource.Id.over_fragment);
+            var existingFragment = GetOverFragment();
             if (existingFragment == null) return;
             if (existingFragment.GetType() == targetType) return;
 
             SupportFragmentManager.PopBackStackImmediate();
             PopFragmentOverUntil(targetType);
         }
-
+        public Android.Support.V4.App.Fragment GetOverFragment()
+        {
+            return SupportFragmentManager.FindFragmentById(Resource.Id.over_fragment);
+        }
+        public void ShowKeyboard(Android.Views.View view)
+        {
+            new Handler().PostDelayed(() =>
+            {
+                var service = GetSystemService(Context.InputMethodService) as InputMethodManager;
+                service.ShowSoftInput(view, ShowFlags.Implicit);
+            }, 200);
+        }
         public void HideKeyboard()
         {
             if (CurrentFocus == null) return;
@@ -117,11 +130,32 @@ namespace Slink.Droid
         }
         public abstract void UpdateToolbar();
 
+        public override bool OnKeyDown([GeneratedEnum] Android.Views.Keycode keyCode, KeyEvent e)
+        {
+            var existingFragment = GetOverFragment() as NewCardRecyclerViewFragment;
+            if (keyCode == Android.Views.Keycode.Back && existingFragment != null)
+            {
+                var saved = existingFragment.SaveCardIfPossible();
+                if (!saved)
+                    return true;
+            }
+            return base.OnKeyDown(keyCode, e);
+        }
         public virtual void Toolbar_NavigationClick(object sender, Android.Support.V7.Widget.Toolbar.NavigationClickEventArgs e)
         {
+            var existingFragment = GetOverFragment() as NewCardRecyclerViewFragment;
+            if (existingFragment != null)
+            {
+                var saved = existingFragment.SaveCardIfPossible();
+                if (!saved)
+                    return;
+            }
             OnBackPressed();
         }
-
+        public override void OnBackPressed()
+        {
+            base.OnBackPressed();
+        }
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

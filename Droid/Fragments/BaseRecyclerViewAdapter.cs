@@ -21,7 +21,7 @@ namespace Slink.Droid
 
         public T GetItemInList(int position)
         {
-            if (position < 0 || position > ListItems.Count) return default(T);
+            if (position < 0 || position >= ListItems.Count) return default(T);
 
             return ListItems[position];
         }

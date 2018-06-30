@@ -595,8 +595,7 @@ namespace Slink.iOS
                                 redDotTwo.Alpha = 0;
                                 redDotThree.Alpha = 0;
 
-                                //todo uncomment
-                                //SlinkLogoImageView.Alpha = 0;
+                                SlinkLogoImageView.Alpha = 0;
                             }, () =>
                                 {
                                     arrowImageView.Alpha = 1;

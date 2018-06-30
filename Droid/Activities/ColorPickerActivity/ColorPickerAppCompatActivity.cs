@@ -25,7 +25,7 @@ namespace Slink.Droid
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            var view = inflater.Inflate(Resource.Layout.RecyclerView, container, false);
+            var view = inflater.Inflate(Resource.Layout.ColorPicker, container, false);
 
             var CurrentColorButton = view.FindViewById<View>(Resource.Id.CurrentColorButton);
             CurrentColorButton.SetBackgroundColor(StartingColor);
@@ -39,6 +39,7 @@ namespace Slink.Droid
 
 
             GridView = view.FindViewById<GridView>(Resource.Id.GridView);
+            GridView.Visibility = ViewStates.Invisible;
             GridView.ScrollBarStyle = ScrollbarStyles.OutsideOverlay;
             GridView.ItemClick += (sender, e) =>
             {
@@ -71,6 +72,7 @@ namespace Slink.Droid
             GridView.Post(() =>
             {
                 LayoutGridView();
+                GridView.Visibility = ViewStates.Visible;
             });
 
             UpdateCurrentColor();
@@ -214,9 +216,14 @@ namespace Slink.Droid
             var color = new Android.Graphics.Color(r, g, b, a);
 
             ImageView imgView = view.FindViewById<ImageView>(Resource.Id.ImageView);
-            Drawable drawable = Context.Resources.GetDrawable(Resource.Drawable.RoundedCorners);
+            var drawable = Context.Resources.GetDrawable(Resource.Drawable.RoundedCorners);
             drawable.SetColorFilter(color, PorterDuff.Mode.SrcIn);
             imgView.Background = drawable;
+
+            var background = view.FindViewById<ImageView>(Resource.Id.BackgroundView);
+            var drawable2 = Context.Resources.GetDrawable(Resource.Drawable.RoundedCorners);
+            drawable2.SetColorFilter(Android.Graphics.Color.White, PorterDuff.Mode.SrcIn);
+            background.Background = drawable2;
 
             return view;
         }

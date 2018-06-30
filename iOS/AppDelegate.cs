@@ -15,7 +15,6 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 
 using Google.MobileAds;
-using Acr.UserDialogs;
 
 namespace Slink.iOS
 {
@@ -42,7 +41,7 @@ namespace Slink.iOS
 
             // Code to start the Xamarin Test Cloud Agent
 #if ENABLE_TEST_CLOUD
-            Xamarin.Calabash.Start();
+            //Xamarin.Calabash.Start();
 #endif
 
             ServiceLocator.Instance.Add<IS3Service, S3Service>();

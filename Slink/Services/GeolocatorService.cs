@@ -25,13 +25,13 @@ namespace Slink
 
             try
             {
-                await CrossGeolocator.Current.StartListeningAsync(TimeSpan.FromSeconds(1), 1, true, new Plugin.Geolocator.Abstractions.ListenerSettings()
+                await CrossGeolocator.Current.StartListeningAsync(TimeSpan.FromSeconds(3), 1, true, new ListenerSettings()
                 {
                     ActivityType = ActivityType.Fitness,
                     AllowBackgroundUpdates = false,
                     DeferLocationUpdates = false,
                     DeferralDistanceMeters = 1,
-                    DeferralTime = TimeSpan.FromSeconds(1),
+                    DeferralTime = TimeSpan.FromSeconds(3),
                     ListenForSignificantChanges = false,
                     PauseLocationUpdatesAutomatically = false
                 });

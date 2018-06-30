@@ -35,10 +35,17 @@ namespace Slink.Droid
     public class BaseWebViewClient : WebViewClient
     {
         public Func<IWebResourceRequest, bool> ShouldOverrideUrlLoadingFunc;
+        public Action<WebView, string> OnPageFinishedAction;
 
         public override bool ShouldOverrideUrlLoading(WebView view, IWebResourceRequest request)
         {
             return ShouldOverrideUrlLoadingFunc == null ? true : ShouldOverrideUrlLoadingFunc.Invoke(request);
+        }
+
+        public override void OnPageFinished(WebView view, string url)
+        {
+            base.OnPageFinished(view, url);
+            OnPageFinishedAction?.Invoke(view, url);
         }
     }
 }

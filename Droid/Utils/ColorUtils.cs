@@ -16,5 +16,10 @@ namespace Slink.Droid
 
             return Color.ParseColor(hexValue);
         }
+
+        public static string HexStringFromColor(Color color)
+        {
+            return Java.Lang.String.Format("#%06X", (0xFFFFFF & color));
+        }
     }
 }

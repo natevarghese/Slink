@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="hello">Hello World, Click Me!</string>
-	<string name="app_name">Slink.Droid</string>
-	<string name="facebook_app_id">282730945236494</string>
-	<string name="app_id">282730945236494</string>
-	<string name="fb_login_protocol_scheme">fb282730945236494</string>
-	<string name="title_activity_webview">WTF</string>
+    <string
+        name="hello">Hello World, Click Me!</string>
+    <string
+        name="app_name">Slink.Droid</string>
+    <string
+        name="facebook_app_id">282730945236494</string>
+    <string
+        name="app_id">282730945236494</string>
+    <string
+        name="fb_login_protocol_scheme">fb282730945236494</string>
+    <string
+        name="title_activity_webview">WTF</string>
+    <string
+        name="server_client_id">172866788674-at0ramqgpjhq5rmc64to1i1fo939u01q.apps.googleusercontent.com</string>
 </resources>

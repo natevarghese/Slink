@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="550dp"
+    android:paddingTop="5dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/NameTextView"
+        android:layout_width="wrap_content"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/hintGray"
+        android:layout_height="40dp" />
+    <TextView
+        android:id="@+id/FlipTextView"
+        android:layout_width="wrap_content"
+        android:text="Flip"
+        android:textSize="18sp"
+        android:gravity="center|right"
+        android:textColor="@android:color/white"
+        android:layout_toRightOf="@id/NameTextView"
+        android:layout_alignParentRight="true"
+        android:layout_height="40dp" />;
+    <include
+        android:id="@+id/FrontView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_below="@id/NameTextView"
+        layout="@layout/CardFront" /><include
+        android:id="@+id/RearView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:layout_below="@id/NameTextView"
+        layout="@layout/CardBack" /></RelativeLayout>

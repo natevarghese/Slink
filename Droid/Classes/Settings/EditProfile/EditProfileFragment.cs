@@ -20,8 +20,6 @@ namespace Slink.Droid
         EditText FirstNameEditText, LastNameEditText;
         WebImageView UserProfileImage;
 
-        int SelectPhotoRequestCode = 100;
-
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var me = RealmUserServices.GetMe(false);
@@ -40,38 +38,7 @@ namespace Slink.Droid
             UserProfileImage.SetImage(me.GetRemoteProfileImageUrlCached(), Resource.Drawable.ic_noprofilewhite, Resource.Drawable.ic_noprofilewhite, me.RemoteProfileImageURL, WebImageView.DefaultCircleTransformation);
             UserProfileImage.Click += (sender, e) =>
             {
-                var activity = Activity as MainActivity;
-                activity?.HideKeyboard();
-
-                var builder = new AlertDialog.Builder(Activity);
-                builder.SetTitle(Strings.Alerts.select_image_source);
-                builder.SetCancelable(true);
-
-                builder.SetPositiveButton(Strings.Alerts.user_facebook_image, (senderAlert, args) =>
-                {
-                    DownloadFacebookImage(me.LocalProfileImageURL, me.RemoteProfileImageURL, "Profile.png");
-                });
-                builder.SetNegativeButton(Strings.Alerts.select_from_gallery, async delegate
-                {
-                    var storagePermission = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-                    if (storagePermission == PermissionStatus.Granted)
-                    {
-                        SelectImageFromGallery(me.LocalProfileImageURL, me.RemoteProfileImageURL, "Profile.png");
-                    }
-                    else
-                    {
-                        var dict = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Storage);
-                        if (dict.ContainsKey(Permission.Storage) && dict[Permission.Storage] == PermissionStatus.Granted)
-                        {
-                            SelectImageFromGallery(me.LocalProfileImageURL, me.RemoteProfileImageURL, "Profile.png");
-                        }
-                        else
-                        {
-                            //alert
-                        }
-                    }
-                });
-                builder.Show();
+                ShowImageChooser(UserProfileImage, me.LocalProfileImageURL, me.RemoteProfileImageURL, "Profile.png", SelectUserImagePhotoRequestCode);
             };
 
 
@@ -92,67 +59,12 @@ namespace Slink.Droid
 
             return view;
         }
-        async void DownloadFacebookImage(string localUrl, string remoteUrl, string fileName)
-        {
-            if (UserProfileImage == null) return;
 
-            var me = RealmUserServices.GetMe(false);
-            if (me == null) return;
-
-            var url = me.GetFacebookProfilePictureUrl();
-            if (url == null) return;
-
-            UserProfileImage.SetImageResource(Resource.Drawable.ic_noprofilewhite);
-
-            //required to remove it here otherwise itll load form cache
-            await ImageService.Instance.InvalidateCacheEntryAsync(me.RemoteProfileImageURL, FFImageLoading.Cache.CacheType.All, true);
-
-            ImageService.Instance.LoadUrl(url).Success(async (FFImageLoading.Work.ImageInformation arg1, FFImageLoading.Work.LoadingResult arg2) =>
-            {
-                if (arg1 == null) return;
-
-                var image = await ImageUtils.GetImageAtPath(arg1.FilePath);
-                if (image == null) return;
-
-                var bytes = ImageUtils.ImagetoByteArray(image, 100);
-                if (bytes == null) return;
-
-                S3Utils.UploadPhoto(bytes, localUrl, remoteUrl, fileName, () =>
-                {
-                    if (Activity == null) return;
-                    Activity.RunOnUiThread(async () =>
-                    {
-                        await ImageService.Instance.InvalidateCacheAsync(FFImageLoading.Cache.CacheType.All);//.InvalidateCacheEntryAsync(me.RemoteProfileImageURL, FFImageLoading.Cache.CacheType.All);
-                        UserProfileImage.SetImage(me.GetRemoteProfileImageUrlCached(), Resource.Drawable.ic_noprofilewhite, Resource.Drawable.ic_noprofilewhite, me.RemoteProfileImageURL, WebImageView.DefaultCircleTransformation);
-                    });
-                }, null);
-            })
-            .Finish((FFImageLoading.Work.IScheduledWork obj) =>
-            {
-            })
-            .Transform(WebImageView.DefaultCircleTransformation)
-            .Error(exception =>
-            {
-                UserProfileImage.ShowLoadingIndicators();
-                return;
-            })
-            .Into(UserProfileImage);
-        }
-        void SelectImageFromGallery(string localUrl, string remoteUrl, string fileName)
-        {
-            if (UserProfileImage == null) return;
-
-
-            var intent = new Intent();
-            intent.SetType("image/*");
-            intent.SetAction(Intent.ActionGetContent);
-            StartActivityForResult(Intent.CreateChooser(intent, "Select Photo"), SelectPhotoRequestCode);
-        }
         public override void OnActivityResult(int requestCode, int resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
 
-            if (requestCode == SelectPhotoRequestCode && resultCode == (int)Android.App.Result.Ok)
+            if (requestCode == SelectUserImagePhotoRequestCode && resultCode == (int)Android.App.Result.Ok)
             {
                 if (data == null) return;
 
@@ -190,14 +102,14 @@ namespace Slink.Droid
 
             if (String.IsNullOrEmpty(firstName))
             {
-                //FirstNameEditText.SetInvalid();
+                FirstNameEditText.SetInvalid(Resources);
                 allFieldsValid = false;
             }
 
 
             if (String.IsNullOrEmpty(lastName))
             {
-                //LastNameEditText.SetInvalid();
+                LastNameEditText.SetInvalid(Resources);
                 allFieldsValid = false;
             }
 

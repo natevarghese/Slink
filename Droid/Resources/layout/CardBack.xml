@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.nvcomputers.slink.CardBack xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:padding="10dp"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+    <com.nvcomputers.slink.WebImageView
+        android:id="@+id/LogoImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_weight="60"
+        android:layout_centerHorizontal="true" />
+    <EditText
+        android:id="@+id/CompanyNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:inputType="text"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:layout_weight="20"
+        android:textColorHint="@color/hintGray"
+        android:textColor="@android:color/black" />
+</com.nvcomputers.slink.CardBack>

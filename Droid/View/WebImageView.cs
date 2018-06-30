@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Android.Content;
-using Android.Graphics;
 using Android.Runtime;
 using Android.Util;
 using Android.Widget;
 using FFImageLoading;
-using FFImageLoading.Cache;
 using FFImageLoading.Work;
 using FFImageLoading.Transformations;
+using Android.App;
 
 namespace Slink.Droid
 {
@@ -46,8 +44,11 @@ namespace Slink.Droid
                 })
                 .Error((obj) =>
                 {
-                    if (fallbackResource > 0)
-                        SetImageResource(fallbackResource);
+                    ((Activity)Context).RunOnUiThread(() =>
+                    {
+                        if (fallbackResource > 0)
+                            SetImageResource(fallbackResource);
+                    });
                 }).Finish((obj) =>
                 {
                     HideLoadingIndicators();

@@ -5,6 +5,7 @@ using Android.Content;
 using Android.Gms.Ads;
 using Android.OS;
 using Android.Runtime;
+using FFImageLoading;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
@@ -34,6 +35,8 @@ namespace Slink.Droid
             ServiceRunner.SharedInstance.StartService<AppCenterManager>();
 
             MobileAds.Initialize(ApplicationContext, "ca-app-pub-4252799872870196~8404684386");
+
+            ImageService.Instance.Config.VerboseLogging = false;
         }
 
         public override void OnTrimMemory([GeneratedEnum] TrimMemory level)

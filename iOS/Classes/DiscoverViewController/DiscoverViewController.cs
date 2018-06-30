@@ -1,6 +1,5 @@
 ﻿using System;
 using CoreGraphics;
-using Softweb.Xamarin.Controls.iOS;
 using UIKit;
 using System.Linq;
 using CoreAnimation;
@@ -13,9 +12,9 @@ namespace Slink.iOS
 {
     //todo there is a bug when going to this page first on a clean install and the location permission pops up.
     //it doesnt try to search on dismiss
-    public partial class DiscoverViewController : BaseViewController, ICardViewDataSource
+    public partial class DiscoverViewController : BaseViewController
     {
-        CardView DemoCardView;
+        UIView DemoCardView;
         CardSharingStatusViewController BackgroundVC = new CardSharingStatusViewController();
         CAShapeLayer shape;
         DiscoverShared Shared = new DiscoverShared();
@@ -51,14 +50,8 @@ namespace Slink.iOS
             PhoneImageView.Layer.AddSublayer(first);
 
             //Wire up events
-            DemoCardView = new CardView();
+            DemoCardView = new UIView();
             DemoCardView.BackgroundColor = UIColor.Clear;
-            DemoCardView.DidSwipeLeft += OnSwipeLeft;
-            DemoCardView.DidSwipeRight += OnSwipeRight;
-            DemoCardView.DidCancelSwipe += OnSwipeCancelled;
-            DemoCardView.DidStartSwipingCardAtLocation += OnSwipeStarted;
-            DemoCardView.SwipingCardAtLocation += OnSwiping;
-            DemoCardView.DidEndSwipingCard += OnSwipeEnded;
 
 
             DemoCardSuperviewHeightConstraint.Constant = CardViewController.GetCalculatedHeight();
@@ -115,7 +108,7 @@ namespace Slink.iOS
 
             if (DemoCardView != null)
             {
-                DemoCardView.DataSource = this;
+                //DemoCardView.DataSource = this;
                 DemoCardView.Frame = DemoCardSuperview.Bounds;
                 DemoCardView.Bounds = new CGRect(0, 0, DemoCardSuperview.Bounds.Width, DemoCardSuperview.Bounds.Height);
             }
@@ -176,7 +169,7 @@ namespace Slink.iOS
             while (!ShouldStopSearching)
             {
                 await Shared.GetNearbyTransactions();
-                DemoCardView.LoadNextCardsIfNeeded();
+                //DemoCardView.LoadNextCardsIfNeeded();
                 StopSearchingIfCardsFound();
 
                 Console.WriteLine("GOT");
@@ -214,13 +207,13 @@ namespace Slink.iOS
         }
         partial void NoClicked(Foundation.NSObject sender)
         {
-            DemoCardView.SwipeTopCardToLeft();
+            //DemoCardView.SwipeTopCardToLeft();
         }
         partial void YesClicked(Foundation.NSObject sender)
         {
-            DemoCardView.SwipeTopCardToRight();
+            //DemoCardView.SwipeTopCardToRight();
         }
-        public UIView NextCardForCardView(CardView cardView)
+        public UIView NextCardForCardView(UIView cardView)
         {
             var item = Shared.GetNextCard();
             if (item == null)
@@ -279,11 +272,6 @@ namespace Slink.iOS
             });
         }
 
-        void OnSwipeLeft(object sender, SwipeEventArgs e) { Shared.RejectCard(); StopSearchingIfCardsFound(); }
-        void OnSwipeRight(object sender, SwipeEventArgs e) { Shared.AcceptCard(); StopSearchingIfCardsFound(); }
-        void OnSwipeCancelled(object sender, SwipeEventArgs e) { }
-        void OnSwipeStarted(object sender, SwipingStartedEventArgs e) { }
-        void OnSwiping(object sender, SwipingEventArgs e) { }
-        void OnSwipeEnded(object sender, SwipingEndedEventArgs e) { }
+
     }
 }

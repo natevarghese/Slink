@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Drawing;
-
+using Plugin.CurrentActivity;
 
 namespace Slink.Droid
 {
@@ -9,14 +9,18 @@ namespace Slink.Droid
     {
         public void SendNotificaion(string key)
         {
-            //NSNotificationCenter.DefaultCenter.PostNotificationName(key, null);
+            var intent = new Android.Content.Intent(key);
+
+            CrossCurrentActivity.Current.Activity?.SendBroadcast(intent);
         }
+
     }
 
     public class Database : IDatabase
     {
         public string GetDatabasePath()
         {
+            throw new NotImplementedException();
             return null;
             //return NSFileManager.DefaultManager.GetUrls(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomain.User)[0].Path;
         }
@@ -26,6 +30,7 @@ namespace Slink.Droid
     {
         public void Logout()
         {
+            throw new NotImplementedException();
             //new LoginManager().LogOut();
         }
     }
@@ -34,12 +39,14 @@ namespace Slink.Droid
     {
         public void GoToLists()
         {
+            throw new NotImplementedException();
             //var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
             //appDelegate.Window.RootViewController = UIStoryboard.FromName("Lists", null).InstantiateInitialViewController();
         }
 
         public void GoToMain()
         {
+            throw new NotImplementedException();
             //var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
             //appDelegate.Window.RootViewController = UIStoryboard.FromName("Main", null).InstantiateInitialViewController();
         }

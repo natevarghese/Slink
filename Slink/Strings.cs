@@ -122,7 +122,10 @@ namespace Slink
             public static string notification_card_editing_changed = "TableViewCardEditingChangedNotification";
             public static string notification_no_outlets_tapped = "NoOutletsTappedNotification";
             public static string notification_design_changed = "DesignChangedNotification";
+            public static string notification_companyN = "CollectionViewTappedNotification";
             public static string notification_collection_view_tapped = "CollectionViewTappedNotification";
+            public static string notification_card_user_image_clicked = "CardUserImageClickedNotification";
+            public static string notification_company_logo_image_clicked = "CardCompanyLogoImageClickedNotification";
         }
         public class PushNotificaionKeys
         {

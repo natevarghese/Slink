@@ -38,7 +38,7 @@ namespace Slink.iOS
             //caps at 6
             //var minheight = collectionView.Frame.Height / 7 - MaxRows;
             var collectionViewTopAndBottomInset = collectionView.ContentInset.Top + collectionView.ContentInset.Bottom;
-            var totalCellTopAndBottomInset = 8 * MaxRows;
+            var totalCellTopAndBottomInset = 16 * MaxRows - 16;
             var minheight = (collectionView.Frame.Height - collectionViewTopAndBottomInset - totalCellTopAndBottomInset) / MaxRows;
             Console.WriteLine("minheight; " + minheight);
             return new CGSize(minheight, minheight);

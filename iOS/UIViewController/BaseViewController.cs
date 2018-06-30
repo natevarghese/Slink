@@ -62,31 +62,6 @@ namespace Slink.iOS
 
             NavigationItem.BackBarButtonItem = new UIBarButtonItem(" ", UIBarButtonItemStyle.Plain, null);
         }
-        public void ShowSplashComfirmed(Action compeleted)
-        {
-            //todo subclass, make it looks nice.
-
-            UIView splash = new UIView(new CGRect(0, 0, 100, 100));
-            splash.Center = View.Window.Center;
-            splash.BackgroundColor = UIColor.Green;
-            splash.Alpha = 0;
-            View.AddSubview(splash);
-
-            UIView.Animate(1.0, () =>
-            {
-                splash.Alpha = 1;
-            }, () =>
-            {
-                UIView.Animate(1.0, () =>
-                {
-                    splash.Alpha = 0;
-                }, () =>
-                {
-                    splash.RemoveFromSuperview();
-                    compeleted?.Invoke();
-                });
-            });
-        }
 
         public void ShowGenericAlert()
         {

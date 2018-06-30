@@ -24,7 +24,7 @@ namespace Slink.Droid
                 case 0:
                     return new MyCardsFooter(Context.LayoutInflater.Inflate(Resource.Layout.TextViewCell, null));
                 case 1:
-                    return new CardCell(Context.LayoutInflater.Inflate(Resource.Layout.TitleAndTextCell, null));
+                    return new CardCell(Context.LayoutInflater.Inflate(Resource.Layout.CardCell, null));
                 default:
                     return null;
             }
@@ -41,7 +41,7 @@ namespace Slink.Droid
                     ((MyCardsFooter)holder).BindDataToView(Context, position, MyCardsShared.CreateNewCard);
                     break;
                 case 1:
-                    ((CardCell)holder).BindDataToView(Context, position, item);
+                    ((CardCell)holder).BindDataToView(Context, position, item, false);
                     break;
             }
         }
@@ -76,34 +76,6 @@ namespace Slink.Droid
             };
         }
     }
-    public class CardCell : RecyclerView.ViewHolder
-    {
-        public TextView LeftTextView { get; set; }
-        public TextView RightTextView { get; set; }
 
-        public CardCell(View v) : base(v)
-        {
-            LeftTextView = v.FindViewById<TextView>(Resource.Id.LeftTextView);
-            RightTextView = v.FindViewById<TextView>(Resource.Id.RightTextView);
-        }
-
-        public void BindDataToView(Context context, int position, Card item)
-        {
-            if (item == null) return;
-
-            LeftTextView.Text = item.Title;
-            //RightTextView.Text = item.Value;
-
-            ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, 550);
-
-            if (ItemView.HasOnClickListeners) return;
-            ItemView.Click += (sender, e) =>
-            {
-                var intent = new Intent(SettingsShared.ItemClickedBroadcastReceiverKey);
-                intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
-                context.SendBroadcast(intent);
-            };
-        }
-    }
 
 }

@@ -110,7 +110,7 @@ namespace Slink.iOS
 
             ProfileImageButton.SetImage(UIImage.FromBundle(FallbackImageFileName), new UIControlState());
             ProfileImageButton.ShowLoadingIndicators();
-            SDWebImageManager.SharedManager.Download(NSUrl.FromString(url), SDWebImageOptions.HighPriority, null, (image, error, cacheType, finished, imageUrl) =>
+            SDWebImageManager.SharedManager.ImageDownloader.DownloadImage(NSUrl.FromString(url), SDWebImageDownloaderOptions.HighPriority, null, (image, data, error, finished) =>
             {
                 if (image == null || error != null)
                 {
@@ -122,7 +122,7 @@ namespace Slink.iOS
                 S3Utils.UploadPhoto(bytes, localUrl, remoteUrl, fileName, () =>
                 {
 
-                    SDWebImageManager.SharedManager.ImageCache.RemoveImage(me.RemoteProfileImageURL, true);
+                    SDWebImageManager.SharedManager.ImageCache.RemoveImage(me.RemoteProfileImageURL, true, null);
                     ProfileImageButton.SetImageWithCustomCache(me.GetRemoteProfileImageUrlCached(), FallbackImageFileName, FallbackImageFileName, me.RemoteProfileImageURL);
                 }, null);
             });
@@ -150,7 +150,7 @@ namespace Slink.iOS
                         var bytes = ImageUtils.ByteArrayFromImage(smallerImage, 100);
                         S3Utils.UploadPhoto(bytes, localUrl, remoteUrl, fileName, () =>
                         {
-                            SDWebImageManager.SharedManager.ImageCache.RemoveImage(me.RemoteProfileImageURL, true);
+                            SDWebImageManager.SharedManager.ImageCache.RemoveImage(me.RemoteProfileImageURL, true, null);
                             ProfileImageButton.SetImageWithCustomCache(me.GetRemoteProfileImageUrlCached(), FallbackImageFileName, FallbackImageFileName, me.RemoteProfileImageURL);
                         }, null);
 

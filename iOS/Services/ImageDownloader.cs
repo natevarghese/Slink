@@ -17,11 +17,11 @@ namespace Slink.iOS
                 outlet.Type = p.GetValue(null) as string;
 
                 var url = outlet.RemoteURL;
-                SDWebImageManager.SharedManager.Download(new NSUrl(url), SDWebImageOptions.RefreshCached, null, (image, error, cacheType, finished, imageUrl) =>
-                {
-                    if (error != null)
-                        Console.WriteLine(error.Description);
-                });
+                SDWebImageManager.SharedManager.ImageDownloader.DownloadImage(new NSUrl(url), SDWebImageDownloaderOptions.IgnoreCachedResponse, null, (image, data, error, finished) =>
+                 {
+                     if (error != null)
+                         Console.WriteLine(error.Description);
+                 });
             }
         }
     }

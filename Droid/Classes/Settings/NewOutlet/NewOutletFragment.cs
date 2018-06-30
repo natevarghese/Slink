@@ -34,20 +34,19 @@ namespace Slink.Droid
                 }
                 if (item.Type.Equals(Outlet.outlet_type_phone))
                 {
-                    //NavigationController.PushViewController(new EnterPhoneNumberViewController(), true);
+                    ((BaseActivity)Activity).AddFragmentOver(new EnterPhoneNumberFragment());
                     return;
                 }
 
                 if (item.Type.Equals(Outlet.outlet_type_email))
                 {
-
-                    //NavigationController.PushViewController(new EnterEmailAddressViewController(), true);
+                    ((BaseActivity)Activity).AddFragmentOver(new EnterEmailAddressFragment());
                     return;
                 }
 
                 if (item.Type.Equals(Outlet.outlet_type_website))
                 {
-                    //NavigationController.PushViewController(new WebsiteViewController(), true);
+                    ((BaseActivity)Activity).AddFragmentOver(new WebsiteFragment());
                     return;
                 }
 
@@ -78,7 +77,7 @@ namespace Slink.Droid
 
                 if (item.Type.Equals(Outlet.outlet_type_google))
                 {
-                    //NavigationController.PushViewController(new LoginWithGoogleViewController(), true);
+                    ((BaseActivity)Activity).AddFragmentOver(new GoogleFragment());
                     return;
                 }
 
