@@ -173,7 +173,7 @@ namespace Slink.iOS
                 StopSearchingIfCardsFound();
 
                 Console.WriteLine("GOT");
-                await Task.Delay(TimeSpan.FromSeconds(2));
+                await Task.Delay(TimeSpan.FromSeconds(5));
                 Console.WriteLine("DONE");
             }
         }

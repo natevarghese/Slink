@@ -46,6 +46,9 @@ namespace Slink
                 endpoint.Method = NVCEndpoint.EndpointType.Put;
                 endpoint.Controller = Mapping;
 
+                //todo cache so we dont send teh same one again and again. keep last one.
+
+
                 await NVCRestHelper.Async(endpoint, requestDictionary, null);
 
                 System.Diagnostics.Debug.WriteLine("User location updated on server: lat: " + lat + " lon: " + lng);
