@@ -26,8 +26,6 @@ namespace Slink
 
         public static string COGNITO_POOL_ID = "us-east-2:4c744479-921f-4fd0-8b5e-c89323d8ad7d";
         public static string BUCKET_NAME = "slinka";
-        public static string APP_CLIENT_ID = "1h7e5kg2ir8c8j7sfoft22poqv";
-        public static string APP_CLIENT_SECRET = "a6qhbbejsnis106rk2gsiqa0dm4soaoa020ngeif67eg8jeukgm";
 
         public static RegionEndpoint REGION = RegionEndpoint.USEast2;
         public static DateTime DefaultExpiry = DateTime.Now.AddDays(1);

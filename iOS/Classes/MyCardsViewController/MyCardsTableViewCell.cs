@@ -51,7 +51,7 @@ namespace Slink.iOS
             ContainerView.AddConstraint(NSLayoutConstraint.Create(cardBack, NSLayoutAttribute.Left, NSLayoutRelation.Equal, ContainerView, NSLayoutAttribute.Left, 1, 0));
 
             var cardFront = CardFront.Create();
-            cardFront.BindDataToView(card, false, indexPath);
+            cardFront.BindDataToView(card, false, indexPath, true);
             cardFront.Hidden = true;
             cardFront.Frame = ContainerView.Bounds;
             ContainerView.AddSubview(cardFront);

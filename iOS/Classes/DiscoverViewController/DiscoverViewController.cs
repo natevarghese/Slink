@@ -166,7 +166,7 @@ namespace Slink.iOS
             StatusButton.Hidden = false;
             StatusButton.SetTitle("Searching for people \n sharing nearby", new UIControlState());
 
-            while (!ShouldStopSearching)
+            while (!ShouldStopSearching && View.Window != null)
             {
                 await Shared.GetNearbyTransactions();
                 //DemoCardView.LoadNextCardsIfNeeded();

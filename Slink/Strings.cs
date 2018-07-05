@@ -8,8 +8,6 @@ namespace Slink
         {
             public static string clientid_key = "Slink-mobile";
             public static string insights_key = "";
-            public static string s3_access_key = "AKIAILLUHH4CVFO7XC7Q";
-            public static string s3_access_secret = "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";
             public static string one_signal_app_id = "a49ee6d2-0ad7-44a5-9345-d99b257adbec";
             public static string facebook_app_id = "282730945236494";
             public static string facebook_display_name = "Slink";
@@ -28,7 +26,8 @@ namespace Slink
 
         public class SystemUrls
         {
-            public static string base_url = "http://slink.emxjrwmicm.us-east-2.elasticbeanstalk.com/";
+            public static string realm_server_ip = "http://realm-2129060701.us-east-2.elb.amazonaws.com:9080";
+            public static string base_url = "http://api-2090217776.us-east-2.elb.amazonaws.com/";
             public static string s3_url = "https://s3.us-east-2.amazonaws.com/slinka/";
             public static string linkedin_redirect_url = "https://mobile.linkedin.com";
             public static string instagram_redirect_url = "https://www.instagram.com";

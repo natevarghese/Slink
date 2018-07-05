@@ -54,7 +54,7 @@ namespace Slink.iOS
                     }
 
 
-                    HeaderView.Update();
+                    HeaderView.Update(false);
                     TableView.ReloadRows(new NSIndexPath[] { arg1 }, UITableViewRowAnimation.Automatic);
                 };
 
@@ -70,7 +70,7 @@ namespace Slink.iOS
 
                 Shared.SelectedCard.RemoveOutlet(arg2.Outlet);
                 TableSource.TableItems.Remove(arg2);
-                HeaderView.Update();
+                HeaderView.Update(false);
             };
             TableView.Source = TableSource;
 
@@ -110,7 +110,7 @@ namespace Slink.iOS
                 if (outlet != null)
                 {
                     AddOutletToCard(outlet, false);
-                    HeaderView.Update();
+                    HeaderView.Update(false);
                     FetchTableDataFromDatabase();
 
                     Transporter.SharedInstance.RemoveObject(Transporter.NewOutletAddedTransporterKey);
@@ -125,9 +125,9 @@ namespace Slink.iOS
             TableViewCardEditingChangedNotification = NSNotificationCenter.DefaultCenter.AddObserver(new NSString(Strings.InternalNotifications.notification_card_editing_changed), (obj) =>
             {
                 InvokeOnMainThread(() =>
-                {
-                    TableSource.SetItems(TableView, Shared.GetTableItems());
-                });
+                    {
+                        TableSource.SetItems(TableView, Shared.GetTableItems());
+                    });
             });
 
             NoOutletsTappedNotification = NSNotificationCenter.DefaultCenter.AddObserver(new NSString(Strings.InternalNotifications.notification_no_outlets_tapped), (obj) =>
@@ -192,7 +192,7 @@ namespace Slink.iOS
         {
             Shared.SelectedCard.AddOutlet(obj);
             FetchTableDataFromDatabase();
-            HeaderView.Update();
+            HeaderView.Update(false);
 
             if (dismiss)
                 NavigationController.PopViewController(true);

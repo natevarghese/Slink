@@ -35,12 +35,15 @@ namespace Slink.Droid
             ItemClickedBroadcastReceiver = new ActionBroadcastReceiver();
             ItemClickedBroadcastReceiver.NotificationReceived += (obj) =>
             {
-                var position = obj.GetIntExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, -1);
-                if (position == -1) return;
+                Activity.RunOnUiThread(() =>
+                {
+                    var position = obj.GetIntExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, -1);
+                    if (position == -1) return;
 
-                var item = RecyclerViewAdapter.GetItemInList(position);
+                    var item = RecyclerViewAdapter.GetItemInList(position);
 
-                RecyclerView_ItemClick(item, position);
+                    RecyclerView_ItemClick(item, position);
+                });
             };
             Activity.RegisterReceiver(ItemClickedBroadcastReceiver, new IntentFilter(SettingsShared.ItemClickedBroadcastReceiverKey));
 

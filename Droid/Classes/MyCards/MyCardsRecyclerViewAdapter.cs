@@ -41,7 +41,7 @@ namespace Slink.Droid
                     ((MyCardsFooter)holder).BindDataToView(Context, position, MyCardsShared.CreateNewCard);
                     break;
                 case 1:
-                    ((CardCell)holder).BindDataToView(Context, position, item, false);
+                    ((CardCell)holder).BindDataToView(Context, position, item, false, true);
                     break;
             }
         }
@@ -59,7 +59,7 @@ namespace Slink.Droid
 
         public void BindDataToView(Context context, int position, string text)
         {
-            MyPosition = position;
+            p MyPosition = position;
 
             TextView.Text = text;
             TextView.SetTypeface(Typeface.Default, TypefaceStyle.Bold);

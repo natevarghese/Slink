@@ -97,11 +97,13 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>We don&apos;t use the calendar?</string>
 	<key>CFBundleVersion</key>
-	<string>0.0.16</string>
+	<string>0.0.21</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Landing</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Resources/Assets.xcassets/LaunchImage.launchimage</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Bluetooth is used to find other users nearby</string>
 	<key>XSAppIconAssets</key>
 	<string>Resources/Assets.xcassets/AppIcon.appiconset</string>
 </dict>

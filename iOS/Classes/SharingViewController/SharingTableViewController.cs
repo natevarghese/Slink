@@ -33,7 +33,7 @@ namespace Slink.iOS
                     Shared.OutletSelected(arg2);
                     TableView.ReloadRows(new NSIndexPath[] { arg1 }, UITableViewRowAnimation.Automatic);
 
-                    HeaderView.Update();
+                    HeaderView.Update(false);
 
                     footer.Update();
                     return;

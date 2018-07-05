@@ -24,7 +24,7 @@ namespace Slink.iOS
             var b = (nfloat)(model.color[2] / 255f);
             var a = (nfloat)(model.color[3] / 255f);
             var color = UIColor.FromRGBA(r, g, b, a);
-            ContentView.BackgroundColor = color;
+            MyContentView.BackgroundColor = color;
 
             Layer.BorderColor = UIColor.White.CGColor;
             Layer.BorderWidth = 2;

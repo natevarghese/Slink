@@ -13,7 +13,7 @@ namespace Slink.Droid
     [Register("com.nvcomputers.slink.CardFront")]
     public class CardFront : LinearLayout
     {
-        public static string ItemClickedBroadcastReceiverKey = "ItemClicked";
+        public static string ItemClickedBroadcastReceiverKey = "OutletClicked";
         public static string ItemClickedBroadcastReceiverKeyPosition = "Position";
 
         Card Card;
@@ -23,7 +23,7 @@ namespace Slink.Droid
         public CardFront(Context context, IAttributeSet attributeSet, int defStyle) : base(context, attributeSet, defStyle) { }
         public CardFront(IntPtr ptr, JniHandleOwnership handle) : base(ptr, handle) { }
 
-        public void BindDataToView(Card card, bool editable)
+        public void BindDataToView(Card card, bool editable, int parnetPosition)
         {
             Card = card;
 
@@ -57,6 +57,7 @@ namespace Slink.Droid
 
             var adapter = new CardFrontRecyclerViewAdaper((Activity)Context);
             adapter.SetListItems(Card.Outlets.ToList());
+            adapter.ParentPosition = parnetPosition;
             recyclerView.SetAdapter(adapter);
 
 
@@ -116,6 +117,8 @@ namespace Slink.Droid
 
     class CardFrontRecyclerViewAdaper : BaseRecyclerViewAdapter<Outlet>
     {
+        public int ParentPosition;
+
         public CardFrontRecyclerViewAdaper(Activity context) : base(context) { }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -132,7 +135,7 @@ namespace Slink.Droid
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             var item = GetItemInList(position);
-            ((ImageViewCell)holder).BindDataToView(Context, position, item);
+            ((ImageViewCell)holder).BindDataToView(Context, ParentPosition == 0 ? position : ParentPosition, item);
         }
     }
 
@@ -158,7 +161,7 @@ namespace Slink.Droid
                 ItemView.Click += (sender, e) =>
                 {
                     var intent = new Intent(CardFront.ItemClickedBroadcastReceiverKey);
-                    intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
+                    intent.PutExtra(SharingShared.ItemClickedBroadcastReceiverKeyPosition, position);
                     context.SendBroadcast(intent);
                 };
             }

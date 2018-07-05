@@ -56,7 +56,6 @@ namespace Slink.iOS
             var cachedImageDisk = SDWebImageManager.SharedManager.ImageCache.ImageFromDiskCache(cacheKey);
             if (cachedImageDisk != null) { SetImage(cachedImageDisk, new UIControlState()); return; }
 
-            ShowLoadingIndicators();
             this.SetImage(NSUrl.FromString(url), new UIControlState(), placeholder, SDWebImageOptions.RetryFailed, delegate (UIImage image, NSError error, SDImageCacheType cacheType, NSUrl imageUrl)
             {
                 HideLoadingIndicators();

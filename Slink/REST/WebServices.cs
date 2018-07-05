@@ -15,6 +15,7 @@ namespace Slink
         public static class UserController
         {
             public static string Mapping = "user";
+            public static double LastLat, LastLon;
 
             public static async Task<NVCRestResult> CreateUser()
             {
@@ -36,22 +37,26 @@ namespace Slink
 
                 await NVCRestHelper.Async(endpoint, requestDictionary, null);
             }
-            public static async Task UpdateUser(double lat, double lng)
+            public static async Task UpdateUser(double lat, double lon)
             {
+                //cache so we dont send teh same one again and again. just keep last one.
+                if (lat == LastLat && lon == LastLon)
+                    return;
+
+                LastLat = lat;
+                LastLon = lon;
+
                 Dictionary<string, object> requestDictionary = new Dictionary<string, object>();
                 requestDictionary.Add("lat", lat);
-                requestDictionary.Add("lng", lng);
+                requestDictionary.Add("lng", lon);
 
                 NVCEndpoint endpoint = new NVCEndpoint();
                 endpoint.Method = NVCEndpoint.EndpointType.Put;
                 endpoint.Controller = Mapping;
 
-                //todo cache so we dont send teh same one again and again. keep last one.
-
-
                 await NVCRestHelper.Async(endpoint, requestDictionary, null);
 
-                System.Diagnostics.Debug.WriteLine("User location updated on server: lat: " + lat + " lon: " + lng);
+                System.Diagnostics.Debug.WriteLine("User location updated on server: lat: " + lat + " lon: " + lon);
             }
 
         }
@@ -212,7 +217,7 @@ namespace Slink
             public static async Task<NVCRestResult> UseValidationCode(string email, string code)
             {
                 NVCEndpoint endpoint = new NVCEndpoint();
-                endpoint.Method = NVCEndpoint.EndpointType.PostRaw;
+                endpoint.Method = NVCEndpoint.EndpointType.Put;
                 endpoint.Controller = Mapping;
 
                 Dictionary<string, object> requestDictionary = new Dictionary<string, object>();

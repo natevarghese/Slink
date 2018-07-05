@@ -54,7 +54,7 @@ namespace Slink.Droid
                     ((MyCardsFooter)holder).BindDataToView(Context, position, NewCardShared.AddNewOutlet);
                     break;
                 case 1:
-                    ((CardCell)holder).BindDataToView(Context, position, ((NewCardModel)item).SelectedCard, true);
+                    ((CardCell)holder).BindDataToView(Context, position, ((NewCardModel)item).SelectedCard, true, false);
                     break;
                 case 2:
                     ((TitleAndAccessoryCell)holder).BindDataToView(Context, position, item);
@@ -67,80 +67,80 @@ namespace Slink.Droid
                     break;
             }
         }
+    }
 
-        public class TitleAndAccessoryCell : RecyclerView.ViewHolder
+    public class TitleAndAccessoryCell : RecyclerView.ViewHolder
+    {
+        public TextView RightTextView { get; set; }
+        public TextView RightTextViewSuperView { get; set; }
+        public EditText LeftEditText { get; set; }
+
+        public TitleAndAccessoryCell(View v) : base(v)
         {
-            public TextView RightTextView { get; set; }
-            public TextView RightTextViewSuperView { get; set; }
-            public EditText LeftEditText { get; set; }
+            RightTextViewSuperView = v.FindViewById<TextView>(Resource.Id.RightTextViewSuperView);
+            RightTextView = v.FindViewById<TextView>(Resource.Id.RightTextView);
+            LeftEditText = v.FindViewById<EditText>(Resource.Id.LeftEditText);
+        }
 
-            public TitleAndAccessoryCell(View v) : base(v)
+        public void BindDataToView(Context context, int position, NewCardModel model)
+        {
+            if (model == null) return;
+
+            LeftEditText.TextChanged -= LeftEditText_TextChanged;
+            LeftEditText.Click -= LeftEditText_Click;
+
+            LeftEditText.Text = model.Title;
+            LeftEditText.Hint = model.Placeholder;
+            LeftEditText.Clickable = model.Editable;
+            LeftEditText.Focusable = model.Editable;
+            LeftEditText.Tag = position;
+
+            if (!model.Editable)
+                LeftEditText.Click += LeftEditText_Click;
+
+
+            RightTextView.SetBackgroundColor(ColorUtils.FromHexString(model.ColorHexString, Color.Transparent));
+            RightTextView.Visibility = String.IsNullOrEmpty(model.ColorHexString) ? ViewStates.Gone : ViewStates.Visible;
+            RightTextViewSuperView.Visibility = String.IsNullOrEmpty(model.ColorHexString) ? ViewStates.Gone : ViewStates.Visible;
+
+            ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, 200);
+
+            if (!ItemView.HasOnClickListeners)
             {
-                RightTextViewSuperView = v.FindViewById<TextView>(Resource.Id.RightTextViewSuperView);
-                RightTextView = v.FindViewById<TextView>(Resource.Id.RightTextView);
-                LeftEditText = v.FindViewById<EditText>(Resource.Id.LeftEditText);
-            }
-
-            public void BindDataToView(Context context, int position, NewCardModel model)
-            {
-                if (model == null) return;
-
-                LeftEditText.TextChanged -= LeftEditText_TextChanged;
-                LeftEditText.Click -= LeftEditText_Click;
-
-                LeftEditText.Text = model.Title;
-                LeftEditText.Hint = model.Placeholder;
-                LeftEditText.Clickable = model.Editable;
-                LeftEditText.Focusable = model.Editable;
-                LeftEditText.Tag = position;
-
-                if (!model.Editable)
-                    LeftEditText.Click += LeftEditText_Click;
-
-
-                RightTextView.SetBackgroundColor(ColorUtils.FromHexString(model.ColorHexString, Color.Transparent));
-                RightTextView.Visibility = String.IsNullOrEmpty(model.ColorHexString) ? ViewStates.Gone : ViewStates.Visible;
-                RightTextViewSuperView.Visibility = String.IsNullOrEmpty(model.ColorHexString) ? ViewStates.Gone : ViewStates.Visible;
-
-                ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, 200);
-
-                if (!ItemView.HasOnClickListeners)
+                ItemView.Click += (sender, e) =>
                 {
-                    ItemView.Click += (sender, e) =>
-                    {
-                        var intent = new Intent(SettingsShared.ItemClickedBroadcastReceiverKey);
-                        intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
-                        context.SendBroadcast(intent);
-                    };
-                }
-
-                LeftEditText.TextChanged += LeftEditText_TextChanged;
+                    var intent = new Intent(SettingsShared.ItemClickedBroadcastReceiverKey);
+                    intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
+                    context.SendBroadcast(intent);
+                };
             }
 
-            void LeftEditText_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
-            {
-                var editText = sender as EditText;
-                if (editText == null) return;
+            LeftEditText.TextChanged += LeftEditText_TextChanged;
+        }
 
-                var position = (int)editText.Tag;
+        void LeftEditText_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
+        {
+            var editText = sender as EditText;
+            if (editText == null) return;
 
-                var intent = new Intent(Strings.InternalNotifications.notification_table_row_editing_changed);
-                intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
-                intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyValue, editText.Text);
-                editText.Context.SendBroadcast(intent);
-            }
+            var position = (int)editText.Tag;
 
-            void LeftEditText_Click(object sender, EventArgs e)
-            {
-                var editText = sender as EditText;
-                if (editText == null) return;
+            var intent = new Intent(Strings.InternalNotifications.notification_table_row_editing_changed);
+            intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
+            intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyValue, editText.Text);
+            editText.Context.SendBroadcast(intent);
+        }
 
-                var position = (int)editText.Tag;
+        void LeftEditText_Click(object sender, EventArgs e)
+        {
+            var editText = sender as EditText;
+            if (editText == null) return;
 
-                var intent = new Intent(SettingsShared.ItemClickedBroadcastReceiverKey);
-                intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
-                editText.Context.SendBroadcast(intent);
-            }
+            var position = (int)editText.Tag;
+
+            var intent = new Intent(SettingsShared.ItemClickedBroadcastReceiverKey);
+            intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
+            editText.Context.SendBroadcast(intent);
         }
     }
 
@@ -252,7 +252,7 @@ namespace Slink.Droid
             RearView = v.FindViewById<CardBack>(Resource.Id.RearView);
         }
 
-        public void BindDataToView(Context context, int position, Card item, bool editable)
+        public void BindDataToView(Context context, int position, Card item, bool editable, bool useParentPosition)
         {
             Card = item;
 
@@ -274,10 +274,10 @@ namespace Slink.Droid
 
 
             //wire up swipe gestures
-            var touchListner = new OnSwipeTouchListener(context, ToggleViews, ToggleViews);
+            var touchListner = new OnSwipeTouchListener(context, ToggleViews, ToggleViews, position);
             ItemView.SetOnTouchListener(touchListner);
 
-            FrontView.BindDataToView(item, editable);
+            FrontView.BindDataToView(item, editable, useParentPosition ? position : 0);
             RearView.BindDataToView(item, editable);
 
             //LeftTextView.Text = item.Title;
@@ -345,11 +345,12 @@ namespace Slink.Droid
     {
         GestureDetector GestureDetector;
 
-        public OnSwipeTouchListener(Context context, Action onSwipeLeft, Action onSwipeRight)
+        public OnSwipeTouchListener(Context context, Action onSwipeLeft, Action onSwipeRight, int position)
         {
-            var listener = new GestureListener();
+            var listener = new GestureListener(context);
             listener.OnSwipeLeft = onSwipeLeft;
             listener.OnSwipeRight = onSwipeRight;
+            listener.Position = position;
             GestureDetector = new GestureDetector(context, listener);
         }
         public bool OnTouch(View v, MotionEvent e)
@@ -357,20 +358,37 @@ namespace Slink.Droid
             return GestureDetector.OnTouchEvent(e);
         }
 
-
-
         class GestureListener : SimpleOnGestureListener
         {
+            Context Context;
             const int SWIPE_THRESHOLD = 100;
             const int SWIPE_VELOCITY_THRESHOLD = 100;
 
             public Action OnSwipeLeft, OnSwipeRight, OnSwipeTop, OnSwipeBottom;
+            public int Position;
 
+            public GestureListener(Context context)
+            {
+                Context = context;
+            }
             public override bool OnDown(MotionEvent e)
             {
                 return true;
             }
+            public override bool OnSingleTapConfirmed(MotionEvent e)
+            {
+                var result = base.OnSingleTapConfirmed(e);
 
+                var intent = new Intent(SharingShared.ItemClickedBroadcastReceiverKeyCardClicked);
+                intent.PutExtra(SharingShared.ItemClickedBroadcastReceiverKeyPosition, Position);
+                Context.SendBroadcast(intent);
+
+                return result;
+            }
+            public override bool OnSingleTapUp(MotionEvent e)
+            {
+                return base.OnSingleTapUp(e);
+            }
             public override bool OnFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY)
             {
                 bool result = false;

@@ -44,9 +44,9 @@
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
         <MtouchLink>SdkOnly</MtouchLink>
         <MtouchArch>ARMv7, ARM64</MtouchArch>
-        <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
+        <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
         <PlatformTarget>x86</PlatformTarget>
-        <CodesignProvision>AD Hoc</CodesignProvision>
+        <CodesignProvision>Automatic:AppStore</CodesignProvision>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
         <DebugType>pdbonly</DebugType>
@@ -113,9 +113,6 @@
         <Reference Include="Validation">
             <HintPath>..\packages\Validation.2.4.18\lib\netstandard1.3\Validation.dll</HintPath>
         </Reference>
-        <Reference Include="Calabash">
-            <HintPath>..\packages\Xamarin.TestCloud.Agent.0.21.4\lib\Xamarin.iOS\Calabash.dll</HintPath>
-        </Reference>
         <Reference Include="Firebase.InstanceID">
             <HintPath>..\packages\Xamarin.Firebase.iOS.InstanceID.2.0.8\lib\Xamarin.iOS10\Firebase.InstanceID.dll</HintPath>
         </Reference>
@@ -130,24 +127,6 @@
         </Reference>
         <Reference Include="Remotion.Linq">
             <HintPath>..\packages\Remotion.Linq.2.2.0\lib\portable-net45+win+wpa81+wp80\Remotion.Linq.dll</HintPath>
-        </Reference>
-        <Reference Include="Microsoft.AppCenter">
-            <HintPath>..\packages\Microsoft.AppCenter.1.6.1\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
-        </Reference>
-        <Reference Include="Microsoft.AppCenter.iOS.Bindings">
-            <HintPath>..\packages\Microsoft.AppCenter.1.6.1\lib\Xamarin.iOS10\Microsoft.AppCenter.iOS.Bindings.dll</HintPath>
-        </Reference>
-        <Reference Include="Microsoft.AppCenter.Analytics">
-            <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.6.1\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.dll</HintPath>
-        </Reference>
-        <Reference Include="Microsoft.AppCenter.Analytics.iOS.Bindings">
-            <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.6.1\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.iOS.Bindings.dll</HintPath>
-        </Reference>
-        <Reference Include="Microsoft.AppCenter.Crashes">
-            <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.6.1\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.dll</HintPath>
-        </Reference>
-        <Reference Include="Microsoft.AppCenter.Crashes.iOS.Bindings">
-            <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.6.1\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.iOS.Bindings.dll</HintPath>
         </Reference>
         <Reference Include="PInvoke.Windows.Core">
             <HintPath>..\packages\PInvoke.Windows.Core.0.5.152\lib\portable-net45+win8+wpa81\PInvoke.Windows.Core.dll</HintPath>
@@ -273,6 +252,24 @@
         <Reference Include="AWSSDK.S3">
           <HintPath>..\packages\AWSSDK.S3.3.3.18.4\lib\Xamarin.iOS10\AWSSDK.S3.dll</HintPath>
           <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.AppCenter">
+          <HintPath>..\packages\Microsoft.AppCenter.1.7.0\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.AppCenter.iOS.Bindings">
+          <HintPath>..\packages\Microsoft.AppCenter.1.7.0\lib\Xamarin.iOS10\Microsoft.AppCenter.iOS.Bindings.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.AppCenter.Analytics">
+          <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.7.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.AppCenter.Analytics.iOS.Bindings">
+          <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.7.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.iOS.Bindings.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.AppCenter.Crashes">
+          <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.7.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.AppCenter.Crashes.iOS.Bindings">
+          <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.7.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.iOS.Bindings.dll</HintPath>
         </Reference>
     </ItemGroup>
     <ItemGroup>

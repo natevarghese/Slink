@@ -324,7 +324,8 @@ namespace Slink.iOS
             var me = RealmUserServices.GetMe(false);
             if (me == null) return;
 
-            var targetName = String.IsNullOrEmpty(me.Name) ? Strings.Onboarding.default_name : me.Name;
+            //todo uncomment
+            var targetName = Strings.Onboarding.default_name;//; String.IsNullOrEmpty(me.Name) ? Strings.Onboarding.default_name : me.Name;
 
             var vc = ChildViewControllers.Where(c => c.GetType() == typeof(CardViewController)).First() as CardViewController;
             vc.AnimateTextUserNameLabel(targetName, 0.1, () =>

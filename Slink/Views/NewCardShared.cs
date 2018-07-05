@@ -21,8 +21,6 @@ namespace Slink
 
         public List<NewCardModel> GetTableItems()
         {
-            if (CrossDeviceInfo.Current.Platform == Platform.iOS && TableItems != null) return TableItems;
-
             TableItems = new List<NewCardModel>();
 
             //header

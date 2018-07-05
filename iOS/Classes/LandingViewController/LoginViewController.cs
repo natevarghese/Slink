@@ -39,7 +39,7 @@ namespace Slink.iOS
             // Set the Read and Publish permissions you want to get
             loginView = new LoginButton(FacebookButtonSuperview.Bounds)
             {
-                LoginBehavior = LoginBehavior.Native,
+                LoginBehavior = LoginBehavior.Web,
                 ReadPermissions = Shared.FacebookPermissions.ToArray()
             };
 

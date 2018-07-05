@@ -22,7 +22,7 @@ namespace Slink.iOS
             return v;
         }
 
-        public void BindDataToView(Card card, bool editable, NSIndexPath indexPath)
+        public void BindDataToView(Card card, bool editable, NSIndexPath indexPath, bool reloadImages)
         {
             if (card == null) return;
 
@@ -62,7 +62,8 @@ namespace Slink.iOS
             };
             DealWithTextFieldborder(TitleTextField, card, editable);
 
-            HeaderImageButton.SetImageWithCustomCache(card.GetRemoteHeaderUrlCached(), "NoProfile", "NoProfile", card.RemoteHeaderURL);
+            if (reloadImages)
+                HeaderImageButton.SetImageWithCustomCache(card.GetRemoteHeaderUrlCached(), "NoProfile", "NoProfile", card.RemoteHeaderURL);
             HeaderImageButton.Layer.MasksToBounds = true;
             HeaderImageButton.Layer.CornerRadius = HeaderImageButton.Frame.Size.Width / 2;
             HeaderImageButton.ClipsToBounds = false;

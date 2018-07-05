@@ -22,7 +22,7 @@ namespace Slink
         async public Task<bool> CreateUser(string facebookToken)
         {
             IPersistantStorage iPersistant = ServiceLocator.Instance.Resolve<IPersistantStorage>();
-            if (iPersistant == null) return false;
+            if (iPersistant == null) { AppCenterManager.Report("4.4"); return false; }
             iPersistant.SetFacebookToken(facebookToken);
 
             try
@@ -32,6 +32,7 @@ namespace Slink
             catch (Exception er)
             {
                 AppCenterManager.Report(er);
+                AppCenterManager.Report("4.1");
                 return false;
             }
 
@@ -46,6 +47,7 @@ namespace Slink
             catch (Exception er)
             {
                 AppCenterManager.Report(er);
+                AppCenterManager.Report("4.2");
             }
 
             return false;

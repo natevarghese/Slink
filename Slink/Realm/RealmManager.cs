@@ -12,8 +12,6 @@ namespace Slink
         static volatile RealmManager instance;
         static object syncRoot = new Object();
 
-        public static string realm_server_ip = "http://13.58.109.11:9080";
-
         public void Trim() { }
 
 
