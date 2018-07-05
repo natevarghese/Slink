@@ -18,8 +18,8 @@ namespace Slink
 
             Dictionary<string, string> Parameters = new Dictionary<string, string>();
             Parameters.Add("code", token);
-            Parameters.Add("client_id", Strings.SlinkKeys.github_client_id);
-            Parameters.Add("client_secret", Strings.SlinkKeys.github_client_secret);
+            Parameters.Add("client_id", NotSensitive.SlinkKeys.github_client_id);
+            Parameters.Add("client_secret", NotSensitive.SlinkKeys.github_client_secret);
             Parameters.Add("accept", "json");
 
             HttpResponseMessage contentsTask = null;

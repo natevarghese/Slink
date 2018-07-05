@@ -9,7 +9,7 @@ namespace Slink
     {
         public static OAuth1Authenticator GetTwitterAuthenticator(Action<bool> sucessful)
         {
-            var auth = new OAuth1Authenticator(Strings.SlinkKeys.twitter_consumer_key, Strings.SlinkKeys.twitter_consumer_secret,
+            var auth = new OAuth1Authenticator(NotSensitive.SlinkKeys.twitter_consumer_key, NotSensitive.SlinkKeys.twitter_consumer_secret,
                   new Uri("https://api.twitter.com/oauth/request_token"),
                   new Uri("https://api.twitter.com/oauth/authorize"),
                     new Uri("https://api.twitter.com/oauth/access_token"), new Uri("https://mobile.twitter.com/home"));

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -27,7 +27,7 @@ namespace Slink
             if (!Client.DefaultRequestHeaders.Accept.Contains(MediaTypeWithQualityHeaderValueJson))
                 Client.DefaultRequestHeaders.Accept.Add(MediaTypeWithQualityHeaderValueJson);
 
-            StringBuilder stringBuilder = new StringBuilder(Strings.SystemUrls.base_url + endpoint.Controller + endpoint.URL);
+            StringBuilder stringBuilder = new StringBuilder(NotSensitive.SystemUrls.base_url + endpoint.Controller + endpoint.URL);
             if (appendString != null && appendString.Count > 0)
             {
                 stringBuilder.Append("/");

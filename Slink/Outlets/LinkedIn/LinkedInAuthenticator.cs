@@ -20,8 +20,8 @@ namespace Slink
             Parameters.Add("grant_type", "authorization_code");
             Parameters.Add("code", token);
             Parameters.Add("redirect_uri", "https://mobile.linkedin.com");
-            Parameters.Add("client_id", Strings.SlinkKeys.linkedin_client_id);
-            Parameters.Add("client_secret", Strings.SlinkKeys.linkedin_client_secret);
+            Parameters.Add("client_id", NotSensitive.SlinkKeys.linkedin_client_id);
+            Parameters.Add("client_secret", NotSensitive.SlinkKeys.linkedin_client_secret);
 
 
             var contentsTask = await client.PostAsync("https://www.linkedin.com/uas/oauth2/accessToken", new FormUrlEncodedContent(Parameters));

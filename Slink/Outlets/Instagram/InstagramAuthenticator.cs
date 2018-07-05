@@ -17,9 +17,9 @@ namespace Slink
             Dictionary<string, string> Parameters = new Dictionary<string, string>();
             Parameters.Add("grant_type", "authorization_code");
             Parameters.Add("code", token);
-            Parameters.Add("redirect_uri", Strings.SystemUrls.instagram_redirect_url);
-            Parameters.Add("client_id", Strings.SlinkKeys.instagram_client_id);
-            Parameters.Add("client_secret", Strings.SlinkKeys.instagram_client_secret);
+            Parameters.Add("redirect_uri", NotSensitive.SystemUrls.instagram_redirect_url);
+            Parameters.Add("client_id", NotSensitive.SlinkKeys.instagram_client_id);
+            Parameters.Add("client_secret", NotSensitive.SlinkKeys.instagram_client_secret);
 
 
             var contentsTask = await client.PostAsync("https://api.instagram.com/oauth/access_token", new FormUrlEncodedContent(Parameters));

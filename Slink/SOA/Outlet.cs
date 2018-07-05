@@ -45,7 +45,7 @@ namespace Slink
         {
             get
             {
-                return Strings.SystemUrls.s3_url + "Outlets/" + outlet_image_version + "/" + Type.ToLowerInvariant() + ".png";
+                return NotSensitive.SystemUrls.s3_url + "Outlets/" + outlet_image_version + "/" + Type.ToLowerInvariant() + ".png";
             }
             set { }
         }

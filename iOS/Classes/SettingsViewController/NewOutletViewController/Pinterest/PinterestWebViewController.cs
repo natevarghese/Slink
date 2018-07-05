@@ -24,10 +24,10 @@ namespace Slink.iOS
 
             string AuthorizeUrl = "https://api.pinterest.com/oauth/?";
             AuthorizeUrl += "response_type=code&";
-            AuthorizeUrl += "client_id=" + Strings.SlinkKeys.pinterest_client_id + "&";
+            AuthorizeUrl += "client_id=" + NotSensitive.SlinkKeys.pinterest_client_id + "&";
             AuthorizeUrl += "state=" + "SLINKNILS" + "&";
             AuthorizeUrl += "scope=" + "read_public" + "&";
-            AuthorizeUrl += "redirect_uri=" + Strings.SystemUrls.pinterest_redirect_url;
+            AuthorizeUrl += "redirect_uri=" + NotSensitive.SystemUrls.pinterest_redirect_url;
             Console.WriteLine(AuthorizeUrl);
 
             var webViewDelegate = new PinterestWebViewDelegate();
@@ -85,9 +85,9 @@ namespace Slink.iOS
         public override bool ShouldStartLoad(UIWebView webView, Foundation.NSUrlRequest request, UIWebViewNavigationType navigationType)
         {
             var url = request.Url.AbsoluteString;
-            if (url.Contains(Strings.SystemUrls.pinterest_redirect_url))
+            if (url.Contains(NotSensitive.SystemUrls.pinterest_redirect_url))
             {
-                if (url.Contains(Strings.SystemUrls.instagram_redirect_url + "/?code") || url.Contains("&code"))
+                if (url.Contains(NotSensitive.SystemUrls.instagram_redirect_url + "/?code") || url.Contains("&code"))
                 {
                     var separatedByAmpersand = url.Split('&');
                     foreach (string sub in separatedByAmpersand)

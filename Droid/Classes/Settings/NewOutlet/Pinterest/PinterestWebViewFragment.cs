@@ -29,9 +29,9 @@ namespace Slink.Droid
 
         async void ProcessRequest(string url)
         {
-            if (url.Contains(Strings.SystemUrls.pinterest_redirect_url))
+            if (url.Contains(NotSensitive.SystemUrls.pinterest_redirect_url))
             {
-                if (url.Contains(Strings.SystemUrls.instagram_redirect_url + "/?code") || url.Contains("&code"))
+                if (url.Contains(NotSensitive.SystemUrls.instagram_redirect_url + "/?code") || url.Contains("&code"))
                 {
                     var separatedByAmpersand = url.Split('&');
                     foreach (string sub in separatedByAmpersand)
@@ -64,10 +64,10 @@ namespace Slink.Droid
         {
             string AuthorizeUrl = "https://api.pinterest.com/oauth/?";
             AuthorizeUrl += "response_type=code&";
-            AuthorizeUrl += "client_id=" + Strings.SlinkKeys.pinterest_client_id + "&";
+            AuthorizeUrl += "client_id=" + NotSensitive.SlinkKeys.pinterest_client_id + "&";
             AuthorizeUrl += "state=" + "SLINKNILS" + "&";
             AuthorizeUrl += "scope=" + "read_public" + "&";
-            AuthorizeUrl += "redirect_uri=" + Strings.SystemUrls.pinterest_redirect_url;
+            AuthorizeUrl += "redirect_uri=" + NotSensitive.SystemUrls.pinterest_redirect_url;
             Console.WriteLine(AuthorizeUrl);
             return AuthorizeUrl;
         }

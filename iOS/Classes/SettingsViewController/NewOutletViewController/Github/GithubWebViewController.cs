@@ -22,7 +22,7 @@ namespace Slink.iOS
             //clear cookies
             WebUtils.ClearCookies();
 
-            string AuthorizeUrl = "https://github.com/login/oauth/authorize?scope=user:email&client_id=" + Strings.SlinkKeys.github_client_id;
+            string AuthorizeUrl = "https://github.com/login/oauth/authorize?scope=user:email&client_id=" + NotSensitive.SlinkKeys.github_client_id;
             Console.WriteLine(AuthorizeUrl);
 
             var webViewDelegate = new GithubWebViewDelegate();
@@ -81,7 +81,7 @@ namespace Slink.iOS
         public override bool ShouldStartLoad(UIWebView webView, Foundation.NSUrlRequest request, UIWebViewNavigationType navigationType)
         {
             var url = request.Url.AbsoluteString;
-            if (url.Contains(Strings.SystemUrls.github_redirect_url + "/?code") || url.Contains("&code"))
+            if (url.Contains(NotSensitive.SystemUrls.github_redirect_url + "/?code") || url.Contains("&code"))
             {
                 var separatedByQestionMark = url.Split('?');
                 foreach (string sub in separatedByQestionMark)

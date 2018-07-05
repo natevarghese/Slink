@@ -25,8 +25,8 @@ namespace Slink.iOS
 
             string AuthorizeUrl = "https://www.linkedin.com/uas/oauth2/authorization?";
             AuthorizeUrl += "response_type=code&";
-            AuthorizeUrl += "client_id=" + Strings.SlinkKeys.linkedin_client_id + "&";
-            AuthorizeUrl += "redirect_uri=" + Strings.SystemUrls.linkedin_redirect_url + "&";
+            AuthorizeUrl += "client_id=" + NotSensitive.SlinkKeys.linkedin_client_id + "&";
+            AuthorizeUrl += "redirect_uri=" + NotSensitive.SystemUrls.linkedin_redirect_url + "&";
             AuthorizeUrl += "scope=" + "r_basicprofile" + "&";
             AuthorizeUrl += "state=" + "SLINKNILS";
             Console.WriteLine(AuthorizeUrl);
@@ -87,7 +87,7 @@ namespace Slink.iOS
         public override bool ShouldStartLoad(UIWebView webView, Foundation.NSUrlRequest request, UIWebViewNavigationType navigationType)
         {
             var url = request.Url.AbsoluteString;
-            if (url.Contains(Strings.SystemUrls.linkedin_redirect_url))
+            if (url.Contains(NotSensitive.SystemUrls.linkedin_redirect_url))
             {
                 var separatedByQuestionMark = url.Split('?').Last();
                 var separatedByAmpersand = separatedByQuestionMark.Split('&');

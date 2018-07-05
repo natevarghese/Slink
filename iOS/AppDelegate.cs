@@ -50,8 +50,8 @@ namespace Slink.iOS
             ServiceLocator.Instance.Add<IBroadcastNotificaion, BroadCastNotificaion>();
 
             Profile.EnableUpdatesOnAccessTokenChange(true);
-            Settings.AppID = Strings.SlinkKeys.facebook_app_id;
-            Settings.DisplayName = Strings.SlinkKeys.facebook_display_name;
+            Settings.AppID = NotSensitive.SlinkKeys.facebook_app_id;
+            Settings.DisplayName = NotSensitive.SlinkKeys.facebook_display_name;
 
             if (RealmUserServices.DidUserPersist())
                 ApplicationExtensions.EnterApplication(false, true);
@@ -126,7 +126,7 @@ namespace Slink.iOS
         #region Push Notificaions
         public void SetUpPushNotificaions()
         {
-            OneSignal.Current.StartInit(Strings.SlinkKeys.one_signal_app_id)
+            OneSignal.Current.StartInit(NotSensitive.SlinkKeys.one_signal_app_id)
                      .InFocusDisplaying(OSInFocusDisplayOption.None)
                      .HandleNotificationReceived(HandleNotificationReceived)
                      .HandleNotificationOpened(HandleNotificationOpened)

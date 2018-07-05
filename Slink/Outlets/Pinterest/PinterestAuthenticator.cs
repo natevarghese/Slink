@@ -17,9 +17,9 @@ namespace Slink
             Dictionary<string, string> Parameters = new Dictionary<string, string>();
             Parameters.Add("grant_type", "authorization_code");
             Parameters.Add("code", token);
-            Parameters.Add("redirect_uri", Strings.SystemUrls.pinterest_redirect_url);
-            Parameters.Add("client_id", Strings.SlinkKeys.pinterest_client_id);
-            Parameters.Add("client_secret", Strings.SlinkKeys.pinterest_client_secret);
+            Parameters.Add("redirect_uri", NotSensitive.SystemUrls.pinterest_redirect_url);
+            Parameters.Add("client_id", NotSensitive.SlinkKeys.pinterest_client_id);
+            Parameters.Add("client_secret", NotSensitive.SlinkKeys.pinterest_client_secret);
 
 
             var contentsTask = await client.PostAsync("https://api.pinterest.com/v1/oauth/token", new FormUrlEncodedContent(Parameters));

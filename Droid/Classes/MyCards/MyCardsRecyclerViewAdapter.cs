@@ -59,7 +59,7 @@ namespace Slink.Droid
 
         public void BindDataToView(Context context, int position, string text)
         {
-            p MyPosition = position;
+            MyPosition = position;
 
             TextView.Text = text;
             TextView.SetTypeface(Typeface.Default, TypefaceStyle.Bold);

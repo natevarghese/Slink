@@ -41,7 +41,7 @@ namespace Slink
             //AppCenterManager.Report("Facebook: " + facebookToken);
 
             var credentials = Credentials.Facebook(facebookToken);
-            await User.LoginAsync(credentials, new Uri(Strings.SystemUrls.realm_server_ip));
+            await User.LoginAsync(credentials, new Uri(NotSensitive.SystemUrls.realm_server_ip));
 
             if (User.Current == null)
             {

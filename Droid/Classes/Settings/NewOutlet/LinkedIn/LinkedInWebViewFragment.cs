@@ -29,7 +29,7 @@ namespace Slink.Droid
 
         async void ProcessRequest(string url)
         {
-            if (url.Contains(Strings.SystemUrls.linkedin_redirect_url))
+            if (url.Contains(NotSensitive.SystemUrls.linkedin_redirect_url))
             {
                 var separatedByQuestionMark = url.Split('?').Last();
                 var separatedByAmpersand = separatedByQuestionMark.Split('&');
@@ -61,8 +61,8 @@ namespace Slink.Droid
         {
             string AuthorizeUrl = "https://www.linkedin.com/uas/oauth2/authorization?";
             AuthorizeUrl += "response_type=code&";
-            AuthorizeUrl += "client_id=" + Strings.SlinkKeys.linkedin_client_id + "&";
-            AuthorizeUrl += "redirect_uri=" + Strings.SystemUrls.linkedin_redirect_url + "&";
+            AuthorizeUrl += "client_id=" + NotSensitive.SlinkKeys.linkedin_client_id + "&";
+            AuthorizeUrl += "redirect_uri=" + NotSensitive.SystemUrls.linkedin_redirect_url + "&";
             AuthorizeUrl += "scope=" + "r_basicprofile" + "&";
             AuthorizeUrl += "state=" + "SLINKNILS";
             Console.WriteLine(AuthorizeUrl);

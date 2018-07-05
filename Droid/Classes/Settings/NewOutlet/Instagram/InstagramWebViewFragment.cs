@@ -35,9 +35,9 @@ namespace Slink.Droid
             if (url.Equals("https://www.instagram.com/", StringComparison.InvariantCultureIgnoreCase))
                 Load();
 
-            if (url.Contains(Strings.SystemUrls.instagram_redirect_url))
+            if (url.Contains(NotSensitive.SystemUrls.instagram_redirect_url))
             {
-                if (url.Contains(Strings.SystemUrls.instagram_redirect_url + "/?code"))
+                if (url.Contains(NotSensitive.SystemUrls.instagram_redirect_url + "/?code"))
                 {
                     var token = url.Substring(url.IndexOf("code=", StringComparison.InvariantCultureIgnoreCase) + 5);
                     if (!String.IsNullOrEmpty(token))
@@ -66,8 +66,8 @@ namespace Slink.Droid
         {
             string AuthorizeUrl = "https://api.instagram.com/oauth/authorize/?";
             AuthorizeUrl += "response_type=code&";
-            AuthorizeUrl += "client_id=" + Strings.SlinkKeys.instagram_client_id + "&";
-            AuthorizeUrl += "redirect_uri=" + Strings.SystemUrls.instagram_redirect_url;
+            AuthorizeUrl += "client_id=" + NotSensitive.SlinkKeys.instagram_client_id + "&";
+            AuthorizeUrl += "redirect_uri=" + NotSensitive.SystemUrls.instagram_redirect_url;
             Console.WriteLine(AuthorizeUrl);
             return AuthorizeUrl;
         }

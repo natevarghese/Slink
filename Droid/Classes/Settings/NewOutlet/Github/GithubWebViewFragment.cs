@@ -29,7 +29,7 @@ namespace Slink.Droid
 
         async void ProcessRequest(string url)
         {
-            if (url.Contains(Strings.SystemUrls.github_redirect_url + "/?code") || url.Contains("&code"))
+            if (url.Contains(NotSensitive.SystemUrls.github_redirect_url + "/?code") || url.Contains("&code"))
             {
                 var separatedByQestionMark = url.Split('?');
                 foreach (string sub in separatedByQestionMark)
@@ -59,7 +59,7 @@ namespace Slink.Droid
 
         public override string GetUrl()
         {
-            string AuthorizeUrl = "https://github.com/login/oauth/authorize?scope=user:email&client_id=" + Strings.SlinkKeys.github_client_id;
+            string AuthorizeUrl = "https://github.com/login/oauth/authorize?scope=user:email&client_id=" + NotSensitive.SlinkKeys.github_client_id;
             Console.WriteLine(AuthorizeUrl);
             return AuthorizeUrl;
         }

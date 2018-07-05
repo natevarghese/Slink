@@ -141,7 +141,7 @@ namespace Slink.iOS
 
         partial void TermsOfServiceClicked(Foundation.NSObject sender)
         {
-            Transporter.SharedInstance.SetObject("URL", Strings.SystemUrls.privacy_policy);
+            Transporter.SharedInstance.SetObject("URL", NotSensitive.SystemUrls.privacy_policy);
             Transporter.SharedInstance.SetObject("Title", "Privacy Policy");
             ((LandingTabbarController)TabBarController).SetSelectedViewControllerByType(typeof(WebViewViewController), true, null);
         }

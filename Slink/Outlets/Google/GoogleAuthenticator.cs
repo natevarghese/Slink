@@ -10,7 +10,7 @@ namespace Slink
     {
         async public static Task<string> GetProfileURL(string userid)
         {
-            string url = "https://www.googleapis.com/plus/v1/people/" + userid + "?fields=image&key=" + Strings.SlinkKeys.google_plus_api_key;
+            string url = "https://www.googleapis.com/plus/v1/people/" + userid + "?fields=image&key=" + NotSensitive.SlinkKeys.google_plus_api_key;
 
             var client2 = new HttpClient();
             client2.Timeout = TimeSpan.FromSeconds(10);

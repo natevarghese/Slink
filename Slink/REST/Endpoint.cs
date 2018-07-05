@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 using System.Collections.Generic;
 
 namespace Slink
@@ -127,7 +127,7 @@ namespace Slink
                     break;
             }
 
-            return new Endpoint(0, Strings.SystemUrls.base_url, serviceType);
+            return new Endpoint(0, NotSensitive.SystemUrls.base_url, serviceType);
         }
     }
 }
