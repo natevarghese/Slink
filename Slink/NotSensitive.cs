@@ -25,7 +25,7 @@ namespace Slink
         public class SystemUrls
         {
             public static string realm_server_ip = "http://realm-2129060701.us-east-2.elb.amazonaws.com:9080";
-            public static string base_url = "http://api-2090217776.us-east-2.elb.amazonaws.com/";
+            public static string base_url = "http://slink.emxjrwmicm.us-east-2.elasticbeanstalk.com/";//"http://api-2090217776.us-east-2.elb.amazonaws.com/"; //not working ios, ask shlomo
             public static string s3_url = "https://s3.us-east-2.amazonaws.com/slinka/";
             public static string linkedin_redirect_url = "https://mobile.linkedin.com";
             public static string instagram_redirect_url = "https://www.instagram.com";
@@ -33,6 +33,5 @@ namespace Slink
             public static string github_redirect_url = "https://github.com";
             public static string privacy_policy = "http://nvcomputers.com/privacyPolicy/";
         }
-
     }
 }
