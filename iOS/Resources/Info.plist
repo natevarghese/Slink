@@ -7,7 +7,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.nvcomputers.SlinkApp</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.9</string>
+	<string>1.1.10</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>

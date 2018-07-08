@@ -1,6 +1,9 @@
 ﻿
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using Android.App;
+using Android.Gms.Ads;
 using Android.OS;
 using Android.Support.Design.Internal;
 using Android.Support.Design.Widget;
@@ -9,12 +12,23 @@ using Android.Support.V4.Widget;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using Newtonsoft.Json.Linq;
+using Org.Json;
+using Xamarin.Facebook;
+using Xamarin.Facebook.Core;
+using static Google.Ads.AdRequest;
 
 namespace Slink.Droid
 {
     [Activity(Label = " ", Theme = "@style/NoActionBarTheme", WindowSoftInputMode = SoftInput.StateHidden | SoftInput.AdjustPan)]
     public class MainActivity : BaseActivity
     {
+        AdView mAdView;
+        bool ShowsAds = true; //todo not dynamic
+
+        string AdKeyGender = "gender";
+        string AdKeyBirthday = "birthday";
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -75,9 +89,98 @@ namespace Slink.Droid
             handelTextView.Text = me.Handle;
 
             UpdateToolbar();
+
+            mAdView = FindViewById<AdView>(Resource.Id.adView);
+
+            if (ShowsAds)
+            {
+                var iPersistant = ServiceLocator.Instance.Resolve<IPersistantStorage>();
+                var facebookToken = iPersistant.GetFacebookToken();
+
+                var facebookCallback = new FacebookCallback();
+                facebookCallback.OnCompletedAction += (GraphResponse obj) =>
+                {
+                    if (obj == null || obj.RawResponse == null) return;
+
+                    var token = JToken.Parse(obj.RawResponse.ToString());
+                    if (token == null) return;
+
+                    var dict = new Dictionary<string, string>();
+
+                    if (token[AdKeyGender] != null)
+                        dict.Add(AdKeyGender, token[AdKeyGender].ToString());
+
+                    if (token[AdKeyBirthday] != null)
+                        dict.Add(AdKeyBirthday, token[AdKeyBirthday].ToString());
+
+                    ShowBanner(dict);
+                };
+                var request = GraphRequest.NewMeRequest(AccessToken.CurrentAccessToken, facebookCallback);
+
+                var parameters = new Bundle();
+                parameters.PutString("fields", "gender,birthday");
+                request.Parameters = parameters;
+                request.ExecuteAsync();
+
+                //var requestConnection = new graph GraphRequestConnection();
+                //requestConnection.AddRequest(graphRequest, (connection, result, error) =>
+                //{
+                //    var data = result as NSDictionary;
+                //    if (data == null) return;
+
+                //    var dict = new Dictionary<string, string>();
+
+                //    if (data.ContainsKey(new NSString(AdKeyGender)))
+                //        dict.Add(AdKeyGender, data[AdKeyGender].ToString());
+
+                //    if (data.ContainsKey(new NSString(AdKeyBirthday)))
+                //        dict.Add(AdKeyBirthday, data[AdKeyBirthday].ToString());
+
+                //    ShowBanner(dict);
+                //});
+                //requestConnection.Start();
+            }
         }
 
+        void ShowBanner(Dictionary<string, string> advertisingTargetInfo)
+        {
+            mAdView.LoadAd(GetRequest(advertisingTargetInfo));
+        }
+        AdRequest GetRequest(Dictionary<string, string> advertisingTargetInfo)
+        {
+            var request = new AdRequest.Builder();
+            request.AddTestDevice(AdRequest.DeviceIdEmulator);
+            request.AddTestDevice("260661DE96DFEDE845160916AD01F3CA"); //samsung tablet
 
+            //Gender
+            var gender = Gender.Unknown;
+            if (advertisingTargetInfo.ContainsKey(AdKeyGender))
+            {
+                gender = advertisingTargetInfo[AdKeyGender].Equals("female", StringComparison.InvariantCultureIgnoreCase) ? Gender.Female : Gender.Male;
+                request.SetGender((int)gender);
+            }
+
+            //Location
+            var location = RealmServices.GetLastUserLocation();
+            if (location != null)
+            {
+                var loc = new Android.Locations.Location("");
+                loc.Latitude = location.Latitude;
+                loc.Longitude = location.Longitude;
+                loc.Accuracy = 1;
+                request.SetLocation(loc);
+            }
+
+            //Birthday
+            if (advertisingTargetInfo.ContainsKey(AdKeyBirthday))
+            {
+                var birthday = DateTime.ParseExact(advertisingTargetInfo[AdKeyBirthday], "MM/dd/yyyy", null);
+                var bith = new Java.Util.Date(birthday.Year, birthday.Month, birthday.Day);
+                request.SetBirthday(bith);
+            }
+
+            return request.Build();
+        }
         public override void OnBackPressed()
         {
             if (SupportFragmentManager.BackStackEntryCount > 0)
@@ -98,6 +201,18 @@ namespace Slink.Droid
                 resourceId = Resource.Drawable.ic_menu_white_24dp;
 
             SetToolbar(resourceId);
+        }
+
+
+    }
+
+    public class FacebookCallback : Java.Lang.Object, GraphRequest.IGraphJSONObjectCallback
+    {
+        public Action<GraphResponse> OnCompletedAction;
+
+        public void OnCompleted(JSONObject @object, GraphResponse response)
+        {
+            OnCompletedAction?.Invoke(response);
         }
     }
 }
