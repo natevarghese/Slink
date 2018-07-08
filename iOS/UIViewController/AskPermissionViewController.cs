@@ -7,7 +7,7 @@ namespace Slink.iOS
     public class AskPermissionViewController : UIViewController
     {
         public bool LocationEnabled = false;
-        public LocationManager LocationManager;
+        public static LocationManager LocationManager;
 
         public AskPermissionViewController() : base() { }
         public AskPermissionViewController(IntPtr handle) : base(handle) { }

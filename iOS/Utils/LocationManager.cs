@@ -13,9 +13,7 @@ namespace Slink.iOS
             this.locMgr.PausesLocationUpdatesAutomatically = false;
 
             if (UIDevice.CurrentDevice.CheckSystemVersion(9, 0))
-            {
-                locMgr.AllowsBackgroundLocationUpdates = true;
-            }
+                locMgr.AllowsBackgroundLocationUpdates = false;
         }
 
         public CLLocationManager LocMgr

@@ -229,8 +229,8 @@ namespace Slink
 
         public static Card Create()
         {
-            var realm = RealmManager.SharedInstance.GetRealm(null);
             var me = RealmUserServices.GetMe(false);
+            if (me == null) return null;
 
             var card = new Card();
             card.CompanyNameTextColor = ColorUtils.ToHexString(ColorUtils.GetColor(ColorUtils.ColorType.Black));
@@ -240,6 +240,8 @@ namespace Slink
             card.UUID = Guid.NewGuid().ToString();
             card.UserDisplayName = me.Name;
             card.Retained = true;
+
+            var realm = RealmManager.SharedInstance.GetRealm(null);
             realm.Write(() =>
             {
                 realm.Add(card);

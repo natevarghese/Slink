@@ -29,10 +29,5 @@ namespace Slink.iOS
                 WebView.LoadRequest(new NSUrlRequest(NSUrl.FromString(URL)));
         }
 
-        public override void DidReceiveMemoryWarning()
-        {
-            base.DidReceiveMemoryWarning();
-            // Release any cached data, images, etc that aren't in use.
-        }
     }
 }

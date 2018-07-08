@@ -15,6 +15,7 @@ namespace Slink
     {
         static HttpClient Client = new HttpClient();
         static MediaTypeWithQualityHeaderValue MediaTypeWithQualityHeaderValueJson = new MediaTypeWithQualityHeaderValue("application/json");
+        static string applicationjson = "application/json";
 
         public static HttpClient GetHttpClient(NVCEndpoint endpoint, List<string> appendString)
         {
@@ -123,7 +124,7 @@ namespace Slink
         public static async Task<HttpResponseMessage> Put(NVCEndpoint endpoint, Dictionary<string, object> Parameters, List<String> appendString)
         {
             var client = GetHttpClient(endpoint, appendString);
-            return await client.PutAsync(endpoint.URL, new StringContent(JsonConvert.SerializeObject(Parameters), Encoding.UTF8, "application/json"));
+            return await client.PutAsync(endpoint.URL, new StringContent(JsonConvert.SerializeObject(Parameters), Encoding.UTF8, applicationjson));
         }
 
         //POST
@@ -137,7 +138,7 @@ namespace Slink
             if (Parameters != null)
             {
                 contentString = JsonConvert.SerializeObject(Parameters).ToString();
-                contentHttp = new StringContent(contentString, Encoding.UTF8, "application/json");
+                contentHttp = new StringContent(contentString, Encoding.UTF8, applicationjson);
             }
 
             return await client.PostAsync(endpoint.URL, contentHttp);
@@ -148,7 +149,7 @@ namespace Slink
             if (Parameters == null)
                 return await client.PostAsync(endpoint.URL, null);
 
-            var content = new StringContent(JsonConvert.SerializeObject(Parameters), Encoding.UTF8, "application/json");
+            var content = new StringContent(JsonConvert.SerializeObject(Parameters), Encoding.UTF8, applicationjson);
             return await client.PostAsync(endpoint.URL, content);
         }
         public static async Task<HttpResponseMessage> PostFormData(NVCEndpoint endpoint, Dictionary<string, object> Parameters, List<String> appendString)

@@ -1,15 +1,12 @@
 ﻿
-using System.Threading.Tasks;
+using System;
 using System.Net;
-
+using System.Threading.Tasks;
+using Amazon;
 using Amazon.CognitoIdentity;
+using Amazon.Runtime.Internal.Auth;
 using Amazon.S3;
 using Amazon.S3.Model;
-using Amazon;
-using Amazon.Auth.AccessControlPolicy.ActionIdentifiers;
-using System;
-using System.Text;
-using Amazon.Runtime.Internal.Auth;
 using PCLStorage;
 
 namespace Slink

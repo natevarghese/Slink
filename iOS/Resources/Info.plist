@@ -91,7 +91,6 @@
 	<string>Your location is used to figure out if you are nearby another person else sharing a card</string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>location</string>
 		<string>remote-notification</string>
 	</array>
 	<key>NSCalendarsUsageDescription</key>
