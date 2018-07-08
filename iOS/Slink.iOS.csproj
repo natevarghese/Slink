@@ -119,12 +119,6 @@
         <Reference Include="Google.Core">
             <HintPath>..\packages\Xamarin.Google.iOS.Core.3.1.0.1\lib\Xamarin.iOS10\Google.Core.dll</HintPath>
         </Reference>
-        <Reference Include="Plugin.Connectivity.Abstractions">
-            <HintPath>..\packages\Xam.Plugin.Connectivity.3.1.1\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
-        </Reference>
-        <Reference Include="Plugin.Connectivity">
-            <HintPath>..\packages\Xam.Plugin.Connectivity.3.1.1\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
-        </Reference>
         <Reference Include="Remotion.Linq">
             <HintPath>..\packages\Remotion.Linq.2.2.0\lib\portable-net45+win+wpa81+wp80\Remotion.Linq.dll</HintPath>
         </Reference>
@@ -156,15 +150,6 @@
         <Reference Include="SQLitePCLRaw.batteries_v2">
             <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.11\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
             <Private>False</Private>
-        </Reference>
-        <Reference Include="Microsoft.IdentityModel.Logging">
-            <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.2.2\lib\netstandard1.4\Microsoft.IdentityModel.Logging.dll</HintPath>
-        </Reference>
-        <Reference Include="Microsoft.IdentityModel.Tokens">
-            <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.2.2\lib\netstandard1.4\Microsoft.IdentityModel.Tokens.dll</HintPath>
-        </Reference>
-        <Reference Include="System.IdentityModel.Tokens.Jwt">
-            <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.2\lib\netstandard1.4\System.IdentityModel.Tokens.Jwt.dll</HintPath>
         </Reference>
         <Reference Include="Xamarin.Auth">
             <HintPath>..\packages\Xamarin.Auth.1.6.0.2\lib\Xamarin.iOS10\Xamarin.Auth.dll</HintPath>
@@ -214,9 +199,6 @@
         <Reference Include="Splat">
           <HintPath>..\packages\Splat.4.0.0\lib\xamarinios10\Splat.dll</HintPath>
         </Reference>
-        <Reference Include="System.Runtime.CompilerServices.Unsafe">
-          <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-        </Reference>
         <Reference Include="Realm">
           <HintPath>..\packages\Realm.Database.3.0.0\lib\netstandard1.4\Realm.dll</HintPath>
         </Reference>
@@ -228,30 +210,6 @@
         </Reference>
         <Reference Include="Plugin.Geolocator">
           <HintPath>..\packages\Xam.Plugin.Geolocator.4.5.0.6\lib\xamarinios10\Plugin.Geolocator.dll</HintPath>
-        </Reference>
-        <Reference Include="Newtonsoft.Json">
-          <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="AWSSDK.Core">
-          <HintPath>..\packages\AWSSDK.Core.3.3.24.1\lib\Xamarin.iOS10\AWSSDK.Core.dll</HintPath>
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="AWSSDK.SecurityToken">
-          <HintPath>..\packages\AWSSDK.SecurityToken.3.3.4.5\lib\Xamarin.iOS10\AWSSDK.SecurityToken.dll</HintPath>
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="AWSSDK.CognitoIdentity">
-          <HintPath>..\packages\AWSSDK.CognitoIdentity.3.3.2.24\lib\Xamarin.iOS10\AWSSDK.CognitoIdentity.dll</HintPath>
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="AWSSDK.CognitoSync">
-          <HintPath>..\packages\AWSSDK.CognitoSync.3.3.1.33\lib\Xamarin.iOS10\AWSSDK.CognitoSync.dll</HintPath>
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="AWSSDK.S3">
-          <HintPath>..\packages\AWSSDK.S3.3.3.18.4\lib\Xamarin.iOS10\AWSSDK.S3.dll</HintPath>
-          <Private>False</Private>
         </Reference>
         <Reference Include="Microsoft.AppCenter">
           <HintPath>..\packages\Microsoft.AppCenter.1.7.0\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
@@ -270,6 +228,54 @@
         </Reference>
         <Reference Include="Microsoft.AppCenter.Crashes.iOS.Bindings">
           <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.7.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.iOS.Bindings.dll</HintPath>
+        </Reference>
+        <Reference Include="AWSSDK.Core">
+          <HintPath>..\packages\AWSSDK.Core.3.3.24.3\lib\Xamarin.iOS10\AWSSDK.Core.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="AWSSDK.SecurityToken">
+          <HintPath>..\packages\AWSSDK.SecurityToken.3.3.4.7\lib\Xamarin.iOS10\AWSSDK.SecurityToken.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="AWSSDK.CognitoIdentity">
+          <HintPath>..\packages\AWSSDK.CognitoIdentity.3.3.2.26\lib\Xamarin.iOS10\AWSSDK.CognitoIdentity.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="AWSSDK.CognitoSync">
+          <HintPath>..\packages\AWSSDK.CognitoSync.3.3.1.35\lib\Xamarin.iOS10\AWSSDK.CognitoSync.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="AWSSDK.S3">
+          <HintPath>..\packages\AWSSDK.S3.3.3.18.6\lib\Xamarin.iOS10\AWSSDK.S3.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Plugin.FileSystem">
+          <HintPath>..\packages\Xam.Plugin.FileSystem.1.0.10\lib\xamarinios10\Plugin.FileSystem.dll</HintPath>
+        </Reference>
+        <Reference Include="Plugin.Connectivity.Abstractions">
+          <HintPath>..\packages\Xam.Plugin.Connectivity.3.2.0\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
+        </Reference>
+        <Reference Include="Plugin.Connectivity">
+          <HintPath>..\packages\Xam.Plugin.Connectivity.3.2.0\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.IdentityModel.Logging">
+          <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.2.4\lib\netstandard1.4\Microsoft.IdentityModel.Logging.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.IdentityModel.Tokens">
+          <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.2.4\lib\netstandard1.4\Microsoft.IdentityModel.Tokens.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.IdentityModel.JsonWebTokens">
+          <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.2.4\lib\netstandard1.4\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+        </Reference>
+        <Reference Include="System.IdentityModel.Tokens.Jwt">
+          <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.4\lib\netstandard1.4\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Runtime.CompilerServices.Unsafe">
+          <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+        </Reference>
+        <Reference Include="Newtonsoft.Json">
+          <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+          <Private>False</Private>
         </Reference>
     </ItemGroup>
     <ItemGroup>

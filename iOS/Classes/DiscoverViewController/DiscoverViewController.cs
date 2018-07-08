@@ -82,6 +82,12 @@ namespace Slink.iOS
 
             StartLocationManager();
         }
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            StartSearching();
+        }
         public override void ViewDidDisappear(bool animated)
         {
             base.ViewDidDisappear(animated);

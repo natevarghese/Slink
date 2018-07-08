@@ -40,18 +40,9 @@ namespace Slink
             var me = RealmUserServices.GetMe(false);
             if (me == null) return null;
 
-            try
-            {
-                await WebServices.UserController.UpdateUser(lat, lon);
-                var transactionId = await WebServices.TransactionsController.CreateTransaction(lat, lon, card, me.Name);
-                return transactionId;
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e.Message);
-            }
-
-            return null;
+            await WebServices.UserController.UpdateUser(lat, lon);
+            var transactionId = await WebServices.TransactionsController.CreateTransaction(lat, lon, card, me.Name);
+            return transactionId;
         }
 
         public static List<Outlet> GetAllAvailableOutlets()

@@ -72,12 +72,6 @@
     <Reference Include="BlurBehind">
       <HintPath>..\packages\BlurBehind.1.1.0.1\lib\MonoAndroid403\BlurBehind.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Connectivity.Abstractions">
-      <HintPath>..\packages\Xam.Plugin.Connectivity.3.1.1\lib\MonoAndroid10\Plugin.Connectivity.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Connectivity">
-      <HintPath>..\packages\Xam.Plugin.Connectivity.3.1.1\lib\MonoAndroid10\Plugin.Connectivity.dll</HintPath>
-    </Reference>
     <Reference Include="Remotion.Linq">
       <HintPath>..\packages\Remotion.Linq.2.2.0\lib\portable-net45+win+wpa81+wp80\Remotion.Linq.dll</HintPath>
     </Reference>
@@ -169,15 +163,6 @@
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Plugin.FileSystem.Abstractions">
-      <HintPath>..\packages\Xam.Plugin.FileSystem.1.0.8\lib\MonoAndroid10\Plugin.FileSystem.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.FileSystem.Common">
-      <HintPath>..\packages\Xam.Plugin.FileSystem.1.0.8\lib\MonoAndroid10\Plugin.FileSystem.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.FileSystem">
-      <HintPath>..\packages\Xam.Plugin.FileSystem.1.0.8\lib\MonoAndroid10\Plugin.FileSystem.dll</HintPath>
-    </Reference>
     <Reference Include="Splat">
       <HintPath>..\packages\Splat.4.0.0\lib\monoandroid70\Splat.dll</HintPath>
     </Reference>
@@ -217,9 +202,6 @@
     <Reference Include="Plugin.CurrentActivity">
       <HintPath>..\packages\Plugin.CurrentActivity.2.1.0.4\lib\monoandroid44\Plugin.CurrentActivity.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
     <Reference Include="Realm">
       <HintPath>..\packages\Realm.Database.3.0.0\lib\netstandard1.4\Realm.dll</HintPath>
     </Reference>
@@ -246,15 +228,6 @@
     </Reference>
     <Reference Include="Xamarin.Facebook.Places.Android">
       <HintPath>..\packages\Xamarin.Facebook.Places.Android.4.33.0\lib\monoandroid81\Xamarin.Facebook.Places.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.4.1.823\lib\MonoAndroid10\FFImageLoading.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Platform">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.4.1.823\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Transformations">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.4.1.823\lib\MonoAndroid10\FFImageLoading.Transformations.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Facebook.Common.Android">
       <HintPath>..\packages\Xamarin.Facebook.Common.Android.4.33.0\lib\monoandroid81\Xamarin.Facebook.Common.Android.dll</HintPath>
@@ -286,24 +259,6 @@
     <Reference Include="Xamarin.GooglePlayServices.Auth">
       <HintPath>..\packages\Xamarin.GooglePlayServices.Auth.60.1142.1\lib\MonoAndroid80\Xamarin.GooglePlayServices.Auth.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="AWSSDK.Core">
-      <HintPath>..\packages\AWSSDK.Core.3.3.24.1\lib\MonoAndroid10\AWSSDK.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="AWSSDK.SecurityToken">
-      <HintPath>..\packages\AWSSDK.SecurityToken.3.3.4.5\lib\MonoAndroid10\AWSSDK.SecurityToken.dll</HintPath>
-    </Reference>
-    <Reference Include="AWSSDK.CognitoIdentity">
-      <HintPath>..\packages\AWSSDK.CognitoIdentity.3.3.2.24\lib\MonoAndroid10\AWSSDK.CognitoIdentity.dll</HintPath>
-    </Reference>
-    <Reference Include="AWSSDK.CognitoSync">
-      <HintPath>..\packages\AWSSDK.CognitoSync.3.3.1.33\lib\MonoAndroid10\AWSSDK.CognitoSync.dll</HintPath>
-    </Reference>
-    <Reference Include="AWSSDK.S3">
-      <HintPath>..\packages\AWSSDK.S3.3.3.18.4\lib\MonoAndroid10\AWSSDK.S3.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Android.Support.Constraint.Layout.Solver">
       <HintPath>..\packages\Xamarin.Android.Support.Constraint.Layout.Solver.1.1.0\lib\MonoAndroid70\Xamarin.Android.Support.Constraint.Layout.Solver.dll</HintPath>
     </Reference>
@@ -327,6 +282,45 @@
     </Reference>
     <Reference Include="Microsoft.AppCenter.Crashes">
       <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.7.0\lib\MonoAndroid403\Microsoft.AppCenter.Crashes.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.Core">
+      <HintPath>..\packages\AWSSDK.Core.3.3.24.3\lib\MonoAndroid10\AWSSDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.SecurityToken">
+      <HintPath>..\packages\AWSSDK.SecurityToken.3.3.4.7\lib\MonoAndroid10\AWSSDK.SecurityToken.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.CognitoIdentity">
+      <HintPath>..\packages\AWSSDK.CognitoIdentity.3.3.2.26\lib\MonoAndroid10\AWSSDK.CognitoIdentity.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.CognitoSync">
+      <HintPath>..\packages\AWSSDK.CognitoSync.3.3.1.35\lib\MonoAndroid10\AWSSDK.CognitoSync.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.S3">
+      <HintPath>..\packages\AWSSDK.S3.3.3.18.6\lib\MonoAndroid10\AWSSDK.S3.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.2.0\lib\MonoAndroid10\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.2.0\lib\MonoAndroid10\Plugin.Connectivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.FileSystem">
+      <HintPath>..\packages\Xam.Plugin.FileSystem.1.0.10\lib\monoandroid81\Plugin.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.4.3.840\lib\MonoAndroid10\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.4.3.840\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.4.3.840\lib\MonoAndroid10\FFImageLoading.Transformations.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
