@@ -27,7 +27,15 @@ namespace Slink.Droid
             OutletClickedBroadcastReceiver = new ActionBroadcastReceiver();
             OutletClickedBroadcastReceiver.NotificationReceived += (obj) =>
             {
+                Activity.RunOnUiThread(() =>
+                {
+                    var position = obj.GetIntExtra(MyCardsShared.ItemClickedBroadcastReceiverKeyPosition, -1);
+                    if (position == -1) return;
 
+                    var item = RecyclerViewAdapter.GetItemInList(position);
+
+                    RecyclerView_ItemClick(item, position);
+                });
             };
             Activity.RegisterReceiver(OutletClickedBroadcastReceiver, new IntentFilter(CardFront.ItemClickedBroadcastReceiverKey));
 
@@ -38,7 +46,7 @@ namespace Slink.Droid
             {
                 Activity.RunOnUiThread(() =>
                 {
-                    var position = obj.GetIntExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, -1);
+                    var position = obj.GetIntExtra(MyCardsShared.ItemClickedBroadcastReceiverKeyPosition, -1);
                     if (position == -1) return;
 
                     var item = RecyclerViewAdapter.GetItemInList(position);
@@ -46,7 +54,7 @@ namespace Slink.Droid
                     RecyclerView_ItemClick(item, position);
                 });
             };
-            Activity.RegisterReceiver(CardClickedBroadcastReceiver, new IntentFilter(SharingShared.ItemClickedBroadcastReceiverKeyCardClicked));
+            Activity.RegisterReceiver(CardClickedBroadcastReceiver, new IntentFilter(MyCardsShared.ItemClickedBroadcastReceiverKeyCardClicked));
 
         }
 

@@ -17,23 +17,29 @@ namespace Slink.Droid
         public static string ItemClickedBroadcastReceiverKeyPosition = "Position";
 
         Card Card;
+        //bool Editable;
+        int ParentPosition;
 
         public CardFront(Context context) : base(context) { }
         public CardFront(Context context, IAttributeSet attributeSet) : base(context, attributeSet) { }
         public CardFront(Context context, IAttributeSet attributeSet, int defStyle) : base(context, attributeSet, defStyle) { }
         public CardFront(IntPtr ptr, JniHandleOwnership handle) : base(ptr, handle) { }
 
-        public void BindDataToView(Card card, bool editable, int parnetPosition)
+        public void BindDataToView(Card card, bool editable, int parentPosition)
         {
             Card = card;
+            //Editable = editable;
+            ParentPosition = parentPosition;
 
             var backgroundView = FindViewById<RelativeLayout>(Resource.Id.BackgroundView);
             backgroundView.SetBackgroundColor(Android.Graphics.Color.Red);//ColorUtils.FromHexString(Card.BorderColor, Android.Graphics.Color.White));
 
             var headerImageView = FindViewById<WebImageView>(Resource.Id.HeaderImageView);
             headerImageView.SetImage(Card.GetRemoteHeaderUrlCached(), Resource.Drawable.ic_noprofile, Resource.Drawable.ic_noprofile, Card.RemoteHeaderURL, WebImageView.DefaultCircleTransformation);
+            headerImageView.Clickable = editable;
             headerImageView.Click -= HeaderImageView_Click;
-            headerImageView.Click += HeaderImageView_Click;
+            if (editable)
+                headerImageView.Click += HeaderImageView_Click;
 
             var viewWidth = Context.Resources.DisplayMetrics.WidthPixels - 20;
             var height = viewWidth / 4;
@@ -42,22 +48,35 @@ namespace Slink.Droid
 
             var userDisplayNameTextView = FindViewById<EditText>(Resource.Id.UserDisplayNameTextView);
             userDisplayNameTextView.TextChanged -= UserDisplayNameTextView_TextChanged;
+            userDisplayNameTextView.Click -= UserDisplayNameTextView_Click;
             userDisplayNameTextView.Text = Card.UserDisplayName;
-            userDisplayNameTextView.Enabled = editable;
+            userDisplayNameTextView.Focusable = editable;
+            userDisplayNameTextView.Clickable = editable;
             userDisplayNameTextView.TextChanged += UserDisplayNameTextView_TextChanged;
+            if (!editable)
+                userDisplayNameTextView.Click += UserDisplayNameTextView_Click;
+            if (!editable)
+                userDisplayNameTextView.SetBackgroundColor(Android.Graphics.Color.Transparent); //remove underline
 
             var titleTextField = FindViewById<EditText>(Resource.Id.TitleTextField);
             titleTextField.TextChanged -= TitleTextField_TextChanged;
+            titleTextField.Click -= UserDisplayNameTextView_Click;
             titleTextField.Text = Card.Title;
-            titleTextField.Enabled = editable;
+            titleTextField.Focusable = editable;
+            titleTextField.Clickable = editable;
             titleTextField.TextChanged += TitleTextField_TextChanged;
+            if (!editable)
+                titleTextField.Click += TitleTextField_Click;
+            if (!editable)
+                titleTextField.SetBackgroundColor(Android.Graphics.Color.Transparent); //remove underline
 
             var recyclerView = FindViewById<RecyclerView>(Resource.Id.RecyclerView);
             recyclerView.SetLayoutManager(new LinearLayoutManager(Context, LinearLayoutManager.Horizontal, false));
 
             var adapter = new CardFrontRecyclerViewAdaper((Activity)Context);
+            adapter.Editable = editable;
             adapter.SetListItems(Card.Outlets.ToList());
-            adapter.ParentPosition = parnetPosition;
+            adapter.ParentPosition = parentPosition;
             recyclerView.SetAdapter(adapter);
 
 
@@ -85,6 +104,16 @@ namespace Slink.Droid
             view.Context.SendBroadcast(intent);
         }
 
+        void TitleTextField_Click(object sender, EventArgs e)
+        {
+            var view = sender as View;
+            if (view == null) return;
+
+            var intent = new Intent(MyCardsShared.ItemClickedBroadcastReceiverKeyCardClicked);
+            intent.PutExtra(MyCardsShared.ItemClickedBroadcastReceiverKeyPosition, ParentPosition);
+            view.Context.SendBroadcast(intent);
+        }
+
 
         void TitleTextField_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
         {
@@ -94,8 +123,20 @@ namespace Slink.Droid
             Card.UpdateStringProperty(() => Card.Title, e.Text.ToString().Trim());
 
             var intent = new Intent(Strings.InternalNotifications.notification_card_editing_changed);
+            intent.PutExtra(MyCardsShared.ItemClickedBroadcastReceiverKeyPosition, ParentPosition);
             view.Context.SendBroadcast(intent);
         }
+
+        void UserDisplayNameTextView_Click(object sender, EventArgs e)
+        {
+            var view = sender as View;
+            if (view == null) return;
+
+            var intent = new Intent(MyCardsShared.ItemClickedBroadcastReceiverKeyCardClicked);
+            intent.PutExtra(MyCardsShared.ItemClickedBroadcastReceiverKeyPosition, ParentPosition);
+            view.Context.SendBroadcast(intent);
+        }
+
 
         void UserDisplayNameTextView_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
         {
@@ -118,6 +159,7 @@ namespace Slink.Droid
     class CardFrontRecyclerViewAdaper : BaseRecyclerViewAdapter<Outlet>
     {
         public int ParentPosition;
+        public bool Editable;
 
         public CardFrontRecyclerViewAdaper(Activity context) : base(context) { }
 
@@ -135,7 +177,7 @@ namespace Slink.Droid
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             var item = GetItemInList(position);
-            ((ImageViewCell)holder).BindDataToView(Context, ParentPosition == 0 ? position : ParentPosition, item);
+            ((ImageViewCell)holder).BindDataToView(Context, Editable ? position : ParentPosition, item);
         }
     }
 
@@ -160,8 +202,10 @@ namespace Slink.Droid
             {
                 ItemView.Click += (sender, e) =>
                 {
-                    var intent = new Intent(CardFront.ItemClickedBroadcastReceiverKey);
+                    var key = CardFront.ItemClickedBroadcastReceiverKey;
+                    var intent = new Intent(key);
                     intent.PutExtra(SharingShared.ItemClickedBroadcastReceiverKeyPosition, position);
+                    Transporter.SharedInstance.SetObject("Outlet", model);
                     context.SendBroadcast(intent);
                 };
             }

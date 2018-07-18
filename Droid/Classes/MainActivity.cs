@@ -121,24 +121,6 @@ namespace Slink.Droid
                 parameters.PutString("fields", "gender,birthday");
                 request.Parameters = parameters;
                 request.ExecuteAsync();
-
-                //var requestConnection = new graph GraphRequestConnection();
-                //requestConnection.AddRequest(graphRequest, (connection, result, error) =>
-                //{
-                //    var data = result as NSDictionary;
-                //    if (data == null) return;
-
-                //    var dict = new Dictionary<string, string>();
-
-                //    if (data.ContainsKey(new NSString(AdKeyGender)))
-                //        dict.Add(AdKeyGender, data[AdKeyGender].ToString());
-
-                //    if (data.ContainsKey(new NSString(AdKeyBirthday)))
-                //        dict.Add(AdKeyBirthday, data[AdKeyBirthday].ToString());
-
-                //    ShowBanner(dict);
-                //});
-                //requestConnection.Start();
             }
         }
 

@@ -2,29 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:weightSum="100"
-    android:padding="10dp"
-    android:background="@android:color/white"
+    android:padding="30dp"
+    android:background="@color/red"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
     <TextView
         android:id="@+id/TextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:text="Name"
         android:textSize="18sp"
-        android:gravity="center"
         android:inputType="text"
+        android:gravity="center_horizontal"
         android:maxLines="1"
         android:singleLine="true"
-        android:layout_weight="20"
         android:textColorHint="@color/hintGray"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/white" />
     <com.nvcomputers.slink.WebImageView
         android:id="@+id/ImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_weight="60"
-        android:layout_centerHorizontal="true" />
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:src="@drawable/connections" />
 </LinearLayout>

@@ -49,6 +49,7 @@ namespace Slink
             public static string location_permission_necessary = "Location Permission Necessary. \n Go to Settings";
             public static string could_not_share_card = "Could not share card";
             public static string authenticating = "Authenticating";
+            public static string sharing = "Sharing";
         }
         public class Discover
         {

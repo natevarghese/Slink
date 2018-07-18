@@ -42,7 +42,7 @@ namespace Slink.Droid
             switch (GetItemViewType(position))
             {
                 case 0:
-                    ((CardCell)holder).BindDataToView(Context, position, (Card)item.Object, true, true);
+                    ((CardCell)holder).BindDataToView(Context, position, (Card)item.Object, false, false);
                     break;
                 case 1:
                     ((ImageAndTextViewCell)holder).BindDataToView(Context, position, (Outlet)item.Object);
@@ -74,17 +74,19 @@ namespace Slink.Droid
 
             ImageView.SetImageResource(Resource.Drawable.Connections);
 
-            TextView.Text = "Tap to Share";
+            TextView.Text = model.Object.ToString();
 
 
-            ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, 200);
+            ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewUtils.DpToPx((Activity)context, 200));
 
-            if (ItemView.HasOnClickListeners) return;
-            ItemView.Click += (sender, e) =>
+            if (!ItemView.HasOnClickListeners)
             {
-                var intent = new Intent(SharingShared.TapToShareBroadCastReceiverClicked);
-                context.SendBroadcast(intent);
-            };
+                ItemView.Click += (sender, e) =>
+                {
+                    var intent = new Intent(SharingShared.TapToShareBroadCastReceiverClicked);
+                    context.SendBroadcast(intent);
+                };
+            }
         }
     }
 }

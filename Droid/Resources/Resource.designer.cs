@@ -3255,6 +3255,9 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d011d
 			public const int Discard = 2131558685;
 			
+			// aapt resource value: 0x7f0d011e
+			public const int Edit = 2131558686;
+			
 			// aapt resource value: 0x7f0d004c
 			public const int FUNCTION = 2131558476;
 			
@@ -3357,8 +3360,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d004f
 			public const int SYM = 2131558479;
 			
-			// aapt resource value: 0x7f0d011e
-			public const int Save = 2131558686;
+			// aapt resource value: 0x7f0d011f
+			public const int Save = 2131558687;
 			
 			// aapt resource value: 0x7f0d00b7
 			public const int TextView = 2131558583;
@@ -4486,7 +4489,10 @@ namespace Slink.Droid
 			public const int toolbar_discard = 2131689474;
 			
 			// aapt resource value: 0x7f0f0003
-			public const int toolbar_save = 2131689475;
+			public const int toolbar_edit = 2131689475;
+			
+			// aapt resource value: 0x7f0f0004
+			public const int toolbar_save = 2131689476;
 			
 			static Menu()
 			{

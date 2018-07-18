@@ -277,8 +277,9 @@ namespace Slink.Droid
             var touchListner = new OnSwipeTouchListener(context, ToggleViews, ToggleViews, position);
             ItemView.SetOnTouchListener(touchListner);
 
-            FrontView.BindDataToView(item, editable, useParentPosition ? position : 0);
-            RearView.BindDataToView(item, editable);
+            var pos = useParentPosition ? position : 0;
+            FrontView.BindDataToView(item, editable, pos);
+            RearView.BindDataToView(item, editable, pos);
 
             //LeftTextView.Text = item.Title;
             ////RightTextView.Text = item.Value;
@@ -379,8 +380,8 @@ namespace Slink.Droid
             {
                 var result = base.OnSingleTapConfirmed(e);
 
-                var intent = new Intent(SharingShared.ItemClickedBroadcastReceiverKeyCardClicked);
-                intent.PutExtra(SharingShared.ItemClickedBroadcastReceiverKeyPosition, Position);
+                var intent = new Intent(MyCardsShared.ItemClickedBroadcastReceiverKeyCardClicked);
+                intent.PutExtra(MyCardsShared.ItemClickedBroadcastReceiverKeyPosition, Position);
                 Context.SendBroadcast(intent);
 
                 return result;

@@ -487,6 +487,7 @@
     <AndroidResource Include="Resources\menu\toolbar_discard.xml" />
     <AndroidResource Include="Resources\menu\toolbar_delete.xml" />
     <AndroidResource Include="Resources\layout\CardSharingCell.xml" />
+    <AndroidResource Include="Resources\menu\toolbar_edit.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
