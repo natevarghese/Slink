@@ -16,6 +16,7 @@ namespace Slink
         static HttpClient Client = new HttpClient();
         static MediaTypeWithQualityHeaderValue MediaTypeWithQualityHeaderValueJson = new MediaTypeWithQualityHeaderValue("application/json");
         static string applicationjson = "application/json";
+        public static string UnauthorizedExceptionThrown = "UnauthorizedExceptionThrown";
 
         public static HttpClient GetHttpClient(NVCEndpoint endpoint, List<string> appendString)
         {
@@ -82,6 +83,10 @@ namespace Slink
                     if (!String.IsNullOrEmpty(result))
                         restResult.ReturnedData = JObject.Parse(contentsTask.Content.ReadAsStringAsync().Result);
                 }
+
+                if (restResult.StatusCode == HttpStatusCode.Unauthorized)
+                    ServiceLocator.Instance.Resolve<IBroadcastNotificaion>()?.SendNotificaion(UnauthorizedExceptionThrown);
+
 
                 return restResult;
 

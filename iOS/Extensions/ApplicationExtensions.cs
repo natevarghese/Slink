@@ -10,7 +10,6 @@ namespace Slink.iOS
     {
         public static void LoadStoryboardRoot(string storyboardName, bool animated)
         {
-
             var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
 
             if (animated)

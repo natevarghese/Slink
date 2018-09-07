@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.Content;
 using Android.Provider;
+using Android.Runtime;
 using Android.Support.V7.App;
 using Android.Views;
 using FFImageLoading;
@@ -14,7 +15,7 @@ namespace Slink.Droid
         ActionBroadcastReceiver RowEditedBroadcastReceiver, CardEditingChangedBroadcaseReceiver, NoOutletsTappedBroadcastReceiver;
         ActionBroadcastReceiver CardUserImageClickedBroadcastReceiver, CardCompanyLogoImageClickedBroadcastReceiver;
 
-        public override Android.Views.View OnCreateView(Android.Views.LayoutInflater inflater, Android.Views.ViewGroup container, Android.OS.Bundle savedInstanceState)
+        public override View OnCreateView(Android.Views.LayoutInflater inflater, Android.Views.ViewGroup container, Android.OS.Bundle savedInstanceState)
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
 
@@ -24,7 +25,7 @@ namespace Slink.Droid
 
             HasOptionsMenu = true;
 
-            RegisterForContextMenu(RecyclerView);
+
 
             return view;
         }
@@ -127,7 +128,7 @@ namespace Slink.Droid
                     var cell = RecyclerView.FindViewHolderForAdapterPosition(0) as CardCell;
                     if (cell == null) return;
 
-                    var imgView = cell.GetUserImageView();
+                    var imgView = cell.GetCompanyLogoImageView();
                     if (imgView == null) return;
 
                     ShowImageChooser(imgView, Shared.SelectedCard.LocalHeaderURL, Shared.SelectedCard.GetRemoteHeaderUrlCached(), "Logo.png", SelectCompanyLogoPhotoRequestCode);

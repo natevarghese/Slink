@@ -23,7 +23,7 @@ namespace Slink.iOS
     [Register("AppDelegate")]
     public class AppDelegate : UIApplicationDelegate
     {
-        // class-level declarations
+        NSObject UnauthorizedBoradcastNotification;
 
         public override UIWindow Window
         {
@@ -58,7 +58,7 @@ namespace Slink.iOS
             else
                 ApplicationExtensions.LoadStoryboardRoot("Landing", false);
 
-
+            SetupUnauthorizedCatcher();
             PredownloadImages();
 
             AppCenter.Start("fa06eb43-8be9-426c-97f9-42f3ab13cd3b", typeof(Analytics), typeof(Crashes));
@@ -80,6 +80,9 @@ namespace Slink.iOS
         {
             // Use this method to release shared resources, save user data, invalidate timers and store the application state.
             // If your application supports background exection this method is called instead of WillTerminate when the user quits.
+
+            UnauthorizedBoradcastNotification?.Dispose();
+            UnauthorizedBoradcastNotification = null;
         }
 
         public override void WillEnterForeground(UIApplication application)
@@ -93,6 +96,8 @@ namespace Slink.iOS
         {
             // Restart any tasks that were paused (or not yet started) while the application was inactive. 
             // If the application was previously in the background, optionally refresh the user interface.
+
+            SetupUnauthorizedCatcher();
         }
 
         public override void WillTerminate(UIApplication application)
@@ -122,6 +127,19 @@ namespace Slink.iOS
         }
 
 
+        void SetupUnauthorizedCatcher()
+        {
+            if (UnauthorizedBoradcastNotification != null) return;
+            UnauthorizedBoradcastNotification = NSNotificationCenter.DefaultCenter.AddObserver(new NSString(NVCRestHelper.UnauthorizedExceptionThrown), (NSNotification obj) =>
+            {
+                ApplicationExtensions.LoadStoryboardRoot("Landing", false);
+            });
+        }
+
+        public void Signout()
+        {
+
+        }
 
         #region Push Notificaions
         public void SetUpPushNotificaions()

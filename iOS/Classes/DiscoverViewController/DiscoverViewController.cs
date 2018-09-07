@@ -8,6 +8,7 @@ using CoreLocation;
 using System.Threading.Tasks;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+
 namespace Slink.iOS
 {
     //todo there is a bug when going to this page first on a clean install and the location permission pops up.
@@ -53,7 +54,6 @@ namespace Slink.iOS
             DemoCardView = new UIView();
             DemoCardView.BackgroundColor = UIColor.Clear;
 
-
             DemoCardSuperviewHeightConstraint.Constant = CardViewController.GetCalculatedHeight();
             DemoCardSuperview.AddSubview(DemoCardView);
             DemoCardSuperview.SetNeedsLayout();
@@ -82,9 +82,9 @@ namespace Slink.iOS
 
             StartLocationManager();
         }
-        public override void ViewWillAppear(bool animated)
+        public override void ViewDidAppear(bool animated)
         {
-            base.ViewWillAppear(animated);
+            base.ViewDidAppear(animated);
 
             StartSearching();
         }
@@ -114,7 +114,6 @@ namespace Slink.iOS
 
             if (DemoCardView != null)
             {
-                //DemoCardView.DataSource = this;
                 DemoCardView.Frame = DemoCardSuperview.Bounds;
                 DemoCardView.Bounds = new CGRect(0, 0, DemoCardSuperview.Bounds.Width, DemoCardSuperview.Bounds.Height);
             }
@@ -175,7 +174,7 @@ namespace Slink.iOS
             while (!ShouldStopSearching && View.Window != null)
             {
                 await Shared.GetNearbyTransactions();
-                //DemoCardView.LoadNextCardsIfNeeded();
+
                 StopSearchingIfCardsFound();
 
                 Console.WriteLine("GOT");
@@ -213,34 +212,59 @@ namespace Slink.iOS
         }
         partial void NoClicked(Foundation.NSObject sender)
         {
-            //DemoCardView.SwipeTopCardToLeft();
+            UIView.Animate(0.5, () =>
+            {
+                var vc = ChildViewControllers.Where(c => c.GetType() == typeof(CardViewController)).FirstOrDefault();
+                vc.View.Alpha = 0;
+            }, () =>
+            {
+                Shared.RejectCard();
+                RemoveChildCardViewControllers();
+                StopSearchingIfCardsFound();
+            });
         }
         partial void YesClicked(Foundation.NSObject sender)
         {
-            //DemoCardView.SwipeTopCardToRight();
+            UIView.Animate(0.5, () =>
+            {
+                var vc = ChildViewControllers.Where(c => c.GetType() == typeof(CardViewController)).FirstOrDefault();
+                vc.View.Alpha = 0;
+            }, () =>
+            {
+                Shared.AcceptCard();
+                RemoveChildCardViewControllers();
+                StopSearchingIfCardsFound();
+            });
         }
-        public UIView NextCardForCardView(UIView cardView)
+
+
+        void RemoveChildCardViewControllers()
+        {
+            var vc = ChildViewControllers.Where(c => c.GetType() == typeof(CardViewController)).FirstOrDefault();
+            vc.WillMoveToParentViewController(null);
+            vc.View.RemoveFromSuperview();
+            vc.RemoveFromParentViewController();
+        }
+        public void NextCardForCardView()
         {
             var item = Shared.GetNextCard();
             if (item == null)
             {
                 Console.WriteLine("Item is null");
-                return null;
+                return;
             }
-            else
-            {
 
-                Console.WriteLine("Item is NOT null");
+            Console.WriteLine("Item is NOT null");
 
-                var vc = new CardViewController();
-                vc.HideTitle = true;
-                vc.Editable = false;
-                vc.SelectedCard = item.Card;
-                vc.View.Frame = DemoCardView.Bounds;
-                AddChildViewController(vc);
+            var vc = new CardViewController();
+            vc.HideTitle = true;
+            vc.Editable = false;
+            vc.SelectedCard = item.Card;
+            vc.View.Frame = DemoCardView.Bounds;
 
-                return vc.View;
-            }
+            AddChildViewController(vc);
+            DemoCardView.AddSubview(vc.View);
+            vc.DidMoveToParentViewController(this);
         }
         void StopSearchingIfCardsFound()
         {
@@ -248,6 +272,8 @@ namespace Slink.iOS
             {
                 HideCardViews(false);
                 StopSearching();
+
+                NextCardForCardView();
             }
             else
             {

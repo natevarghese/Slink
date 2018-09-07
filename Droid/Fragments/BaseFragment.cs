@@ -137,7 +137,13 @@ namespace Slink.Droid
             StartActivityForResult(Intent.CreateChooser(intent, "Select Photo"), requestCode);
         }
 
+        async public void AskForLocationPermissionIfNecessary(Permission permission)
+        {
+            var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(permission);
+            if (permissionStatus == PermissionStatus.Granted) return;
 
+            await CrossPermissions.Current.RequestPermissionsAsync(permission);
+        }
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

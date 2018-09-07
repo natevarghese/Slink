@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.props" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.props')" />
+<Project
+    DefaultTargets="Build"
+    ToolsVersion="4.0"
+    xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import
+        Project="..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.props"
+        Condition="Exists('..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.props')" />
     <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+        <Configuration
+            Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform
+            Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
         <ProjectGuid>{D2EDA0E8-FCDA-4B75-9857-BC2166C6B81B}</ProjectGuid>
         <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
         <OutputType>Exe</OutputType>
@@ -11,7 +18,8 @@
         <AssemblyName>Slink.iOS</AssemblyName>
         <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <PropertyGroup
+        Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
         <Optimize>false</Optimize>
@@ -33,7 +41,8 @@
         <CodesignProvision>3 Phones</CodesignProvision>
         <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <PropertyGroup
+        Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
         <DebugType>pdbonly</DebugType>
         <Optimize>true</Optimize>
         <OutputPath>bin\iPhone\Release</OutputPath>
@@ -48,7 +57,8 @@
         <PlatformTarget>x86</PlatformTarget>
         <CodesignProvision>Automatic:AppStore</CodesignProvision>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <PropertyGroup
+        Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
         <DebugType>pdbonly</DebugType>
         <Optimize>true</Optimize>
         <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
@@ -64,7 +74,8 @@
         <CodesignProvision>Dist2</CodesignProvision>
         <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <PropertyGroup
+        Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
         <Optimize>false</Optimize>
@@ -87,582 +98,948 @@
         <CodesignProvision>3 Phones</CodesignProvision>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="System" />
-        <Reference Include="System.Xml" />
-        <Reference Include="System.Core" />
-        <Reference Include="Xamarin.iOS" />
-        <Reference Include="System.IO.Compression" />
-        <Reference Include="System.Net.Http" />
-        <Reference Include="PCLStorage.Abstractions">
+        <Reference
+            Include="System" />
+        <Reference
+            Include="System.Xml" />
+        <Reference
+            Include="System.Core" />
+        <Reference
+            Include="Xamarin.iOS" />
+        <Reference
+            Include="System.IO.Compression" />
+        <Reference
+            Include="System.Net.Http" />
+        <Reference
+            Include="PCLStorage.Abstractions">
             <HintPath>..\packages\PCLStorage.1.0.2\lib\portable-Xamarin.iOS+Xamarin.Mac\PCLStorage.Abstractions.dll</HintPath>
         </Reference>
-        <Reference Include="PCLStorage">
+        <Reference
+            Include="PCLStorage">
             <HintPath>..\packages\PCLStorage.1.0.2\lib\portable-Xamarin.iOS+Xamarin.Mac\PCLStorage.dll</HintPath>
         </Reference>
-        <Reference Include="System.Net.Http.Extensions">
+        <Reference
+            Include="System.Net.Http.Extensions">
             <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Extensions.dll</HintPath>
         </Reference>
-        <Reference Include="System.Net.Http.Primitives">
+        <Reference
+            Include="System.Net.Http.Primitives">
             <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Primitives.dll</HintPath>
         </Reference>
-        <Reference Include="Microsoft.CSharp" />
-        <Reference Include="PCLCrypto">
+        <Reference
+            Include="Microsoft.CSharp" />
+        <Reference
+            Include="PCLCrypto">
             <HintPath>..\packages\PCLCrypto.2.0.147\lib\xamarinios10\PCLCrypto.dll</HintPath>
         </Reference>
-        <Reference Include="System.Json" />
-        <Reference Include="Validation">
+        <Reference
+            Include="System.Json" />
+        <Reference
+            Include="Validation">
             <HintPath>..\packages\Validation.2.4.18\lib\netstandard1.3\Validation.dll</HintPath>
         </Reference>
-        <Reference Include="Firebase.InstanceID">
-            <HintPath>..\packages\Xamarin.Firebase.iOS.InstanceID.2.0.8\lib\Xamarin.iOS10\Firebase.InstanceID.dll</HintPath>
-        </Reference>
-        <Reference Include="Google.Core">
+        <Reference
+            Include="Google.Core">
             <HintPath>..\packages\Xamarin.Google.iOS.Core.3.1.0.1\lib\Xamarin.iOS10\Google.Core.dll</HintPath>
         </Reference>
-        <Reference Include="Remotion.Linq">
+        <Reference
+            Include="Remotion.Linq">
             <HintPath>..\packages\Remotion.Linq.2.2.0\lib\portable-net45+win+wpa81+wp80\Remotion.Linq.dll</HintPath>
         </Reference>
-        <Reference Include="PInvoke.Windows.Core">
-            <HintPath>..\packages\PInvoke.Windows.Core.0.5.152\lib\portable-net45+win8+wpa81\PInvoke.Windows.Core.dll</HintPath>
-        </Reference>
-        <Reference Include="PInvoke.Kernel32">
-            <HintPath>..\packages\PInvoke.Kernel32.0.5.152\lib\portable-net45+win8+wpa81\PInvoke.Kernel32.dll</HintPath>
-        </Reference>
-        <Reference Include="PInvoke.BCrypt">
-            <HintPath>..\packages\PInvoke.BCrypt.0.5.152\lib\portable-net45+win8+wpa81\PInvoke.BCrypt.dll</HintPath>
-        </Reference>
-        <Reference Include="PInvoke.NCrypt">
-            <HintPath>..\packages\PInvoke.NCrypt.0.5.152\lib\portable-net45+win8+wpa81\PInvoke.NCrypt.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Runtime.Serialization" />
-        <Reference Include="SQLitePCLRaw.core">
+        <Reference
+            Include="System.Runtime.Serialization" />
+        <Reference
+            Include="SQLitePCLRaw.core">
             <HintPath>..\packages\SQLitePCLRaw.core.1.1.11\lib\Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="SQLitePCLRaw.provider.sqlite3">
+        <Reference
+            Include="SQLitePCLRaw.provider.sqlite3">
             <HintPath>..\packages\SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.11\lib\Xamarin.iOS10\SQLitePCLRaw.provider.sqlite3.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="SQLitePCLRaw.batteries_green">
+        <Reference
+            Include="SQLitePCLRaw.batteries_green">
             <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.11\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_green.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="SQLitePCLRaw.batteries_v2">
+        <Reference
+            Include="SQLitePCLRaw.batteries_v2">
             <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.11\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="Xamarin.Auth">
+        <Reference
+            Include="Xamarin.Auth">
             <HintPath>..\packages\Xamarin.Auth.1.6.0.2\lib\Xamarin.iOS10\Xamarin.Auth.dll</HintPath>
         </Reference>
-        <Reference Include="Firebase.Core">
-            <HintPath>..\packages\Xamarin.Firebase.iOS.Core.4.0.13.1\lib\Xamarin.iOS10\Firebase.Core.dll</HintPath>
-        </Reference>
-        <Reference Include="Firebase.Analytics">
-            <HintPath>..\packages\Xamarin.Firebase.iOS.Analytics.4.0.5.1\lib\Xamarin.iOS10\Firebase.Analytics.dll</HintPath>
-        </Reference>
-        <Reference Include="Google.MobileAds">
-            <HintPath>..\packages\Xamarin.Google.iOS.MobileAds.7.27.0.3\lib\Xamarin.iOS10\Google.MobileAds.dll</HintPath>
-        </Reference>
-        <Reference Include="Google.SignIn">
-            <HintPath>..\packages\Xamarin.Google.iOS.SignIn.4.1.1.1\lib\Xamarin.iOS10\Google.SignIn.dll</HintPath>
-        </Reference>
-        <Reference Include="Facebook">
+        <Reference
+            Include="Facebook">
             <HintPath>..\packages\Xamarin.Facebook.iOS.4.33.0\lib\Xamarin.iOS10\Facebook.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="TPKeyboardAvoiding">
+        <Reference
+            Include="TPKeyboardAvoiding">
             <HintPath>..\packages\TPKeyboardAvoiding.Binding.1.3.2\lib\Xamarin.iOS\TPKeyboardAvoiding.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="MBProgressHUD">
+        <Reference
+            Include="MBProgressHUD">
             <HintPath>..\packages\mbprogresshud.0.9.2.0\lib\Xamarin.iOS\MBProgressHUD.dll</HintPath>
             <Private>False</Private>
         </Reference>
-        <Reference Include="SDWebImage">
-            <HintPath>..\packages\Xamarin.SDWebImage.4.0.0-beta1\lib\Xamarin.iOS\SDWebImage.dll</HintPath>
-        </Reference>
-        <Reference Include="Realm.DataBinding">
+        <Reference
+            Include="Realm.DataBinding">
             <HintPath>..\packages\Realm.DataBinding.1.2.0\lib\Xamarin.iOS10\Realm.DataBinding.dll</HintPath>
         </Reference>
-        <Reference Include="Com.OneSignal.Abstractions">
-          <HintPath>..\packages\Com.OneSignal.3.2.0\lib\Xamarin.iOS10\Com.OneSignal.Abstractions.dll</HintPath>
+        <Reference
+            Include="Com.OneSignal.Abstractions">
+            <HintPath>..\packages\Com.OneSignal.3.2.0\lib\Xamarin.iOS10\Com.OneSignal.Abstractions.dll</HintPath>
         </Reference>
-        <Reference Include="Com.OneSignal">
-          <HintPath>..\packages\Com.OneSignal.3.2.0\lib\Xamarin.iOS10\Com.OneSignal.dll</HintPath>
+        <Reference
+            Include="Com.OneSignal">
+            <HintPath>..\packages\Com.OneSignal.3.2.0\lib\Xamarin.iOS10\Com.OneSignal.dll</HintPath>
         </Reference>
-        <Reference Include="OneSignal.iOS.Binding">
-          <HintPath>..\packages\Com.OneSignal.3.2.0\lib\Xamarin.iOS10\OneSignal.iOS.Binding.dll</HintPath>
+        <Reference
+            Include="OneSignal.iOS.Binding">
+            <HintPath>..\packages\Com.OneSignal.3.2.0\lib\Xamarin.iOS10\OneSignal.iOS.Binding.dll</HintPath>
         </Reference>
-        <Reference Include="Plugin.Permissions">
-          <HintPath>..\packages\Plugin.Permissions.3.0.0.12\lib\xamarinios10\Plugin.Permissions.dll</HintPath>
+        <Reference
+            Include="Plugin.Permissions">
+            <HintPath>..\packages\Plugin.Permissions.3.0.0.12\lib\xamarinios10\Plugin.Permissions.dll</HintPath>
         </Reference>
-        <Reference Include="Splat">
-          <HintPath>..\packages\Splat.4.0.0\lib\xamarinios10\Splat.dll</HintPath>
+        <Reference
+            Include="Plugin.DeviceInfo">
+            <HintPath>..\packages\Xam.Plugin.DeviceInfo.4.0.0.13\lib\xamarinios10\Plugin.DeviceInfo.dll</HintPath>
         </Reference>
-        <Reference Include="Realm">
-          <HintPath>..\packages\Realm.Database.3.0.0\lib\netstandard1.4\Realm.dll</HintPath>
+        <Reference
+            Include="Plugin.Geolocator">
+            <HintPath>..\packages\Xam.Plugin.Geolocator.4.5.0.6\lib\xamarinios10\Plugin.Geolocator.dll</HintPath>
         </Reference>
-        <Reference Include="Realm.Sync">
-          <HintPath>..\packages\Realm.3.0.0\lib\netstandard1.4\Realm.Sync.dll</HintPath>
+        <Reference
+            Include="Plugin.FileSystem">
+            <HintPath>..\packages\Xam.Plugin.FileSystem.1.0.10\lib\xamarinios10\Plugin.FileSystem.dll</HintPath>
         </Reference>
-        <Reference Include="Plugin.DeviceInfo">
-          <HintPath>..\packages\Xam.Plugin.DeviceInfo.4.0.0.13\lib\xamarinios10\Plugin.DeviceInfo.dll</HintPath>
+        <Reference
+            Include="Plugin.Connectivity.Abstractions">
+            <HintPath>..\packages\Xam.Plugin.Connectivity.3.2.0\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
         </Reference>
-        <Reference Include="Plugin.Geolocator">
-          <HintPath>..\packages\Xam.Plugin.Geolocator.4.5.0.6\lib\xamarinios10\Plugin.Geolocator.dll</HintPath>
+        <Reference
+            Include="Plugin.Connectivity">
+            <HintPath>..\packages\Xam.Plugin.Connectivity.3.2.0\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
         </Reference>
-        <Reference Include="Microsoft.AppCenter">
-          <HintPath>..\packages\Microsoft.AppCenter.1.7.0\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
+        <Reference
+            Include="Microsoft.IdentityModel.Logging">
+            <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.2.4\lib\netstandard1.4\Microsoft.IdentityModel.Logging.dll</HintPath>
         </Reference>
-        <Reference Include="Microsoft.AppCenter.iOS.Bindings">
-          <HintPath>..\packages\Microsoft.AppCenter.1.7.0\lib\Xamarin.iOS10\Microsoft.AppCenter.iOS.Bindings.dll</HintPath>
+        <Reference
+            Include="Microsoft.IdentityModel.Tokens">
+            <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.2.4\lib\netstandard1.4\Microsoft.IdentityModel.Tokens.dll</HintPath>
         </Reference>
-        <Reference Include="Microsoft.AppCenter.Analytics">
-          <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.7.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.dll</HintPath>
+        <Reference
+            Include="Microsoft.IdentityModel.JsonWebTokens">
+            <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.2.4\lib\netstandard1.4\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
         </Reference>
-        <Reference Include="Microsoft.AppCenter.Analytics.iOS.Bindings">
-          <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.7.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.iOS.Bindings.dll</HintPath>
+        <Reference
+            Include="System.IdentityModel.Tokens.Jwt">
+            <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.4\lib\netstandard1.4\System.IdentityModel.Tokens.Jwt.dll</HintPath>
         </Reference>
-        <Reference Include="Microsoft.AppCenter.Crashes">
-          <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.7.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.dll</HintPath>
+        <Reference
+            Include="System.Runtime.CompilerServices.Unsafe">
+            <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
         </Reference>
-        <Reference Include="Microsoft.AppCenter.Crashes.iOS.Bindings">
-          <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.7.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.iOS.Bindings.dll</HintPath>
+        <Reference
+            Include="Newtonsoft.Json">
+            <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+            <Private>False</Private>
         </Reference>
-        <Reference Include="AWSSDK.Core">
-          <HintPath>..\packages\AWSSDK.Core.3.3.24.3\lib\Xamarin.iOS10\AWSSDK.Core.dll</HintPath>
-          <Private>False</Private>
+        <Reference
+            Include="Microsoft.AppCenter">
+            <HintPath>..\packages\Microsoft.AppCenter.1.9.0\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
         </Reference>
-        <Reference Include="AWSSDK.SecurityToken">
-          <HintPath>..\packages\AWSSDK.SecurityToken.3.3.4.7\lib\Xamarin.iOS10\AWSSDK.SecurityToken.dll</HintPath>
-          <Private>False</Private>
+        <Reference
+            Include="Microsoft.AppCenter.iOS.Bindings">
+            <HintPath>..\packages\Microsoft.AppCenter.1.9.0\lib\Xamarin.iOS10\Microsoft.AppCenter.iOS.Bindings.dll</HintPath>
         </Reference>
-        <Reference Include="AWSSDK.CognitoIdentity">
-          <HintPath>..\packages\AWSSDK.CognitoIdentity.3.3.2.26\lib\Xamarin.iOS10\AWSSDK.CognitoIdentity.dll</HintPath>
-          <Private>False</Private>
+        <Reference
+            Include="Microsoft.AppCenter.Analytics">
+            <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.9.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.dll</HintPath>
         </Reference>
-        <Reference Include="AWSSDK.CognitoSync">
-          <HintPath>..\packages\AWSSDK.CognitoSync.3.3.1.35\lib\Xamarin.iOS10\AWSSDK.CognitoSync.dll</HintPath>
-          <Private>False</Private>
+        <Reference
+            Include="Microsoft.AppCenter.Analytics.iOS.Bindings">
+            <HintPath>..\packages\Microsoft.AppCenter.Analytics.1.9.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.iOS.Bindings.dll</HintPath>
         </Reference>
-        <Reference Include="AWSSDK.S3">
-          <HintPath>..\packages\AWSSDK.S3.3.3.18.6\lib\Xamarin.iOS10\AWSSDK.S3.dll</HintPath>
-          <Private>False</Private>
+        <Reference
+            Include="Microsoft.AppCenter.Crashes">
+            <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.9.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.dll</HintPath>
         </Reference>
-        <Reference Include="Plugin.FileSystem">
-          <HintPath>..\packages\Xam.Plugin.FileSystem.1.0.10\lib\xamarinios10\Plugin.FileSystem.dll</HintPath>
+        <Reference
+            Include="Microsoft.AppCenter.Crashes.iOS.Bindings">
+            <HintPath>..\packages\Microsoft.AppCenter.Crashes.1.9.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.iOS.Bindings.dll</HintPath>
         </Reference>
-        <Reference Include="Plugin.Connectivity.Abstractions">
-          <HintPath>..\packages\Xam.Plugin.Connectivity.3.2.0\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
+        <Reference
+            Include="PInvoke.Windows.Core">
+            <HintPath>..\packages\PInvoke.Windows.Core.0.5.155\lib\portable-net45+win8+wpa81\PInvoke.Windows.Core.dll</HintPath>
         </Reference>
-        <Reference Include="Plugin.Connectivity">
-          <HintPath>..\packages\Xam.Plugin.Connectivity.3.2.0\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
+        <Reference
+            Include="PInvoke.Kernel32">
+            <HintPath>..\packages\PInvoke.Kernel32.0.5.155\lib\portable-net45+win8+wpa81\PInvoke.Kernel32.dll</HintPath>
         </Reference>
-        <Reference Include="Microsoft.IdentityModel.Logging">
-          <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.2.4\lib\netstandard1.4\Microsoft.IdentityModel.Logging.dll</HintPath>
+        <Reference
+            Include="PInvoke.BCrypt">
+            <HintPath>..\packages\PInvoke.BCrypt.0.5.155\lib\portable-net45+win8+wpa81\PInvoke.BCrypt.dll</HintPath>
         </Reference>
-        <Reference Include="Microsoft.IdentityModel.Tokens">
-          <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.2.4\lib\netstandard1.4\Microsoft.IdentityModel.Tokens.dll</HintPath>
+        <Reference
+            Include="PInvoke.NCrypt">
+            <HintPath>..\packages\PInvoke.NCrypt.0.5.155\lib\portable-net45+win8+wpa81\PInvoke.NCrypt.dll</HintPath>
         </Reference>
-        <Reference Include="Microsoft.IdentityModel.JsonWebTokens">
-          <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.2.4\lib\netstandard1.4\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+        <Reference
+            Include="Splat">
+            <HintPath>..\packages\Splat.5.0.2\lib\xamarinios10\Splat.dll</HintPath>
         </Reference>
-        <Reference Include="System.IdentityModel.Tokens.Jwt">
-          <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.4\lib\netstandard1.4\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+        <Reference
+            Include="Realm">
+            <HintPath>..\packages\Realm.Database.3.1.0\lib\netstandard1.4\Realm.dll</HintPath>
         </Reference>
-        <Reference Include="System.Runtime.CompilerServices.Unsafe">
-          <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+        <Reference
+            Include="Realm.Sync">
+            <HintPath>..\packages\Realm.3.1.0\lib\netstandard1.4\Realm.Sync.dll</HintPath>
         </Reference>
-        <Reference Include="Newtonsoft.Json">
-          <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
-          <Private>False</Private>
+        <Reference
+            Include="AWSSDK.Core">
+            <HintPath>..\packages\AWSSDK.Core.3.3.25.1\lib\Xamarin.iOS10\AWSSDK.Core.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference
+            Include="AWSSDK.S3">
+            <HintPath>..\packages\AWSSDK.S3.3.3.21.1\lib\Xamarin.iOS10\AWSSDK.S3.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference
+            Include="AWSSDK.SecurityToken">
+            <HintPath>..\packages\AWSSDK.SecurityToken.3.3.4.13\lib\Xamarin.iOS10\AWSSDK.SecurityToken.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference
+            Include="AWSSDK.CognitoIdentity">
+            <HintPath>..\packages\AWSSDK.CognitoIdentity.3.3.2.32\lib\Xamarin.iOS10\AWSSDK.CognitoIdentity.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference
+            Include="AWSSDK.CognitoSync">
+            <HintPath>..\packages\AWSSDK.CognitoSync.3.3.1.41\lib\Xamarin.iOS10\AWSSDK.CognitoSync.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference
+            Include="Firebase.Core">
+            <HintPath>..\packages\Xamarin.Firebase.iOS.Core.5.0.5\lib\Xamarin.iOS10\Firebase.Core.dll</HintPath>
+        </Reference>
+        <Reference
+            Include="Firebase.InstanceID">
+            <HintPath>..\packages\Xamarin.Firebase.iOS.InstanceID.3.1.1\lib\Xamarin.iOS10\Firebase.InstanceID.dll</HintPath>
+        </Reference>
+        <Reference
+            Include="Firebase.Analytics">
+            <HintPath>..\packages\Xamarin.Firebase.iOS.Analytics.5.0.1\lib\Xamarin.iOS10\Firebase.Analytics.dll</HintPath>
+        </Reference>
+        <Reference
+            Include="Google.MobileAds">
+            <HintPath>..\packages\Xamarin.Google.iOS.MobileAds.7.31.0.1\lib\Xamarin.iOS10\Google.MobileAds.dll</HintPath>
+        </Reference>
+        <Reference
+            Include="Google.SignIn">
+            <HintPath>..\packages\Xamarin.Google.iOS.SignIn.4.1.2\lib\Xamarin.iOS10\Google.SignIn.dll</HintPath>
+        </Reference>
+        <Reference
+            Include="SDWebImage.iOS">
+            <HintPath>..\packages\Xamarin.SDWebImage.4.4.0\lib\Xamarin.iOS\SDWebImage.iOS.dll</HintPath>
+        </Reference>
+        <Reference
+            Include="Calabash">
+            <HintPath>..\packages\Xamarin.TestCloud.Agent.0.21.6\lib\Xamarin.iOS\Calabash.dll</HintPath>
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Slink\Slink.csproj">
+        <ProjectReference
+            Include="..\Slink\Slink.csproj">
             <Project>{4F3C0CD9-1501-40C2-80D3-BFF53F9826A5}</Project>
             <Name>Slink</Name>
         </ProjectReference>
     </ItemGroup>
     <ItemGroup>
-        <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-60%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-60%403x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-Small-29%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-Small-29%403x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-Small-40%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-small-40%403x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\icon-20%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\icon-20%403x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\.DS_Store" />
-        <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-Small-29.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-Small-57.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-Small-57%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\ArrowWhite.imageset\ArrowWhite.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\ArrowWhite.imageset\ArrowWhite%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\ArrowWhite.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\Buildings.imageset\buildings.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Buildings.imageset\buildings%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Buildings.imageset\buildings%403x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Buildings.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\Connections.imageset\connections.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Connections.imageset\connections%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Connections.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\Discover.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\Discover.imageset\discover.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Discover.imageset\discover%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\GoogleSignIn.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\GoogleSignIn.imageset\googleSignInButton.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\GoogleSignIn.imageset\googleSignInButton%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Hamburger.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\Home.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\Home.imageset\Home.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Home.imageset\Home%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Logo.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\Logo.imageset\logo.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Logo.imageset\logo%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Logo.imageset\logo%403x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\NoProfile.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\NoProfile.imageset\noprofile.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\NoProfile.imageset\noprofile%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\NoProfile.imageset\noprofile%403x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\NoProfileWhite.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\NoProfileWhite.imageset\noprofilewhite.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\NoProfileWhite.imageset\noprofilewhite%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\NoProfileWhite.imageset\noprofilewhite%403x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\PhoneWhite.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\PhoneWhite.imageset\phonewhite.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\PhoneWhite.imageset\phonewhite%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\PhoneWhite.imageset\phonewhite%403x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Settings.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\Settings.imageset\settings.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Settings.imageset\settings%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\LaunchImage.launchimage\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\PhoneWhiteLarge.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Assets.xcassets\PhoneWhiteLarge.imageset\PhoneWhiteLarge.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\PhoneWhiteLarge.imageset\PhoneWhiteLarge%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Hamburger.imageset\hamburger.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Hamburger.imageset\hamburger%402x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\Hamburger.imageset\hamburger%403x.png" />
-        <ImageAsset Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-1024.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-60%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-60%403x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-Small-29%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-Small-29%403x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-Small-40%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-small-40%403x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\AppIcon.appiconset\icon-20%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\AppIcon.appiconset\icon-20%403x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\.DS_Store" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\AppIcon.appiconset\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-Small-29.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-Small-57.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-Small-57%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\ArrowWhite.imageset\ArrowWhite.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\ArrowWhite.imageset\ArrowWhite%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\ArrowWhite.imageset\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Buildings.imageset\buildings.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Buildings.imageset\buildings%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Buildings.imageset\buildings%403x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Buildings.imageset\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Connections.imageset\connections.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Connections.imageset\connections%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Connections.imageset\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Discover.imageset\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Discover.imageset\discover.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Discover.imageset\discover%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\GoogleSignIn.imageset\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\GoogleSignIn.imageset\googleSignInButton.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\GoogleSignIn.imageset\googleSignInButton%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Hamburger.imageset\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Home.imageset\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Home.imageset\Home.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Home.imageset\Home%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Logo.imageset\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Logo.imageset\logo.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Logo.imageset\logo%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Logo.imageset\logo%403x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\NoProfile.imageset\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\NoProfile.imageset\noprofile.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\NoProfile.imageset\noprofile%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\NoProfile.imageset\noprofile%403x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\NoProfileWhite.imageset\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\NoProfileWhite.imageset\noprofilewhite.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\NoProfileWhite.imageset\noprofilewhite%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\NoProfileWhite.imageset\noprofilewhite%403x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\PhoneWhite.imageset\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\PhoneWhite.imageset\phonewhite.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\PhoneWhite.imageset\phonewhite%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\PhoneWhite.imageset\phonewhite%403x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Settings.imageset\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Settings.imageset\settings.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Settings.imageset\settings%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\LaunchImage.launchimage\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\PhoneWhiteLarge.imageset\Contents.json" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\PhoneWhiteLarge.imageset\PhoneWhiteLarge.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\PhoneWhiteLarge.imageset\PhoneWhiteLarge%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Hamburger.imageset\hamburger.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Hamburger.imageset\hamburger%402x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\Hamburger.imageset\hamburger%403x.png" />
+        <ImageAsset
+            Include="Resources\Assets.xcassets\AppIcon.appiconset\Icon-1024.png" />
     </ItemGroup>
     <ItemGroup>
-        <Folder Include="Resources\" />
-        <Folder Include="UIViewController\" />
-        <Folder Include="Classes\" />
-        <Folder Include="Classes\DrawerViewController\" />
-        <Folder Include="Classes\MyCardsViewController\" />
-        <Folder Include="UITableViewController\" />
-        <Folder Include="Classes\SettingsViewController\" />
-        <Folder Include="Assets.xcassets\NoProfileWhite.imageset\" />
-        <Folder Include="Classes\SharingViewController\" />
-        <Folder Include="Classes\NewCardViewController\" />
-        <Folder Include="UIView\Card\" />
-        <Folder Include="Classes\SettingsViewController\EditProfileViewController\" />
-        <Folder Include="Classes\SettingsViewController\MyOutletsViewController\" />
-        <Folder Include="Classes\SettingsViewController\NewOutletViewController\" />
-        <Folder Include="Classes\SettingsViewController\NewOutletViewController\Phone\" />
-        <Folder Include="Services\" />
-        <Folder Include="Classes\SettingsViewController\NewOutletViewController\Facebook\" />
-        <Folder Include="Classes\SettingsViewController\NewOutletViewController\LinkedIn\" />
-        <Folder Include="Classes\SettingsViewController\NewOutletViewController\Instagram\" />
-        <Folder Include="Classes\DiscoverViewController\" />
-        <Folder Include="Classes\SettingsViewController\NewOutletViewController\Pinterest\" />
-        <Folder Include="Classes\SettingsViewController\NewOutletViewController\Google\" />
-        <Folder Include="Classes\SettingsViewController\NewOutletViewController\Github\" />
-        <Folder Include="Classes\SettingsViewController\NewOutletViewController\Website\" />
-        <Folder Include="Classes\OnboardingViewController\" />
-        <Folder Include="Extensions\" />
-        <Folder Include="Classes\ConnectionsViewController\" />
-        <Folder Include="Resources\Assets.xcassets\" />
-        <Folder Include="Resources\Assets.xcassets\PhoneWhiteLarge.imageset\" />
-        <Folder Include="Classes\SettingsViewController\NewOutletViewController\Email\" />
-        <Folder Include="UIViewController\ColorPickerViewController\" />
+        <Folder
+            Include="Resources\" />
+        <Folder
+            Include="UIViewController\" />
+        <Folder
+            Include="Classes\" />
+        <Folder
+            Include="Classes\DrawerViewController\" />
+        <Folder
+            Include="Classes\MyCardsViewController\" />
+        <Folder
+            Include="UITableViewController\" />
+        <Folder
+            Include="Classes\SettingsViewController\" />
+        <Folder
+            Include="Assets.xcassets\NoProfileWhite.imageset\" />
+        <Folder
+            Include="Classes\SharingViewController\" />
+        <Folder
+            Include="Classes\NewCardViewController\" />
+        <Folder
+            Include="UIView\Card\" />
+        <Folder
+            Include="Classes\SettingsViewController\EditProfileViewController\" />
+        <Folder
+            Include="Classes\SettingsViewController\MyOutletsViewController\" />
+        <Folder
+            Include="Classes\SettingsViewController\NewOutletViewController\" />
+        <Folder
+            Include="Classes\SettingsViewController\NewOutletViewController\Phone\" />
+        <Folder
+            Include="Services\" />
+        <Folder
+            Include="Classes\SettingsViewController\NewOutletViewController\Facebook\" />
+        <Folder
+            Include="Classes\SettingsViewController\NewOutletViewController\LinkedIn\" />
+        <Folder
+            Include="Classes\SettingsViewController\NewOutletViewController\Instagram\" />
+        <Folder
+            Include="Classes\DiscoverViewController\" />
+        <Folder
+            Include="Classes\SettingsViewController\NewOutletViewController\Pinterest\" />
+        <Folder
+            Include="Classes\SettingsViewController\NewOutletViewController\Google\" />
+        <Folder
+            Include="Classes\SettingsViewController\NewOutletViewController\Github\" />
+        <Folder
+            Include="Classes\SettingsViewController\NewOutletViewController\Website\" />
+        <Folder
+            Include="Classes\OnboardingViewController\" />
+        <Folder
+            Include="Extensions\" />
+        <Folder
+            Include="Classes\ConnectionsViewController\" />
+        <Folder
+            Include="Resources\Assets.xcassets\" />
+        <Folder
+            Include="Resources\Assets.xcassets\PhoneWhiteLarge.imageset\" />
+        <Folder
+            Include="Classes\SettingsViewController\NewOutletViewController\Email\" />
+        <Folder
+            Include="UIViewController\ColorPickerViewController\" />
     </ItemGroup>
     <ItemGroup>
-        <InterfaceDefinition Include="UIViewController\MasterViewController.xib" />
-        <InterfaceDefinition Include="Classes\DrawerViewController\DrawerViewController.xib" />
-        <InterfaceDefinition Include="UIStoryboard\Landing.storyboard" />
-        <InterfaceDefinition Include="Classes\MyCardsViewController\MyCardsViewController.xib" />
-        <InterfaceDefinition Include="Classes\MyCardsViewController\MyCardsCollectionViewCell.xib" />
-        <InterfaceDefinition Include="UIView\LabelWithActivityIndicatorView.xib" />
-        <InterfaceDefinition Include="Classes\MyCardsViewController\MyCardsTableViewCell.xib" />
-        <InterfaceDefinition Include="Classes\DrawerViewController\DrawerTableViewCell.xib" />
-        <InterfaceDefinition Include="UITableViewController\BaseTableViewController.xib" />
-        <InterfaceDefinition Include="Classes\SettingsViewController\SettingsViewController.xib" />
-        <InterfaceDefinition Include="UIViewController\AddRowViewController.xib" />
-        <InterfaceDefinition Include="UIViewController\ContainerViewController.xib" />
-        <InterfaceDefinition Include="UIViewController\CardSharingStatusViewController.xib" />
-        <InterfaceDefinition Include="Classes\SettingsViewController\SettingsTableViewCell.xib" />
-        <InterfaceDefinition Include="Classes\NewCardViewController\NewCardTableViewCell.xib" />
-        <InterfaceDefinition Include="UIView\Card\CardBack.xib" />
-        <InterfaceDefinition Include="UIView\Card\CardFront.xib" />
-        <InterfaceDefinition Include="Classes\NewCardViewController\NewCardEditableTableViewCell.xib" />
-        <InterfaceDefinition Include="UIViewController\GalleryImagePickerViewController.xib" />
-        <InterfaceDefinition Include="Classes\SettingsViewController\EditProfileViewController\EditProfileViewController.xib" />
-        <InterfaceDefinition Include="Classes\SettingsViewController\MyOutletsViewController\MyOutletsViewController.xib" />
-        <InterfaceDefinition Include="Classes\SettingsViewController\NewOutletViewController\NewOutletViewController.xib" />
-        <InterfaceDefinition Include="Classes\SettingsViewController\NewOutletViewController\NewOutletCollectionViewCell.xib" />
-        <InterfaceDefinition Include="Classes\SettingsViewController\NewOutletViewController\Phone\EnterPhoneNumberViewController.xib" />
-        <InterfaceDefinition Include="Classes\SettingsViewController\NewOutletViewController\Phone\EnterPhoneNumberVerificationCodeViewController.xib" />
-        <InterfaceDefinition Include="Classes\SettingsViewController\NewOutletViewController\Facebook\LoginWithFacebookViewController.xib" />
-        <InterfaceDefinition Include="Classes\DiscoverViewController\DiscoverViewController.xib" />
-        <InterfaceDefinition Include="Classes\SettingsViewController\NewOutletViewController\Google\LoginWithGoogleViewController.xib" />
-        <InterfaceDefinition Include="Classes\SettingsViewController\NewOutletViewController\Website\WebsiteViewController.xib" />
-        <InterfaceDefinition Include="Classes\SharingViewController\CardViewController.xib" />
-        <InterfaceDefinition Include="UIViewController\FlyingObjectsContainterViewController.xib" />
-        <InterfaceDefinition Include="UIStoryboard\LaunchScreen.storyboard" />
-        <InterfaceDefinition Include="Classes\SettingsViewController\NewOutletViewController\Email\EnterEmailAddressViewController.xib" />
-        <InterfaceDefinition Include="Classes\SettingsViewController\NewOutletViewController\Email\EnterEmailAddressVerificationCodeViewController.xib" />
-        <InterfaceDefinition Include="UIViewController\ColorPickerViewController\ColorPickerCollectionViewCell.xib" />
-        <InterfaceDefinition Include="UIViewController\ColorPickerViewController\ColorPickerViewController.xib" />
+        <InterfaceDefinition
+            Include="UIViewController\MasterViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\DrawerViewController\DrawerViewController.xib" />
+        <InterfaceDefinition
+            Include="UIStoryboard\Landing.storyboard" />
+        <InterfaceDefinition
+            Include="Classes\MyCardsViewController\MyCardsViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\MyCardsViewController\MyCardsCollectionViewCell.xib" />
+        <InterfaceDefinition
+            Include="UIView\LabelWithActivityIndicatorView.xib" />
+        <InterfaceDefinition
+            Include="Classes\MyCardsViewController\MyCardsTableViewCell.xib" />
+        <InterfaceDefinition
+            Include="Classes\DrawerViewController\DrawerTableViewCell.xib" />
+        <InterfaceDefinition
+            Include="UITableViewController\BaseTableViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\SettingsViewController\SettingsViewController.xib" />
+        <InterfaceDefinition
+            Include="UIViewController\AddRowViewController.xib" />
+        <InterfaceDefinition
+            Include="UIViewController\ContainerViewController.xib" />
+        <InterfaceDefinition
+            Include="UIViewController\CardSharingStatusViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\SettingsViewController\SettingsTableViewCell.xib" />
+        <InterfaceDefinition
+            Include="Classes\NewCardViewController\NewCardTableViewCell.xib" />
+        <InterfaceDefinition
+            Include="UIView\Card\CardBack.xib" />
+        <InterfaceDefinition
+            Include="UIView\Card\CardFront.xib" />
+        <InterfaceDefinition
+            Include="Classes\NewCardViewController\NewCardEditableTableViewCell.xib" />
+        <InterfaceDefinition
+            Include="UIViewController\GalleryImagePickerViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\SettingsViewController\EditProfileViewController\EditProfileViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\SettingsViewController\MyOutletsViewController\MyOutletsViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\SettingsViewController\NewOutletViewController\NewOutletViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\SettingsViewController\NewOutletViewController\NewOutletCollectionViewCell.xib" />
+        <InterfaceDefinition
+            Include="Classes\SettingsViewController\NewOutletViewController\Phone\EnterPhoneNumberViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\SettingsViewController\NewOutletViewController\Phone\EnterPhoneNumberVerificationCodeViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\SettingsViewController\NewOutletViewController\Facebook\LoginWithFacebookViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\DiscoverViewController\DiscoverViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\SettingsViewController\NewOutletViewController\Google\LoginWithGoogleViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\SettingsViewController\NewOutletViewController\Website\WebsiteViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\SharingViewController\CardViewController.xib" />
+        <InterfaceDefinition
+            Include="UIViewController\FlyingObjectsContainterViewController.xib" />
+        <InterfaceDefinition
+            Include="UIStoryboard\LaunchScreen.storyboard" />
+        <InterfaceDefinition
+            Include="Classes\SettingsViewController\NewOutletViewController\Email\EnterEmailAddressViewController.xib" />
+        <InterfaceDefinition
+            Include="Classes\SettingsViewController\NewOutletViewController\Email\EnterEmailAddressVerificationCodeViewController.xib" />
+        <InterfaceDefinition
+            Include="UIViewController\ColorPickerViewController\ColorPickerCollectionViewCell.xib" />
+        <InterfaceDefinition
+            Include="UIViewController\ColorPickerViewController\ColorPickerViewController.xib" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="packages.config" />
-        <None Include="Resources\GoogleService-Info.plist" />
-        <None Include="Resources\Info.plist" />
-        <None Include="FodyWeavers.xml" />
-        <None Include="Entitlements.plist" />
+        <None
+            Include="packages.config" />
+        <None
+            Include="Resources\GoogleService-Info.plist" />
+        <None
+            Include="Resources\Info.plist" />
+        <None
+            Include="FodyWeavers.xml" />
+        <None
+            Include="Entitlements.plist" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Main.cs" />
-        <Compile Include="AppDelegate.cs" />
-        <Compile Include="UIView\Controls\LandingTextField.cs" />
-        <Compile Include="UIView\Controls\LandingTextField.designer.cs">
+        <Compile
+            Include="Main.cs" />
+        <Compile
+            Include="AppDelegate.cs" />
+        <Compile
+            Include="UIView\Controls\LandingTextField.cs" />
+        <Compile
+            Include="UIView\Controls\LandingTextField.designer.cs">
             <DependentUpon>LandingTextField.cs</DependentUpon>
         </Compile>
-        <Compile Include="UIView\Controls\WebImage.cs" />
-        <Compile Include="UIView\Controls\WebImage.designer.cs">
+        <Compile
+            Include="UIView\Controls\WebImage.cs" />
+        <Compile
+            Include="UIView\Controls\WebImage.designer.cs">
             <DependentUpon>WebImage.cs</DependentUpon>
         </Compile>
-        <Compile Include="UIView\Controls\WebImageButton.cs" />
-        <Compile Include="UIView\Controls\WebImageButton.designer.cs">
+        <Compile
+            Include="UIView\Controls\WebImageButton.cs" />
+        <Compile
+            Include="UIView\Controls\WebImageButton.designer.cs">
             <DependentUpon>WebImageButton.cs</DependentUpon>
         </Compile>
-        <Compile Include="Utils\ColorUtils.cs" />
-        <Compile Include="Utils\DeviceUtils.cs" />
-        <Compile Include="Utils\ImageUtils.cs" />
-        <Compile Include="Utils\LocationManager.cs" />
-        <Compile Include="Utils\NativeDateUtils.cs" />
-        <Compile Include="Utils\ViewUtils.cs" />
-        <Compile Include="UINavigationController\ClearNavigationController.cs" />
-        <Compile Include="UINavigationController\ClearNavigationController.designer.cs">
+        <Compile
+            Include="Utils\ColorUtils.cs" />
+        <Compile
+            Include="Utils\DeviceUtils.cs" />
+        <Compile
+            Include="Utils\ImageUtils.cs" />
+        <Compile
+            Include="Utils\LocationManager.cs" />
+        <Compile
+            Include="Utils\NativeDateUtils.cs" />
+        <Compile
+            Include="Utils\ViewUtils.cs" />
+        <Compile
+            Include="UINavigationController\ClearNavigationController.cs" />
+        <Compile
+            Include="UINavigationController\ClearNavigationController.designer.cs">
             <DependentUpon>ClearNavigationController.cs</DependentUpon>
         </Compile>
-        <Compile Include="UIViewController\MasterViewController.cs" />
-        <Compile Include="Classes\DrawerViewController\DrawerViewController.cs" />
-        <Compile Include="Classes\DrawerViewController\DrawerViewController.designer.cs">
+        <Compile
+            Include="UIViewController\MasterViewController.cs" />
+        <Compile
+            Include="Classes\DrawerViewController\DrawerViewController.cs" />
+        <Compile
+            Include="Classes\DrawerViewController\DrawerViewController.designer.cs">
             <DependentUpon>DrawerViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\DrawerViewController\ShowDrawerAnimatedTransitioning.cs" />
-        <Compile Include="Classes\DrawerViewController\ShowDrawerTransitionDelegate.cs" />
-        <Compile Include="Classes\LandingViewController\BaseLandingViewController.cs" />
-        <Compile Include="Classes\LandingViewController\HelloViewController.cs" />
-        <Compile Include="Classes\LandingViewController\HelloViewController.designer.cs">
+        <Compile
+            Include="Classes\DrawerViewController\ShowDrawerAnimatedTransitioning.cs" />
+        <Compile
+            Include="Classes\DrawerViewController\ShowDrawerTransitionDelegate.cs" />
+        <Compile
+            Include="Classes\LandingViewController\BaseLandingViewController.cs" />
+        <Compile
+            Include="Classes\LandingViewController\HelloViewController.cs" />
+        <Compile
+            Include="Classes\LandingViewController\HelloViewController.designer.cs">
             <DependentUpon>HelloViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\LandingViewController\LandingTabbarController.cs" />
-        <Compile Include="Classes\LandingViewController\LandingTabbarController.designer.cs">
+        <Compile
+            Include="Classes\LandingViewController\LandingTabbarController.cs" />
+        <Compile
+            Include="Classes\LandingViewController\LandingTabbarController.designer.cs">
             <DependentUpon>LandingTabbarController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\LandingViewController\LandingViewController.cs" />
-        <Compile Include="Classes\LandingViewController\LandingViewController.designer.cs">
+        <Compile
+            Include="Classes\LandingViewController\LandingViewController.cs" />
+        <Compile
+            Include="Classes\LandingViewController\LandingViewController.designer.cs">
             <DependentUpon>LandingViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\LandingViewController\LoginViewController.cs" />
-        <Compile Include="Classes\LandingViewController\LoginViewController.designer.cs">
+        <Compile
+            Include="Classes\LandingViewController\LoginViewController.cs" />
+        <Compile
+            Include="Classes\LandingViewController\LoginViewController.designer.cs">
             <DependentUpon>LoginViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="UIViewController\BaseViewController.cs" />
-        <Compile Include="UIViewController\KeyboardObserverViewController.cs" />
-        <Compile Include="UIViewController\NetworkListenerViewController.cs" />
-        <Compile Include="UIViewController\SystemEventsViewController.cs" />
-        <Compile Include="UIViewController\ActivatorViewController.cs" />
-        <Compile Include="UIViewController\ActivatorViewController.designer.cs">
+        <Compile
+            Include="UIViewController\BaseViewController.cs" />
+        <Compile
+            Include="UIViewController\KeyboardObserverViewController.cs" />
+        <Compile
+            Include="UIViewController\NetworkListenerViewController.cs" />
+        <Compile
+            Include="UIViewController\SystemEventsViewController.cs" />
+        <Compile
+            Include="UIViewController\ActivatorViewController.cs" />
+        <Compile
+            Include="UIViewController\ActivatorViewController.designer.cs">
             <DependentUpon>ActivatorViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\MyCardsViewController\MyCardsViewController.cs" />
-        <Compile Include="Classes\MyCardsViewController\MyCardsViewController.designer.cs">
+        <Compile
+            Include="Classes\MyCardsViewController\MyCardsViewController.cs" />
+        <Compile
+            Include="Classes\MyCardsViewController\MyCardsViewController.designer.cs">
             <DependentUpon>MyCardsViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\MyCardsViewController\MyCardsCollectionViewCell.cs" />
-        <Compile Include="Classes\MyCardsViewController\MyCardsCollectionViewCell.designer.cs">
+        <Compile
+            Include="Classes\MyCardsViewController\MyCardsCollectionViewCell.cs" />
+        <Compile
+            Include="Classes\MyCardsViewController\MyCardsCollectionViewCell.designer.cs">
             <DependentUpon>MyCardsCollectionViewCell.cs</DependentUpon>
         </Compile>
-        <Compile Include="UIView\FlyingObjectsView.cs" />
-        <Compile Include="UIView\LabelWithActivityIndicatorView.cs" />
-        <Compile Include="UIView\LabelWithActivityIndicatorView.designer.cs">
+        <Compile
+            Include="UIView\FlyingObjectsView.cs" />
+        <Compile
+            Include="UIView\LabelWithActivityIndicatorView.cs" />
+        <Compile
+            Include="UIView\LabelWithActivityIndicatorView.designer.cs">
             <DependentUpon>LabelWithActivityIndicatorView.cs</DependentUpon>
         </Compile>
-        <Compile Include="UIView\PercentageCircleView.cs" />
-        <Compile Include="Classes\MyCardsViewController\MyCardsTableViewCell.cs" />
-        <Compile Include="Classes\MyCardsViewController\MyCardsTableViewCell.designer.cs">
+        <Compile
+            Include="UIView\PercentageCircleView.cs" />
+        <Compile
+            Include="Classes\MyCardsViewController\MyCardsTableViewCell.cs" />
+        <Compile
+            Include="Classes\MyCardsViewController\MyCardsTableViewCell.designer.cs">
             <DependentUpon>MyCardsTableViewCell.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\DrawerViewController\DrawerTableViewCell.cs" />
-        <Compile Include="Classes\DrawerViewController\DrawerTableViewCell.designer.cs">
+        <Compile
+            Include="Classes\DrawerViewController\DrawerTableViewCell.cs" />
+        <Compile
+            Include="Classes\DrawerViewController\DrawerTableViewCell.designer.cs">
             <DependentUpon>DrawerTableViewCell.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\DrawerViewController\DrawerTableViewController.cs" />
-        <Compile Include="UITableViewController\BaseTableViewCell.cs" />
-        <Compile Include="UITableViewController\BaseTableViewController.cs" />
-        <Compile Include="UITableViewController\BaseTableViewSource.cs" />
-        <Compile Include="Classes\DrawerViewController\DrawerTableViewSource.cs" />
-        <Compile Include="Classes\MyCardsViewController\MyCardsTableViewSource.cs" />
-        <Compile Include="Classes\SettingsViewController\SettingsViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\SettingsViewController.designer.cs">
+        <Compile
+            Include="Classes\DrawerViewController\DrawerTableViewController.cs" />
+        <Compile
+            Include="UITableViewController\BaseTableViewCell.cs" />
+        <Compile
+            Include="UITableViewController\BaseTableViewController.cs" />
+        <Compile
+            Include="UITableViewController\BaseTableViewSource.cs" />
+        <Compile
+            Include="Classes\DrawerViewController\DrawerTableViewSource.cs" />
+        <Compile
+            Include="Classes\MyCardsViewController\MyCardsTableViewSource.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\SettingsViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\SettingsViewController.designer.cs">
             <DependentUpon>SettingsViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\SettingsViewController\SettingsTableViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\SettingsTableViewSource.cs" />
-        <Compile Include="UIViewController\BaseHeaderFooterViewController.cs" />
-        <Compile Include="UIViewController\AddRowViewController.cs" />
-        <Compile Include="UIViewController\AddRowViewController.designer.cs">
+        <Compile
+            Include="Classes\SettingsViewController\SettingsTableViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\SettingsTableViewSource.cs" />
+        <Compile
+            Include="UIViewController\BaseHeaderFooterViewController.cs" />
+        <Compile
+            Include="UIViewController\AddRowViewController.cs" />
+        <Compile
+            Include="UIViewController\AddRowViewController.designer.cs">
             <DependentUpon>AddRowViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="UIViewController\ContainerViewController.cs" />
-        <Compile Include="UIViewController\ContainerViewController.designer.cs">
+        <Compile
+            Include="UIViewController\ContainerViewController.cs" />
+        <Compile
+            Include="UIViewController\ContainerViewController.designer.cs">
             <DependentUpon>ContainerViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="UIViewController\CardSharingStatusViewController.cs" />
-        <Compile Include="UIViewController\CardSharingStatusViewController.designer.cs">
+        <Compile
+            Include="UIViewController\CardSharingStatusViewController.cs" />
+        <Compile
+            Include="UIViewController\CardSharingStatusViewController.designer.cs">
             <DependentUpon>CardSharingStatusViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\SharingViewController\SharingViewController.cs" />
-        <Compile Include="Classes\SharingViewController\SharingTableViewController.cs" />
-        <Compile Include="Classes\SharingViewController\SharingTableViewSource.cs" />
-        <Compile Include="Classes\SettingsViewController\SettingsTableViewCell.cs" />
-        <Compile Include="Classes\SettingsViewController\SettingsTableViewCell.designer.cs">
+        <Compile
+            Include="Classes\SharingViewController\SharingViewController.cs" />
+        <Compile
+            Include="Classes\SharingViewController\SharingTableViewController.cs" />
+        <Compile
+            Include="Classes\SharingViewController\SharingTableViewSource.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\SettingsTableViewCell.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\SettingsTableViewCell.designer.cs">
             <DependentUpon>SettingsTableViewCell.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\NewCardViewController\NewCardViewController.cs" />
-        <Compile Include="Classes\NewCardViewController\NewCardTableViewController.cs" />
-        <Compile Include="Classes\NewCardViewController\NewCardTableViewSource.cs" />
-        <Compile Include="Classes\NewCardViewController\NewCardTableViewCell.cs" />
-        <Compile Include="Classes\NewCardViewController\NewCardTableViewCell.designer.cs">
+        <Compile
+            Include="Classes\NewCardViewController\NewCardViewController.cs" />
+        <Compile
+            Include="Classes\NewCardViewController\NewCardTableViewController.cs" />
+        <Compile
+            Include="Classes\NewCardViewController\NewCardTableViewSource.cs" />
+        <Compile
+            Include="Classes\NewCardViewController\NewCardTableViewCell.cs" />
+        <Compile
+            Include="Classes\NewCardViewController\NewCardTableViewCell.designer.cs">
             <DependentUpon>NewCardTableViewCell.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\MyCardsViewController\MyCardsTableViewController.cs" />
-        <Compile Include="UIView\Card\CardBack.cs" />
-        <Compile Include="UIView\Card\CardBack.designer.cs">
+        <Compile
+            Include="Classes\MyCardsViewController\MyCardsTableViewController.cs" />
+        <Compile
+            Include="UIView\Card\CardBack.cs" />
+        <Compile
+            Include="UIView\Card\CardBack.designer.cs">
             <DependentUpon>CardBack.cs</DependentUpon>
         </Compile>
-        <Compile Include="UIView\Card\CardFront.cs" />
-        <Compile Include="UIView\Card\CardFront.designer.cs">
+        <Compile
+            Include="UIView\Card\CardFront.cs" />
+        <Compile
+            Include="UIView\Card\CardFront.designer.cs">
             <DependentUpon>CardFront.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\NewCardViewController\NewCardEditableTableViewCell.cs" />
-        <Compile Include="Classes\NewCardViewController\NewCardEditableTableViewCell.designer.cs">
+        <Compile
+            Include="Classes\NewCardViewController\NewCardEditableTableViewCell.cs" />
+        <Compile
+            Include="Classes\NewCardViewController\NewCardEditableTableViewCell.designer.cs">
             <DependentUpon>NewCardEditableTableViewCell.cs</DependentUpon>
         </Compile>
-        <Compile Include="UIViewController\GalleryImagePickerViewController.cs" />
-        <Compile Include="UIViewController\GalleryImagePickerViewController.designer.cs">
+        <Compile
+            Include="UIViewController\GalleryImagePickerViewController.cs" />
+        <Compile
+            Include="UIViewController\GalleryImagePickerViewController.designer.cs">
             <DependentUpon>GalleryImagePickerViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\SettingsViewController\EditProfileViewController\EditProfileViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\EditProfileViewController\EditProfileViewController.designer.cs">
+        <Compile
+            Include="Classes\SettingsViewController\EditProfileViewController\EditProfileViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\EditProfileViewController\EditProfileViewController.designer.cs">
             <DependentUpon>EditProfileViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\SettingsViewController\MyOutletsViewController\MyOutletsTableViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\MyOutletsViewController\MyOutletsTableViewSource.cs" />
-        <Compile Include="Classes\SettingsViewController\MyOutletsViewController\MyOutletsViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\MyOutletsViewController\MyOutletsViewController.designer.cs">
+        <Compile
+            Include="Classes\SettingsViewController\MyOutletsViewController\MyOutletsTableViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\MyOutletsViewController\MyOutletsTableViewSource.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\MyOutletsViewController\MyOutletsViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\MyOutletsViewController\MyOutletsViewController.designer.cs">
             <DependentUpon>MyOutletsViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\NewOutletViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\NewOutletViewController.designer.cs">
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\NewOutletViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\NewOutletViewController.designer.cs">
             <DependentUpon>NewOutletViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\NewOutletCollectionViewCell.cs" />
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\NewOutletCollectionViewCell.designer.cs">
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\NewOutletCollectionViewCell.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\NewOutletCollectionViewCell.designer.cs">
             <DependentUpon>NewOutletCollectionViewCell.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Phone\EnterPhoneNumberViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Phone\EnterPhoneNumberViewController.designer.cs">
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Phone\EnterPhoneNumberViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Phone\EnterPhoneNumberViewController.designer.cs">
             <DependentUpon>EnterPhoneNumberViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Phone\EnterPhoneNumberVerificationCodeViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Phone\EnterPhoneNumberVerificationCodeViewController.designer.cs">
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Phone\EnterPhoneNumberVerificationCodeViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Phone\EnterPhoneNumberVerificationCodeViewController.designer.cs">
             <DependentUpon>EnterPhoneNumberVerificationCodeViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Services\Services.cs" />
-        <Compile Include="Services\ImageDownloader.cs" />
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Facebook\LoginWithFacebookViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Facebook\LoginWithFacebookViewController.designer.cs">
+        <Compile
+            Include="Services\Services.cs" />
+        <Compile
+            Include="Services\ImageDownloader.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Facebook\LoginWithFacebookViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Facebook\LoginWithFacebookViewController.designer.cs">
             <DependentUpon>LoginWithFacebookViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\LinkedIn\LinkedInWebViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Instagram\InstagramWebViewController.cs" />
-        <Compile Include="Classes\DiscoverViewController\DiscoverViewController.cs" />
-        <Compile Include="Classes\DiscoverViewController\DiscoverViewController.designer.cs">
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\LinkedIn\LinkedInWebViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Instagram\InstagramWebViewController.cs" />
+        <Compile
+            Include="Classes\DiscoverViewController\DiscoverViewController.cs" />
+        <Compile
+            Include="Classes\DiscoverViewController\DiscoverViewController.designer.cs">
             <DependentUpon>DiscoverViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Pinterest\PinterestWebViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Google\LoginWithGoogleViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Google\LoginWithGoogleViewController.designer.cs">
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Pinterest\PinterestWebViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Google\LoginWithGoogleViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Google\LoginWithGoogleViewController.designer.cs">
             <DependentUpon>LoginWithGoogleViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Github\GithubWebViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Website\WebsiteViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Website\WebsiteViewController.designer.cs">
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Github\GithubWebViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Website\WebsiteViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Website\WebsiteViewController.designer.cs">
             <DependentUpon>WebsiteViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="UIViewController\AskPermissionViewController.cs" />
-        <Compile Include="Services\PersistantStorage.cs" />
-        <Compile Include="Classes\SharingViewController\CardViewController.cs" />
-        <Compile Include="Classes\SharingViewController\CardViewController.designer.cs">
+        <Compile
+            Include="UIViewController\AskPermissionViewController.cs" />
+        <Compile
+            Include="Services\PersistantStorage.cs" />
+        <Compile
+            Include="Classes\SharingViewController\CardViewController.cs" />
+        <Compile
+            Include="Classes\SharingViewController\CardViewController.designer.cs">
             <DependentUpon>CardViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\OnboardingViewController\OnboardingViewController.cs" />
-        <Compile Include="UIViewController\ActivatorContainerViewController.cs" />
-        <Compile Include="Extensions\ApplicationExtensions.cs" />
-        <Compile Include="Extensions\UITextFieldExtensions.cs" />
-        <Compile Include="Extensions\UILabelExtensions.cs" />
-        <Compile Include="UIViewController\FlyingObjectsContainterViewController.cs" />
-        <Compile Include="UIViewController\FlyingObjectsContainterViewController.designer.cs">
+        <Compile
+            Include="Classes\OnboardingViewController\OnboardingViewController.cs" />
+        <Compile
+            Include="UIViewController\ActivatorContainerViewController.cs" />
+        <Compile
+            Include="Extensions\ApplicationExtensions.cs" />
+        <Compile
+            Include="Extensions\UITextFieldExtensions.cs" />
+        <Compile
+            Include="Extensions\UILabelExtensions.cs" />
+        <Compile
+            Include="UIViewController\FlyingObjectsContainterViewController.cs" />
+        <Compile
+            Include="UIViewController\FlyingObjectsContainterViewController.designer.cs">
             <DependentUpon>FlyingObjectsContainterViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Utils\PermissionUtils.cs" />
-        <Compile Include="Utils\WebUtils.cs" />
-        <Compile Include="Classes\ConnectionsViewController\ConnectionsTableViewController.cs" />
-        <Compile Include="Classes\ConnectionsViewController\ConnectionsTableViewSource.cs" />
-        <Compile Include="Utils\EncryptionUtils.cs" />
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Email\EnterEmailAddressViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Email\EnterEmailAddressViewController.designer.cs">
+        <Compile
+            Include="Utils\PermissionUtils.cs" />
+        <Compile
+            Include="Utils\WebUtils.cs" />
+        <Compile
+            Include="Classes\ConnectionsViewController\ConnectionsTableViewController.cs" />
+        <Compile
+            Include="Classes\ConnectionsViewController\ConnectionsTableViewSource.cs" />
+        <Compile
+            Include="Utils\EncryptionUtils.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Email\EnterEmailAddressViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Email\EnterEmailAddressViewController.designer.cs">
             <DependentUpon>EnterEmailAddressViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Email\EnterEmailAddressVerificationCodeViewController.cs" />
-        <Compile Include="Classes\SettingsViewController\NewOutletViewController\Email\EnterEmailAddressVerificationCodeViewController.designer.cs">
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Email\EnterEmailAddressVerificationCodeViewController.cs" />
+        <Compile
+            Include="Classes\SettingsViewController\NewOutletViewController\Email\EnterEmailAddressVerificationCodeViewController.designer.cs">
             <DependentUpon>EnterEmailAddressVerificationCodeViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="UIViewController\WebViewViewController.cs" />
-        <Compile Include="UIViewController\WebViewViewController.designer.cs">
+        <Compile
+            Include="UIViewController\WebViewViewController.cs" />
+        <Compile
+            Include="UIViewController\WebViewViewController.designer.cs">
             <DependentUpon>WebViewViewController.cs</DependentUpon>
         </Compile>
-        <Compile Include="UIView\Card\ICardView.cs" />
-        <Compile Include="UIViewController\ColorPickerViewController\ColorPickerCollectionViewCell.cs" />
-        <Compile Include="UIViewController\ColorPickerViewController\ColorPickerCollectionViewCell.designer.cs">
+        <Compile
+            Include="UIView\Card\ICardView.cs" />
+        <Compile
+            Include="UIViewController\ColorPickerViewController\ColorPickerCollectionViewCell.cs" />
+        <Compile
+            Include="UIViewController\ColorPickerViewController\ColorPickerCollectionViewCell.designer.cs">
             <DependentUpon>ColorPickerCollectionViewCell.cs</DependentUpon>
         </Compile>
-        <Compile Include="UIViewController\ColorPickerViewController\ColorPickerCollectionViewDataSource.cs" />
-        <Compile Include="UIViewController\ColorPickerViewController\ColorPIckerCollectionViewFlowDelegate.cs" />
-        <Compile Include="UIViewController\ColorPickerViewController\ColorPickerViewController.cs" />
-        <Compile Include="UIViewController\ColorPickerViewController\ColorPickerViewController.designer.cs">
+        <Compile
+            Include="UIViewController\ColorPickerViewController\ColorPickerCollectionViewDataSource.cs" />
+        <Compile
+            Include="UIViewController\ColorPickerViewController\ColorPIckerCollectionViewFlowDelegate.cs" />
+        <Compile
+            Include="UIViewController\ColorPickerViewController\ColorPickerViewController.cs" />
+        <Compile
+            Include="UIViewController\ColorPickerViewController\ColorPickerViewController.designer.cs">
             <DependentUpon>ColorPickerViewController.cs</DependentUpon>
         </Compile>
     </ItemGroup>
-    <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-    <Import Project="..\packages\Xamarin.Firebase.iOS.InstanceID.2.0.8\build\Xamarin.Firebase.iOS.InstanceID.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.InstanceID.2.0.8\build\Xamarin.Firebase.iOS.InstanceID.targets')" />
-    <Import Project="..\packages\Xamarin.Google.iOS.Core.3.1.0.1\build\Xamarin.Google.iOS.Core.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.Core.3.1.0.1\build\Xamarin.Google.iOS.Core.targets')" />
-    <Import Project="..\packages\Fody.2.4.6\build\Fody.targets" Condition="Exists('..\packages\Fody.2.4.6\build\Fody.targets')" />
-    <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
-    <Import Project="..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets')" />
-    <Import Project="..\packages\Xamarin.Firebase.iOS.Core.4.0.13.1\build\Xamarin.Firebase.iOS.Core.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Core.4.0.13.1\build\Xamarin.Firebase.iOS.Core.targets')" />
-    <Import Project="..\packages\Xamarin.Firebase.iOS.Analytics.4.0.5.1\build\Xamarin.Firebase.iOS.Analytics.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Analytics.4.0.5.1\build\Xamarin.Firebase.iOS.Analytics.targets')" />
-    <Import Project="..\packages\Xamarin.Google.iOS.MobileAds.7.27.0.3\build\Xamarin.Google.iOS.MobileAds.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.MobileAds.7.27.0.3\build\Xamarin.Google.iOS.MobileAds.targets')" />
-    <Import Project="..\packages\Xamarin.Google.iOS.SignIn.4.1.1.1\build\Xamarin.Google.iOS.SignIn.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.SignIn.4.1.1.1\build\Xamarin.Google.iOS.SignIn.targets')" />
-    <Import Project="..\packages\Realm.Database.3.0.0\build\Realm.Database.targets" Condition="Exists('..\packages\Realm.Database.3.0.0\build\Realm.Database.targets')" />
-    <Import Project="..\packages\Realm.3.0.0\build\Realm.targets" Condition="Exists('..\packages\Realm.3.0.0\build\Realm.targets')" />
-    <Import Project="..\packages\Fody.2.5.0\build\Fody.targets" Condition="Exists('..\packages\Fody.2.5.0\build\Fody.targets')" />
+    <Import
+        Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+    <Import
+        Project="..\packages\Xamarin.Google.iOS.Core.3.1.0.1\build\Xamarin.Google.iOS.Core.targets"
+        Condition="Exists('..\packages\Xamarin.Google.iOS.Core.3.1.0.1\build\Xamarin.Google.iOS.Core.targets')" />
+    <Import
+        Project="..\packages\Fody.2.4.6\build\Fody.targets"
+        Condition="Exists('..\packages\Fody.2.4.6\build\Fody.targets')" />
+    <Import
+        Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets"
+        Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
+    <Import
+        Project="..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets"
+        Condition="Exists('..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets')" />
+    <Import
+        Project="..\packages\Fody.3.2.0\build\Fody.targets"
+        Condition="Exists('..\packages\Fody.3.2.0\build\Fody.targets')" />
+    <Import
+        Project="..\packages\Realm.Database.3.1.0\build\Realm.Database.targets"
+        Condition="Exists('..\packages\Realm.Database.3.1.0\build\Realm.Database.targets')" />
+    <Import
+        Project="..\packages\Realm.3.1.0\build\Realm.targets"
+        Condition="Exists('..\packages\Realm.3.1.0\build\Realm.targets')" />
+    <Import
+        Project="..\packages\Xamarin.Firebase.iOS.InstanceID.3.1.1\build\Xamarin.Firebase.iOS.InstanceID.targets"
+        Condition="Exists('..\packages\Xamarin.Firebase.iOS.InstanceID.3.1.1\build\Xamarin.Firebase.iOS.InstanceID.targets')" />
+    <Import
+        Project="..\packages\Xamarin.Firebase.iOS.Analytics.5.0.1\build\Xamarin.Firebase.iOS.Analytics.targets"
+        Condition="Exists('..\packages\Xamarin.Firebase.iOS.Analytics.5.0.1\build\Xamarin.Firebase.iOS.Analytics.targets')" />
+    <Import
+        Project="..\packages\Xamarin.Google.iOS.MobileAds.7.31.0.1\build\Xamarin.Google.iOS.MobileAds.targets"
+        Condition="Exists('..\packages\Xamarin.Google.iOS.MobileAds.7.31.0.1\build\Xamarin.Google.iOS.MobileAds.targets')" />
+    <Import
+        Project="..\packages\Xamarin.Google.iOS.SignIn.4.1.2\build\Xamarin.Google.iOS.SignIn.targets"
+        Condition="Exists('..\packages\Xamarin.Google.iOS.SignIn.4.1.2\build\Xamarin.Google.iOS.SignIn.targets')" />
 </Project>

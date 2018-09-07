@@ -18,7 +18,7 @@ namespace Slink.iOS {     public partial class CardSharingStatusViewControll
 
             SharingButton.TitleLabel.TextAlignment = UITextAlignment.Center;
             SharingButton.TitleLabel.LineBreakMode = UILineBreakMode.WordWrap;
-            SharingButton.TitleLabel.Lines = 2;              Timer.Elapsed -= Timer_Elapsed;             Timer.Elapsed += Timer_Elapsed;             Timer.AutoReset = false;              //todo ask shlomo!             Timer.Interval = 30000; //30 seconds 
+            SharingButton.TitleLabel.Lines = 2;              Timer.Elapsed -= Timer_Elapsed;             Timer.Elapsed += Timer_Elapsed;             Timer.AutoReset = false;             Timer.Interval = 30000; //30 seconds 
         }          void Timer_Elapsed(object sender, EventArgs e)         {             InvokeOnMainThread(() => {                  StopSharing();             });         }         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);

@@ -36,6 +36,8 @@ namespace Slink
             var lon = position.Longitude;
             var time = DateTimeOffset.UtcNow;
 
+            System.Diagnostics.Debug.WriteLine("Lat: " + lat, " Lon: " + lon);
+
             //get users name to replace the card name
             var me = RealmUserServices.GetMe(false);
             if (me == null) return null;

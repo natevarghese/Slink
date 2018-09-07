@@ -4,6 +4,8 @@ using Android.Content;
 using Android.Views;
 using System.Timers;
 using System.Threading.Tasks;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 
 namespace Slink.Droid
 {
@@ -25,12 +27,18 @@ namespace Slink.Droid
 
             HasOptionsMenu = true;
 
+            Timer.Elapsed -= Timer_Elapsed;
+            Timer.Elapsed += Timer_Elapsed;
+            Timer.AutoReset = false;
+            Timer.Interval = 30000; //30 seconds 
+
             return view;
         }
         public override void OnResume()
         {
             base.OnResume();
 
+            AskForLocationPermissionIfNecessary(Permission.Location);
 
             TapToShareBroadCastReceiver = new ActionBroadcastReceiver();
             TapToShareBroadCastReceiver.NotificationReceived += (obj) =>
@@ -65,7 +73,6 @@ namespace Slink.Droid
 
 
         }
-
 
         public override void OnStop()
         {
@@ -124,7 +131,13 @@ namespace Slink.Droid
         }
 
 
-
+        void Timer_Elapsed(object sender, EventArgs e)
+        {
+            Activity.RunOnUiThread(() =>
+            {
+                StopSharing();
+            });
+        }
         async public void StartSharing()
         {
             if (!Shared.CanStartSharing()) return;
@@ -135,14 +148,15 @@ namespace Slink.Droid
             var sharing = await Shared.ShareChard();
             if (sharing)
             {
-                //Timer.Start();
-                //ApplyAnimation();
+                Shared.State = SharingShared.SharingState.Sharing;
+                Timer.Start();
             }
             else
             {
                 Shared.State = SharingShared.SharingState.Failed;
-                RecyclerViewAdapter.SetListItems(Shared.GetTableItemsAndroid());
             }
+
+            RecyclerViewAdapter.SetListItems(Shared.GetTableItemsAndroid());
 
             ButtonLocked = false;
         }

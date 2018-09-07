@@ -56,7 +56,7 @@ namespace Slink.iOS
                     ShowAlert("Oops!", e.Error.LocalizedDescription);
                     return;
                 }
-                //427856514
+
                 if (e.Result.Token == null) return;
                 string tokenString = e.Result.Token.TokenString;
 
@@ -68,10 +68,6 @@ namespace Slink.iOS
                 }
 
                 ShowHud("Loading");
-
-                //timmmys token
-                //tokenString = "EAAEBJG2Ozg4BAEN1geU5bEXTn3CazQfnI2CWndDmdZBvUDPSfbPh8WZB1ZBXqLuZCdRjhsT3fJMriNY7qmZAoL2eTWxOOOimZBwjDOLGChRJ9NMaMYjJF5cLnAZClX9bg6VtdpPXaXKpyhZAZAaUcRLZCBgJJ3X5zcMEtd3BLKAqpDDRZA0SFWPMAPaNinZA53sv1zmZAvkCSaQD3CZBD4IWq96yrOnZASHaWdADuUsvzC5ZC5LgpNpKoRhXP1I0";
-
 
                 bool sucessful = await Shared.CreateUser(tokenString);
                 if (!sucessful)

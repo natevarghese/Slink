@@ -215,15 +215,11 @@ namespace Slink.Droid
             var a = (model.color[3]);
             var color = new Android.Graphics.Color(r, g, b, a);
 
-            ImageView imgView = view.FindViewById<ImageView>(Resource.Id.ImageView);
-            var drawable = Context.Resources.GetDrawable(Resource.Drawable.RoundedCorners);
-            drawable.SetColorFilter(color, PorterDuff.Mode.SrcIn);
-            imgView.Background = drawable;
+            var imgView = view.FindViewById<ImageView>(Resource.Id.ImageView);
+            imgView.SetBackgroundColor(color);
 
-            var background = view.FindViewById<ImageView>(Resource.Id.BackgroundView);
-            var drawable2 = Context.Resources.GetDrawable(Resource.Drawable.RoundedCorners);
-            drawable2.SetColorFilter(Android.Graphics.Color.White, PorterDuff.Mode.SrcIn);
-            background.Background = drawable2;
+            var backgroundImg = view.FindViewById<ImageView>(Resource.Id.BackgroundView);
+            backgroundImg.SetBackgroundColor(Android.Graphics.Color.White);
 
             return view;
         }

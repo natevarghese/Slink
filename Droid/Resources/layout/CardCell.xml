@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@android:color/transparent"
     android:layout_width="match_parent"
     android:layout_height="550dp"
@@ -12,6 +11,7 @@
         android:id="@+id/NameTextView"
         android:layout_width="wrap_content"
         android:gravity="center_vertical"
+        android:singleLine="true"
         android:textColor="@android:color/white"
         android:textColorHint="@color/hintGray"
         android:layout_height="40dp" />
@@ -24,17 +24,19 @@
         android:textColor="@android:color/white"
         android:layout_toRightOf="@id/NameTextView"
         android:layout_alignParentRight="true"
-        android:layout_height="40dp" />;
+        android:layout_height="40dp" />
     <include
         android:id="@+id/FrontView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
         android:layout_below="@id/NameTextView"
-        layout="@layout/CardFront" /><include
+        layout="@layout/CardFront" />
+    <include
         android:id="@+id/RearView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible"
         android:layout_below="@id/NameTextView"
-        layout="@layout/CardBack" /></RelativeLayout>
+        layout="@layout/CardBack" />
+</RelativeLayout>
