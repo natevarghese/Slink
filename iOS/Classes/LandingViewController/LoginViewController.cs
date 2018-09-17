@@ -95,6 +95,7 @@ namespace Slink.iOS
             };
             FacebookButtonSuperview.AddSubview(loginView);
         }
+
         public override TPKeyboardAvoiding.TPKeyboardAvoidingScrollView GetScrollView() { return null; }
 
         void ShowAlert(string title, string desc)

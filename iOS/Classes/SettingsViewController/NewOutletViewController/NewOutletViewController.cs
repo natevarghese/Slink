@@ -4,12 +4,14 @@ using Foundation;
 using UIKit;
 using CoreGraphics;
 using System.Linq;
+using Xamarin.Auth;
 
 namespace Slink.iOS
 {
     public partial class NewOutletViewController : BaseViewController
     {
         public NewOutletViewController() : base("NewOutletViewController") { }
+        OAuth1Authenticator MyTwitterAuthenticator;
 
         public override string Title
         {
@@ -126,8 +128,10 @@ namespace Slink.iOS
 
         void ShowTwitterAuthenticationFlow()
         {
-            var auth = TwitterAuthenticator.GetTwitterAuthenticator((bool sucessful) =>
+            MyTwitterAuthenticator = MyTwitterAuthenticator ?? TwitterAuthenticator.GetTwitterAuthenticator((bool sucessful) =>
             {
+                MyTwitterAuthenticator.Error -= Auth_Error;
+
                 //dismisses twitter dialog
                 DismissViewController(true, () =>
                 {
@@ -139,10 +143,24 @@ namespace Slink.iOS
 
                 });
             });
-            var ui = auth.GetUI();
-            PresentViewController(ui, true, null);
+
+            MyTwitterAuthenticator.Error -= Auth_Error;
+            MyTwitterAuthenticator.Error += Auth_Error;
+            PresentViewController(MyTwitterAuthenticator.GetUI(), true, null);
+        }
+
+        void Auth_Error(object sender, Xamarin.Auth.AuthenticatorErrorEventArgs e)
+        {
+            if (e.Message.Contains("NameResolutionFailure"))
+            {
+                DismissViewController(true, () =>
+                {
+                    ShowServerConnectivityAlert();
+                });
+            }
         }
     }
+
 
     #region UICollectionViewDataSource
     class NewOutletCollectionViewDataSource : UICollectionViewDataSource

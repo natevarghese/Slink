@@ -4,14 +4,14 @@ using UIKit;
 
 namespace Slink.iOS
 {
-    public class AskPermissionViewController : UIViewController
+    public class AskPermissionViewController : KeyboardObserverViewController
     {
         public bool LocationEnabled = false;
         public static LocationManager LocationManager;
 
         public AskPermissionViewController() : base() { }
         public AskPermissionViewController(IntPtr handle) : base(handle) { }
-        public AskPermissionViewController(string xibName) : base(xibName, null) { }
+        public AskPermissionViewController(string xibName) : base(xibName) { }
 
         public override void ViewDidAppear(bool animated)
         {

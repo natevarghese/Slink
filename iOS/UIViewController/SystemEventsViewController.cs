@@ -4,11 +4,11 @@ using UIKit;
 
 namespace Slink.iOS
 {
-    public class SystemEventsViewController : BaseViewController
+    public class SystemEventsViewController : UIViewController
     {
         public SystemEventsViewController() : base() { }
         public SystemEventsViewController(IntPtr handle) : base(handle) { }
-        public SystemEventsViewController(string xibName) : base(xibName) { }
+        public SystemEventsViewController(string xibName) : base(xibName, null) { }
 
         NSObject WillEnterForgroundNotification;
 

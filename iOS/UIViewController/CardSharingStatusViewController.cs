@@ -3,7 +3,7 @@ using Foundation; using UIKit; using System.Linq; using System.Threading.T
 using System.Timers;
 
 namespace Slink.iOS {     public partial class CardSharingStatusViewController : BaseHeaderFooterViewController     {         public Card SelectedCard;         public bool Sharing;          string SessionUUID;         bool ButtonLocked;          Timer Timer = new Timer();         CAShapeLayer shape;         NSObject ResignActiveNotification;          //Used for Onboarding         public bool DisplayPurposeOnly;         public Action FirstTapInitiatedAction;          public CardSharingStatusViewController() : base("CardSharingStatusViewController", null) { }          public override void ViewDidLoad()
-        {
+        {             NetworkListenerEnabled = false; 
             base.ViewDidLoad();
 
             //adds a stationary circle around phone
