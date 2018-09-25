@@ -21,7 +21,7 @@ namespace Slink.Droid
 
             RecyclerViewAdapter.SetListItems(Shared.GetTableItems());
 
-            Activity.Title = "";
+            Activity.Title = "Slink";
 
             HasOptionsMenu = true;
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Android.Support.V4.Content;
 using Android.Support.V7.Widget;
 using Xamarin.Facebook;
@@ -9,6 +10,7 @@ namespace Slink.Droid
     public class SettingsRecyclerViewFragment : RecyclerViewFragment<SettingsShared.SettingsModel>
     {
         public SettingsShared Shared = new SettingsShared();
+       
 
         public override Android.Views.View OnCreateView(Android.Views.LayoutInflater inflater, Android.Views.ViewGroup container, Android.OS.Bundle savedInstanceState)
         {
@@ -42,12 +44,28 @@ namespace Slink.Droid
                 return;
             }
 
+
+
             if (obj.Title.Equals(SettingsShared.navigation_item_design, StringComparison.InvariantCulture))
             {
-                //Shared.DesignChanged();
-                //RecyclerView.GetAdapter().NotifyDataSetChanged();
+
+                 Shared.DesignChanged();
+
+                int no = Shared.target.Values.Count;
+
+                for (int i = 0; i < 3; i++)
+                {
+                    //FlyingObjectsFragment flyobj = new FlyingObjectsFragment();
+                    Console.WriteLine("=========================+++++++>" + Shared.target.Values[0]);
+                    Console.WriteLine("=========================++++++>" + Shared.target.Values[1]);
+                    Console.WriteLine("=========================++++++>" + Shared.target.Values[2]);
+                }
+            
+                RecyclerView.GetAdapter().NotifyDataSetChanged();
                 return;
             }
+
+
 
             if (obj.Title.Equals(SettingsShared.navigation_item_logout, StringComparison.InvariantCulture))
             {

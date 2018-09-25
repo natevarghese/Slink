@@ -10,6 +10,12 @@ namespace Slink.Droid
             return Color.Argb(255, random.Next(256), random.Next(256), random.Next(256));
         }
 
+        public static Color RemoveAllColor(Random random)
+        {
+            return Color.Argb(0, random.Next(0), random.Next(0), random.Next(0));
+
+
+        }
         public static Color FromHexString(string hexValue, Color defaultColor)
         {
             if (String.IsNullOrEmpty(hexValue)) return defaultColor;

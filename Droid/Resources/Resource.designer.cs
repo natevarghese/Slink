@@ -282,6 +282,15 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f060004
 			public const int design_appbar_state_list_animator = 2131099652;
 			
+			// aapt resource value: 0x7f060005
+			public const int fadein = 2131099653;
+			
+			// aapt resource value: 0x7f060006
+			public const int fadeout = 2131099654;
+			
+			// aapt resource value: 0x7f060007
+			public const int hyperspace = 2131099655;
+			
 			static Animator()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -406,41 +415,41 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f010008
 			public const int adUnitId = 2130771976;
 			
-			// aapt resource value: 0x7f0101b6
-			public const int ahBarColor = 2130772406;
+			// aapt resource value: 0x7f0101ba
+			public const int ahBarColor = 2130772410;
+			
+			// aapt resource value: 0x7f0101c2
+			public const int ahBarLength = 2130772418;
+			
+			// aapt resource value: 0x7f0101c1
+			public const int ahBarWidth = 2130772417;
+			
+			// aapt resource value: 0x7f0101bf
+			public const int ahCircleColor = 2130772415;
 			
 			// aapt resource value: 0x7f0101be
-			public const int ahBarLength = 2130772414;
+			public const int ahDelayMillis = 2130772414;
 			
-			// aapt resource value: 0x7f0101bd
-			public const int ahBarWidth = 2130772413;
+			// aapt resource value: 0x7f0101c0
+			public const int ahRadius = 2130772416;
 			
 			// aapt resource value: 0x7f0101bb
-			public const int ahCircleColor = 2130772411;
-			
-			// aapt resource value: 0x7f0101ba
-			public const int ahDelayMillis = 2130772410;
+			public const int ahRimColor = 2130772411;
 			
 			// aapt resource value: 0x7f0101bc
-			public const int ahRadius = 2130772412;
+			public const int ahRimWidth = 2130772412;
+			
+			// aapt resource value: 0x7f0101bd
+			public const int ahSpinSpeed = 2130772413;
 			
 			// aapt resource value: 0x7f0101b7
-			public const int ahRimColor = 2130772407;
+			public const int ahText = 2130772407;
 			
 			// aapt resource value: 0x7f0101b8
-			public const int ahRimWidth = 2130772408;
+			public const int ahTextColor = 2130772408;
 			
 			// aapt resource value: 0x7f0101b9
-			public const int ahSpinSpeed = 2130772409;
-			
-			// aapt resource value: 0x7f0101b3
-			public const int ahText = 2130772403;
-			
-			// aapt resource value: 0x7f0101b4
-			public const int ahTextColor = 2130772404;
-			
-			// aapt resource value: 0x7f0101b5
-			public const int ahTextSize = 2130772405;
+			public const int ahTextSize = 2130772409;
 			
 			// aapt resource value: 0x7f0100ba
 			public const int alertDialogButtonGroupStyle = 2130772154;
@@ -603,6 +612,18 @@ namespace Slink.Droid
 			
 			// aapt resource value: 0x7f010002
 			public const int circleCrop = 2130771970;
+			
+			// aapt resource value: 0x7f0101b4
+			public const int civ_border_color = 2130772404;
+			
+			// aapt resource value: 0x7f0101b5
+			public const int civ_border_overlay = 2130772405;
+			
+			// aapt resource value: 0x7f0101b3
+			public const int civ_border_width = 2130772403;
+			
+			// aapt resource value: 0x7f0101b6
+			public const int civ_fill_color = 2130772406;
 			
 			// aapt resource value: 0x7f0100f5
 			public const int closeIcon = 2130772213;
@@ -2891,26 +2912,26 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f0200bb
-			public const int avd_hide_password_1 = 2130837691;
+			// aapt resource value: 0x7f0200bf
+			public const int avd_hide_password_1 = 2130837695;
 			
-			// aapt resource value: 0x7f0200bc
-			public const int avd_hide_password_2 = 2130837692;
+			// aapt resource value: 0x7f0200c0
+			public const int avd_hide_password_2 = 2130837696;
 			
-			// aapt resource value: 0x7f0200bd
-			public const int avd_hide_password_3 = 2130837693;
+			// aapt resource value: 0x7f0200c1
+			public const int avd_hide_password_3 = 2130837697;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f0200be
-			public const int avd_show_password_1 = 2130837694;
+			// aapt resource value: 0x7f0200c2
+			public const int avd_show_password_1 = 2130837698;
 			
-			// aapt resource value: 0x7f0200bf
-			public const int avd_show_password_2 = 2130837695;
+			// aapt resource value: 0x7f0200c3
+			public const int avd_show_password_2 = 2130837699;
 			
-			// aapt resource value: 0x7f0200c0
-			public const int avd_show_password_3 = 2130837696;
+			// aapt resource value: 0x7f0200c4
+			public const int avd_show_password_3 = 2130837700;
 			
 			// aapt resource value: 0x7f020055
 			public const int ClearToolbarBackground = 2130837589;
@@ -3176,11 +3197,11 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0200ac
 			public const int notification_icon_background = 2130837676;
 			
-			// aapt resource value: 0x7f0200b9
-			public const int notification_template_icon_bg = 2130837689;
+			// aapt resource value: 0x7f0200bd
+			public const int notification_template_icon_bg = 2130837693;
 			
-			// aapt resource value: 0x7f0200ba
-			public const int notification_template_icon_low_bg = 2130837690;
+			// aapt resource value: 0x7f0200be
+			public const int notification_template_icon_low_bg = 2130837694;
 			
 			// aapt resource value: 0x7f0200ad
 			public const int notification_tile_bg = 2130837677;
@@ -3195,28 +3216,40 @@ namespace Slink.Droid
 			public const int RecyclerViewWhiteDivider = 2130837680;
 			
 			// aapt resource value: 0x7f0200b1
-			public const int roundedbg = 2130837681;
+			public const int redbubble = 2130837681;
 			
 			// aapt resource value: 0x7f0200b2
-			public const int roundedbgdark = 2130837682;
+			public const int roundedbg = 2130837682;
 			
 			// aapt resource value: 0x7f0200b3
-			public const int RoundedCorners = 2130837683;
+			public const int roundedbgdark = 2130837683;
 			
 			// aapt resource value: 0x7f0200b4
-			public const int RoundedCornersWithThinBorder = 2130837684;
+			public const int RoundedCorners = 2130837684;
 			
 			// aapt resource value: 0x7f0200b5
-			public const int RoundedCornersWithThinBorderRed = 2130837685;
+			public const int RoundedCornersWithThinBorder = 2130837685;
 			
 			// aapt resource value: 0x7f0200b6
-			public const int Settings = 2130837686;
+			public const int RoundedCornersWithThinBorderRed = 2130837686;
 			
 			// aapt resource value: 0x7f0200b7
-			public const int tooltip_frame_dark = 2130837687;
+			public const int Settings = 2130837687;
 			
 			// aapt resource value: 0x7f0200b8
-			public const int tooltip_frame_light = 2130837688;
+			public const int slinkicon = 2130837688;
+			
+			// aapt resource value: 0x7f0200b9
+			public const int splash_logo = 2130837689;
+			
+			// aapt resource value: 0x7f0200ba
+			public const int splash_screen = 2130837690;
+			
+			// aapt resource value: 0x7f0200bb
+			public const int tooltip_frame_dark = 2130837691;
+			
+			// aapt resource value: 0x7f0200bc
+			public const int tooltip_frame_light = 2130837692;
 			
 			static Drawable()
 			{
@@ -3249,14 +3282,14 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d00bd
 			public const int CurrentColorLabel = 2131558589;
 			
-			// aapt resource value: 0x7f0d011c
-			public const int Delete = 2131558684;
+			// aapt resource value: 0x7f0d0121
+			public const int Delete = 2131558689;
 			
-			// aapt resource value: 0x7f0d011d
-			public const int Discard = 2131558685;
+			// aapt resource value: 0x7f0d0122
+			public const int Discard = 2131558690;
 			
-			// aapt resource value: 0x7f0d011e
-			public const int Edit = 2131558686;
+			// aapt resource value: 0x7f0d0123
+			public const int Edit = 2131558691;
 			
 			// aapt resource value: 0x7f0d004c
 			public const int FUNCTION = 2131558476;
@@ -3294,20 +3327,20 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d00e0
 			public const int LastNameEditText = 2131558624;
 			
-			// aapt resource value: 0x7f0d0110
-			public const int LeftEditText = 2131558672;
+			// aapt resource value: 0x7f0d0115
+			public const int LeftEditText = 2131558677;
 			
 			// aapt resource value: 0x7f0d00e6
 			public const int LeftImageView = 2131558630;
 			
-			// aapt resource value: 0x7f0d0111
-			public const int LeftTextView = 2131558673;
-			
-			// aapt resource value: 0x7f0d00e8
-			public const int ListView = 2131558632;
+			// aapt resource value: 0x7f0d0116
+			public const int LeftTextView = 2131558678;
 			
 			// aapt resource value: 0x7f0d00ed
-			public const int LoginButton = 2131558637;
+			public const int ListView = 2131558637;
+			
+			// aapt resource value: 0x7f0d00f2
+			public const int LoginButton = 2131558642;
 			
 			// aapt resource value: 0x7f0d00aa
 			public const int LogoImageView = 2131558570;
@@ -3333,11 +3366,11 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d00e2
 			public const int PhoneNumberTextField = 2131558626;
 			
-			// aapt resource value: 0x7f0d00ee
-			public const int PrivacyPolicyTextView = 2131558638;
+			// aapt resource value: 0x7f0d00f3
+			public const int PrivacyPolicyTextView = 2131558643;
 			
-			// aapt resource value: 0x7f0d0114
-			public const int ProgressBar = 2131558676;
+			// aapt resource value: 0x7f0d0119
+			public const int ProgressBar = 2131558681;
 			
 			// aapt resource value: 0x7f0d00e1
 			public const int ProgressButton = 2131558625;
@@ -3351,8 +3384,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d00e7
 			public const int RightTextView = 2131558631;
 			
-			// aapt resource value: 0x7f0d010f
-			public const int RightTextViewSuperView = 2131558671;
+			// aapt resource value: 0x7f0d0114
+			public const int RightTextViewSuperView = 2131558676;
 			
 			// aapt resource value: 0x7f0d004e
 			public const int SHIFT = 2131558478;
@@ -3360,8 +3393,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d004f
 			public const int SYM = 2131558479;
 			
-			// aapt resource value: 0x7f0d011f
-			public const int Save = 2131558687;
+			// aapt resource value: 0x7f0d0124
+			public const int Save = 2131558692;
 			
 			// aapt resource value: 0x7f0d00b7
 			public const int TextView = 2131558583;
@@ -3384,14 +3417,17 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d00de
 			public const int WebImageView = 2131558622;
 			
-			// aapt resource value: 0x7f0d0113
-			public const int WebView = 2131558675;
+			// aapt resource value: 0x7f0d0118
+			public const int WebView = 2131558680;
 			
-			// aapt resource value: 0x7f0d0115
-			public const int WebsiteTextField = 2131558677;
+			// aapt resource value: 0x7f0d011a
+			public const int WebsiteTextField = 2131558682;
 			
-			// aapt resource value: 0x7f0d00fa
-			public const int action0 = 2131558650;
+			// aapt resource value: 0x7f0d00eb
+			public const int aboutslink = 2131558635;
+			
+			// aapt resource value: 0x7f0d00ff
+			public const int action0 = 2131558655;
 			
 			// aapt resource value: 0x7f0d009a
 			public const int action_bar = 2131558554;
@@ -3414,17 +3450,17 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d0078
 			public const int action_bar_title = 2131558520;
 			
-			// aapt resource value: 0x7f0d00f7
-			public const int action_container = 2131558647;
+			// aapt resource value: 0x7f0d00fc
+			public const int action_container = 2131558652;
 			
 			// aapt resource value: 0x7f0d009b
 			public const int action_context_bar = 2131558555;
 			
-			// aapt resource value: 0x7f0d00fe
-			public const int action_divider = 2131558654;
+			// aapt resource value: 0x7f0d0103
+			public const int action_divider = 2131558659;
 			
-			// aapt resource value: 0x7f0d00f8
-			public const int action_image = 2131558648;
+			// aapt resource value: 0x7f0d00fd
+			public const int action_image = 2131558653;
 			
 			// aapt resource value: 0x7f0d0003
 			public const int action_menu_divider = 2131558403;
@@ -3441,17 +3477,17 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d007a
 			public const int action_mode_close_button = 2131558522;
 			
-			// aapt resource value: 0x7f0d00f9
-			public const int action_text = 2131558649;
+			// aapt resource value: 0x7f0d00fe
+			public const int action_text = 2131558654;
 			
-			// aapt resource value: 0x7f0d0107
-			public const int actions = 2131558663;
+			// aapt resource value: 0x7f0d010c
+			public const int actions = 2131558668;
 			
 			// aapt resource value: 0x7f0d007b
 			public const int activity_chooser_view_content = 2131558523;
 			
-			// aapt resource value: 0x7f0d00f2
-			public const int adView = 2131558642;
+			// aapt resource value: 0x7f0d00f7
+			public const int adView = 2131558647;
 			
 			// aapt resource value: 0x7f0d003f
 			public const int add = 2131558463;
@@ -3483,6 +3519,9 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d0070
 			public const int barrier = 2131558512;
 			
+			// aapt resource value: 0x7f0d00e8
+			public const int begin = 2131558632;
+			
 			// aapt resource value: 0x7f0d0047
 			public const int beginning = 2131558471;
 			
@@ -3495,14 +3534,17 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d002f
 			public const int box_count = 2131558447;
 			
+			// aapt resource value: 0x7f0d00ec
+			public const int btnStart = 2131558636;
+			
 			// aapt resource value: 0x7f0d0030
 			public const int button = 2131558448;
 			
 			// aapt resource value: 0x7f0d0081
 			public const int buttonPanel = 2131558529;
 			
-			// aapt resource value: 0x7f0d00fb
-			public const int cancel_action = 2131558651;
+			// aapt resource value: 0x7f0d0100
+			public const int cancel_action = 2131558656;
 			
 			// aapt resource value: 0x7f0d00c5
 			public const int cancel_button = 2131558597;
@@ -3522,8 +3564,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d0091
 			public const int checkbox = 2131558545;
 			
-			// aapt resource value: 0x7f0d0103
-			public const int chronometer = 2131558659;
+			// aapt resource value: 0x7f0d0108
+			public const int chronometer = 2131558664;
 			
 			// aapt resource value: 0x7f0d0060
 			public const int clip_horizontal = 2131558496;
@@ -3567,8 +3609,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d00c2
 			public const int confirmation_code = 2131558594;
 			
-			// aapt resource value: 0x7f0d011a
-			public const int connections = 2131558682;
+			// aapt resource value: 0x7f0d011f
+			public const int connections = 2131558687;
 			
 			// aapt resource value: 0x7f0d00d0
 			public const int container = 2131558608;
@@ -3618,14 +3660,14 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d0039
 			public const int disableHome = 2131558457;
 			
-			// aapt resource value: 0x7f0d0119
-			public const int discover = 2131558681;
+			// aapt resource value: 0x7f0d011e
+			public const int discover = 2131558686;
 			
 			// aapt resource value: 0x7f0d0027
 			public const int display_always = 2131558439;
 			
-			// aapt resource value: 0x7f0d00ef
-			public const int drawer_layout = 2131558639;
+			// aapt resource value: 0x7f0d00f4
+			public const int drawer_layout = 2131558644;
 			
 			// aapt resource value: 0x7f0d009c
 			public const int edit_query = 2131558556;
@@ -3633,8 +3675,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d0048
 			public const int end = 2131558472;
 			
-			// aapt resource value: 0x7f0d0109
-			public const int end_padder = 2131558665;
+			// aapt resource value: 0x7f0d010e
+			public const int end_padder = 2131558670;
 			
 			// aapt resource value: 0x7f0d0055
 			public const int enterAlways = 2131558485;
@@ -3663,8 +3705,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d0066
 			public const int @fixed = 2131558502;
 			
-			// aapt resource value: 0x7f0d00f5
-			public const int footer = 2131558645;
+			// aapt resource value: 0x7f0d00fa
+			public const int footer = 2131558650;
 			
 			// aapt resource value: 0x7f0d0076
 			public const int forever = 2131558518;
@@ -3684,8 +3726,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d0080
 			public const int icon = 2131558528;
 			
-			// aapt resource value: 0x7f0d0108
-			public const int icon_group = 2131558664;
+			// aapt resource value: 0x7f0d010d
+			public const int icon_group = 2131558669;
 			
 			// aapt resource value: 0x7f0d0020
 			public const int icon_only = 2131558432;
@@ -3696,8 +3738,11 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d007d
 			public const int image = 2131558525;
 			
-			// aapt resource value: 0x7f0d0104
-			public const int info = 2131558660;
+			// aapt resource value: 0x7f0d00ea
+			public const int imageview = 2131558634;
+			
+			// aapt resource value: 0x7f0d0109
+			public const int info = 2131558665;
 			
 			// aapt resource value: 0x7f0d0032
 			public const int inline = 2131558450;
@@ -3735,26 +3780,26 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d007f
 			public const int list_item = 2131558527;
 			
-			// aapt resource value: 0x7f0d00eb
-			public const int loadingImage = 2131558635;
+			// aapt resource value: 0x7f0d00f0
+			public const int loadingImage = 2131558640;
 			
-			// aapt resource value: 0x7f0d00e9
-			public const int loadingProgressBar = 2131558633;
+			// aapt resource value: 0x7f0d00ee
+			public const int loadingProgressBar = 2131558638;
 			
-			// aapt resource value: 0x7f0d00ec
-			public const int loadingProgressWheel = 2131558636;
+			// aapt resource value: 0x7f0d00f1
+			public const int loadingProgressWheel = 2131558641;
+			
+			// aapt resource value: 0x7f0d011c
+			public const int masked = 2131558684;
+			
+			// aapt resource value: 0x7f0d0102
+			public const int media_actions = 2131558658;
 			
 			// aapt resource value: 0x7f0d0117
-			public const int masked = 2131558679;
+			public const int message = 2131558679;
 			
-			// aapt resource value: 0x7f0d00fd
-			public const int media_actions = 2131558653;
-			
-			// aapt resource value: 0x7f0d0112
-			public const int message = 2131558674;
-			
-			// aapt resource value: 0x7f0d00f6
-			public const int messenger_send_button = 2131558646;
+			// aapt resource value: 0x7f0d00fb
+			public const int messenger_send_button = 2131558651;
 			
 			// aapt resource value: 0x7f0d0049
 			public const int middle = 2131558473;
@@ -3765,11 +3810,11 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d0040
 			public const int multiply = 2131558464;
 			
-			// aapt resource value: 0x7f0d0118
-			public const int my_cards = 2131558680;
+			// aapt resource value: 0x7f0d011d
+			public const int my_cards = 2131558685;
 			
-			// aapt resource value: 0x7f0d00f4
-			public const int nav_view = 2131558644;
+			// aapt resource value: 0x7f0d00f9
+			public const int nav_view = 2131558649;
 			
 			// aapt resource value: 0x7f0d00d6
 			public const int navigation_header_container = 2131558614;
@@ -3786,35 +3831,35 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d002a
 			public const int normal = 2131558442;
 			
-			// aapt resource value: 0x7f0d0106
-			public const int notification_background = 2131558662;
+			// aapt resource value: 0x7f0d010b
+			public const int notification_background = 2131558667;
 			
-			// aapt resource value: 0x7f0d0100
-			public const int notification_main_column = 2131558656;
+			// aapt resource value: 0x7f0d0105
+			public const int notification_main_column = 2131558661;
 			
-			// aapt resource value: 0x7f0d00ff
-			public const int notification_main_column_container = 2131558655;
+			// aapt resource value: 0x7f0d0104
+			public const int notification_main_column_container = 2131558660;
 			
 			// aapt resource value: 0x7f0d002c
 			public const int open_graph = 2131558444;
 			
-			// aapt resource value: 0x7f0d010b
-			public const int os_bgimage_notif_bgimage = 2131558667;
+			// aapt resource value: 0x7f0d0110
+			public const int os_bgimage_notif_bgimage = 2131558672;
 			
-			// aapt resource value: 0x7f0d010a
-			public const int os_bgimage_notif_bgimage_align_layout = 2131558666;
+			// aapt resource value: 0x7f0d010f
+			public const int os_bgimage_notif_bgimage_align_layout = 2131558671;
 			
-			// aapt resource value: 0x7f0d010c
-			public const int os_bgimage_notif_bgimage_right_aligned = 2131558668;
+			// aapt resource value: 0x7f0d0111
+			public const int os_bgimage_notif_bgimage_right_aligned = 2131558673;
 			
-			// aapt resource value: 0x7f0d010e
-			public const int os_bgimage_notif_body = 2131558670;
+			// aapt resource value: 0x7f0d0113
+			public const int os_bgimage_notif_body = 2131558675;
 			
-			// aapt resource value: 0x7f0d010d
-			public const int os_bgimage_notif_title = 2131558669;
+			// aapt resource value: 0x7f0d0112
+			public const int os_bgimage_notif_title = 2131558674;
 			
-			// aapt resource value: 0x7f0d00f3
-			public const int over_fragment = 2131558643;
+			// aapt resource value: 0x7f0d00f8
+			public const int over_fragment = 2131558648;
 			
 			// aapt resource value: 0x7f0d006e
 			public const int packed = 2131558510;
@@ -3855,11 +3900,11 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d0036
 			public const int right = 2131558454;
 			
-			// aapt resource value: 0x7f0d0105
-			public const int right_icon = 2131558661;
+			// aapt resource value: 0x7f0d010a
+			public const int right_icon = 2131558666;
 			
-			// aapt resource value: 0x7f0d0101
-			public const int right_side = 2131558657;
+			// aapt resource value: 0x7f0d0106
+			public const int right_side = 2131558662;
 			
 			// aapt resource value: 0x7f0d000c
 			public const int save_image_matrix = 2131558412;
@@ -3921,8 +3966,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d00a8
 			public const int select_dialog_listview = 2131558568;
 			
-			// aapt resource value: 0x7f0d011b
-			public const int settings = 2131558683;
+			// aapt resource value: 0x7f0d0120
+			public const int settings = 2131558688;
 			
 			// aapt resource value: 0x7f0d0092
 			public const int shortcut = 2131558546;
@@ -3938,6 +3983,9 @@ namespace Slink.Droid
 			
 			// aapt resource value: 0x7f0d00e5
 			public const int sign_in_button = 2131558629;
+			
+			// aapt resource value: 0x7f0d00e9
+			public const int skip = 2131558633;
 			
 			// aapt resource value: 0x7f0d002b
 			public const int small = 2131558443;
@@ -3981,8 +4029,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d005d
 			public const int start = 2131558493;
 			
-			// aapt resource value: 0x7f0d00fc
-			public const int status_bar_latest_event_content = 2131558652;
+			// aapt resource value: 0x7f0d0101
+			public const int status_bar_latest_event_content = 2131558657;
 			
 			// aapt resource value: 0x7f0d0094
 			public const int submenuarrow = 2131558548;
@@ -4008,8 +4056,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d0087
 			public const int textSpacerNoTitle = 2131558535;
 			
-			// aapt resource value: 0x7f0d00ea
-			public const int textViewStatus = 2131558634;
+			// aapt resource value: 0x7f0d00ef
+			public const int textViewStatus = 2131558639;
 			
 			// aapt resource value: 0x7f0d00db
 			public const int text_input_password_toggle = 2131558619;
@@ -4020,8 +4068,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d0015
 			public const int textinput_error = 2131558421;
 			
-			// aapt resource value: 0x7f0d0102
-			public const int time = 2131558658;
+			// aapt resource value: 0x7f0d0107
+			public const int time = 2131558663;
 			
 			// aapt resource value: 0x7f0d001c
 			public const int title = 2131558428;
@@ -4032,8 +4080,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d008d
 			public const int title_template = 2131558541;
 			
-			// aapt resource value: 0x7f0d00f0
-			public const int toolbar = 2131558640;
+			// aapt resource value: 0x7f0d00f5
+			public const int toolbar = 2131558645;
 			
 			// aapt resource value: 0x7f0d0033
 			public const int top = 2131558451;
@@ -4059,8 +4107,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d0013
 			public const int transition_transform = 2131558419;
 			
-			// aapt resource value: 0x7f0d00f1
-			public const int under_fragment = 2131558641;
+			// aapt resource value: 0x7f0d00f6
+			public const int under_fragment = 2131558646;
 			
 			// aapt resource value: 0x7f0d0045
 			public const int uniform = 2131558469;
@@ -4077,8 +4125,8 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0d0016
 			public const int view_offset_helper = 2131558422;
 			
-			// aapt resource value: 0x7f0d0116
-			public const int visible = 2131558678;
+			// aapt resource value: 0x7f0d011b
+			public const int visible = 2131558683;
 			
 			// aapt resource value: 0x7f0d00a9
 			public const int webview = 2131558569;
@@ -4347,124 +4395,127 @@ namespace Slink.Droid
 			public const int ImageViewCell = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int ListView = 2130968638;
+			public const int instructionscreen = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int loading = 2130968639;
+			public const int ListView = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int loadingimage = 2130968640;
+			public const int loading = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int loadingprogress = 2130968641;
+			public const int loadingimage = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int Login = 2130968642;
+			public const int loadingprogress = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int Main = 2130968643;
+			public const int Login = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int messenger_button_send_blue_large = 2130968644;
+			public const int Main = 2130968644;
 			
 			// aapt resource value: 0x7f040045
-			public const int messenger_button_send_blue_round = 2130968645;
+			public const int messenger_button_send_blue_large = 2130968645;
 			
 			// aapt resource value: 0x7f040046
-			public const int messenger_button_send_blue_small = 2130968646;
+			public const int messenger_button_send_blue_round = 2130968646;
 			
 			// aapt resource value: 0x7f040047
-			public const int messenger_button_send_white_large = 2130968647;
+			public const int messenger_button_send_blue_small = 2130968647;
 			
 			// aapt resource value: 0x7f040048
-			public const int messenger_button_send_white_round = 2130968648;
+			public const int messenger_button_send_white_large = 2130968648;
 			
 			// aapt resource value: 0x7f040049
-			public const int messenger_button_send_white_small = 2130968649;
+			public const int messenger_button_send_white_round = 2130968649;
 			
 			// aapt resource value: 0x7f04004a
-			public const int NewOutletCell = 2130968650;
+			public const int messenger_button_send_white_small = 2130968650;
 			
 			// aapt resource value: 0x7f04004b
-			public const int notification_action = 2130968651;
+			public const int NewOutletCell = 2130968651;
 			
 			// aapt resource value: 0x7f04004c
-			public const int notification_action_tombstone = 2130968652;
+			public const int notification_action = 2130968652;
 			
 			// aapt resource value: 0x7f04004d
-			public const int notification_media_action = 2130968653;
+			public const int notification_action_tombstone = 2130968653;
 			
 			// aapt resource value: 0x7f04004e
-			public const int notification_media_cancel_action = 2130968654;
+			public const int notification_media_action = 2130968654;
 			
 			// aapt resource value: 0x7f04004f
-			public const int notification_template_big_media = 2130968655;
+			public const int notification_media_cancel_action = 2130968655;
 			
 			// aapt resource value: 0x7f040050
-			public const int notification_template_big_media_custom = 2130968656;
+			public const int notification_template_big_media = 2130968656;
 			
 			// aapt resource value: 0x7f040051
-			public const int notification_template_big_media_narrow = 2130968657;
+			public const int notification_template_big_media_custom = 2130968657;
 			
 			// aapt resource value: 0x7f040052
-			public const int notification_template_big_media_narrow_custom = 2130968658;
+			public const int notification_template_big_media_narrow = 2130968658;
 			
 			// aapt resource value: 0x7f040053
-			public const int notification_template_custom_big = 2130968659;
+			public const int notification_template_big_media_narrow_custom = 2130968659;
 			
 			// aapt resource value: 0x7f040054
-			public const int notification_template_icon_group = 2130968660;
+			public const int notification_template_custom_big = 2130968660;
 			
 			// aapt resource value: 0x7f040055
-			public const int notification_template_lines_media = 2130968661;
+			public const int notification_template_icon_group = 2130968661;
 			
 			// aapt resource value: 0x7f040056
-			public const int notification_template_media = 2130968662;
+			public const int notification_template_lines_media = 2130968662;
 			
 			// aapt resource value: 0x7f040057
-			public const int notification_template_media_custom = 2130968663;
+			public const int notification_template_media = 2130968663;
 			
 			// aapt resource value: 0x7f040058
-			public const int notification_template_part_chronometer = 2130968664;
+			public const int notification_template_media_custom = 2130968664;
 			
 			// aapt resource value: 0x7f040059
-			public const int notification_template_part_time = 2130968665;
+			public const int notification_template_part_chronometer = 2130968665;
 			
 			// aapt resource value: 0x7f04005a
-			public const int onesignal_bgimage_notif_layout = 2130968666;
+			public const int notification_template_part_time = 2130968666;
 			
 			// aapt resource value: 0x7f04005b
-			public const int RecyclerView = 2130968667;
+			public const int onesignal_bgimage_notif_layout = 2130968667;
 			
 			// aapt resource value: 0x7f04005c
-			public const int select_dialog_item_material = 2130968668;
+			public const int RecyclerView = 2130968668;
 			
 			// aapt resource value: 0x7f04005d
-			public const int select_dialog_multichoice_material = 2130968669;
+			public const int select_dialog_item_material = 2130968669;
 			
 			// aapt resource value: 0x7f04005e
-			public const int select_dialog_singlechoice_material = 2130968670;
+			public const int select_dialog_multichoice_material = 2130968670;
 			
 			// aapt resource value: 0x7f04005f
-			public const int support_simple_spinner_dropdown_item = 2130968671;
+			public const int select_dialog_singlechoice_material = 2130968671;
 			
 			// aapt resource value: 0x7f040060
-			public const int TextViewCell = 2130968672;
+			public const int support_simple_spinner_dropdown_item = 2130968672;
 			
 			// aapt resource value: 0x7f040061
-			public const int TitleAndAccessoryCell = 2130968673;
+			public const int TextViewCell = 2130968673;
 			
 			// aapt resource value: 0x7f040062
-			public const int TitleAndTextCell = 2130968674;
+			public const int TitleAndAccessoryCell = 2130968674;
 			
 			// aapt resource value: 0x7f040063
-			public const int tooltip = 2130968675;
+			public const int TitleAndTextCell = 2130968675;
 			
 			// aapt resource value: 0x7f040064
-			public const int Website = 2130968676;
+			public const int tooltip = 2130968676;
 			
 			// aapt resource value: 0x7f040065
-			public const int WebView = 2130968677;
+			public const int Website = 2130968677;
+			
+			// aapt resource value: 0x7f040066
+			public const int WebView = 2130968678;
 			
 			static Layout()
 			{
@@ -4843,11 +4894,11 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0b017c
 			public const int Animation_Design_BottomSheetDialog = 2131427708;
 			
-			// aapt resource value: 0x7f0b019d
-			public const int AppTheme = 2131427741;
+			// aapt resource value: 0x7f0b01a0
+			public const int AppTheme = 2131427744;
 			
-			// aapt resource value: 0x7f0b019e
-			public const int AppTheme_Base = 2131427742;
+			// aapt resource value: 0x7f0b01a1
+			public const int AppTheme_Base = 2131427745;
 			
 			// aapt resource value: 0x7f0b00b7
 			public const int Base_AlertDialog_AppCompat = 2131427511;
@@ -5392,8 +5443,17 @@ namespace Slink.Droid
 			// aapt resource value: 0x7f0b0010
 			public const int MessengerButtonText_White_Small = 2131427344;
 			
+			// aapt resource value: 0x7f0b019e
+			public const int MyTheme = 2131427742;
+			
+			// aapt resource value: 0x7f0b019d
+			public const int MyTheme_Base = 2131427741;
+			
 			// aapt resource value: 0x7f0b019f
-			public const int NoActionBarTheme = 2131427743;
+			public const int MyTheme_Splash = 2131427743;
+			
+			// aapt resource value: 0x7f0b01a2
+			public const int NoActionBarTheme = 2131427746;
 			
 			// aapt resource value: 0x7f0b003b
 			public const int Platform_AppCompat = 2131427387;
@@ -7014,6 +7074,24 @@ namespace Slink.Droid
 			// aapt resource value: 11
 			public const int CardView_contentPaddingTop = 11;
 			
+			public static int[] CircleImageView = new int[] {
+					2130772403,
+					2130772404,
+					2130772405,
+					2130772406};
+			
+			// aapt resource value: 1
+			public const int CircleImageView_civ_border_color = 1;
+			
+			// aapt resource value: 2
+			public const int CircleImageView_civ_border_overlay = 2;
+			
+			// aapt resource value: 0
+			public const int CircleImageView_civ_border_width = 0;
+			
+			// aapt resource value: 3
+			public const int CircleImageView_civ_fill_color = 3;
+			
 			public static int[] CollapsingToolbarLayout = new int[] {
 					2130772012,
 					2130772263,
@@ -8161,10 +8239,6 @@ namespace Slink.Droid
 			public const int PopupWindowBackgroundState_state_above_anchor = 0;
 			
 			public static int[] ProgressWheel = new int[] {
-					2130772403,
-					2130772404,
-					2130772405,
-					2130772406,
 					2130772407,
 					2130772408,
 					2130772409,
@@ -8172,7 +8246,11 @@ namespace Slink.Droid
 					2130772411,
 					2130772412,
 					2130772413,
-					2130772414};
+					2130772414,
+					2130772415,
+					2130772416,
+					2130772417,
+					2130772418};
 			
 			// aapt resource value: 3
 			public const int ProgressWheel_ahBarColor = 3;

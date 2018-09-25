@@ -14,7 +14,6 @@ namespace Slink
                   new Uri("https://api.twitter.com/oauth/authorize"),
                     new Uri("https://api.twitter.com/oauth/access_token"), new Uri("https://mobile.twitter.com/home"));
 
-            auth.ShowErrors = false;
 
             auth.Completed += async (s, eventArgs) =>
             {
@@ -27,6 +26,11 @@ namespace Slink
                     results = await TwitterAuthenticator.GetTwitterAccount(loggedInAccount);
 
                 sucessful?.Invoke(results != null);
+            };
+
+            auth.Error += (object sender, AuthenticatorErrorEventArgs e) =>
+            {
+
             };
 
             return auth;
@@ -61,8 +65,6 @@ namespace Slink
 
             return twitterResponse;
         }
-
-
     }
 
     public class TwitterResponse

@@ -19,16 +19,25 @@ namespace Slink.Droid
         {
             var view = inflater.Inflate(Resource.Layout.FlyingObjects, container, false);
 
+         
             Parent = view.FindViewById<LinearLayout>(Resource.Id.parent);
+
+
 
             return view;
         }
         public override void OnResume()
         {
             base.OnResume();
+            StartAnimationLoop(AnimationDirection.right, Strings.DesignTypes.design_type_flying_colors, 60, 225, 2500);
 
-            //StartAnimationLoop(AnimationDirection.right, Strings.DesignTypes.design_type_flying_colors, 60, 225, 1000);
+
+
+          
         }
+
+      
+
 
         public static void customView(View v, int cornerRadius, Android.Graphics.Color backgroundColor)
         {
@@ -36,6 +45,7 @@ namespace Slink.Droid
             shape.SetShape(ShapeType.Rectangle);
             shape.SetCornerRadius(cornerRadius);
             shape.SetColor(backgroundColor);
+           
             v.Background = shape;
         }
 
@@ -54,6 +64,9 @@ namespace Slink.Droid
         async public void StartAnimationLoop(AnimationDirection direction, string designType, int minSize, int maxSize, float duration)
         {
             if (!String.IsNullOrEmpty(designType) && designType.Equals(Strings.DesignTypes.design_type_none, StringComparison.InvariantCultureIgnoreCase)) { EndAnimation(AnimationEnding.collapse, 0); return; }
+           
+
+
 
             DisplayMetrics displayMetrics = new DisplayMetrics();
             Activity.WindowManager.DefaultDisplay.GetMetrics(displayMetrics);
@@ -79,16 +92,16 @@ namespace Slink.Droid
                 o.Start();
                 o.AnimationEnd += (sender, e) =>
                 {
-                    Parent.RemoveView(view);
+                    //Parent.RemoveView(view);
                 };
-                await System.Threading.Tasks.Task.Delay(TimeSpan.FromMilliseconds(500));
+                await System.Threading.Tasks.Task.Delay(TimeSpan.FromMilliseconds(130));
 
             }
         }
         public void EndAnimation(AnimationEnding ending, float duration)
         {
             Parent.RemoveAllViews();
-
+           
             //View.RemoveAllViews();
             //foreach (UIView view in Subviews)
             //{
@@ -114,12 +127,25 @@ namespace Slink.Droid
 
         Android.Graphics.Color GetColor(Random random, string designType)
         {
+
+            //if (designType.Equals(Strings.DesignTypes.design_type_flying_colors, StringComparison.InvariantCultureIgnoreCase)) return ColorUtils.GetRandomColor(random);
+            //if (designType.Equals(Strings.DesignTypes.design_type_flying_lights, StringComparison.InvariantCultureIgnoreCase)) return Android.Graphics.Color.White;
+            //if (designType.Equals(Strings.DesignTypes.design_type_none, StringComparison.InvariantCultureIgnoreCase)) 
+            //{
+
+            //    return ColorUtils.RemoveAllColor(random);
+            //}
+            //return Android.Graphics.Color.Transparent;
             if (String.IsNullOrEmpty(designType)) return ColorUtils.GetRandomColor(random);
 
             if (designType.Equals(Strings.DesignTypes.design_type_flying_colors, StringComparison.InvariantCultureIgnoreCase)) return ColorUtils.GetRandomColor(random);
             if (designType.Equals(Strings.DesignTypes.design_type_flying_lights, StringComparison.InvariantCultureIgnoreCase)) return Android.Graphics.Color.White;
-            if (designType.Equals(Strings.DesignTypes.design_type_none, StringComparison.InvariantCultureIgnoreCase)) throw new Exception();
+            if (designType.Equals(Strings.DesignTypes.design_type_none, StringComparison.InvariantCultureIgnoreCase)) 
+            {
+                return ColorUtils.RemoveAllColor(random);
+                
 
+            }
             return Android.Graphics.Color.Transparent;
         }
 

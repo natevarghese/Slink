@@ -10,6 +10,7 @@
              which is used to tint widgets -->
 		<item name="colorAccent">@color/colorAccent</item>
 	</style>
+    
 	<style name="NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
      ...
 </style>
