@@ -24,6 +24,8 @@ namespace Slink.iOS
     public class AppDelegate : UIApplicationDelegate
     {
         NSObject UnauthorizedBoradcastNotification;
+     
+		//changed
 
         public override UIWindow Window
         {
