@@ -22,26 +22,6 @@ namespace Slink.iOS
         {
             base.ViewDidLoad();
 
-            InititalsLabel.BackgroundColor = UIColor.FromWhiteAlpha(0.9f, 1);
-            InititalsLabel.TextColor = UIColor.Gray;
-            InititalsLabel.Layer.MasksToBounds = true;
-            InititalsLabel.Layer.CornerRadius = InititalsLabel.Frame.Size.Width / 2;
-
-
-
-
-            AddChildViewController(TableViewController);
-            ContainerView.AddSubview(TableViewController.View);
-            View.AddConstraint(NSLayoutConstraint.Create(TableViewController.View, NSLayoutAttribute.Top, NSLayoutRelation.Equal, ContainerView, NSLayoutAttribute.Top, 1, 0));
-            View.AddConstraint(NSLayoutConstraint.Create(TableViewController.View, NSLayoutAttribute.Right, NSLayoutRelation.Equal, ContainerView, NSLayoutAttribute.Right, 1, 0));
-            View.AddConstraint(NSLayoutConstraint.Create(TableViewController.View, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, ContainerView, NSLayoutAttribute.Bottom, 1, 0));
-            View.AddConstraint(NSLayoutConstraint.Create(TableViewController.View, NSLayoutAttribute.Left, NSLayoutRelation.Equal, ContainerView, NSLayoutAttribute.Left, 1, 0));
-        }
-
-        public override void ViewWillAppear(bool animated)
-        {
-            base.ViewWillAppear(animated);
-
             var me = RealmUserServices.GetMe(true);
 
             var initials = (me.FirstName?.FirstOrDefault() + " " + me.LastName?.FirstOrDefault()).Trim();
@@ -50,12 +30,26 @@ namespace Slink.iOS
             NSAttributedString attributedString = new NSAttributedString(initials, attributes);
 
             InititalsLabel.AttributedText = attributedString;
+            InititalsLabel.BackgroundColor = UIColor.FromWhiteAlpha(0.9f, 1);
+            InititalsLabel.TextColor = UIColor.Gray;
+            InititalsLabel.Layer.MasksToBounds = true;
+            InititalsLabel.Layer.CornerRadius = InititalsLabel.Frame.Size.Width / 2;
 
             NameLabel.Text = me.FirstName + " " + me.LastName;
             HandleLabel.Text = me.Handle;
 
+
+            AddChildViewController(TableViewController);
+            ContainerView.AddSubview(TableViewController.View);
+            View.AddConstraint(NSLayoutConstraint.Create(TableViewController.View, NSLayoutAttribute.Top, NSLayoutRelation.Equal, ContainerView, NSLayoutAttribute.Top, 1, 0));
+            View.AddConstraint(NSLayoutConstraint.Create(TableViewController.View, NSLayoutAttribute.Right, NSLayoutRelation.Equal, ContainerView, NSLayoutAttribute.Right, 1, 0));
+            View.AddConstraint(NSLayoutConstraint.Create(TableViewController.View, NSLayoutAttribute.Bottom, NSLayoutRelation.Equal, ContainerView, NSLayoutAttribute.Bottom, 1, 0));
+            View.AddConstraint(NSLayoutConstraint.Create(TableViewController.View, NSLayoutAttribute.Left, NSLayoutRelation.Equal, ContainerView, NSLayoutAttribute.Left, 1, 0));
+
             FooterLabel.Text = DrawerShared.GetFooterText();
         }
+
+
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);

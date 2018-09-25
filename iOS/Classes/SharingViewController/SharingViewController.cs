@@ -12,8 +12,6 @@ namespace Slink.iOS
 
         public override void ViewDidLoad()
         {
-            NetworkListenerEnabled = false;
-
             base.ViewDidLoad();
 
             if (((SharingTableViewController)TargetViewController).Shared.SelectedCard.IsMine())

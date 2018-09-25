@@ -14,8 +14,6 @@ namespace Slink.iOS
 
         public override void ViewDidLoad()
         {
-            NetworkListenerEnabled = false;
-
             base.ViewDidLoad();
 
             Label.Text = LabelAddText;

@@ -33,8 +33,15 @@ namespace Slink.iOS
             {
                 ViewControllers[0].View.Alpha = 1;
             });
-        }
 
+            CrossConnectivity.Current.ConnectivityChanged += Current_ConnectivityChanged;
+        }
+        public override void ViewDidDisappear(bool animated)
+        {
+            base.ViewDidDisappear(animated);
+
+            CrossConnectivity.Current.ConnectivityChanged -= Current_ConnectivityChanged;
+        }
         public UIViewController SetSelectedViewControllerByType(Type type, bool isNestedInNavigationController, Action completedHandler)
         {
             int index = -1;
@@ -87,6 +94,17 @@ namespace Slink.iOS
                 }
             });
             return ViewControllers[index];
+        }
+        void Current_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+        {
+            //if (e.IsConnected)
+            //{
+            //    NVCSyncManager.GetInstance().Start();
+            //}
+            //else
+            //{
+            //    NVCSyncManager.GetInstance().Stop();
+            //}
         }
     }
 }

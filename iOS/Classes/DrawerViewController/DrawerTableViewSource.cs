@@ -18,10 +18,5 @@ namespace Slink.iOS
 
             return cell;
         }
-
-        public override bool CanEditRow(UITableView tableView, NSIndexPath indexPath)
-        {
-            return false;
-        }
     }
 }

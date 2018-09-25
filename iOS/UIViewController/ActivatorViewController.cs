@@ -13,12 +13,7 @@ namespace Slink.iOS
         public ActivatorViewController() : base() { }
         public ActivatorViewController(IntPtr handle) : base(handle) { }
 
-        public override void ViewDidLoad()
-        {
-            NetworkListenerEnabled = false;
 
-            base.ViewDidLoad();
-        }
         public void SetViewController(UIViewController vc, bool animated)
         {
             //dont activate new vc instance of same type

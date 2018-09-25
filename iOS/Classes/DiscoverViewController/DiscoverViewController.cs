@@ -37,7 +37,6 @@ namespace Slink.iOS
         public override void ViewDidLoad()
         {
             LocationEnabled = true;
-            NetworkListenerEnabled = false;
 
             base.ViewDidLoad();
 
@@ -68,7 +67,7 @@ namespace Slink.iOS
 
             RightArrowImageView.Transform = CGAffineTransform.MakeScale(-1, 1);
 
-            HideCardViews(true, false);
+            HideCardViews(true);
 
             //clear notifications
             var persistantStorageService = ServiceLocator.Instance.Resolve<IPersistantStorage>();
@@ -271,51 +270,40 @@ namespace Slink.iOS
         {
             if (Shared.ShouldStopSearching())
             {
-                HideCardViews(false, true);
+                HideCardViews(false);
                 StopSearching();
 
                 NextCardForCardView();
             }
             else
             {
-                HideCardViews(true, true);
+                HideCardViews(true);
                 StartSearching();
             }
         }
-        void HideCardViews(bool hidden, bool animated)
-        {
-            if (animated)
-            {
-                UIView.Animate(0.5, () =>
-                {
-                    HideCardViewsHelper(hidden);
-                });
-
-            }
-            else
-            {
-                HideCardViewsHelper(hidden);
-            }
-        }
-        void HideCardViewsHelper(bool hidden)
+        void HideCardViews(bool hidden)
         {
             nfloat finalResult = (hidden) ? 0 : 1;
             nfloat oppositeResult = (hidden) ? 1 : 0;
+            UIView.Animate(0.5, () =>
+            {
+                DemoCardSuperview.Alpha = finalResult;
+                NoLabel.Alpha = finalResult;
+                NoBackgroundView.Alpha = finalResult;
+                YesLabel.Alpha = finalResult;
+                YesBackgroundView.Alpha = finalResult;
+                RightArrowImageView.Alpha = finalResult;
+                LeftArrowImageView.Alpha = finalResult;
+                FlipButton.Alpha = finalResult;
 
-            DemoCardSuperview.Alpha = finalResult;
-            NoLabel.Alpha = finalResult;
-            NoBackgroundView.Alpha = finalResult;
-            YesLabel.Alpha = finalResult;
-            YesBackgroundView.Alpha = finalResult;
-            RightArrowImageView.Alpha = finalResult;
-            LeftArrowImageView.Alpha = finalResult;
-            FlipButton.Alpha = finalResult;
 
+                StatusButton.Alpha = oppositeResult;
+                PhoneImageView.Alpha = oppositeResult;
 
-            StatusButton.Alpha = oppositeResult;
-            PhoneImageView.Alpha = oppositeResult;
-
-            TitleLabel.Text = (hidden) ? null : Strings.Discover.item_presented;
+                TitleLabel.Text = (hidden) ? null : Strings.Discover.item_presented;
+            });
         }
+
+
     }
 }

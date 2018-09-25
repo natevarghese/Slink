@@ -46,8 +46,6 @@ namespace Slink.iOS
         }
         async partial void ValidateButtonClicked(Foundation.NSObject sender)
         {
-            if (!IsConnected) return;
-
             View.EndEditing(true);
 
             string emailAddress = EmailAddressTextField.Text.Trim();

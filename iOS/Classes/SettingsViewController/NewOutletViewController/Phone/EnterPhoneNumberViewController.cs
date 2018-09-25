@@ -47,8 +47,6 @@ namespace Slink.iOS
 
         async partial void ValidateButtonClicked(Foundation.NSObject sender)
         {
-            if (!IsConnected) return;
-
             View.EndEditing(true);
 
             string phoneNumber = StringUtils.RemoveNonIntegers(PhoneNumberTextField.Text.Trim());

@@ -22,8 +22,6 @@ namespace Slink.iOS
 
         public override void ViewDidLoad()
         {
-            NetworkListenerEnabled = false;
-
             base.ViewDidLoad();
 
             CollectionView.RegisterClassForCell(typeof(MyCardsCollectionViewCell), MyCardsCollectionViewCell.Key);

@@ -46,7 +46,6 @@ namespace Slink.iOS
         }
         async partial void NextButtonClicked(Foundation.NSObject sender)
         {
-            if (!IsConnected) return;
             View.EndEditing(true);
 
             string emailAddress = (string)Transporter.SharedInstance.GetObjectForKey("email");
