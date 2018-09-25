@@ -26,7 +26,6 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -322,6 +321,9 @@
     <Reference Include="Xamarin.Facebook.Android">
       <HintPath>..\packages\Xamarin.Facebook.Android.4.34.0\lib\monoandroid81\Xamarin.Facebook.Android.dll</HintPath>
     </Reference>
+    <Reference Include="Refractored.Controls.CircleImageView">
+      <HintPath>..\packages\Refractored.Controls.CircleImageView.1.0.1\lib\MonoAndroid10\Refractored.Controls.CircleImageView.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Slink\Slink.csproj">
@@ -380,6 +382,8 @@
     <Compile Include="Classes\Settings\NewOutlet\Google\GoogleFragment.cs" />
     <Compile Include="Classes\Sharing\SharingRecyclerViewFragment.cs" />
     <Compile Include="Classes\Sharing\SharingRecyclerViewAdapter.cs" />
+    <Compile Include="SplashActivity.cs" />
+    <Compile Include="InstructionActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -488,6 +492,15 @@
     <AndroidResource Include="Resources\menu\toolbar_delete.xml" />
     <AndroidResource Include="Resources\layout\CardSharingCell.xml" />
     <AndroidResource Include="Resources\menu\toolbar_edit.xml" />
+    <AndroidResource Include="Resources\drawable\splash_logo.png" />
+    <AndroidResource Include="Resources\drawable\splash_screen.xml" />
+    <AndroidResource Include="Resources\values\style.xml" />
+    <AndroidResource Include="Resources\layout\instructionscreen.axml" />
+    <AndroidResource Include="Resources\animator\fadein.xml" />
+    <AndroidResource Include="Resources\animator\fadeout.xml" />
+    <AndroidResource Include="Resources\animator\hyperspace.xml" />
+    <AndroidResource Include="Resources\drawable\redbubble.jpg" />
+    <AndroidResource Include="Resources\drawable\slinkicon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />

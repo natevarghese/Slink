@@ -4,7 +4,7 @@ using UIKit;
 
 namespace Slink.iOS
 {
-    abstract public class BaseLandingViewController : BaseViewController
+    abstract public class BaseLandingViewController : KeyboardObserverViewController
     {
         UIButton ProgressButton;
 

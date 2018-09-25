@@ -17,8 +17,6 @@ namespace Slink.iOS
 
         public override void ViewDidLoad()
         {
-            NetworkListenerEnabled = false;
-
             base.ViewDidLoad();
 
             var me = RealmUserServices.GetMe(false);
@@ -83,7 +81,8 @@ namespace Slink.iOS
 
         partial void ProfileImageButtonClicked(Foundation.NSObject sender)
         {
-            var alertStyle = UIAlertControllerStyle.Alert;
+            var isTablet = CrossDeviceInfo.Current.Idiom == Idiom.Tablet;
+            var alertStyle = isTablet ? UIAlertControllerStyle.Alert : UIAlertControllerStyle.ActionSheet;
 
             UIAlertController AlertController = UIAlertController.Create(Strings.Alerts.select_image_source, null, alertStyle);
             AlertController.AddAction(UIAlertAction.Create(Strings.Alerts.user_facebook_image, UIAlertActionStyle.Default, (obj) =>
@@ -178,10 +177,6 @@ namespace Slink.iOS
             var me = RealmUserServices.GetMe(false);
             me.UpdateStringProperty(() => me.FirstName, firstName);
             me.UpdateStringProperty(() => me.LastName, lastName);
-
-            var iPersistant = ServiceLocator.Instance.Resolve<IPersistantStorage>();
-            iPersistant.SetFirstName(firstName);
-            iPersistant.SetLastName(lastName);
 
             DismissIfValid();
         }

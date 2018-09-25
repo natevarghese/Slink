@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,7 +17,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:background="@drawable/ClearToolbarBackground"
+            android:background="@android:color/transparent"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_scrollFlags="scroll|enterAlways" />
         <FrameLayout
@@ -34,8 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            ads:adSize="SMART_BANNER"
-            ads:adUnitId="ca-app-pub-4252799872870196/8754774413" />
+            app:adSize="SMART_BANNER"
+            app:adUnitId="ca-app-pub-4252799872870196/8754774413" />
         <FrameLayout
             android:id="@+id/over_fragment"
             android:layout_width="match_parent"
@@ -47,7 +45,7 @@
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:background="@android:color/black"
+        android:background="@android:color/transparent"
         android:layout_height="match_parent"
         app:itemIconTint="@color/drawer_item"
         app:itemTextColor="@color/drawer_item"

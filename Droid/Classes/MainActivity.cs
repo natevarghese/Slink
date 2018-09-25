@@ -42,6 +42,7 @@ namespace Slink.Droid
             footerTextView.Text = DrawerShared.GetFooterText();
 
             var navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+
             navigationView.NavigationItemSelected += (sender, e) =>
             {
                 var drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
@@ -55,7 +56,7 @@ namespace Slink.Droid
 
                 if (e.MenuItem.ItemId == Resource.Id.discover)
                 {
-                    //AddFragmentOver("Discover");
+                    // AddFragmentOver("Discover");
                     return;
                 }
 

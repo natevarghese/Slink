@@ -154,7 +154,7 @@ namespace Slink.Droid
         {
             LeftImageView = v.FindViewById<WebImageView>(Resource.Id.LeftImageView);
             RightTextView = v.FindViewById<TextView>(Resource.Id.RightTextView);
-            //v.SetOnCreateContextMenuListener(this);
+            v.SetOnCreateContextMenuListener(this);
         }
 
         public void BindDataToView(Context context, int position, NewCardModel model)
@@ -298,7 +298,7 @@ namespace Slink.Droid
             ApplyFlippedStateToView();
         }
 
-        void FlipTextView_Click(object sender, EventArgs e)
+        public void FlipTextView_Click(object sender, EventArgs e)
         {
             ToggleViews();
         }
@@ -328,16 +328,22 @@ namespace Slink.Droid
         }
 
 
-        void ToggleViews()
+        public void ToggleViews()
         {
             Card.Flip();
 
             ApplyFlippedStateToView();
         }
-        void ApplyFlippedStateToView()
+        public void ApplyFlippedStateToView()
         {
+
             FrontView.Visibility = Card.IsFlipped ? ViewStates.Invisible : ViewStates.Visible;
             RearView.Visibility = Card.IsFlipped ? ViewStates.Visible : ViewStates.Invisible;
+        }
+
+        internal void FlipTextView_Click()
+        {
+            ToggleViews();
         }
     }
 
@@ -359,19 +365,26 @@ namespace Slink.Droid
             return GestureDetector.OnTouchEvent(e);
         }
 
-        class GestureListener : SimpleOnGestureListener
+        class GestureListener : GestureDetector.SimpleOnGestureListener
         {
             Context Context;
+            private CardCell cardCell;
             const int SWIPE_THRESHOLD = 100;
             const int SWIPE_VELOCITY_THRESHOLD = 100;
 
             public Action OnSwipeLeft, OnSwipeRight, OnSwipeTop, OnSwipeBottom;
             public int Position;
 
+            public GestureListener(CardCell Class)
+            {
+                cardCell = Class;
+            }
+
             public GestureListener(Context context)
             {
                 Context = context;
             }
+
             public override bool OnDown(MotionEvent e)
             {
                 return true;
@@ -399,6 +412,7 @@ namespace Slink.Droid
                     float diffX = e2.GetX() - e1.GetX();
                     if (Math.Abs(diffX) > Math.Abs(diffY))
                     {
+
                         if (Math.Abs(diffX) > SWIPE_THRESHOLD && Math.Abs(velocityX) > SWIPE_VELOCITY_THRESHOLD)
                         {
                             if (diffX > 0)
@@ -422,6 +436,7 @@ namespace Slink.Droid
                         {
                             OnSwipeTop?.Invoke();
                         }
+
                         result = true;
                     }
                 }
@@ -429,6 +444,8 @@ namespace Slink.Droid
                 {
                     Console.WriteLine(exception.Message);
                 }
+
+
                 return result;
             }
         }

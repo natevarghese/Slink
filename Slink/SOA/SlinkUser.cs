@@ -78,11 +78,9 @@ namespace Slink
         public static SlinkUser Create()
         {
             var returnUser = new SlinkUser();
-            var service = ServiceLocator.Instance.Resolve<IPersistantStorage>();
 
-            returnUser.ID = service.GetUserId();
-            returnUser.FirstName = service.GetFirstName();
-            returnUser.LastName = service.GetLastName();
+            var userid = ServiceLocator.Instance.Resolve<IPersistantStorage>().GetUserId();
+            returnUser.ID = userid;
 
             var realm = RealmManager.SharedInstance.GetRealm(null);
             realm.Write(() =>

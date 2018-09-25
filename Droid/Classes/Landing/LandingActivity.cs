@@ -1,11 +1,12 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Support.V4.Widget;
 using Xamarin.Facebook;
 
 namespace Slink.Droid
 {
-    [Activity(Label = " ", MainLauncher = true, Theme = "@style/NoActionBarTheme")]
+    [Activity(MainLauncher = false, Theme = "@style/NoActionBarTheme")]
     public class LandingActivity : BaseActivity
     {
         LoginFragment LoginFragment = new LoginFragment();
@@ -14,12 +15,19 @@ namespace Slink.Droid
         {
             base.OnCreate(savedInstanceState);
 
+
+
             var loggedIn = AccessToken.CurrentAccessToken != null;
             if (loggedIn)
             {
-                StartActivity(typeof(MainActivity));
+                //go to instruction screen 
+                StartActivity(typeof(InstructionActivity));
                 return;
             }
+
+            //to remove drawer layout from login screen
+            var drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            drawer.SetDrawerLockMode(DrawerLayout.LockModeLockedClosed);
 
             var transaction = SupportFragmentManager.BeginTransaction();
             transaction.Add(Resource.Id.under_fragment, new FlyingObjectsFragment());

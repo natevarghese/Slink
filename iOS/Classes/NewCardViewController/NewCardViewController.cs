@@ -14,8 +14,6 @@ namespace Slink.iOS
         }
         public override void ViewDidLoad()
         {
-            NetworkListenerEnabled = false;
-
             base.ViewDidLoad();
 
 
@@ -51,28 +49,31 @@ namespace Slink.iOS
             NavigationItem.RightBarButtonItem = new UIBarButtonItem(topRightButtonTitle, UIBarButtonItemStyle.Plain, (sender, e) =>
             {
                 DeleteCard();
+                View.EndEditing(true);
                 NavigationController.PopToRootViewController(true);
             });
         }
         void ShowCardMissingNameAlert()
         {
-            var alertStyle = UIAlertControllerStyle.Alert;
+            var isTablet = CrossDeviceInfo.Current.Idiom == Idiom.Tablet;
+            var alertStyle = isTablet ? UIAlertControllerStyle.Alert : UIAlertControllerStyle.ActionSheet;
 
-            UIAlertController AlertController = UIAlertController.Create(Strings.Basic.error, Strings.Alerts.card_missing_name, alertStyle);
+            UIAlertController AlertController = UIAlertController.Create(Strings.Alerts.card_missing_name, null, alertStyle);
             AlertController.AddAction(UIAlertAction.Create(Strings.Basic.ok, UIAlertActionStyle.Default, (obj) =>
             {
                 (TargetViewController as NewCardTableViewController).FocusOnName();
             }));
             AlertController.AddAction(UIAlertAction.Create(Strings.Basic.delete_card, UIAlertActionStyle.Destructive, (obj) =>
             {
-                DeleteCard();
-                NavigationController.PopToRootViewController(true);
+                View.EndEditing(true);
+                NavigationController.PopViewController(true);
             }));
             PresentViewController(AlertController, true, null);
         }
         void ShowCardMissingOutletsAlert()
         {
-            var alertStyle = UIAlertControllerStyle.Alert;
+            var isTablet = CrossDeviceInfo.Current.Idiom == Idiom.Tablet;
+            var alertStyle = isTablet ? UIAlertControllerStyle.Alert : UIAlertControllerStyle.ActionSheet;
 
             UIAlertController AlertController = UIAlertController.Create(Strings.Alerts.card_missing_outlets, null, alertStyle);
             AlertController.AddAction(UIAlertAction.Create(Strings.Basic.ok, UIAlertActionStyle.Default, (obj) =>

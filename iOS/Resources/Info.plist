@@ -4,17 +4,16 @@
 <dict>
 	<key>CFBundleName</key>
 	<string>Slink</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.nvcomputers.SlinkApp</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.1.10</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
-	<string>10.0</string>
+	<string>9.2</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
+		<integer>2</integer>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -105,5 +104,7 @@
 	<string>Bluetooth is used to find other users nearby</string>
 	<key>XSAppIconAssets</key>
 	<string>Resources/Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.ios.xibutechnician</string>
 </dict>
 </plist>
