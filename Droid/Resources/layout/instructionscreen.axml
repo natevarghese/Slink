@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/redbubble">
+    <TextView
+        android:id="@+id/begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Begin by Creating Cards"
+        android:textColor="@android:color/white"
+        android:layout_centerVertical="true"
+        android:textSize="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
+    <Button
+        android:id="@+id/skip"
+        android:textStyle="bold"
+        android:layout_width="50dp"
+        android:translationX="60dp"
+        android:layout_height="30dp"
+        android:background="@android:color/white"
+        android:text="Skip"
+        android:textColor="@android:color/black"
+        android:layout_toEndOf="@id/begin" />
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/slinkicon"
+        android:layout_centerInParent="true" />
+    <TextView
+        android:id="@+id/aboutslink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:capitalize="characters"
+        android:text="Hi! I am Slink!"
+        android:textColor="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:textSize="15dp"
+        android:layout_below="@id/imageview"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:text="Get Started"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_light"
+        android:background="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp" />
+</RelativeLayout>
