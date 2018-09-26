@@ -68,9 +68,6 @@
     <Reference Include="System.Net.Http.Primitives">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\monoandroid\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="BlurBehind">
-      <HintPath>..\packages\BlurBehind.1.1.0.1\lib\MonoAndroid403\BlurBehind.dll</HintPath>
-    </Reference>
     <Reference Include="Remotion.Linq">
       <HintPath>..\packages\Remotion.Linq.2.2.0\lib\portable-net45+win+wpa81+wp80\Remotion.Linq.dll</HintPath>
     </Reference>
@@ -324,6 +321,9 @@
     <Reference Include="Refractored.Controls.CircleImageView">
       <HintPath>..\packages\Refractored.Controls.CircleImageView.1.0.1\lib\MonoAndroid10\Refractored.Controls.CircleImageView.dll</HintPath>
     </Reference>
+    <Reference Include="BlurBehind">
+      <HintPath>..\packages\BlurBehind.1.1.0.1\lib\MonoAndroid403\BlurBehind.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Slink\Slink.csproj">
@@ -382,8 +382,8 @@
     <Compile Include="Classes\Settings\NewOutlet\Google\GoogleFragment.cs" />
     <Compile Include="Classes\Sharing\SharingRecyclerViewFragment.cs" />
     <Compile Include="Classes\Sharing\SharingRecyclerViewAdapter.cs" />
-    <Compile Include="SplashActivity.cs" />
     <Compile Include="InstructionActivity.cs" />
+    <Compile Include="SplashActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -492,15 +492,15 @@
     <AndroidResource Include="Resources\menu\toolbar_delete.xml" />
     <AndroidResource Include="Resources\layout\CardSharingCell.xml" />
     <AndroidResource Include="Resources\menu\toolbar_edit.xml" />
-    <AndroidResource Include="Resources\drawable\splash_logo.png" />
-    <AndroidResource Include="Resources\drawable\splash_screen.xml" />
-    <AndroidResource Include="Resources\values\style.xml" />
     <AndroidResource Include="Resources\layout\instructionscreen.axml" />
     <AndroidResource Include="Resources\animator\fadein.xml" />
     <AndroidResource Include="Resources\animator\fadeout.xml" />
     <AndroidResource Include="Resources\animator\hyperspace.xml" />
+    <AndroidResource Include="Resources\values\style.xml" />
     <AndroidResource Include="Resources\drawable\redbubble.jpg" />
     <AndroidResource Include="Resources\drawable\slinkicon.png" />
+    <AndroidResource Include="Resources\drawable\splash_logo.png" />
+    <AndroidResource Include="Resources\drawable\splash_screen.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
