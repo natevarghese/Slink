@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
+    android:id="@+id/mainrelativelayout"
+    android:background="@drawable/redbubble"
     android:layout_height="fill_parent"
-    android:background="@drawable/redbubble">
+    >
     <TextView
         android:id="@+id/begin"
         android:layout_width="wrap_content"
@@ -11,23 +14,67 @@
         android:textColor="@android:color/white"
         android:layout_centerVertical="true"
         android:textSize="15dp"
+        android:layout_marginRight="20dp"
+        android:visibility="invisible"
+        android:translationY="20dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:visibility="invisible" />
+        android:layout_centerHorizontal="true" />
     <Button
         android:id="@+id/skip"
         android:textStyle="bold"
         android:layout_width="50dp"
-        android:translationX="60dp"
-        android:layout_height="30dp"
-        android:background="@android:color/white"
+        android:translationX="30dp"
+        android:background="@android:color/transparent"
+        android:layout_height="40dp"
+        
         android:text="Skip"
-        android:textColor="@android:color/black"
-        android:layout_toEndOf="@id/begin" />
+        android:layout_toEndOf="@id/begin"
+        android:textColor="@android:color/white" />
+    <TextView
+        android:id="@+id/taptosharetextview"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:capitalize="characters"
+        android:text="Tap to share button to \n  share your cards with \n    people nearby"
+        android:textColor="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:maxLines="10"
+        android:textSize="15dp"
+        android:layout_marginTop="30dp"
+        android:visibility="invisible"
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+  
+    <include
+        android:id="@+id/FrontView"
+        android:layout_width="400dp"
+        android:layout_height="250dp"
+        android:visibility="invisible"
+        android:layout_below="@id/skip"
+        android:layout_gravity="center"
+         android:layout_marginTop="17dp"
+        layout="@layout/InstructionScreenNext" />
+    
+<!-- 3 red circle  -->
+   
+    <ImageView
+         android:id="@+id/redcircleimg"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@id/FrontView"
+        android:layout_marginTop="50dp"
+       android:layout_marginLeft="17dp"
+        android:visibility="invisible"
+        android:src="@drawable/redcircle"
+        
+    />
+ 
+<!--    -->
     <ImageView
         android:id="@+id/imageview"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
         android:background="@drawable/slinkicon"
         android:layout_centerInParent="true" />
     <TextView
@@ -39,7 +86,21 @@
         android:textColor="@android:color/white"
         android:layout_alignParentBottom="true"
         android:textSize="15dp"
+        android:visibility="invisible"
         android:layout_below="@id/imageview"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:id="@+id/aboutslinkinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:capitalize="characters"
+        android:text=" I'm here to help you \n    get connected"
+        android:textColor="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:textSize="15dp"
+        android:layout_below="@id/imageview"
+        android:translationY="40dp"
+        android:visibility="invisible"
         android:layout_centerHorizontal="true" />
     <Button
         android:id="@+id/btnStart"
@@ -47,9 +108,84 @@
         android:layout_height="30dp"
         android:text="Get Started"
         android:textStyle="bold"
+        android:visibility="visible"
         android:textColor="@android:color/holo_red_light"
         android:background="@android:color/white"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp" />
+    
+
+<!-- innner and outer image for shareing card   -->
+        <ImageView
+            android:id="@+id/sharecardimg"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/phonewhite"
+            android:visibility="invisible"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/circleimage">
+        </ImageView>
+       <ImageView
+            android:id="@+id/inside_imageview"
+            android:layout_width="16dp"
+            android:src="@drawable/shareimg"
+            android:layout_height="10dp"
+            android:layout_marginLeft="27dp"
+            android:scaleType="fitCenter"
+            android:visibility="invisible"
+            android:layout_alignTop="@id/sharecardimg"
+            android:layout_alignBottom="@id/sharecardimg"
+             android:layout_alignLeft="@id/sharecardimg"
+           
+            />
+<!--    -->
+   
+    <ImageView
+        android:id="@+id/phoneimg"
+        android:layout_width="120dp"
+        android:layout_centerVertical="true"
+        android:layout_height="160dp"
+        android:src="@drawable/phonewhitelarge"
+        android:visibility="invisible"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="90dp" />
+<!-- lets start arrrow image   -->
+    <ImageView
+    android:id="@+id/arrowImgView"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/arrowwhite"
+        android:layout_alignParentRight="true"
+        android:rotation="90"
+        android:visibility="invisible"
+        android:translationX="24dp"
+        android:layout_below="@id/skip"
+        android:layout_marginTop="35dp"
+    ></ImageView>
+    <ImageView
+        android:id="@+id/arrowimg"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrowwhite"
+        android:visibility="invisible"
+        android:layout_marginLeft="130dp"
+        android:layout_marginBottom="70dp">
+    </ImageView>
+    <TextView
+        android:id="@+id/txtviewshare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tap to share"
+        android:visibility="invisible"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp"
+        android:translationY="-20dp">
+    </TextView>
 </RelativeLayout>

@@ -1,8 +1,8 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.Support.V7.Widget;
 using Android.Views;
+using Android.Views.Animations;
 using Android.Widget;
 
 namespace Slink.Droid
@@ -25,7 +25,8 @@ namespace Slink.Droid
             switch (viewType)
             {
                 case 0:
-                    return new CardCell(Context.LayoutInflater.Inflate(Resource.Layout.CardCell, null));
+                    var cell = new CardCell(Context.LayoutInflater.Inflate(Resource.Layout.CardCell, null));
+                    return cell;
                 case 1:
                     return new ImageAndTextViewCell(Context.LayoutInflater.Inflate(Resource.Layout.ImageAndTextViewCell, null));
                 case 2:
@@ -56,13 +57,14 @@ namespace Slink.Droid
 
     public class CardSharingCell : RecyclerView.ViewHolder
     {
-        public WebImageView ImageView { get; set; }
+        public ImageView ImageView { get; set; }
         public TextView TextView { get; set; }
         public int MyPosition { get; set; }
 
+
         public CardSharingCell(View v) : base(v)
         {
-            ImageView = v.FindViewById<WebImageView>(Resource.Id.ImageView);
+            ImageView = v.FindViewById<ImageView>(Resource.Id.ImageView);
             TextView = v.FindViewById<TextView>(Resource.Id.TextView);
         }
 
@@ -71,12 +73,8 @@ namespace Slink.Droid
             if (model == null) return;
 
             MyPosition = position;
-
-            ImageView.SetImageResource(Resource.Drawable.Connections);
-
+            //ImageView.SetImageResource(Resource.Drawable.Connections);
             TextView.Text = model.Object.ToString();
-
-
             ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewUtils.DpToPx((Activity)context, 200));
 
             if (!ItemView.HasOnClickListeners)
@@ -85,8 +83,26 @@ namespace Slink.Droid
                 {
                     var intent = new Intent(SharingShared.TapToShareBroadCastReceiverClicked);
                     context.SendBroadcast(intent);
+                    var anim = AnimationUtils.LoadAnimation(context, Resource.Animator.Scale_Share);
+                    ImageView.Visibility = ViewStates.Visible;
+                    ImageView.StartAnimation(anim);
+                    anim.AnimationEnd += Anim_AnimationEnd;
                 };
+
+
+               
+
             }
+        }
+        void Anim_AnimationEnd(object sender, Animation.AnimationEndEventArgs e)
+        {
+            StopAnimation();
+
+        }
+        void StopAnimation()
+        {
+            ImageView.Visibility = ViewStates.Invisible;
+            ImageView.ClearAnimation();
         }
     }
 }

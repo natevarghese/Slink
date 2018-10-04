@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/transparent"
     android:layout_width="match_parent"
     android:layout_height="550dp"
@@ -25,18 +26,27 @@
         android:layout_toRightOf="@id/NameTextView"
         android:layout_alignParentRight="true"
         android:layout_height="40dp" />
-    <include
-        android:id="@+id/FrontView"
+    <com.wajahatkarim3.easyflipview.EasyFlipView
+        flipEnabled="true"
+          android:id="@+id/FlipView"
+        
+           android:layout_below="@id/NameTextView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:layout_below="@id/NameTextView"
-        layout="@layout/CardFront" />
-    <include
-        android:id="@+id/RearView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible"
-        android:layout_below="@id/NameTextView"
-        layout="@layout/CardBack" />
+        android:layout_height="wrap_content"
+        flipFrom="front"
+        flipDuration="400"
+        flipOnTouch="true">
+        <include
+            android:id="@+id/FrontView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+         layout="@layout/CardFront" />
+        <include
+            android:id="@+id/RearView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+           layout="@layout/CardBack" />
+    </com.wajahatkarim3.easyflipview.EasyFlipView>
 </RelativeLayout>
