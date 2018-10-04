@@ -6,6 +6,7 @@ using System.Timers;
 using System.Threading.Tasks;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+using Android.Views.Animations;
 
 namespace Slink.Droid
 {
@@ -71,17 +72,13 @@ namespace Slink.Droid
             };
             Activity.RegisterReceiver(TapToShareBroadCastReceiver, new IntentFilter(SharingShared.TapToShareBroadCastReceiverClicked));
 
-
         }
 
         public override void OnStop()
         {
             base.OnStop();
-
             if (TapToShareBroadCastReceiver != null)
                 Activity.UnregisterReceiver(TapToShareBroadCastReceiver);
-
-
         }
 
         public override BaseRecyclerViewAdapter<SharingShared.Model> GetRecyclerViewAdapter()
@@ -118,12 +115,18 @@ namespace Slink.Droid
 
                     //((SharingTableViewController)TargetViewController).Shared.DeleteCard();
 
-                    var convertedActiviy = (Activity as BaseActivity);
-                    convertedActiviy.HideKeyboard();
-                    convertedActiviy.PopFragmentOver();
-
+                    var convertedActivity = (Activity as BaseActivity);
+                    convertedActivity.HideKeyboard();
+                    convertedActivity.PopFragmentOver();
                     break;
+
                 case Resource.Id.Edit:
+                    var fragment = new NewCardRecyclerViewFragment();
+                    fragment.Shared.SelectedCard = Card.Create();
+                    convertedActivity = (Activity as BaseActivity);
+                    fragment.Shared.SelectedCard = Shared.SelectedCard;
+                    convertedActivity.AddFragmentOver(fragment);
+
 
                     break;
             }

@@ -5,16 +5,14 @@ using Android.Graphics;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
-using static Android.Views.GestureDetector;
 using static Android.Views.View;
+using Com.Wajahatkarim3.Easyflipview;
 
 namespace Slink.Droid
 {
     public class NewCardRecyclerViewAdapter : BaseRecyclerViewAdapter<NewCardModel>
     {
         public NewCardRecyclerViewAdapter(Activity context) : base(context) { }
-
-
         public override int GetItemViewType(int position)
         {
             var target = GetItemInList(position);
@@ -163,14 +161,9 @@ namespace Slink.Droid
             if (model.Outlet == null) return;
 
             MyPosition = position;
-
             LeftImageView.SetImage(model.Outlet.RemoteURL, -1, -1, null, WebImageView.DefaultCircleTransformation);
-
             RightTextView.Text = model.Outlet.Name;
-
-
             ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, 200);
-
             if (ItemView.HasOnClickListeners) return;
             ItemView.Click += (sender, e) =>
             {
@@ -178,7 +171,6 @@ namespace Slink.Droid
                 intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
                 context.SendBroadcast(intent);
             };
-
             ItemView.SetOnCreateContextMenuListener(this);
         }
 
@@ -239,7 +231,7 @@ namespace Slink.Droid
         public CardBack RearView;
         public EditText NameTextView;
         public TextView FlipTextView;
-
+        EasyFlipView FlipView;
         Card Card;
 
 
@@ -247,8 +239,8 @@ namespace Slink.Droid
         {
             NameTextView = v.FindViewById<EditText>(Resource.Id.NameTextView);
             FlipTextView = v.FindViewById<TextView>(Resource.Id.FlipTextView);
-
             FrontView = v.FindViewById<CardFront>(Resource.Id.FrontView);
+            FlipView = v.FindViewById<EasyFlipView>(Resource.Id.FlipView);
             RearView = v.FindViewById<CardBack>(Resource.Id.RearView);
         }
 
@@ -260,42 +252,22 @@ namespace Slink.Droid
             var width = context.Resources.DisplayMetrics.WidthPixels - 20;
             var height = (int)GetCalculatedHeight(width);
             ItemView.LayoutParameters = new RelativeLayout.LayoutParams(width, height);
-
             if (item == null) return;
-
             NameTextView.TextChanged -= NameTextView_TextChanged;
             NameTextView.Text = item.Name.Equals(Strings.Basic.new_card, StringComparison.InvariantCultureIgnoreCase) ? null : item.Name;
             NameTextView.Hint = Strings.Basic.new_card;
             NameTextView.TextChanged += NameTextView_TextChanged;
             NameTextView.Enabled = editable;
-
             FlipTextView.Click -= FlipTextView_Click;
             FlipTextView.Click += FlipTextView_Click;
-
-
             //wire up swipe gestures
             var touchListner = new OnSwipeTouchListener(context, ToggleViews, ToggleViews, position);
             ItemView.SetOnTouchListener(touchListner);
-
             var pos = useParentPosition ? position : 0;
             FrontView.BindDataToView(item, editable, pos);
             RearView.BindDataToView(item, editable, pos);
+           // ApplyFlippedStateToView();
 
-            //LeftTextView.Text = item.Title;
-            ////RightTextView.Text = item.Value;
-
-
-
-            //if (ItemView.HasOnClickListeners) return; 
-            //ItemView.Click += (sender, e) =>
-            //{
-            //    var intent = new Intent(SettingsShared.ItemClickedBroadcastReceiverKey);
-            //    intent.PutExtra(SettingsShared.ItemClickedBroadcastReceiverKeyPosition, position);
-            //    context.SendBroadcast(intent);
-            //};
-
-
-            ApplyFlippedStateToView();
         }
 
         public void FlipTextView_Click(object sender, EventArgs e)
@@ -330,13 +302,13 @@ namespace Slink.Droid
 
         public void ToggleViews()
         {
-            Card.Flip();
+          //  Card.Flip();
+            FlipView.FlipTheView();
+            FlipView.FlipDuration = 1000;
 
-            ApplyFlippedStateToView();
         }
         public void ApplyFlippedStateToView()
         {
-
             FrontView.Visibility = Card.IsFlipped ? ViewStates.Invisible : ViewStates.Visible;
             RearView.Visibility = Card.IsFlipped ? ViewStates.Visible : ViewStates.Invisible;
         }
@@ -364,14 +336,15 @@ namespace Slink.Droid
         {
             return GestureDetector.OnTouchEvent(e);
         }
-
+        /// <summary>
+        /// Swipe Gesture listener.
+        /// </summary>
         class GestureListener : GestureDetector.SimpleOnGestureListener
         {
             Context Context;
             private CardCell cardCell;
             const int SWIPE_THRESHOLD = 100;
             const int SWIPE_VELOCITY_THRESHOLD = 100;
-
             public Action OnSwipeLeft, OnSwipeRight, OnSwipeTop, OnSwipeBottom;
             public int Position;
 
@@ -392,17 +365,22 @@ namespace Slink.Droid
             public override bool OnSingleTapConfirmed(MotionEvent e)
             {
                 var result = base.OnSingleTapConfirmed(e);
-
                 var intent = new Intent(MyCardsShared.ItemClickedBroadcastReceiverKeyCardClicked);
                 intent.PutExtra(MyCardsShared.ItemClickedBroadcastReceiverKeyPosition, Position);
                 Context.SendBroadcast(intent);
-
                 return result;
             }
             public override bool OnSingleTapUp(MotionEvent e)
             {
                 return base.OnSingleTapUp(e);
             }
+
+            public override bool OnScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY)
+            {
+                return true;
+            }
+
+
             public override bool OnFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY)
             {
                 bool result = false;

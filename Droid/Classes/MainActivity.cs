@@ -14,6 +14,7 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json.Linq;
 using Org.Json;
+using Slink.Droid.Fragments;
 using Xamarin.Facebook;
 using Xamarin.Facebook.Core;
 using static Google.Ads.AdRequest;
@@ -56,13 +57,13 @@ namespace Slink.Droid
 
                 if (e.MenuItem.ItemId == Resource.Id.discover)
                 {
-                    // AddFragmentOver("Discover");
+                    AddFragmentOver(new DiscoverFragment());
                     return;
                 }
 
                 if (e.MenuItem.ItemId == Resource.Id.connections)
                 {
-                    //AddFragmentOver("Connections");
+                    AddFragmentOver(new ConnectionFragment());
                     return;
                 }
 

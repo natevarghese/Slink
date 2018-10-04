@@ -28,11 +28,12 @@ namespace Slink.Droid
         public void BindDataToView(Card card, bool editable, int parentPosition)
         {
             Card = card;
-            //Editable = editable;
+            // Editable = editable;
             ParentPosition = parentPosition;
 
             var backgroundView = FindViewById<RelativeLayout>(Resource.Id.BackgroundView);
-            backgroundView.SetBackgroundColor(Android.Graphics.Color.Red);//ColorUtils.FromHexString(Card.BorderColor, Android.Graphics.Color.White));
+            backgroundView.SetBackgroundColor(Android.Graphics.Color.Red);
+            //ColorUtils.FromHexString(Card.BorderColor, Android.Graphics.Color.White);
 
             var headerImageView = FindViewById<WebImageView>(Resource.Id.HeaderImageView);
             headerImageView.SetImage(Card.GetRemoteHeaderUrlCached(), Resource.Drawable.ic_noprofile, Resource.Drawable.ic_noprofile, Card.RemoteHeaderURL, WebImageView.DefaultCircleTransformation);

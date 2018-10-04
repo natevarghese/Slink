@@ -1,9 +1,14 @@
 ﻿using System;
 using Android.Content;
+using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.Provider;
+using Android.Renderscripts;
 using Android.Runtime;
 using Android.Support.V7.App;
+using Android.Util;
 using Android.Views;
+using Android.Views.Animations;
 using FFImageLoading;
 
 namespace Slink.Droid
@@ -25,8 +30,7 @@ namespace Slink.Droid
 
             HasOptionsMenu = true;
 
-
-
+            BlurTheView(view);
             return view;
         }
 
@@ -159,7 +163,7 @@ namespace Slink.Droid
         }
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
-            var resource = (Shared.SelectedCard == null) ? Resource.Menu.toolbar_discard : Resource.Menu.toolbar_delete;
+            var resource = (Shared.SelectedCard == null) ? Resource.Menu.toolbar_save : Resource.Menu.toolbar_delete;
             inflater.Inflate(resource, menu);
             base.OnCreateOptionsMenu(menu, inflater);
         }
@@ -167,14 +171,28 @@ namespace Slink.Droid
         {
             switch (item.ItemId)
             {
-                case Resource.Id.Discard:
+
+
+                case Resource.Id.Save:
+                    SaveCardIfPossible();
+                    break;
+
                 case Resource.Id.Delete:
                     DeleteCard();
+                    if (Shared.SelectedCard != null)
+                    {
+                        var convertedActiviy = (Activity as BaseActivity);
+                        convertedActiviy.HideKeyboard();
+                        convertedActiviy.PopFragmentOverUntil(typeof(MyCardsRecyclerViewFragment));
+                        // convertedActiviy.AddFragmentOver(new MyCardsRecyclerViewFragment());
 
-                    var convertedActiviy = (Activity as BaseActivity);
-                    convertedActiviy.HideKeyboard();
-                    convertedActiviy.PopFragmentOver();
-
+                    }
+                    else
+                    {
+                        var convertedActiviy = (Activity as BaseActivity);
+                        convertedActiviy.HideKeyboard();
+                        convertedActiviy.PopFragmentOver();
+                    }
                     break;
             }
             return base.OnOptionsItemSelected(item);
@@ -440,5 +458,30 @@ namespace Slink.Droid
                 RowEditedBroadcastReceiver = null;
             }
         }
+
+        private void BlurTheView(View view)
+        {
+            RenderScript rs = RenderScript.Create(this.Activity);
+            var bitmap = GetBitmapFromView(view);
+            var blurprocesor = new RSBlurProcessor(rs);
+            var blurBitmap = blurprocesor.blur(bitmap, 15, 1);
+            view.Background = new BitmapDrawable(blurBitmap);
+        }
+
+
+
+        public Bitmap GetBitmapFromView(View view)
+        {
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            this.Activity.WindowManager.DefaultDisplay.GetMetrics(displayMetrics);
+            int height = displayMetrics.HeightPixels;
+            int width = displayMetrics.WidthPixels;
+            Bitmap bitmap = Bitmap.CreateBitmap(width, height, Bitmap.Config.Argb8888);
+            Canvas c = new Canvas(bitmap);
+            view.Layout(view.Left, view.Top, view.Right, view.Bottom);
+            view.Draw(c);
+            return bitmap;
+        }
+
     }
 }

@@ -51,6 +51,8 @@ namespace Slink.Droid
 
         public void SetToolbar(int buttonResource)
         {
+            //try
+            //{
             var toolbar = (Android.Support.V7.Widget.Toolbar)FindViewById(Resource.Id.toolbar);
             toolbar.NavigationClick -= Toolbar_NavigationClick;
             toolbar.NavigationClick += Toolbar_NavigationClick;
@@ -65,6 +67,11 @@ namespace Slink.Droid
                 toolbar.SetNavigationIcon(buttonResource);
                 SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             }
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e);
+            //}
         }
         public void AddFragmentOver(string className)
         {

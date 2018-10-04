@@ -12,18 +12,14 @@ namespace Slink.Droid
         public override Android.Views.View OnCreateView(Android.Views.LayoutInflater inflater, Android.Views.ViewGroup container, Android.OS.Bundle savedInstanceState)
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
-
             RecyclerViewAdapter.SetListItems(Shared.GetMyCards(true));
-
+            // BlurBehindSdk.BlurBehind.Instance.WithAlpha(40).WithFilterColor(Android.Graphics.Color.ParseColor("#0075c0")).SetBackground(this.Activity);
             Activity.Title = DrawerShared.navigation_item_my_cards;
-
             return view;
         }
         public override void OnResume()
         {
             base.OnResume();
-
-
             OutletClickedBroadcastReceiver = new ActionBroadcastReceiver();
             OutletClickedBroadcastReceiver.NotificationReceived += (obj) =>
             {
@@ -31,9 +27,7 @@ namespace Slink.Droid
                 {
                     var position = obj.GetIntExtra(MyCardsShared.ItemClickedBroadcastReceiverKeyPosition, -1);
                     if (position == -1) return;
-
                     var item = RecyclerViewAdapter.GetItemInList(position);
-
                     RecyclerView_ItemClick(item, position);
                 });
             };
@@ -48,9 +42,7 @@ namespace Slink.Droid
                 {
                     var position = obj.GetIntExtra(MyCardsShared.ItemClickedBroadcastReceiverKeyPosition, -1);
                     if (position == -1) return;
-
                     var item = RecyclerViewAdapter.GetItemInList(position);
-
                     RecyclerView_ItemClick(item, position);
                 });
             };
@@ -64,7 +56,6 @@ namespace Slink.Droid
 
             if (OutletClickedBroadcastReceiver != null)
                 Activity.UnregisterReceiver(OutletClickedBroadcastReceiver);
-
             if (CardClickedBroadcastReceiver != null)
                 Activity.UnregisterReceiver(CardClickedBroadcastReceiver);
         }

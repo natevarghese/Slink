@@ -10,13 +10,9 @@ namespace Slink.Droid
     public class LandingActivity : BaseActivity
     {
         LoginFragment LoginFragment = new LoginFragment();
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-
-
             var loggedIn = AccessToken.CurrentAccessToken != null;
             if (loggedIn)
             {
