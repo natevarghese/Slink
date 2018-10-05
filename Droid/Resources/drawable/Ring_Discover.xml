@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Ring Shape in drawable for discover -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:innerRadius="170dp"
+    android:shape="ring"
+    android:thickness="4dp"
+    android:useLevel="false">
+    <solid android:color="#ffffffFF" />
+   
+</shape>
