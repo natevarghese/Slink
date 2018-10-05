@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+<RelativeLayout
+    android:id="@+id/relativeDiscover"    
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ring_discover"/>
+    
+    
+<RelativeLayout
+    android:id="@+id/relativeScreenDiscover"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@android:color/transparent">
+    
+<ImageView
+    android:id="@+id/imageDiscover"
+    android:layout_height="60dp"
+    android:layout_width="60dp"  
+    android:src="@drawable/phonewhite"
+    android:layout_centerInParent="true"   
+    android:background="@drawable/circleimage"/> 
+<TextView
+    android:id="@+id/textDiscover"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:textColor="@android:color/white"
+    android:layout_below="@id/imageDiscover"  
+    android:text="Searching For People\nsharing nearby"
+    android:gravity="center"/>
+   
+</RelativeLayout> 
+</RelativeLayout>
