@@ -16,8 +16,8 @@ namespace Slink.Droid
             var loggedIn = AccessToken.CurrentAccessToken != null;
             if (loggedIn)
             {
-                //go to instruction screen 
-                StartActivity(typeof(InstructionActivity));
+               
+                StartActivity(typeof(MainActivity));
                 return;
             }
 

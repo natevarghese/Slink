@@ -5,6 +5,7 @@ using Android.Graphics;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using Slink.Droid.Services;
 
 namespace Slink.Droid
 {
@@ -45,6 +46,8 @@ namespace Slink.Droid
                     break;
             }
         }
+
+       
     }
 
     public class MyCardsFooter : RecyclerView.ViewHolder

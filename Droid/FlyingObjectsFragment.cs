@@ -23,14 +23,15 @@ namespace Slink.Droid
         LinearLayout Parent;
         string selectedDesignType;
 
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             isFlyingColor = true;
             onDataRecievedListener = this;
             var view = inflater.Inflate(Resource.Layout.FlyingObjects, container, false);
             Parent = view.FindViewById<LinearLayout>(Resource.Id.parent);
-            StartAnimationLoop(AnimationDirection.right, Strings.DesignTypes.design_type_flying_colors, 20, 100, 1);
-           // BlurTheView(view);
+            StartAnimationLoop(AnimationDirection.right, Strings.DesignTypes.design_type_flying_colors, 20, 225, 2000);
+            BlurTheView(view);
             return view;
         }
 
@@ -70,12 +71,8 @@ namespace Slink.Droid
                 isFlyingLight = true;
             else if (selectedDesignType.Contains("Color"))
                 isFlyingColor = true;
-            else{
+            else
                 Animating = false;
-                isFlyingColor = false;
-                isFlyingLight = false;
-            }
-               
             StartAnimationLoop(AnimationDirection.right, selectedDesignType, 20, 225, 2000);
         }
 
@@ -144,6 +141,7 @@ namespace Slink.Droid
         }
         public void EndAnimation(AnimationEnding ending, float duration)
         {
+
             Parent.RemoveAllViews();
             isFlyingLight = false;
             isFlyingColor = false;
@@ -152,12 +150,17 @@ namespace Slink.Droid
 
         Android.Graphics.Color GetColor(Random random, string designType)
         {
+
             if (string.IsNullOrEmpty(designType))
-            return ColorUtils.GetRandomColor(random);
-           else if (designType.Equals(Strings.DesignTypes.design_type_flying_colors))
+            {
                 return ColorUtils.GetRandomColor(random);
+            }
+            else if (designType.Equals(Strings.DesignTypes.design_type_flying_colors))
+                return ColorUtils.GetRandomColor(random);
+
             else if (designType.Equals(Strings.DesignTypes.design_type_flying_lights))
             {
+
                 designType = Strings.DesignTypes.design_type_flying_lights;
                 ColorUtils.RemoveAllColor(random);
                 return Android.Graphics.Color.White;

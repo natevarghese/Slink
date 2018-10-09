@@ -50,4 +50,11 @@ Global
 		{D2EDA0E8-FCDA-4B75-9857-BC2166C6B81B}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{D2EDA0E8-FCDA-4B75-9857-BC2166C6B81B}.Debug|iPhone.Build.0 = Debug|iPhone
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.StandardHeader = $2
+		$0.VersionControlPolicy = $3
+	EndGlobalSection
 EndGlobal

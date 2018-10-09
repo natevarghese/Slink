@@ -35,7 +35,6 @@ namespace Slink
         public List<Model> GetTableItemsAndroid()
         {
             var list = new List<Model>();
-
             var header = new Model();
             header.IsHeader = true;
             header.Object = SelectedCard;
@@ -47,7 +46,6 @@ namespace Slink
                 obj.Object = outlet;
                 list.Add(obj);
             }
-
 
             var footer = new Model();
             footer.IsFooter = true;

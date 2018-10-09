@@ -44,6 +44,7 @@ namespace Slink.Droid
 
             var navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
+
             navigationView.NavigationItemSelected += (sender, e) =>
             {
                 var drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Android.Views.Animations;
+using Android.Widget;
+using System.Runtime.Remoting.Contexts;
 
 namespace Slink.Droid
 {
@@ -17,12 +19,17 @@ namespace Slink.Droid
         Timer Timer = new Timer();
         bool ButtonLocked;
         ActionBroadcastReceiver TapToShareBroadCastReceiver;
+        public ImageView imageView;
+
+        SharingRecyclerViewAdapter adapter;
+
 
         public override View OnCreateView(Android.Views.LayoutInflater inflater, Android.Views.ViewGroup container, Android.OS.Bundle savedInstanceState)
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
 
             RecyclerViewAdapter.SetListItems(Shared.GetTableItemsAndroid());
+            //imageView = view.FindViewById<ImageView>(Resource.Id.ImageView);
 
             //Activity.Title = "";
 
@@ -83,7 +90,7 @@ namespace Slink.Droid
 
         public override BaseRecyclerViewAdapter<SharingShared.Model> GetRecyclerViewAdapter()
         {
-            var adapter = new SharingRecyclerViewAdapter(Activity);
+            adapter = new SharingRecyclerViewAdapter(Activity);
             return adapter;
         }
         public override void RecyclerView_ItemClick(SharingShared.Model obj, int position)
@@ -144,36 +151,32 @@ namespace Slink.Droid
         async public void StartSharing()
         {
             if (!Shared.CanStartSharing()) return;
-
             Shared.State = SharingShared.SharingState.Authenticating;
             RecyclerViewAdapter.SetListItems(Shared.GetTableItemsAndroid());
-
             var sharing = await Shared.ShareChard();
             if (sharing)
             {
                 Shared.State = SharingShared.SharingState.Sharing;
                 Timer.Start();
-            }
+                Activity.RunOnUiThread(delegate
+                {
+                    //RecyclerViewAdapter.SetListItems(Shared.GetTableItemsAndroid());
+                    StartAnimation();
+
+                });
+              
+             }
             else
             {
                 Shared.State = SharingShared.SharingState.Failed;
+                RecyclerViewAdapter.SetListItems(Shared.GetTableItemsAndroid());
             }
-
-            RecyclerViewAdapter.SetListItems(Shared.GetTableItemsAndroid());
-
+          
             ButtonLocked = false;
         }
         public void StopSharing()
         {
             Shared.Sharing = false;
-
-            //if (shape != null)
-            //{
-            //    shape.RemoveAllAnimations();
-            //    shape.RemoveFromSuperLayer();
-            //}
-
-
             if (Shared.State == SharingShared.SharingState.DisplayPurposesOnly)
             {
                 Shared.State = SharingShared.SharingState.DisplayPurposesOnly;
@@ -188,19 +191,37 @@ namespace Slink.Droid
             {
                 Shared.State = SharingShared.SharingState.NotSharing;
                 RecyclerViewAdapter.SetListItems(Shared.GetTableItemsAndroid());
-
                 if (String.IsNullOrEmpty(Shared.SessionUUID)) return;
-
                 Task.Run(async () =>
                 {
                     if (String.IsNullOrEmpty(Shared.SessionUUID)) return;
                     await WebServices.TransactionsController.TerminateTransaction(Shared.SessionUUID);
                 });
             }
-
+            StopAnimation();
             ButtonLocked = false;
-
             Timer.Stop();
+        }
+
+        public void StartAnimation()
+        {
+            var anim = AnimationUtils.LoadAnimation(Context, Resource.Animator.Scale_Share);
+            CardSharingCell.imageView.Visibility = ViewStates.Visible;
+            CardSharingCell.imageView.StartAnimation(anim);
+            anim.AnimationEnd += Anim_AnimationEnd;
+        }
+
+
+        void Anim_AnimationEnd(object sender, Animation.AnimationEndEventArgs e)
+        {
+            StopAnimation();
+        }
+
+
+        void StopAnimation()
+        {
+            CardSharingCell.imageView.Visibility = ViewStates.Invisible;
+            CardSharingCell.imageView.ClearAnimation();
         }
     }
 }

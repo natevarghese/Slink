@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:id="@+id/mainrelativelayout"
-    android:background="@drawable/redbubble"
-    android:layout_height="fill_parent"
-    >
+    android:background="@android:color/black"
+    android:layout_height="fill_parent">
+   
+    <FrameLayout
+        android:id="@+id/under_fragment"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="@android:color/transparent"/>
+    
+    
     <TextView
         android:id="@+id/begin"
         android:layout_width="wrap_content"
@@ -26,7 +34,6 @@
         android:translationX="30dp"
         android:background="@android:color/transparent"
         android:layout_height="40dp"
-        
         android:text="Skip"
         android:layout_toEndOf="@id/begin"
         android:textColor="@android:color/white" />
@@ -53,7 +60,7 @@
         android:visibility="invisible"
         android:layout_below="@id/skip"
         android:layout_gravity="center"
-         android:layout_marginTop="17dp"
+        android:layout_marginTop="17dp"
         layout="@layout/InstructionScreenNext" />
     
 <!-- 3 red circle  -->
@@ -64,17 +71,15 @@
         android:layout_height="30dp"
         android:layout_alignTop="@id/FrontView"
         android:layout_marginTop="50dp"
-       android:layout_marginLeft="17dp"
+        android:layout_marginLeft="17dp"
         android:visibility="invisible"
-        android:src="@drawable/redcircle"
-        
-    />
+        android:src="@drawable/redcircle"/>
  
 <!--    -->
     <ImageView
         android:id="@+id/imageview"
-        android:layout_width="80dp"
-        android:layout_height="70dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:background="@drawable/slinkicon"
         android:layout_centerInParent="true" />
     <TextView
@@ -116,7 +121,7 @@
         android:layout_marginBottom="20dp" />
     
 
-<!-- innner and outer image for shareing card   -->
+<!-- innner and outer image for sharing card   -->
         <ImageView
             android:id="@+id/sharecardimg"
             android:layout_width="70dp"
@@ -128,7 +133,7 @@
             android:layout_marginLeft="40dp"
             android:background="@drawable/circleimage">
         </ImageView>
-       <ImageView
+        <ImageView
             android:id="@+id/inside_imageview"
             android:layout_width="16dp"
             android:src="@drawable/shareimg"
@@ -163,8 +168,9 @@
         android:visibility="invisible"
         android:translationX="24dp"
         android:layout_below="@id/skip"
-        android:layout_marginTop="35dp"
-    ></ImageView>
+        android:layout_marginTop="35dp">
+        
+    </ImageView>
     <ImageView
         android:id="@+id/arrowimg"
         android:layout_width="wrap_content"
@@ -187,5 +193,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="25dp"
         android:translationY="-20dp">
-    </TextView>
+   </TextView>
+  
 </RelativeLayout>

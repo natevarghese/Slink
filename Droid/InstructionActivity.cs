@@ -12,6 +12,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Views.Animations;
 using Android.Widget;
+using static Slink.Droid.FlyingObjectsFragment;
 
 namespace Slink.Droid
 {
@@ -26,6 +27,8 @@ namespace Slink.Droid
         public RelativeLayout MainRelativeView, Main_Relative;
         public Button button, skipbtn;
         public Animation rotateAboutCornerAnimation, MoveCircle, fadeintext, fadeouttext, Arrowanimation, MobileAnimation;
+        //public FlyingObjectsFragment flyingobjectFragment;
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -36,7 +39,13 @@ namespace Slink.Droid
             //var transaction = SupportFragmentManager.BeginTransaction();
             //transaction.Add(Resource.Id.under_fragment, new FlyingObjectsFragment());
             //transaction.Add(Resource.Id.over_fragment, new MyCardsRecyclerViewFragment());
+            //flyingobjectFragment.StartAnimationLoop(AnimationDirection.right, Strings.DesignTypes.design_type_flying_colors, 20, 100, 1);
             //transaction.Commit();
+
+             var transaction = SupportFragmentManager.BeginTransaction();
+             transaction.Add(Resource.Id.under_fragment, new FlyingObjectsFragment());
+             transaction.Commit();
+
 
             SetContentView(Resource.Layout.instructionscreen);
             aboutslinkapp = FindViewById<TextView>(Resource.Id.aboutslink);
@@ -188,6 +197,8 @@ namespace Slink.Droid
 
 
         }
+
+
         public async Task SetCardNameAsync()
         {
 
@@ -312,4 +323,5 @@ namespace Slink.Droid
 
         }
     }
+
 }

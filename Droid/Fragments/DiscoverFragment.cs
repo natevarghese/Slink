@@ -21,6 +21,7 @@ namespace Slink.Droid.Fragments
         protected RelativeLayout BackgroundView;
         protected RelativeLayout relative_Discover;
 
+       
 
         public override void OnCreate(Bundle savedInstanceState)
         {

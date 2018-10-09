@@ -34,10 +34,9 @@
         android:layout_height="match_parent"
         flipOnTouch="true"
         flipEnabled="true"
-        flipDuration="1000"
+        flipDuration="400"
         flipType="horizontal"
         flipFrom="front">
-        
         <include
             android:id="@+id/RearView"
             android:layout_width="match_parent"
@@ -50,6 +49,5 @@
             android:layout_height="match_parent"
             android:visibility="visible"
             layout="@layout/CardFront" />
-        
     </com.wajahatkarim3.easyflipview.EasyFlipView>
 </RelativeLayout>

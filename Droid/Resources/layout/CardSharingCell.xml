@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" 
     android:layout_height="match_parent"
-    android:background="@android:color/black">
+    android:background="@android:color/transparent">
  <ImageButton
       android:id="@+id/imageButton"
       android:background="@drawable/circleimage"
@@ -17,7 +17,7 @@
        android:id="@+id/TextView"
        android:layout_height="wrap_content"
        android:layout_width="match_parent"
-       android:text="Tap to share"
+       android:text="Name"
        android:layout_above="@id/imageButton"
        android:textStyle="bold" 
        android:gravity="center"
@@ -28,11 +28,11 @@
        android:id="@+id/ImageView"
        android:layout_height="match_parent"
        android:layout_width="match_parent"
-        android:layout_centerInParent="true"
-       android:visibility="gone"
-       android:background="@drawable/ringshare"
-       >
+       android:layout_centerInParent="true"
+        android:visibility="gone"
+     android:background="@drawable/ringshare"
+    />
         
-  </ImageView> 
+ 
      
 </RelativeLayout>

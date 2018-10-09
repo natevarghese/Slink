@@ -1,14 +1,17 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.Content;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Views.Animations;
 using Android.Widget;
+using Slink.Droid.Services;
 
 namespace Slink.Droid
 {
     public class SharingRecyclerViewAdapter : BaseRecyclerViewAdapter<SharingShared.Model>
     {
+        RecyclerView.ViewHolder holder;
         public SharingRecyclerViewAdapter(Activity context) : base(context) { }
 
         public override int GetItemViewType(int position)
@@ -37,7 +40,7 @@ namespace Slink.Droid
         }
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-
+            this.holder = holder;
             var item = GetItemInList(position);
 
             switch (GetItemViewType(position))
@@ -53,56 +56,52 @@ namespace Slink.Droid
                     break;
             }
         }
+
+       
     }
 
     public class CardSharingCell : RecyclerView.ViewHolder
     {
-        public ImageView ImageView { get; set; }
+        public static ImageView imageView { get; set; }
         public TextView TextView { get; set; }
         public int MyPosition { get; set; }
+        Context Context;
+        public ImageButton bttnShare { get; set; }
+
 
 
         public CardSharingCell(View v) : base(v)
         {
-            ImageView = v.FindViewById<ImageView>(Resource.Id.ImageView);
+            imageView = v.FindViewById<ImageView>(Resource.Id.ImageView);
             TextView = v.FindViewById<TextView>(Resource.Id.TextView);
+            bttnShare = v.FindViewById<ImageButton>(Resource.Id.imageButton);
         }
 
         public void BindDataToView(Context context, int position, SharingShared.Model model)
         {
             if (model == null) return;
-
+            this.Context = context;
             MyPosition = position;
             //ImageView.SetImageResource(Resource.Drawable.Connections);
             TextView.Text = model.Object.ToString();
-            ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewUtils.DpToPx((Activity)context, 200));
 
-            if (!ItemView.HasOnClickListeners)
-            {
-                ItemView.Click += (sender, e) =>
+
+            ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent,
+                                                                        ViewUtils.DpToPx((Activity)context, 200));
+
+
+
+            bttnShare.Click += (sender, e) =>
                 {
                     var intent = new Intent(SharingShared.TapToShareBroadCastReceiverClicked);
                     context.SendBroadcast(intent);
-                    var anim = AnimationUtils.LoadAnimation(context, Resource.Animator.Scale_Share);
-                    ImageView.Visibility = ViewStates.Visible;
-                    ImageView.StartAnimation(anim);
-                    anim.AnimationEnd += Anim_AnimationEnd;
+
                 };
-
-
-               
-
             }
-        }
-        void Anim_AnimationEnd(object sender, Animation.AnimationEndEventArgs e)
-        {
-            StopAnimation();
 
-        }
-        void StopAnimation()
-        {
-            ImageView.Visibility = ViewStates.Invisible;
-            ImageView.ClearAnimation();
-        }
     }
-}
+      
+    }
+    
+
+

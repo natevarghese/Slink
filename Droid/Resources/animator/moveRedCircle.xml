@@ -1,20 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <set
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fillAfter="true">
-    <translate
-        android:duration="1200"
+    android:fillAfter="true"
+     android:repeatCount="2"
+    >
+       <translate
+        android:duration="1000"
         android:fillAfter="true"
         android:fromXDelta="0%p"
-        android:toXDelta="-85%p" />
-    <translate
-        android:duration="1200"
-        android:fillAfter="true"
-        android:fromXDelta="-85%p"
-        android:toXDelta="0%p" />
-    <translate
-        android:duration="1200"
-        android:fillAfter="true"
-        android:fromXDelta="0%p"
-        android:toXDelta="-85%p" />
-</set>
+        android:toXDelta="76%p"
+      android:repeatCount="2"
+        android:fromYDelta="0%p"
+        android:toYDelta="30%p">
+    </translate>
+    </set>

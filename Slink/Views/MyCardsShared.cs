@@ -18,10 +18,10 @@ namespace Slink
         {
             var cards = RealmServices.GetMyCards(forceToFront);
 
-            //if (CrossDeviceInfo.Current.Platform == Platform.Android)
-            //{
+            if (CrossDeviceInfo.Current.Platform == Platform.Android)
+            {
             cards.Add(null);
-            //}
+            }
 
             return cards;
         }

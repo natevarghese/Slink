@@ -36,17 +36,18 @@
         flipFrom="front"
         flipDuration="400"
         flipOnTouch="true">
-        <include
-            android:id="@+id/FrontView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible"
-         layout="@layout/CardFront" />
+      
         <include
             android:id="@+id/RearView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="visible"
            layout="@layout/CardBack" />
+          <include
+            android:id="@+id/FrontView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+         layout="@layout/CardFront" />
     </com.wajahatkarim3.easyflipview.EasyFlipView>
 </RelativeLayout>

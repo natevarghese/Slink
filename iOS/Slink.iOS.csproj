@@ -61,6 +61,7 @@
         <PlatformTarget>x86</PlatformTarget>
         <CodesignProvision>Dist2</CodesignProvision>
         <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
+        <Commandlineparameters></Commandlineparameters>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
         <DebugSymbols>true</DebugSymbols>
@@ -83,6 +84,11 @@
         <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
         <PlatformTarget>x86</PlatformTarget>
         <CodesignProvision>3 Phones</CodesignProvision>
+        <RunWithWarnings>true</RunWithWarnings>
+        <CodesignExtraArgs></CodesignExtraArgs>
+        <CrashReportingEnabled>false</CrashReportingEnabled>
+        <NoStdLib>false</NoStdLib>
+        <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="System" />

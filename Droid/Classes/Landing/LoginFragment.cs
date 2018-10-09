@@ -11,6 +11,8 @@ namespace Slink.Droid
     public class LoginFragment : BaseFragment, IFacebookCallback
     {
         LoginShared Shared = new LoginShared();
+
+
         public ICallbackManager CallbackManager = CallbackManagerFactory.Create();
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -18,6 +20,8 @@ namespace Slink.Droid
             var view = inflater.Inflate(Resource.Layout.Login, container, false);
 
             var profileTracker = new FacebookProfileTracker();
+
+
             profileTracker.ProfileChanged += (Profile arg1, Profile arg2) =>
             {
                 if (arg2 == null) return;
@@ -117,7 +121,7 @@ namespace Slink.Droid
             else
             {
                 SlinkUser.SetNextHandelByNameIfNecessary();
-                Activity.StartActivity(typeof(MainActivity));
+                Activity.StartActivity(typeof(InstructionActivity));
             }
         }
     }

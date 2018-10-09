@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:padding="8dp"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
     <LinearLayout
         android:id="@+id/Newcard"
         android:layout_height="wrap_content"
@@ -16,8 +15,7 @@
         android:layout_marginBottom="5dp"
          android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:orientation="horizontal"
-      >
+        android:orientation="horizontal">
         <TextView
             android:id="@+id/newcard"
             android:text="New Card"
@@ -35,8 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-         >
+        android:layout_marginRight="5dp">
         <RelativeLayout
             android:id="@+id/TopView"
             android:layout_width="400dp"

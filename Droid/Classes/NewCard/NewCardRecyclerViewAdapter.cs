@@ -242,12 +242,13 @@ namespace Slink.Droid
             FrontView = v.FindViewById<CardFront>(Resource.Id.FrontView);
             FlipView = v.FindViewById<EasyFlipView>(Resource.Id.FlipView);
             RearView = v.FindViewById<CardBack>(Resource.Id.RearView);
+            //FlipView.FlipTheView();
         }
 
         public void BindDataToView(Context context, int position, Card item, bool editable, bool useParentPosition)
         {
             Card = item;
-
+          
             //set height
             var width = context.Resources.DisplayMetrics.WidthPixels - 20;
             var height = (int)GetCalculatedHeight(width);

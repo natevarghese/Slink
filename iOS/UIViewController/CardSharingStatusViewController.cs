@@ -86,7 +86,7 @@ namespace Slink.iOS {     public partial class CardSharingStatusViewControll
             {                 SharingButton.SetTitle(Strings.Sharing.tap_to_share, new UIControlState());                  if (String.IsNullOrEmpty(SessionUUID)) return; 
                 Task.Run(async () =>
                 {                     if (String.IsNullOrEmpty(SessionUUID)) return;                     await WebServices.TransactionsController.TerminateTransaction(SessionUUID);                 });
-            }              ButtonLocked = false;              Timer.Stop();
+            }              ButtonLocked = false;             Timer.Stop();
         }         void ApplyAnimation()
         {             //already started             if (PhoneButton.Layer.Sublayers.Count() > 2) return;              
             shape = new CAShapeLayer();

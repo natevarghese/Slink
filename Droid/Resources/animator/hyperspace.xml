@@ -13,14 +13,14 @@
         android:fillAfter="true"
         android:startOffset="0"
         android:repeatCount="0"
-        android:duration="1200" />
+        android:duration="1500" />
     <translate
-        android:duration="1200"
+        android:duration="1500"
         android:fillAfter="true"
         android:fromXDelta="0%p"
-        android:toXDelta="-75%p"
+        android:toXDelta="-85%p"
         android:fromYDelta="0%p"
-        android:toYDelta="-75%p">
+        android:toYDelta="-85%p">
     </translate>
     <scale
         android:fromXScale="1.0"
@@ -32,5 +32,5 @@
         android:fillEnabled="true"
         android:interpolator="@android:anim/linear_interpolator"
         android:fillAfter="false"
-        android:duration="1200" />
+        android:duration="1500" />
 </set>
