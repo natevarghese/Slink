@@ -397,6 +397,7 @@
     <Compile Include="Services\PersistantStorage.cs" />
     <Compile Include="Services\Services.cs" />
     <Compile Include="Services\IOnSharingStartListener.cs" />
+    <Compile Include="Classes\Connections\ConnectionRecyclerViewAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -405,7 +406,6 @@
     <None Include="FodyWeavers.xml" />
     <None Include="packages.config" />
     <None Include="Properties\credentials.json" />
-    <None Include="CardCell.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -497,7 +497,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_noprofile.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_buildings.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_noprofile.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_buildings.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_noprofile.png" />
     <AndroidResource Include="Resources\layout\EnterPhoneNumberVerificationCode.axml" />
     <AndroidResource Include="Resources\layout\Google.xml" />
@@ -540,6 +539,11 @@
     <AndroidResource Include="Resources\layout\Connection.axml" />
     <AndroidResource Include="Resources\animator\Scale_Share.xml" />
     <AndroidResource Include="Resources\drawable\ringshare.xml" />
+    <AndroidResource Include="Resources\animator\Scale_Card.xml" />
+    <AndroidResource Include="Resources\drawable\blurimage.png" />
+    <AndroidResource Include="Resources\drawable\buildings.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_buildings.png" />
+    <AndroidResource Include="Resources\layout\connectionCardCell.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />

@@ -1,25 +1,20 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
-using Android.Opengl;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Views.Animations;
 using Android.Widget;
-using static Slink.Droid.FlyingObjectsFragment;
+using BlurBehindSdk;
+using Android.Graphics;
+
 
 namespace Slink.Droid
 {
 
     //This is the instruction screen.
     [Activity(Label = "InstructionActivity", Theme = "@style/NoActionBarTheme")]
-    public class InstructionActivity : BaseActivity
+     public class InstructionActivity : BaseActivity
     {
         public View FrontView2;
         public TextView aboutslinkapp, TextViewShare, aboutslinkapp1, TaptoshareTxtView, slinkinstruction, UserNameEdittext, UserTitleEditText, CardName, OutLet, Txtviewtaptoshare;
@@ -27,33 +22,33 @@ namespace Slink.Droid
         public RelativeLayout MainRelativeView, Main_Relative;
         public Button button, skipbtn;
         public Animation rotateAboutCornerAnimation, MoveCircle, fadeintext, fadeouttext, Arrowanimation, MobileAnimation;
-        //public FlyingObjectsFragment flyingobjectFragment;
+
 
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            //getting id for instruction screen layout
-
-            //var transaction = SupportFragmentManager.BeginTransaction();
-            //transaction.Add(Resource.Id.under_fragment, new FlyingObjectsFragment());
-            //transaction.Add(Resource.Id.over_fragment, new MyCardsRecyclerViewFragment());
-            //flyingobjectFragment.StartAnimationLoop(AnimationDirection.right, Strings.DesignTypes.design_type_flying_colors, 20, 100, 1);
-            //transaction.Commit();
+            //Set background flying object view
 
              var transaction = SupportFragmentManager.BeginTransaction();
              transaction.Add(Resource.Id.under_fragment, new FlyingObjectsFragment());
-             transaction.Commit();
+            //transaction.Add(Resource.Id.center_fragment, new BlurViewFragment());
+            transaction.Commit();
 
+
+
+
+           
 
             SetContentView(Resource.Layout.instructionscreen);
+          
             aboutslinkapp = FindViewById<TextView>(Resource.Id.aboutslink);
             aboutslinkapp1 = FindViewById<TextView>(Resource.Id.aboutslinkinfo);
             slinkinstruction = FindViewById<TextView>(Resource.Id.begin);
             TaptoshareTxtView = FindViewById<TextView>(Resource.Id.taptosharetextview);
             TextViewShare = FindViewById<TextView>(Resource.Id.txtviewshare);
-            button = FindViewById<Button>(Resource.Id.btnStart);
+            //button = FindViewById<Button>(Resource.Id.btnStart);
             skipbtn = FindViewById<Button>(Resource.Id.skip);
             Main_Relative = FindViewById<RelativeLayout>(Resource.Id.mainrelativelayout);
             myImage = FindViewById<ImageView>(Resource.Id.imageview);
@@ -92,83 +87,94 @@ namespace Slink.Droid
             {
                 //go to main activity when click skip button
                 StartActivity(typeof(MainActivity));
-
-            };
-
-            button.Click += async delegate
-            {
-                aboutslinkapp.StartAnimation(fadeouttext);
-                aboutslinkapp1.StartAnimation(fadeouttext);
-                await Task.Delay(1500);
-                myImage.StartAnimation(rotateAboutCornerAnimation);
-                button.Visibility = ViewStates.Gone;
-                await Task.Delay(1500);
-
-                aboutslinkapp.ClearAnimation();
-                aboutslinkapp1.ClearAnimation();
-
-                await Task.Delay(1500);
-                slinkinstruction.StartAnimation(fadeouttext);
-                await Task.Delay(1000);
-                slinkinstruction.ClearAnimation();
-
-                FrontView2.Visibility = ViewStates.Visible;
-                await Task.Delay(1500);
-                aboutslinkapp.Text = "Add Your name and Picture";
-                aboutslinkapp.StartAnimation(fadeouttext);
-
-                await Task.Delay(1000);
-                UserNameEdittext.Text = "";
-
-                UserNameEdittext.Text = "j";
-
-                await Task.Delay(400);
-                UserNameEdittext.Append("o");
-
-                await Task.Delay(400);
-                UserNameEdittext.Append("h");
-
-
-                await Task.Delay(400);
-                UserNameEdittext.Append("n");
-                await Task.Delay(100);
-
-
-                UserNameEdittext.Append(" ");
-                await Task.Delay(400);
-
-                UserNameEdittext.Append("D");
-                await Task.Delay(400);
-
-                UserNameEdittext.Append("o");
-                await Task.Delay(400);
-                UserNameEdittext.Append("e");
-
-                await Task.Delay(400);
-                UserIconImage.SetImageResource(Resource.Drawable.instructionimage);
-                await Task.Delay(1000);
-                aboutslinkapp.Text = "Change the Border Color";
-                aboutslinkapp.StartAnimation(fadeouttext);
-                await Task.Delay(1000);
-                //aboutslinkapp.ClearAnimation();
-                MainRelativeView.Background = Resources.GetDrawable(Resource.Drawable.customcorner);
-                MainRelativeView.SetBackgroundResource(Resource.Drawable.customcorner);
-
-                await Task.Delay(1500);
-                aboutslinkapp.Text = "Add your phone no";
-                OutLet.Visibility = ViewStates.Gone;
-                aboutslinkapp.StartAnimation(fadeouttext);
-                //aboutslinkapp.ClearAnimation();
-                await Task.Delay(1500);
-
-                SetOtherAccountAsync();
-
-                //setting card name
+                //Intent intent = new Intent(this, typeof(BlurViewActivity));
+                //StartActivity(intent);
 
 
             };
 
-            async Task SetOtherAccountAsync()
+
+            AnimationSetAsync();
+
+            //setting card name
+
+        }
+
+        public async Task AnimationSetAsync()
+        {
+            await Task.Delay(3000);
+            aboutslinkapp.StartAnimation(fadeouttext);
+            aboutslinkapp1.StartAnimation(fadeouttext);
+            await Task.Delay(2000);
+            myImage.StartAnimation(rotateAboutCornerAnimation);
+         
+            await Task.Delay(2000);
+
+            aboutslinkapp.ClearAnimation();
+            aboutslinkapp1.ClearAnimation();
+
+            await Task.Delay(2000);
+            slinkinstruction.StartAnimation(fadeouttext);
+            await Task.Delay(2000);
+            slinkinstruction.ClearAnimation();
+
+
+            await Task.Delay(2000);
+            FrontView2.Visibility = ViewStates.Visible;
+            await Task.Delay(2000);
+            aboutslinkapp.Text = "Add Your name and Picture";
+            aboutslinkapp.StartAnimation(fadeouttext);
+
+            await Task.Delay(1500);
+            UserNameEdittext.Text = "";
+
+            UserNameEdittext.Text = "j";
+
+            await Task.Delay(400);
+            UserNameEdittext.Append("o");
+
+            await Task.Delay(400);
+            UserNameEdittext.Append("h");
+
+
+            await Task.Delay(400);
+            UserNameEdittext.Append("n");
+            await Task.Delay(100);
+
+
+            UserNameEdittext.Append(" ");
+            Task.Delay(400);
+
+            UserNameEdittext.Append("D");
+            await Task.Delay(400);
+
+            UserNameEdittext.Append("o");
+            await Task.Delay(400);
+            UserNameEdittext.Append("e");
+
+            await Task.Delay(400);
+            UserIconImage.SetImageResource(Resource.Drawable.instructionimage);
+            await Task.Delay(1000);
+            aboutslinkapp.Text = "Change the Border Color";
+            aboutslinkapp.StartAnimation(fadeouttext);
+            await Task.Delay(1000);
+            //aboutslinkapp.ClearAnimation();
+            MainRelativeView.Background = Resources.GetDrawable(Resource.Drawable.customcorner);
+            MainRelativeView.SetBackgroundResource(Resource.Drawable.customcorner);
+
+            await Task.Delay(1500);
+            aboutslinkapp.Text = "Add your phone no";
+            OutLet.Visibility = ViewStates.Gone;
+            aboutslinkapp.StartAnimation(fadeouttext);
+            //aboutslinkapp.ClearAnimation();
+            await Task.Delay(1500);
+
+            SetOtherAccountAsync();
+
+        }
+
+
+        async Task SetOtherAccountAsync()
             {
                 Contect.SetImageResource(Resource.Drawable.contect);
                 Contect.Visibility = ViewStates.Visible;
@@ -196,7 +202,7 @@ namespace Slink.Droid
 
 
 
-        }
+      
 
 
         public async Task SetCardNameAsync()
@@ -312,8 +318,8 @@ namespace Slink.Droid
 
 
             InsideImageView.Animate().TranslationXBy((x - x1) + 25).TranslationYBy((y - y1)).RotationBy(360).ScaleXBy(2.5f).ScaleYBy(2.5f)
-        .SetDuration(4000)
-        .Start();
+            .SetDuration(4000)
+            .Start();
             await Task.Delay(1500);
 
         }

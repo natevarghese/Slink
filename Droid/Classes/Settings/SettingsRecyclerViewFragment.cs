@@ -76,7 +76,7 @@ namespace Slink.Droid
 
                 var iPersistant = ServiceLocator.Instance.Resolve<IPersistantStorage>();
                 iPersistant.RemoveAll();
-                iPersistant.SetDesignType("FlyingColor");
+                iPersistant.SetDesignType("Color");
                 Activity.StartActivity(typeof(LandingActivity));
                 return;
             }

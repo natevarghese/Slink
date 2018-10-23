@@ -29,11 +29,12 @@ namespace Slink.Droid
 
         string AdKeyGender = "gender";
         string AdKeyBirthday = "birthday";
+        DiscoverFragment discoverobj = new DiscoverFragment();
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState) 
         {
             base.OnCreate(savedInstanceState);
-
+           
             var transaction = SupportFragmentManager.BeginTransaction();
             transaction.Add(Resource.Id.under_fragment, new FlyingObjectsFragment());
             transaction.Add(Resource.Id.over_fragment, new MyCardsRecyclerViewFragment());
@@ -127,6 +128,8 @@ namespace Slink.Droid
             }
         }
 
+
+
         void ShowBanner(Dictionary<string, string> advertisingTargetInfo)
         {
             mAdView.LoadAd(GetRequest(advertisingTargetInfo));
@@ -166,10 +169,15 @@ namespace Slink.Droid
 
             return request.Build();
         }
+
+       
+
         public override void OnBackPressed()
-        {
+       {
             if (SupportFragmentManager.BackStackEntryCount > 0)
+            {
                 SupportFragmentManager.PopBackStackImmediate();
+            }
             else
             {
                 var drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
@@ -184,7 +192,6 @@ namespace Slink.Droid
                 resourceId = Resource.Drawable.abc_ic_ab_back_material;
             else
                 resourceId = Resource.Drawable.ic_menu_white_24dp;
-
             SetToolbar(resourceId);
         }
 

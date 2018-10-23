@@ -49,7 +49,7 @@ namespace Slink
         public string Title { get; set; }
         public string BorderColor { get; set; }
 
-        public IList<Outlet> Outlets { get; }
+        public IList<Outlet> Outlets { get;  }
 
         string remoteHeaderUrlCached;
         public string GetRemoteHeaderUrlCached()
@@ -104,6 +104,8 @@ namespace Slink
             }
             set { }
         }
+
+
 
         public void ShowFront()
         {

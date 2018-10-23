@@ -13,7 +13,6 @@ namespace Slink.Droid
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
             RecyclerViewAdapter.SetListItems(Shared.GetMyCards(true));
-            // BlurBehindSdk.BlurBehind.Instance.WithAlpha(40).WithFilterColor(Android.Graphics.Color.ParseColor("#0075c0")).SetBackground(this.Activity);
             Activity.Title = DrawerShared.navigation_item_my_cards;
             return view;
         }

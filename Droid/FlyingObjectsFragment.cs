@@ -30,8 +30,12 @@ namespace Slink.Droid
             onDataRecievedListener = this;
             var view = inflater.Inflate(Resource.Layout.FlyingObjects, container, false);
             Parent = view.FindViewById<LinearLayout>(Resource.Id.parent);
-            StartAnimationLoop(AnimationDirection.right, Strings.DesignTypes.design_type_flying_colors, 20, 225, 2000);
+             StartAnimationLoop(AnimationDirection.right, Strings.DesignTypes.design_type_flying_colors, 20, 225,2000);
             BlurTheView(view);
+
+            view.SetBackgroundResource(Resource.Drawable.blurimage);
+            view.Alpha = 0.8f;
+
             return view;
         }
 
@@ -57,7 +61,7 @@ namespace Slink.Droid
             EndAnimation(AnimationEnding.collapse, 1);
             System.Threading.Tasks.Task.Delay(TimeSpan.FromMilliseconds(20));
             StartFlyingObjectsView();
-        }
+        } 
         /// <summary>
         /// Starts the flying objects view.
         /// </summary>
@@ -67,7 +71,9 @@ namespace Slink.Droid
             isFlyingLight = false;
             var service = ServiceLocator.Instance.Resolve<IPersistantStorage>();
             selectedDesignType = service.GetDesignType();
-            if (selectedDesignType.Contains("Lights"))
+            if (selectedDesignType == null)
+                selectedDesignType = Strings.DesignTypes.design_type_flying_colors;
+            else if (selectedDesignType != null && selectedDesignType.Contains("Lights"))
                 isFlyingLight = true;
             else if (selectedDesignType.Contains("Color"))
                 isFlyingColor = true;

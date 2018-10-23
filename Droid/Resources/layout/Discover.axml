@@ -1,37 +1,147 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:id="@+id/relativeLayoutParent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
-<RelativeLayout
-    android:id="@+id/relativeDiscover"    
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/ring_discover"/>
+  <RelativeLayout
+        android:id="@+id/relativeDiscover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ring_discover" />
+    <RelativeLayout
+        android:id="@+id/relativeScreenDiscover"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="@android:color/transparent">
+        <ImageView
+            android:id="@+id/imageDiscover"
+            android:layout_height="60dp"
+            android:layout_width="60dp"
+            android:src="@drawable/phonewhite"
+            android:layout_centerInParent="true"
+            android:background="@drawable/circleimage" />
+        <TextView
+            android:id="@+id/textDiscover"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColor="@android:color/white"
+            android:layout_below="@id/imageDiscover"
+            android:text="Searching For People\nsharing nearby"
+            android:gravity="center" />
+    </RelativeLayout>
+    <com.wajahatkarim3.easyflipview.EasyFlipView
+        flipEnabled="true"
+        android:id="@+id/FlipView"
+        android:layout_below="@+id/NameTextView"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        flipFrom="front"
+        flipDuration="400"
+        android:padding="50dp"
+        android:background="@android:color/transparent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        flipOnTouch="true">
+       
+        <include
+            android:id="@+id/RearView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:layout_gravity="center"
+            android:background="@color/accent_material_light"
+            layout="@layout/cardback" />
+        
+        <include
+            android:id="@+id/FrontView"
+           android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/accent_material_light"
+            android:visibility="visible"
+            layout="@layout/cardfront" />
+            
+    </com.wajahatkarim3.easyflipview.EasyFlipView>
     
-    
-<RelativeLayout
-    android:id="@+id/relativeScreenDiscover"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:background="@android:color/transparent">
-    
-<ImageView
-    android:id="@+id/imageDiscover"
-    android:layout_height="60dp"
-    android:layout_width="60dp"  
-    android:src="@drawable/phonewhite"
-    android:layout_centerInParent="true"   
-    android:background="@drawable/circleimage"/> 
-<TextView
-    android:id="@+id/textDiscover"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:textColor="@android:color/white"
-    android:layout_below="@id/imageDiscover"  
-    android:text="Searching For People\nsharing nearby"
-    android:gravity="center"/>
-   
-</RelativeLayout> 
+    <LinearLayout
+        android:id="@+id/linear_layout_bottom"
+        android:layout_below="@id/FlipView"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@android:color/transparent"
+        android:weightSum="3">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/linear_No_btnlayout"
+            android:layout_weight="3"
+           android:background="@android:color/transparent"
+            android:orientation="horizontal">
+            
+            <ImageView
+                android:id="@+id/img_arrow_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrowwhite"
+                android:layout_weight="1"/>
+            
+             <TextView
+            android:id="@+id/btn_flip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flip"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:background="@android:color/transparent"
+            android:layout_weight="1" />
+          
+             <ImageView
+                android:id="@+id/img_arrow_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrowwhite"
+                android:rotation="180" 
+                android:layout_weight="1"/>
+            </LinearLayout>
+            
+           <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="2"
+            android:id="@+id/linear_No_btnlayout"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:background="@android:color/transparent"
+            >
+        
+       
+        <Button
+                android:id="@+id/notbn"
+                android:text="NO"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/white"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/> 
+        
+            <Button
+                android:id="@+id/yesbtn"
+                android:background="@android:color/transparent"
+                android:text="Yes"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+                 
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

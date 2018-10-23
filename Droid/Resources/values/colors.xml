@@ -12,4 +12,6 @@
         name="hintGray">#bababa</color>
     <color
         name="red">#ff0000</color>
+    <color
+        name="opaque_black">#00000099</color>
 </resources>

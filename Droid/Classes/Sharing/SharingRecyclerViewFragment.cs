@@ -15,12 +15,10 @@ namespace Slink.Droid
     public class SharingRecyclerViewFragment : RecyclerViewFragment<SharingShared.Model>
     {
         public SharingShared Shared = new SharingShared();
-
         Timer Timer = new Timer();
         bool ButtonLocked;
         ActionBroadcastReceiver TapToShareBroadCastReceiver;
         public ImageView imageView;
-
         SharingRecyclerViewAdapter adapter;
 
 
@@ -164,14 +162,14 @@ namespace Slink.Droid
                     StartAnimation();
 
                 });
-              
-             }
+
+            }
             else
             {
                 Shared.State = SharingShared.SharingState.Failed;
                 RecyclerViewAdapter.SetListItems(Shared.GetTableItemsAndroid());
             }
-          
+
             ButtonLocked = false;
         }
         public void StopSharing()

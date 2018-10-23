@@ -6,7 +6,7 @@ namespace Slink
 {
     public class LoginShared
     {
-        public List<string> FacebookPermissions = new List<string> { "public_profile", "email", "user_friends" };
+        public List<string> FacebookPermissions = new List<string> { "public_profile", "email" };
         public string FacebookFirstName, FacebookLastName, FacebookFullName, FacebookUserId;
 
         public void SetUserData(string userId, string firstName, string lastName)

@@ -76,28 +76,7 @@ namespace Slink
                 return;
             if (target.Values == null || target.Values.Count == 0) return;
             //Debug.WriteLine(target.Values.Count);
-            //if (CrossDeviceInfo.Current.Platform == Platform.Android)
-            //{
-
-
-            //    if (target.Values[i] == "FlyingColors")
-            //    {
-
-            //    }
-
-
-            //        else if (target.Values[i] == "FlyingLights")
-            //        {
-
-            //        }
-
-            //       else if (target.Values[i] == "None")
-            //        {
-
-            //        }
-
-            //    }
-            //}
+           
 
             //on button click change the target button value
             var currentValIndex = target.Values.IndexOf(target.Value);

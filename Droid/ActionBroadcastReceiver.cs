@@ -21,14 +21,15 @@ namespace Slink.Droid
         public override void OnReceive(Context context, Intent intent)
         {
             NotificationReceived?.Invoke(intent);
-
-            var title = intent.GetStringExtra(Strings.InternalNotifications.notification_design_changed);
-             if (String.IsNullOrEmpty(title)) return;
-            var designChangedReciever = new DesignChangedReciever(FlyingObjectsFragment.onDataRecievedListener);
+            if(FlyingObjectsFragment.onDataRecievedListener!=null)
+            {
+                var designChangedReciever = new DesignChangedReciever(FlyingObjectsFragment.onDataRecievedListener);
+            }
+            //var title = intent.GetStringExtra(Strings.InternalNotifications.notification_design_changed);
+            //if (String.IsNullOrEmpty(title)) return;
+           
 
         }
-
-
 
         public interface IOnDataRecievedListener
         {

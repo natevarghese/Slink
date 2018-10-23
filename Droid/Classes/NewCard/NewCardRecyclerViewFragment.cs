@@ -184,7 +184,7 @@ namespace Slink.Droid
                         var convertedActiviy = (Activity as BaseActivity);
                         convertedActiviy.HideKeyboard();
                         convertedActiviy.PopFragmentOverUntil(typeof(MyCardsRecyclerViewFragment));
-                        // convertedActiviy.AddFragmentOver(new MyCardsRecyclerViewFragment());
+                         convertedActiviy.AddFragmentOver(new MyCardsRecyclerViewFragment());
 
                     }
                     else

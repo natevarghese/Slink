@@ -57,7 +57,7 @@ namespace Slink.Droid
             }
         }
 
-       
+
     }
 
     public class CardSharingCell : RecyclerView.ViewHolder
@@ -84,24 +84,21 @@ namespace Slink.Droid
             MyPosition = position;
             //ImageView.SetImageResource(Resource.Drawable.Connections);
             TextView.Text = model.Object.ToString();
-
-
             ItemView.LayoutParameters = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent,
                                                                         ViewUtils.DpToPx((Activity)context, 200));
 
-
-
             bttnShare.Click += (sender, e) =>
-                {
-                    var intent = new Intent(SharingShared.TapToShareBroadCastReceiverClicked);
-                    context.SendBroadcast(intent);
+            {
+                var intent = new Intent(SharingShared.TapToShareBroadCastReceiverClicked);
+                context.SendBroadcast(intent);
 
-                };
-            }
+            };
+        }
 
     }
-      
-    }
-    
+
+
+}
+
 
 
